@@ -2,6 +2,4 @@
 title: Stilvoid's GitHub page
 ---
 
-{% for post in site.posts %}
-* [{{post.title}}]({{post.url}})
-{% endfor %}
+This is where I'll keep stuff that I'm working on. Eventually.
