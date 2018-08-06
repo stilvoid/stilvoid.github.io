@@ -1,7 +1,13 @@
+# Site settings
 theme: minima
 permalink: pretty
+show_excerpts: true
 
+# Social media
 twitter_username: stilvoid
 github_username: stilvoid
+rss: rss
 
-show_exerpts: true
+# Plugins
+plugins:
+  - jekyll-feed
