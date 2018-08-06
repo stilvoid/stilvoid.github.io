@@ -1,7 +1,3 @@
----
-title: Stilvoid's GitHub page
----
-
 I'm Steve Engledow, senior solutions builder at [AWS Professional Services](https://aws.amazon.com/professional-services/).
 
 All views expressed here are my own and don't necessarily reflect Amazon's :)
