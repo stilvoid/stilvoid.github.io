@@ -1,12 +1,8 @@
 # Site settings
-theme: minima
+author: Steve Engledow
+theme: jekyll-theme-hacker
 permalink: pretty
 show_excerpts: true
-
-# Social media
-twitter_username: stilvoid
-github_username: stilvoid
-rss: rss
 
 # Plugins
 plugins:

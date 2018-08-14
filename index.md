@@ -1,10 +1,10 @@
 I'm Steve Engledow, senior solutions builder at [AWS Professional Services](https://aws.amazon.com/professional-services/).
 
-All views expressed here are my own and don't necessarily reflect Amazon's :)
-
 ![Picture of Steve Engledow](https://static.offend.me.uk/media/images/me-real-small.jpg)
 
-### Fact sheet
+All views expressed here are my own and don't necessarily reflect Amazon's :)
+
+## Fact sheet
 
 Just the important details:
 
@@ -19,3 +19,20 @@ Just the important details:
 * Alignment: [Neutral good](https://en.wikipedia.org/wiki/Alignment_(Dungeons_%26_Dragons)#Neutral_good).
 
 Anything else is hearsay.
+
+## Recently-updated Projects
+
+{% assign sorted_repos = site.github.public_repositories | sort:"updated_at" | reverse %}
+{% for repository in sorted_repos limit:10 %}
+* <span class="post-meta">{{repository.updated_at | date:"%Y-%m-%d"}}</span> [{{ repository.name }}]({{ repository.html_url }})
+{% endfor %}
+
+[All projects](/projects/)
+
+## Recent Posts
+
+{% for post in site.posts limit:10 %}
+* <span class="post-meta">{{post.date | date:"%Y-%m-%d"}}</span> [{{ post.title }}]({{ post.url }})
+{% endfor %}
+
+[All posts](/posts/)
