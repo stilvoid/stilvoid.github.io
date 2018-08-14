@@ -1,12 +1,4 @@
-I'm Steve Engledow, senior solutions builder at [AWS Professional Services](https://aws.amazon.com/professional-services/).
-
-![Picture of Steve Engledow](https://static.offend.me.uk/media/images/me-real-small.jpg)
-
-All views expressed here are my own and don't necessarily reflect Amazon's :)
-
-## Fact sheet
-
-Just the important details:
+## About me
 
 * I use [Arch Linux](https://www.archlinux.org/) and prefer [vim](https://www.vim.org/) over [emacs](http://www.wikivs.com/wiki/Vim_vs_Emacs).
 
@@ -18,6 +10,10 @@ Just the important details:
 
 * Alignment: [Neutral good](https://en.wikipedia.org/wiki/Alignment_(Dungeons_%26_Dragons)#Neutral_good).
 
+* Picture:
+
+    ![Picture of Steve Engledow](https://static.offend.me.uk/media/images/me-real-small.jpg)
+
 Anything else is hearsay.
 
 ## Recently-updated Projects
@@ -27,7 +23,7 @@ Anything else is hearsay.
 * <span class="post-meta">{{repository.updated_at | date:"%Y-%m-%d"}}</span> [{{ repository.name }}]({{ repository.html_url }})
 {% endfor %}
 
-[All projects](/projects/)
+* [All projects](/projects/)
 
 ## Recent Posts
 
@@ -35,4 +31,4 @@ Anything else is hearsay.
 * <span class="post-meta">{{post.date | date:"%Y-%m-%d"}}</span> [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
-[All posts](/posts/)
+* [All posts](/posts/)
