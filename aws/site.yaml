@@ -27,6 +27,40 @@ Resources:
       WebsiteConfiguration:
         RedirectAllRequestsTo:
           HostName: !Ref PrimaryDomain
+          Protocol: https
+
+  Cert:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref SecondaryDomain
+      DomainValidationOptions:
+        - DomainName: !Ref SecondaryDomain
+          ValidationDomain: !Ref SecondaryDomain
+
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Ref SecondaryDomain
+        DefaultCacheBehavior:
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+          TargetOriginId: website
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+          - Id: website
+            DomainName: !Sub ${Bucket}.s3-website-${AWS::Region}.amazonaws.com
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          SslSupportMethod: sni-only
+          AcmCertificateArn: !Ref Cert
 
   PrimaryRecordSet:
     Type: AWS::Route53::RecordSet
@@ -44,5 +78,5 @@ Resources:
       HostedZoneName: !Sub ${SecondaryDomain}.
       Name: !Sub ${SecondaryDomain}.
       AliasTarget:
-        DNSName: s3-website-us-east-1.amazonaws.com
-        HostedZoneId: Z3AQBSTGFYJSTF
+        DNSName: !GetAtt Distribution.DomainName
+        HostedZoneId: Z2FDTNDATAQYW2
