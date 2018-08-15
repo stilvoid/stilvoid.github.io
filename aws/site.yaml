@@ -1,0 +1,48 @@
+Description: |
+  Custom domain setup for Stilvoid's website.
+  Points a primary domain (engledow.me) at GitHub (stilvoid.github.io).
+  Redirects a secondary domain (offend.me.uk) to the primary domain.
+
+  Legacy is fun.
+
+Parameters:
+  GitHubIPs:
+    Type: CommaDelimitedList
+    Default: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+
+  PrimaryDomain:
+    Type: String
+    Default: engledow.me
+
+  SecondaryDomain:
+    Type: String
+    Default: offend.me.uk
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref SecondaryDomain
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: !Ref PrimaryDomain
+
+  PrimaryRecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: A
+      HostedZoneName: !Sub ${PrimaryDomain}.
+      Name: !Sub ${PrimaryDomain}.
+      ResourceRecords: !Ref GitHubIPs
+      TTL: 300
+
+  SecondaryRecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: A
+      HostedZoneName: !Sub ${SecondaryDomain}.
+      Name: !Sub ${SecondaryDomain}.
+      AliasTarget:
+        DNSName: s3-website-us-east-1.amazonaws.com
+        HostedZoneId: Z3AQBSTGFYJSTF
