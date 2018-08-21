@@ -12,7 +12,7 @@
 
 * Picture:
 
-    ![Picture of Steve Engledow](https://static.offend.me.uk/media/images/me-real-small.jpg)
+    ![Picture of Steve Engledow]({{ "/assets/images/me-badge-small.jpg" | absolute_url }})
 
 Anything else is hearsay.
 
