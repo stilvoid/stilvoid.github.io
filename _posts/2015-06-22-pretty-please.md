@@ -10,21 +10,29 @@ So I made [please](https://github.com/stilvoid/please/) which makes it super sim
 
 For example, here's how you'd get the page title from this site:
 
-    please get https://engledow.me/ | please parse html.head.title.#text
+{% highlight shell %}
+please get https://engledow.me/ | please parse html.head.title.#text
+{% endhighlight %}
 
 Or getting a value out of the json returned by [jsontest.com](http://jsontest.com/)'s IP address API:
 
-    please get http://ip.jsontest.com/ | please parse ip
+{% highlight shell %}
+please get http://ip.jsontest.com/ | please parse ip
+{% endhighlight %}
 
 The `parse` part of `please` is the most fun; it can convert between a few different formats. Something I do quite often is grabbing a json response from an API and spitting it out as yaml so I can read it easily. For example:
 
-    please get http://date.jsontest.com/ | please parse -o yaml
+{% highlight shell %}
+please get http://date.jsontest.com/ | please parse -o yaml
+{% endhighlight %}
 
 (alright so that's a poor example but the difference is huge when it's a complicated bit of json)
 
 Also handy for turning an unreadable mess of xml into yaml (I love yaml for its readability):
 
-    echo '<docroot type="messydoc"><a><b dir="up">A tree</b><b dir="down">The ground</b></a></docroot>' | please parse -o yaml
+{% highlight shell %}
+echo '<docroot type="messydoc"><a><b dir="up">A tree</b><b dir="down">The ground</b></a></docroot>' | please parse -o yaml
+{% endhighlight %}
 
 As an example, of the kinds of things you can play with, I made [this tool for generating graphs from json](http://json-graph.offend.me.uk/).
 

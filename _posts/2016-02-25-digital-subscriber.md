@@ -9,24 +9,26 @@ In general, as everyone's finally warming to the idea that you can use code to d
 
 A few months ago, I experimented with creating a DSL for writing web pages and I was fairly happy with [the result](https://github.com/stilvoid/thiy) (though there's lots more work to be done). I'm thinking of applying the same ideas to [CloudFormation](https://aws.amazon.com/cloudformation/).
 
-    resources:
-        db:
-            type: rds
-            engine: mysql
-            size: c3.xlarge
+{% highlight yaml %}
+resources:
+    db:
+        type: rds
+        engine: mysql
+        size: c3.xlarge
 
-        app:
-            type: ec2
-            ami: my-app-image
-            size: t2.micro
-            scale:
-                min: 1
-                max: 10
-            expose: 80
+    app:
+        type: ec2
+        ami: my-app-image
+        size: t2.micro
+        scale:
+            min: 1
+            max: 10
+        expose: 80
 
-    security:
-        db: app
-        app: 0.0.0.0:80
+security:
+    db: app
+    app: 0.0.0.0:80
+{% endhighlight %}
 
 Obviously I've put little to no thought into the above but it shouldn't be too hard to come up with something useful.
 

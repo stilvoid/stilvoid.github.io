@@ -29,33 +29,37 @@ So here's what we've ended up with:
 
 Here's what the project layout looks like:
 
-    Project
-    |
-    +-docker-compose.yml
-    |
-    +-Service 1
-    | |
-    | +-Dockerfile
-    | |
-    | +-docker.compose.yml
-    | |
-    | +-<other files>
-    |
-    +-Service 2
-      |
-      |
-      +-Dockerfile
-      |
-      +-docker.compose.yml
-      |
-      +-<other files>
+{% highlight console %}
+Project
+|
++-docker-compose.yml
+|
++-Service 1
+| |
+| +-Dockerfile
+| |
+| +-docker.compose.yml
+| |
+| +-<other files>
+|
++-Service 2
+  |
+  |
+  +-Dockerfile
+  |
+  +-docker.compose.yml
+  |
+  +-<other files>
+{% endhighlight %}
 
 ### Building for production
 
 This is the easy bit and is where we started first. The `Dockerfile` for each service was designed to run everything with the defaults. Usually, this is something simple like:
 
-    FROM python:3-onbuild
-    CMD ["python", "main.py"]
+{% highlight dockerfile %}
+FROM python:3-onbuild
+CMD ["python", "main.py"]
+{% endhighlight %}
 
 Our CI server can easily take these, produce images, and push them to the registry.
 
@@ -65,32 +69,34 @@ This is slightly harder. In general, each service wants to do something slightly
 
 The `docker-compose.yml` at the root of the project folder looks like this:
 
-    service1:
-        build: Service 1
-        environment:
-            ENV: dev
-        volumes:
-            - Service 1:/usr/src/app
-        links:
-            - service2
-            - db
-        ports:
-            - 8001:8000
+{% highlight yaml %}
+service1:
+    build: Service 1
+    environment:
+        ENV: dev
+    volumes:
+        - Service 1:/usr/src/app
+    links:
+        - service2
+        - db
+    ports:
+        - 8001:8000
 
-    service2:
-        build: Service2
-        environment:
-            ENV: dev
-        volumes:
-            - Service 2:/usr/src/app
-        links:
-            - service1
-            - db
-        ports:
-            - 8002:8000
+service2:
+    build: Service2
+    environment:
+        ENV: dev
+    volumes:
+        - Service 2:/usr/src/app
+    links:
+        - service1
+        - db
+    ports:
+        - 8002:8000
 
-    db:
-        image: mongo
+db:
+    image: mongo
+{% endhighlight %}
 
 This gives us several features right away:
 
@@ -114,22 +120,26 @@ So, it was docker-compose to the rescue again :)
 
 Each service has a `docker-compose.yml` that looks something like:
 
-    tests:
-        build: .
-        command: python -m unittest
-        volumes:
-            - .:/usr/src/app
-        links:
-            - db
+{% highlight yaml %}
+tests:
+    build: .
+    command: python -m unittest
+    volumes:
+        - .:/usr/src/app
+    links:
+        - db
 
-    db:
-        image: mongo
+db:
+    image: mongo
+{% endhighlight %}
 
 Which sets up any dependencies needed just for the tests, mounts the local source in the container, and runs the desired command for running the tests.
 
 So, a developer (or the CI box) can run the unit tests with:
 
-    docker-compose run tests
+{% highlight shell %}
+docker-compose run tests
+{% endhighlight %}
 
 ## Summary
 

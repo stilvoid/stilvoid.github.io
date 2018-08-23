@@ -105,12 +105,14 @@ change. To do this, you can use xev.
 After running xev, press the key in question and you’ll see some output like
 this in your terminal:
 
-        KeyPress event, serial 21, synthetic YES, window 0x800001,
-        root 0x40, subw 0x0, time 1539131, (69,8), root:(683,402),
-        state 0x0, keycode 63 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,
-        XLookupString gives 0 bytes:
-        XmbLookupString gives 0 bytes:
-        XFilterEvent returns: False
+{% highlight console %}
+KeyPress event, serial 21, synthetic YES, window 0x800001,
+root 0x40, subw 0x0, time 1539131, (69,8), root:(683,402),
+state 0x0, keycode 63 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,
+XLookupString gives 0 bytes:
+XmbLookupString gives 0 bytes:
+XFilterEvent returns: False
+{% endhighlight %}
 
 The third line is the one we’re interested in. You’ll see the word keycode
 followed by the number you’re going to need next, in the example above it’s

@@ -17,66 +17,70 @@ I've switched back to xterm from urxvt because, er... dunno.
 
 Anyway, I set some nice colours for terminals and some magic stuff that makes man pages all colourful :)
 
-    XTerm*faceName: xft:Hack:regular:size=12
-    *termName: xterm-256color
+{% highlight config %}
+XTerm*faceName: xft:Hack:regular:size=12
+*termName: xterm-256color
 
-    ! Colourful man pages
-    *VT100.colorBDMode:     true
-    *VT100.colorBD:         cyan
-    *VT100.colorULMode:     true
-    *VT100.colorUL:         darkcyan
-    *VT100.colorITMode:     true
-    *VT100.colorIT:         yellow
-    *VT100.veryBoldColors:  518
+! Colourful man pages
+*VT100.colorBDMode:     true
+*VT100.colorBD:         cyan
+*VT100.colorULMode:     true
+*VT100.colorUL:         darkcyan
+*VT100.colorITMode:     true
+*VT100.colorIT:         yellow
+*VT100.veryBoldColors:  518
 
-    ! terminal colours
-    *foreground:#CCCCCC
-    *background:#2B2D2E
+! terminal colours
+*foreground:#CCCCCC
+*background:#2B2D2E
 
-    !black darkgray
-    *color0:    #2B2D2E
-    *color8:    #808080
-    !darkred red
-    *color1:    #FF0044
-    *color9:    #F92672
-    !darkgreen green
-    *color2:    #82B414
-    *color10:   #A6E22E
-    !darkyellow yellow
-    *color3:    #FD971F
-    *color11:   #E6DB74
-    !darkblue blue
-    *color4:    #266C98
-    *color12:   #7070F0
-    !darkmagenta magenta
-    *color5:    #AC0CB1
-    *color13:   #D63AE1
-    !darkcyan cyan
-    *color6:    #AE81FF
-    *color14:   #66D9EF
-    !gray white
-    *color7:    #CCCCCC
-    *color15:   #F8F8F2
+!black darkgray
+*color0:    #2B2D2E
+*color8:    #808080
+!darkred red
+*color1:    #FF0044
+*color9:    #F92672
+!darkgreen green
+*color2:    #82B414
+*color10:   #A6E22E
+!darkyellow yellow
+*color3:    #FD971F
+*color11:   #E6DB74
+!darkblue blue
+*color4:    #266C98
+*color12:   #7070F0
+!darkmagenta magenta
+*color5:    #AC0CB1
+*color13:   #D63AE1
+!darkcyan cyan
+*color6:    #AE81FF
+*color14:   #66D9EF
+!gray white
+*color7:    #CCCCCC
+*color15:   #F8F8F2
+{% endhighlight %}
 
 ### Vimrc
 
 Nothing exciting here except for discovering a few options I hadn't previous known about:
 
-    " Show a marker at the 80th column to encourage nice code
-    set colorcolumn=80
-    highlight ColorColumn ctermbg=darkblue
+{% highlight vim %}
+" Show a marker at the 80th column to encourage nice code
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkblue
 
-    " Scroll the text when we're 3 lines from the top or bottom
-    set so=3
+" Scroll the text when we're 3 lines from the top or bottom
+set so=3
 
-    " Use browser-style incremental search
-    set incsearch
+" Use browser-style incremental search
+set incsearch
 
-    " Override the default background colour in xoria256 to match the terminal background
-    highlight Normal ctermbg=black
+" Override the default background colour in xoria256 to match the terminal background
+highlight Normal ctermbg=black
 
-    " I like this theme
-    colorscheme xoria256
+" I like this theme
+colorscheme xoria256
+{% endhighlight %}
 
 ### i3
 

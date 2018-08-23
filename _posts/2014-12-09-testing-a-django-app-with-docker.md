@@ -9,81 +9,84 @@ The basic premise is that I run a docker container that pretty well emulates the
 
 Here's an annotated [Dockerfile](http://docs.docker.com/reference/builder/) with the project-specific details removed.
 
-    # We start with ubuntu 14.04
+{% highlight dockerfile %}
+# We start with ubuntu 14.04
 
-    FROM ubuntu:14.04
-    MAINTAINER Steve Engledow <steve@engledow.me>
+FROM ubuntu:14.04
+MAINTAINER Steve Engledow <steve@engledow.me>
 
-    USER root
+USER root
 
-    # Install OS packages
-    # This list of packages is what gets installed by default
-    # on Amazon's Ubuntu 14.04 AMI plus python-virtualenv
+# Install OS packages
+# This list of packages is what gets installed by default
+# on Amazon's Ubuntu 14.04 AMI plus python-virtualenv
 
-     RUN apt-get update \
-         && apt-get -y install software-properties-common git \
-         ssh python-dev python-virtualenv libmysqlclient-dev \
-         libqrencode-dev swig libssl-dev curl screen
+ RUN apt-get update \
+     && apt-get -y install software-properties-common git \
+     ssh python-dev python-virtualenv libmysqlclient-dev \
+     libqrencode-dev swig libssl-dev curl screen
 
-    # Configure custom apt repositories
-    # and install project-specific packages
+# Configure custom apt repositories
+# and install project-specific packages
 
-    COPY apt-key.list apt-repo.list apt.list /tmp/
+COPY apt-key.list apt-repo.list apt.list /tmp/
 
-    # Not as nice as this could be as docker defaults to sh rather than bash
-    RUN while read key; do curl --silent "$key" | apt-key add -; done < /tmp/apt-key.list
-    RUN while read repo; do add-apt-repository -y "$repo"; done < /tmp/apt-repo.list
-    RUN apt-get -qq update
-    RUN while read package; do apt-get -qq -y install "$package"; done < /tmp/apt.list
+# Not as nice as this could be as docker defaults to sh rather than bash
+RUN while read key; do curl --silent "$key" | apt-key add -; done < /tmp/apt-key.list
+RUN while read repo; do add-apt-repository -y "$repo"; done < /tmp/apt-repo.list
+RUN apt-get -qq update
+RUN while read package; do apt-get -qq -y install "$package"; done < /tmp/apt.list
 
-    # Now we create a normal user and switch to it
+# Now we create a normal user and switch to it
 
-    RUN useradd -s /bin/bash -m ubuntu \
-        && chown -R ubuntu:ubuntu /home/ubuntu \
-        && passwd -d ubuntu
+RUN useradd -s /bin/bash -m ubuntu \
+    && chown -R ubuntu:ubuntu /home/ubuntu \
+    && passwd -d ubuntu
 
-    USER ubuntu
-    WORKDIR /home/ubuntu
-    ENV HOME /home/ubuntu
+USER ubuntu
+WORKDIR /home/ubuntu
+ENV HOME /home/ubuntu
 
-    # Set up a virtualenv andinstall python packages
-    # from the requirements file
+# Set up a virtualenv andinstall python packages
+# from the requirements file
 
-    COPY requirements.txt /tmp/
+COPY requirements.txt /tmp/
 
-    RUN mkdir .myenv \
-        && virtualenv -p /usr/bin/python2.7 ~/.myenv \
-        && . ~/.myenv/bin/activate \
-        && pip install -r /tmp/requirements.txt \
+RUN mkdir .myenv \
+    && virtualenv -p /usr/bin/python2.7 ~/.myenv \
+    && . ~/.myenv/bin/activate \
+    && pip install -r /tmp/requirements.txt \
 
-    # Set PYTHONPATH and activate the virtualenv in .bashrc
+# Set PYTHONPATH and activate the virtualenv in .bashrc
 
-    RUN echo "export PYTHONPATH=~/myapp/src" > .bashrc \
-        && echo ". ~/.myenv/bin/activate" >> .bashrc
+RUN echo "export PYTHONPATH=~/myapp/src" > .bashrc \
+    && echo ". ~/.myenv/bin/activate" >> .bashrc
 
-    # Copy the entrypoint script
+# Copy the entrypoint script
 
-    COPY entrypoint.sh /home/ubuntu/
+COPY entrypoint.sh /home/ubuntu/
 
-    EXPOSE 8000
+EXPOSE 8000
 
-    ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+{% endhighlight %}
 
 And here's the entrypoint script that nicely wraps up running the django application:
 
-    #!/bin/bash
-    
-    . ./.bashrc
-    
-    cd myapp/src
-    
-    ./manage.py $*
+{% highlight bash %}
+#!/bin/bash
+. ./.bashrc
+cd myapp/src
+./manage.py $*
+{% endhighlight %}
 
 You generate the base docker image from these files with `docker build -t myapp ./`.
 
 Then, when you're ready to run a test suite, you need the following invocation:
 
-    docker run -ti --rm -P -v ~/code/myapp:/home/ubuntu/myapp myapp test
+{% highlight shell %}
+docker run -ti --rm -P -v ~/code/myapp:/home/ubuntu/myapp myapp test
+{% endhighlight %}
 
 This mounts `~/code/myapp` and `/home/ubuntu/myapp` within the Docker container meaning that you're running the exact code that you're working on from inside the container :)
 
