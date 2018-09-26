@@ -24,7 +24,7 @@ Anything else is hearsay.
 ## Recently-updated Projects
 
 {% assign sorted_repos = site.github.public_repositories | sort:"updated_at" | reverse %}
-{% for repository in sorted_repos limit:5 %}
+{% for repository in sorted_repos limit:3 %}
 * <span class="post-meta">{{repository.updated_at | date:"%Y-%m-%d"}}</span> [{{ repository.name }}]({{ repository.html_url }})
 {% endfor %}
 
@@ -32,7 +32,7 @@ Anything else is hearsay.
 
 ## Recent Posts
 
-{% for post in site.posts limit:5 %}
+{% for post in site.posts limit:3 %}
 * <span class="post-meta">{{post.date | date:"%Y-%m-%d"}}</span> [{{ post.title }}]({{ post.url }})
 {% endfor %}
 
