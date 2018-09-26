@@ -1,5 +1,6 @@
 ---
-title: Stilvoid's Projects
+title: Projects
+permalink: /projects/
 ---
 
 {% for repository in site.github.public_repositories %}

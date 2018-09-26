@@ -1,3 +1,8 @@
+---
+title: Home
+permalink: /
+---
+
 ## About me
 
 * I use [Arch Linux](https://www.archlinux.org/) and prefer [vim](https://www.vim.org/) over [emacs](http://www.wikivs.com/wiki/Vim_vs_Emacs).

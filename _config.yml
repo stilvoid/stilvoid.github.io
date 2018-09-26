@@ -4,6 +4,8 @@ author: Steve Engledow
 theme: jekyll-theme-hacker
 permalink: pretty
 show_excerpts: true
+include:
+  - _pages
 
 # Plugins
 plugins:

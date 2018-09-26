@@ -1,5 +1,6 @@
 ---
-title: Stilvoid's Posts
+title: Posts
+permalink: /posts/
 ---
 
 {% for post in site.posts %}
