@@ -14,7 +14,12 @@
       <div class="container">
         <h1><a href="/">{{site.title | default: site.github.repository_name}}</a></h1>
         <p><a href="https://www.linkedin.com/in/stilvoid/">Steve Engledow: Senior Solutions Builder</a> at <a href="https://aws.amazon.com/">Amazon Web Services</a></p>
-        <p><small>Latest post: <a href="{{site.posts[0].url}}">{{site.posts[0].title}}</small></a></p>
+        <p><small>
+            Latest post: <a href="{{site.posts[0].url}}">{{site.posts[0].title}}</a>
+            &mdash;
+            {% assign sorted_repos = site.github.public_repositories | sort:"created_at" | reverse %}
+            Latest project: <a href="{{sorted_repos[0].html_url}}">{{sorted_repos[0].name}}</small></a>
+        </p>
       </div>
     </header>
 
