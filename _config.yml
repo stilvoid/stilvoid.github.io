@@ -16,11 +16,10 @@ include:
 
 minima:
   date_format: "%Y-%m-%d"
-  social_links:
-    twitter: stilvoid
-    github: stilvoid
-    linkedin: stilvoid
-    keybase: stilvoid
+
+twitter_username: stilvoid
+github_username: stilvoid
+linkedin_username: stilvoid
 
 # Plugins
 #plugins:
