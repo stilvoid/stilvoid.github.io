@@ -20,6 +20,7 @@ minima:
 twitter_username: stilvoid
 github_username: stilvoid
 linkedin_username: stilvoid
+rss: rss
 
 # Plugins
 plugins:
