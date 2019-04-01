@@ -1,12 +1,27 @@
 # Site settings
 title: engledow.me
 author: Steve Engledow
-theme: jekyll-theme-hacker
+description: >
+  All content © 2011-2018 Steve Engledow.
+  All views expressed here are mine and don't reflect those of Amazon.
+  The contents of this web site are available under the terms of the MIT licence.
+
+theme: minima
+
 permalink: pretty
 show_excerpts: true
+
 include:
   - _pages
 
+minima:
+  date_format: "%Y-%m-%d"
+  social_links:
+    twitter: stilvoid
+    github: stilvoid
+    linkedin: stilvoid
+    keybase: stilvoid
+
 # Plugins
-plugins:
-  - jekyll-feed
+#plugins:
+#  - jekyll-feed
