@@ -22,5 +22,5 @@ github_username: stilvoid
 linkedin_username: stilvoid
 
 # Plugins
-#plugins:
-#  - jekyll-feed
+plugins:
+  - jekyll-feed
