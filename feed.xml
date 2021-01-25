@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://engledow.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://engledow.me/" rel="alternate" type="text/html" /><updated>2020-03-25T15:08:10+00:00</updated><id>https://engledow.me/feed.xml</id><title type="html">engledow.me</title><subtitle>All content © 2011-2020 Steve Engledow. All views expressed here are mine and don't reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.
+</subtitle><author><name>Steve Engledow</name></author><entry><title type="html">Maur - A minimal AUR helper</title><link href="https://engledow.me/2019/11/13/maur/" rel="alternate" type="text/html" title="Maur - A minimal AUR helper" /><published>2019-11-13T00:00:00+00:00</published><updated>2019-11-13T00:00:00+00:00</updated><id>https://engledow.me/2019/11/13/maur</id><content type="html" xml:base="https://engledow.me/2019/11/13/maur/">&lt;p&gt;This post is about the &lt;a href=&quot;https://aur.archlinux.org/&quot;&gt;Arch User Repository&lt;/a&gt;. If you’re not an &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; user, probably just move along ;)&lt;/p&gt;
+
+&lt;p&gt;There are &lt;a href=&quot;https://aur.archlinux.org/packages/?O=0&amp;amp;K=aur+helper&quot;&gt;lots of AUR helpers&lt;/a&gt; in existence already but, in the best traditions of open source, none of them work exactly how I want an AUR helper to work, so I &lt;a href=&quot;https://xkcd.com/927/&quot;&gt;created a new one&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here it is: &lt;a href=&quot;https://github.com/stilvoid/maur&quot;&gt;https://github.com/stilvoid/maur&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur&lt;/code&gt; (pronounced like “more”) is tiny. At the time of writing, it’s 49 lines of bash. It also has very few features.&lt;/p&gt;
+
+&lt;p&gt;Here is the list of features:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Help text when you type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur --help&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur -h&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;A list of packages in the AUR when you type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur&lt;/code&gt; with no arguments&lt;/li&gt;
+  &lt;li&gt;Help you install a package when you type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur &amp;lt;package name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The “help” when installing a package is this, and nothing more:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Clone the package’s AUR repository&lt;/li&gt;
+  &lt;li&gt;Open the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PKGBUILD&lt;/code&gt; in your default editor&lt;/li&gt;
+  &lt;li&gt;Ask if you want to continue installing&lt;/li&gt;
+  &lt;li&gt;If you do, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;makepkg -si&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you think &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur&lt;/code&gt; needs more features, use a different AUR helper.&lt;/p&gt;
+
+&lt;p&gt;If you find bugs, please &lt;a href=&quot;https://github.com/stilvoid/maur/issues/new&quot;&gt;submit an issue&lt;/a&gt; or, even better, a &lt;a href=&quot;https://github.com/stilvoid/maur/compare&quot;&gt;pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-usage&quot;&gt;Example usage&lt;/h2&gt;
+
+&lt;h3 id=&quot;searching-the-aur&quot;&gt;Searching the AUR&lt;/h3&gt;
+
+&lt;p&gt;If you want to search for a package in the AUR, you can grep for it ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur | grep maur&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-a-package&quot;&gt;Installing a package&lt;/h3&gt;
+
+&lt;p&gt;If you want to install a package, for example &lt;a href=&quot;https://aur.archlinux.org/packages/yay&quot;&gt;yay&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur yay&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;upgrading-a-package&quot;&gt;Upgrading a package&lt;/h3&gt;
+
+&lt;p&gt;Upgrade a package is the same as installing one. This will upgrade &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maur maur&lt;/code&gt;&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="arch" /><category term="linux" /><category term="aur" /><summary type="html">This post is about the Arch User Repository. If you’re not an Arch user, probably just move along ;)</summary></entry><entry><title type="html">Using Git with AWS CodeCommit Across Multiple AWS Accounts</title><link href="https://engledow.me/2019/02/12/using-git-with-aws/" rel="alternate" type="text/html" title="Using Git with AWS CodeCommit Across Multiple AWS Accounts" /><published>2019-02-12T00:00:00+00:00</published><updated>2019-02-12T00:00:00+00:00</updated><id>https://engledow.me/2019/02/12/using-git-with-aws</id><content type="html" xml:base="https://engledow.me/2019/02/12/using-git-with-aws/">&lt;p&gt;(Cross-posted from &lt;a href=&quot;https://aws.amazon.com/blogs/devops/&quot;&gt;the AWS DevOps blog&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;I use &lt;a href=&quot;https://aws.amazon.com/codecommit/&quot;&gt;AWS CodeCommit&lt;/a&gt; to host all of my private Git repositories. My repositories are split across several AWS accounts for different purposes: personal projects, internal projects at work, and customer projects.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html&quot;&gt;CodeCommit documentation&lt;/a&gt; shows you how to configure and clone a repository from one place, but in this blog post I want to share how I manage my Git configuration across multiple AWS accounts.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;First, I have &lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html&quot;&gt;profiles&lt;/a&gt; configured for each of my AWS environments. I connect to some of them using &lt;a href=&quot;https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys&quot;&gt;IAM user credentials&lt;/a&gt; and others by using &lt;a href=&quot;https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/&quot;&gt;cross-account roles&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I intentionally do not have any credentials associated with the default profile. That way I must always be sure I have selected a profile before I run any AWS CLI commands.&lt;/p&gt;
+
+&lt;p&gt;Here’s an anonymized copy of my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.aws/config&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;language-config highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[&lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;personal&lt;/span&gt;]
+&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;eu&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;west&lt;/span&gt;-&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;aws_access_key_id&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;ABCDEFGHIJKLMNOPQRST&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;aws_secret_access_key&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;uvwxyz0123456789abcdefghijklmnopqrstuvwx&lt;/span&gt;
+
+[&lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;]
+&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;us&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;east&lt;/span&gt;-&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;aws_access_key_id&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;ABCDEFGHIJKLMNOPQRST&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;aws_secret_access_key&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;uvwxyz0123456789abcdefghijklmnopqrstuvwx&lt;/span&gt;
+
+[&lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;customer&lt;/span&gt;]
+&lt;span class=&quot;n&quot;&gt;region&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;eu&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;west&lt;/span&gt;-&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;source_profile&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;role_arn&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;arn&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;aws&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;iam&lt;/span&gt;::&lt;span class=&quot;m&quot;&gt;123456789012&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;CrossAccountPowerUser&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If I am doing some work in one of those accounts, I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export AWS_PROFILE=work&lt;/code&gt; and use the AWS CLI as normal.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;I use the &lt;a href=&quot;https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html&quot;&gt;Git credential helper&lt;/a&gt; so that the Git client works seamlessly with CodeCommit. However, because I use different profiles for different repositories, my use case is a little more complex than the average.&lt;/p&gt;
+
+&lt;p&gt;In general, to use the credential helper, all you need to do is place the following options into your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt; file, like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-config highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;]
+    &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt; = !&lt;span class=&quot;n&quot;&gt;aws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;codecommit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt; $@
+    &lt;span class=&quot;n&quot;&gt;UserHttpPath&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I could make this work across accounts by setting the appropriate value for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AWS_PROFILE&lt;/code&gt; before I use Git in a repository, but there is a much neater way to deal with this situation using a feature released in &lt;a href=&quot;https://blog.github.com/2017-05-10-git-2-13-has-been-released/&quot;&gt;Git version 2.13&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/docs/git-config#_includes&quot;&gt;conditional includes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-solution&quot;&gt;A solution&lt;/h2&gt;
+
+&lt;p&gt;First, I separate my work into different folders. My &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/code/&lt;/code&gt; directory looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;code
+    personal
+        repo1
+        repo2
+    work
+        repo3
+        repo4
+    customer
+        repo5
+        repo6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using this layout, each folder that is directly underneath the code folder has different requirements in terms of configuration for use with CodeCommit.&lt;/p&gt;
+
+&lt;p&gt;Solving this has two parts; first, I create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitconfig&lt;/code&gt; file in each of the three folder locations. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitconfig&lt;/code&gt; files contain any customization (specifically, configuration for the credential helper) that I want in place while I work on projects in those folders.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-config highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;]
+    &lt;span class=&quot;c&quot;&gt;# Use a custom email address
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;sengledo&lt;/span&gt;@&lt;span class=&quot;n&quot;&gt;amazon&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;co&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;uk&lt;/span&gt;
+
+[&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;]
+    &lt;span class=&quot;c&quot;&gt;# Note the use of the --profile switch
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt; = !&lt;span class=&quot;n&quot;&gt;aws&lt;/span&gt; --&lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;codecommit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt; $@
+    &lt;span class=&quot;n&quot;&gt;UseHttpPath&lt;/span&gt; = &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I also make sure to specify the AWS CLI profile to use in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitconfig&lt;/code&gt; file which means that, when I am working in the folder, I don’t need to set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AWS_PROFILE&lt;/code&gt; before I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt;, etc.&lt;/p&gt;
+
+&lt;p&gt;Secondly, to make use of these folder-level .gitconfig files, I need to reference them in my global Git configuration at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is done through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;includeIf&lt;/code&gt; section. For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-config highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[&lt;span class=&quot;n&quot;&gt;includeIf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;gitdir:~/code/personal/&quot;&lt;/span&gt;]
+    &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; = ~/&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;personal&lt;/span&gt;/.&lt;span class=&quot;n&quot;&gt;gitconfig&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This example specifies that if I am working with a Git repository that is located anywhere under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/code/personal/&lt;/code&gt;, Git should load additional configuration from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/code/personal/.gitconfig&lt;/code&gt;. That additional file specifies the appropriate credential helper invocation with the corresponding AWS CLI profile selected as detailed earlier.&lt;/p&gt;
+
+&lt;p&gt;The contents of the new file are treated as if they are inserted into the main &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitconfig&lt;/code&gt; file at the location of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;includeIf&lt;/code&gt; section.  This means that the included configuration will only override any configuration specified &lt;em&gt;earlier&lt;/em&gt; in the config.&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="git" /><category term="aws" /><summary type="html">(Cross-posted from the AWS DevOps blog)</summary></entry><entry><title type="html">git-get</title><link href="https://engledow.me/2018/11/08/git-get/" rel="alternate" type="text/html" title="git-get" /><published>2018-11-08T00:00:00+00:00</published><updated>2018-11-08T00:00:00+00:00</updated><id>https://engledow.me/2018/11/08/git-get</id><content type="html" xml:base="https://engledow.me/2018/11/08/git-get/">&lt;p&gt;Because I work on a lot of different projects spread across a lot of accounts at multiple git hosting providers, I try to keep my code folder in some semblance of order by having subfolders for things.&lt;/p&gt;
+
+&lt;p&gt;A while ago, I decided to make things even simpler by letting the git repos I was cloning dictate where they should live. I took inspiration from &lt;a href=&quot;https://golang.org/doc/code.html#ImportPaths&quot;&gt;the way go expects you to organise your code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Today, I decided to apply &lt;a href=&quot;http://threevirtues.com/&quot;&gt;the three virtues&lt;/a&gt; and wrote some code to handle this for me.&lt;/p&gt;
+
+&lt;h2 id=&quot;introducing-git-get&quot;&gt;Introducing git-get&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/stilvoid/git-get&quot;&gt;git-get&lt;/a&gt; is an opinionated git command that helps you keep your code folder in order.&lt;/p&gt;
+
+&lt;p&gt;You use git-get as a replacement for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone&lt;/code&gt; and it will decide where your code should live :)&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git get https://github.com/stilvoid/git-get
+Cloning into &lt;span class=&quot;s1&quot;&gt;'/home/steve/code/github.com/stilvoid/git-get'&lt;/span&gt;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Laziness is the primary virtue.&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="git" /><summary type="html">Because I work on a lot of different projects spread across a lot of accounts at multiple git hosting providers, I try to keep my code folder in some semblance of order by having subfolders for things.</summary></entry><entry><title type="html">Heroes: Building some old code</title><link href="https://engledow.me/2018/08/14/heroes/" rel="alternate" type="text/html" title="Heroes: Building some old code" /><published>2018-08-14T00:00:00+00:00</published><updated>2018-08-14T00:00:00+00:00</updated><id>https://engledow.me/2018/08/14/heroes</id><content type="html" xml:base="https://engledow.me/2018/08/14/heroes/">&lt;p&gt;For the end result of this post, see &lt;a href=&quot;https://aur.archlinux.org/packages/heroes/&quot;&gt;my AUR package of Heroes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was &lt;a href=&quot;http://heroes.sourceforge.net&quot;&gt;Heroes&lt;/a&gt;. It’s a clone of &lt;a href=&quot;https://en.wikipedia.org/wiki/Snake_(video_game_genre)&quot;&gt;Snake/Tron/Nibbles&lt;/a&gt; but with some fun additions, a nice graphical style, and some funky visual effects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://heroes.sourceforge.net/img/snap5.png&quot; alt=&quot;Heroes screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, of course, I immediately decided to install it.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pacman &lt;span class=&quot;nt&quot;&gt;-Ss&lt;/span&gt; heroes&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;No results. Nothing in the &lt;a href=&quot;https://wiki.archlinux.org/index.php/Arch_User_Repository&quot;&gt;AUR&lt;/a&gt; either. There is only one other course of action: I’m going to create an AUR package for it!&lt;/p&gt;
+
+&lt;p&gt;It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-heroes-to-compile-in-2018&quot;&gt;Getting Heroes to compile in 2018&lt;/h2&gt;
+
+&lt;p&gt;I put together a basic &lt;a href=&quot;https://wiki.archlinux.org/index.php/PKGBUILD&quot;&gt;PKGBUILD&lt;/a&gt; that pulls down the source and data files from the Heroes sourceforge page and then runs:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;./configure
+make&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here’s the first of what I’m sure are many failure messages:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration 
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt; static a_pcx_image tile_set_img;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;                    ^~~~~~~~~~~~
+In file included from hedlite.c:44:
+const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt; extern a_pcx_image tile_set_img, font_deck_img;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                            
+&lt;/span&gt;&lt;span class=&quot;go&quot;&gt;                    ^~~~~~~~~~~~&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Some forewarning: it’s been quite some time since I wrote anything serious in C and I was never an expert in it anyway. But I think I know enough to fix this and so just commented out the static declaration as, after poking around in the code a bit, it doesn’t seem like it’s necessary anyway.&lt;/p&gt;
+
+&lt;p&gt;Now the compilation succeeds but I get the following error during linking:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;/usr/bin/ld: camera.o: undefined reference to symbol 'sin@@GLIBC_2.2.5'
+/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Turns out that for some reason, the developers forgot to include the math&lt;small&gt;(s)&lt;/small&gt; library. I’m guessing that perhaps it used to be linked by default in a previous version of GCC.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-lm&lt;/span&gt; ./configure
+make&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now it at least compiles correctly! Next up, compiling the data, music, and sound effects packages.&lt;/p&gt;
+
+&lt;p&gt;Amazingly, those all worked correctly and I was able to play the game!&lt;/p&gt;
+
+&lt;p&gt;However, this game was written a while ago and originally targeted MS-DOS so it has a window size of 320x200 which looks rather ridiculous on my 1920x1080 desktop ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://engledow.me/assets/images/2018-08-14-heroes.png&quot;&gt;&lt;img src=&quot;https://engledow.me/assets/images/2018-08-14-heroes-small.png&quot; alt=&quot;Tiny Heroes window screenshot&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So I set about trying to set the default screen mode so that the game starts in full screen…&lt;/p&gt;
+
+&lt;p&gt;Fortunately, it looks like this is relatively easy. I just modified a few variables and changed a command line flag from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-F | --full-screen&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-W | --windowed&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next up, rather than rely on &lt;a href=&quot;https://www.libsdl.org/&quot;&gt;SDL&lt;/a&gt;’s built-in scaling (it looks blurry and weird), I need to enable Heroes’ quadruple flag &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-4&lt;/code&gt; by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I’m sure I’ll receive bug reports if it’s not ;)&lt;/p&gt;
+
+&lt;p&gt;The very last thing I’ve done is to enable the high quality mixer by default and remove the command line option from the game. CPU is a little more abundant now than it was in 2002 ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes&quot;&gt;Here’s my final patch file&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;submitting-the-aur-package&quot;&gt;Submitting the AUR package&lt;/h2&gt;
+
+&lt;p&gt;Things have changed since I last submitted a package to the AUR so here’s a brief writeup - if only to remind myself in future ;)&lt;/p&gt;
+
+&lt;p&gt;First step was to update the SSH key in my AUR account as it contained a key from my old machine.&lt;/p&gt;
+
+&lt;p&gt;Next up, I added a remote to my repository:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote add aur ssh://aur@aur.archlinux.org/heroes.git
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git fetch aur  &lt;span class=&quot;c&quot;&gt;# This step causes AUR to create a record for the package&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The next step is to generate AUR’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.SRCINFO&lt;/code&gt; file and rebase it into every commit (AUR requires this).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git filter-branch &lt;span class=&quot;nt&quot;&gt;--tree-filter&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;makepkg --printsrcinfo &amp;gt; .SRCINFO&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And then push it to the AUR repository:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; aur master&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;testing-it-out&quot;&gt;Testing it out&lt;/h2&gt;
+
+&lt;p&gt;I use &lt;a href=&quot;https://aur.archlinux.org/packages/packer/&quot;&gt;packer&lt;/a&gt; to make using AUR easier (I’m &lt;a href=&quot;http://threevirtues.com/&quot;&gt;lazy&lt;/a&gt;).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;packer &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; heroes&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;SUCCESS!&lt;/p&gt;
+
+&lt;p&gt;All in all, this wasn’t anywhere near as painful as I’d expected. Time to play some Heroes :D&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="arch" /><category term="linux" /><category term="games" /><category term="legacy" /><summary type="html">For the end result of this post, see my AUR package of Heroes.</summary></entry><entry><title type="html">Shue</title><link href="https://engledow.me/2018/06/03/shue/" rel="alternate" type="text/html" title="Shue" /><published>2018-06-03T00:00:00+00:00</published><updated>2018-06-03T00:00:00+00:00</updated><id>https://engledow.me/2018/06/03/shue</id><content type="html" xml:base="https://engledow.me/2018/06/03/shue/">&lt;p&gt;I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).&lt;/p&gt;
+
+&lt;p&gt;It’s called Shue and &lt;a href=&quot;https://github.com/stilvoid/shue&quot;&gt;you can find it on github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you dig back in the &lt;a href=&quot;https://github.com/stilvoid/shue/commits/master&quot;&gt;commit history&lt;/a&gt;, you’ll see that Shue was originally intended as a tool for converting rgb colour values into their nearest equivalent &lt;a href=&quot;http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html&quot;&gt;bash colour codes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Shue doesn’t do that now as I haven’t really needed anything that does it since that one time :) I might bring back that functionality at some point but for now, here’s what Shue &lt;em&gt;does&lt;/em&gt; do:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Converts colour representations between various rgb formats: 6-digit hex (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#ff9900&lt;/code&gt;), 3-digit hex (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#f90&lt;/code&gt;), and &lt;a href=&quot;https://www.w3schools.com/cssref/css_colors_legal.asp&quot;&gt;CSS-style&lt;/a&gt; RGB values (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rgb(255, 153, 0)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Perform a few basic operations on colours before converting to the various representations:
+    &lt;ul&gt;
+      &lt;li&gt;Invert&lt;/li&gt;
+      &lt;li&gt;Darken&lt;/li&gt;
+      &lt;li&gt;Lighten&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I wrote this at the time because I was fiddling with a few websites and frequently needed the above functionality.&lt;/p&gt;
+
+&lt;p&gt;It’s written in &lt;a href=&quot;https://golang.org/&quot;&gt;Go&lt;/a&gt; and there are binaries for Linux, Mac, and Windows on the &lt;a href=&quot;https://github.com/stilvoid/shue/releases&quot;&gt;releases page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;mailto:steve@engledow.me&quot;&gt;Let me know&lt;/a&gt; if you find it useful.&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="shell" /><category term="web" /><summary type="html">I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).</summary></entry><entry><title type="html">An evening of linux on the desktop</title><link href="https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop/" rel="alternate" type="text/html" title="An evening of linux on the desktop" /><published>2017-07-10T00:00:00+00:00</published><updated>2017-07-10T00:00:00+00:00</updated><id>https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop</id><content type="html" xml:base="https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop/">&lt;p&gt;&lt;a href=&quot;https://engledow.me/blog/88/&quot;&gt;Last time&lt;/a&gt;, I wrote about trying a few desktop environments to see what’s out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try &lt;a href=&quot;https://atom.io/&quot;&gt;a few of&lt;/a&gt; &lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;the more recent&lt;/a&gt; &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;code editors&lt;/a&gt; that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I’ve been meaning to give these a go for a while. Needless to say, as a long-time &lt;a href=&quot;https://www.vim.org/&quot;&gt;vim&lt;/a&gt; user, I just found myself frustrated that I wasn’t able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn’t the same as a very limited set of functionality was there. As for the integrated environment, when you have &lt;a href=&quot;https://engledow.me/blog/46&quot;&gt;tmux running by default&lt;/a&gt;, everything’s integrated anyway.&lt;/p&gt;
+
+&lt;p&gt;And, as with editors, so once again with desktop environments. I’ve decided to retract my previous hasty promise and no longer to bother with trying any other environments; &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3&lt;/a&gt; is more than fine :)&lt;/p&gt;
+
+&lt;p&gt;However, I did spend some time this evening making things a bit prettier so here are some delicious configs for posterity:&lt;/p&gt;
+
+&lt;h2 id=&quot;configs&quot;&gt;Configs&lt;/h2&gt;
+
+&lt;h3 id=&quot;xresources&quot;&gt;Xresources&lt;/h3&gt;
+
+&lt;p&gt;I’ve switched back to xterm from urxvt because, er… dunno.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I set some nice colours for terminals and some magic stuff that makes man pages all colourful :)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-config&quot; data-lang=&quot;config&quot;&gt;&lt;span class=&quot;n&quot;&gt;XTerm&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;faceName&lt;/span&gt;: &lt;span class=&quot;n&quot;&gt;xft&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;Hack&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;regular&lt;/span&gt;:&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;termName&lt;/span&gt;: &lt;span class=&quot;n&quot;&gt;xterm&lt;/span&gt;-&lt;span class=&quot;m&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
+
+! &lt;span class=&quot;n&quot;&gt;Colourful&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;man&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorBDMode&lt;/span&gt;:     &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorBD&lt;/span&gt;:         &lt;span class=&quot;n&quot;&gt;cyan&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorULMode&lt;/span&gt;:     &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorUL&lt;/span&gt;:         &lt;span class=&quot;n&quot;&gt;darkcyan&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorITMode&lt;/span&gt;:     &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;colorIT&lt;/span&gt;:         &lt;span class=&quot;n&quot;&gt;yellow&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;veryBoldColors&lt;/span&gt;:  &lt;span class=&quot;m&quot;&gt;518&lt;/span&gt;
+
+! &lt;span class=&quot;n&quot;&gt;terminal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colours&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;foreground&lt;/span&gt;:&lt;span class=&quot;c&quot;&gt;#CCCCCC
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;background&lt;/span&gt;:&lt;span class=&quot;c&quot;&gt;#2B2D2E
+&lt;/span&gt;
+!&lt;span class=&quot;n&quot;&gt;black&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;darkgray&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color0&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#2B2D2E
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color8&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#808080
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkred&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;red&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color1&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#FF0044
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color9&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#F92672
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkgreen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color2&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#82B414
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color10&lt;/span&gt;:   &lt;span class=&quot;c&quot;&gt;#A6E22E
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkyellow&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yellow&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color3&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#FD971F
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color11&lt;/span&gt;:   &lt;span class=&quot;c&quot;&gt;#E6DB74
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkblue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color4&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#266C98
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color12&lt;/span&gt;:   &lt;span class=&quot;c&quot;&gt;#7070F0
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkmagenta&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;magenta&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color5&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#AC0CB1
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color13&lt;/span&gt;:   &lt;span class=&quot;c&quot;&gt;#D63AE1
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;darkcyan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cyan&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color6&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#AE81FF
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color14&lt;/span&gt;:   &lt;span class=&quot;c&quot;&gt;#66D9EF
+&lt;/span&gt;!&lt;span class=&quot;n&quot;&gt;gray&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;white&lt;/span&gt;
+*&lt;span class=&quot;n&quot;&gt;color7&lt;/span&gt;:    &lt;span class=&quot;c&quot;&gt;#CCCCCC
+&lt;/span&gt;*&lt;span class=&quot;n&quot;&gt;color15&lt;/span&gt;:   &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F8F8F2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;vimrc&quot;&gt;Vimrc&lt;/h3&gt;
+
+&lt;p&gt;Nothing exciting here except for discovering a few options I hadn’t previous known about:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&quot; Show a marker at the 80th column to encourage nice code&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; colorcolumn&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+highlight ColorColumn ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;darkblue
+
+&lt;span class=&quot;c&quot;&gt;&quot; Scroll the text when we're 3 lines from the top or bottom&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;so&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&quot; Use browser-style incremental search&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; incsearch
+
+&lt;span class=&quot;c&quot;&gt;&quot; Override the default background colour in xoria256 to match the terminal background&lt;/span&gt;
+highlight Normal ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;black
+
+&lt;span class=&quot;c&quot;&gt;&quot; I like this theme&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;colorscheme&lt;/span&gt; xoria256&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;i3&quot;&gt;i3&lt;/h3&gt;
+
+&lt;p&gt;I made a few colour tweaks to my i3 config so I get colours that match my new Xresources. One day, I might see if it’s easy enough to have them both read colour definitions from the same place so I don’t have to define things twice.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-result&quot;&gt;The result&lt;/h2&gt;
+
+&lt;p&gt;Here’s what it looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://static.offend.me.uk/media/images/blog/89/01.jpg&quot;&gt;&lt;img src=&quot;https://static.offend.me.uk/media/images/blog/89/01-small.jpg&quot; alt=&quot;My new desktop&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="linux" /><category term="desktop" /><category term="editors" /><summary type="html">Last time, I wrote about trying a few desktop environments to see what’s out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try a few of the more recent code editors that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I’ve been meaning to give these a go for a while. Needless to say, as a long-time vim user, I just found myself frustrated that I wasn’t able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn’t the same as a very limited set of functionality was there. As for the integrated environment, when you have tmux running by default, everything’s integrated anyway.</summary></entry><entry><title type="html">The day of linux on the desktop</title><link href="https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop/" rel="alternate" type="text/html" title="The day of linux on the desktop" /><published>2017-06-15T00:00:00+00:00</published><updated>2017-06-15T00:00:00+00:00</updated><id>https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop</id><content type="html" xml:base="https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop/">&lt;p&gt;It’s been a while since I last tried out a different desktop environment on my laptop and I’ve been using &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3&lt;/a&gt; for &lt;a href=&quot;https://engledow.me/blog/01/&quot;&gt;some time now&lt;/a&gt; so it’s only fair to give other things a go ;)&lt;/p&gt;
+
+&lt;p&gt;To test these out, I ran another X display - keeping my original one running so I could switch back and forth to take notes - and started each environment with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DISPLAY=:1 &amp;lt;the command to start the desktop&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’ll start with just one today and perhaps review some others another time.&lt;/p&gt;
+
+&lt;h2 id=&quot;deepin&quot;&gt;Deepin&lt;/h2&gt;
+
+&lt;p&gt;In summary: bits of Gnome Shell, Chrome OS, and Mac OSX but not quite as polished as any of them.&lt;/p&gt;
+
+&lt;p&gt;The Deepin Desktop Environment (DDE - from &lt;a href=&quot;https://www.deepin.org/en/?language=en&quot;&gt;the Deepin distribution&lt;/a&gt;) installed easily enough under Arch with a quick &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacman -S deepin deepin-extra&lt;/code&gt;. It also started up easily with an unambiguous &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;startdde&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Immediately on startup, DDE plays a slightly annoying chime presumably just to remind you of how far we’ve come since Windows 95. The initial view of the desktop looks similar to OSX or Chrome OS with file icons on the desktop and a launcher bar centred across the bottom of the screen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://static.offend.me.uk/media/images/blog/88/01.jpg&quot; alt=&quot;The initial view&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first thing I tried was clicking on a button labelled “Multitasking view” only to be presented with a prompt telling me “Kindly reminder: This application can not run without window effect” and an OK button. So far, so enigmatic. So then I tried a trusty right-click on the desktop which brought up the expected context menu. In the menu was a “Display settings” option so I plumped for that, thinking that perhaps that was where I could enable the mystic “window effect”. Clicking the “Display settings” button opened a dark-themed panel from the right-hand side, similar to the information panel you get in OSX. I searched through that panel for a good couple of minutes but could find no allusion to any “window effect”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://static.offend.me.uk/media/images/blog/88/02.jpg&quot; alt=&quot;The cryptic message and the settings panel&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unperturbed, I decided to press on and see what other features Deepin had to offer…&lt;/p&gt;
+
+&lt;p&gt;Moving the mouse around the desktop a bit, I discovered that Deepin has borrowed some ideas from Gnome shell as well as OSX and Chrome OS. Moving the mouse pointer into the top-left corner of the screen brings up an application list similar to Gnome’s launcher. The bottom-right corner reveals the settings panel. The top-right does nothing and the bottom-left, wonder of wonders, brings up my old favourite, the “kindly reminder”.&lt;/p&gt;
+
+&lt;p&gt;I poked around in the settings a bit more but didn’t really see anything of interest so I fired up what looks to be the last part of Deepin left for me to explore: the file manager. It does the job and it’s not very interesting although I did discover that Deepin also has it’s own terminal emulator (unsurprisingly called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;deepin-terminal&lt;/code&gt;) which has a snazzy &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Matrix&quot;&gt;Matrix&lt;/a&gt; theme to it but is otherwise uninteresting.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://static.offend.me.uk/media/images/blog/88/03.jpg&quot; alt=&quot;Deepin-terminal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s it, I’m bored. Next!&lt;/p&gt;
+
+&lt;p&gt;I tried Budgie and LXQT for a few minutes each at this point but they weren’t immediately interesting enough to make me want to write about them just now :)&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="linux" /><category term="desktop" /><summary type="html">It’s been a while since I last tried out a different desktop environment on my laptop and I’ve been using i3 for some time now so it’s only fair to give other things a go ;)</summary></entry><entry><title type="html">Digital Subscriber</title><link href="https://engledow.me/2016/02/25/digital-subscriber/" rel="alternate" type="text/html" title="Digital Subscriber" /><published>2016-02-25T00:00:00+00:00</published><updated>2016-02-25T00:00:00+00:00</updated><id>https://engledow.me/2016/02/25/digital-subscriber</id><content type="html" xml:base="https://engledow.me/2016/02/25/digital-subscriber/">&lt;p&gt;Maybe it’s just me, but I reckon &lt;a href=&quot;https://en.wikipedia.org/wiki/Domain-specific_language&quot;&gt;DSLs&lt;/a&gt; are the next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I know I’m by no means the first to say so it’s just that I’m increasingly bemused at seeing things squeezed into data structures they’ve outgrown.&lt;/p&gt;
+
+&lt;p&gt;In general, as everyone’s finally warming to the idea that you can use code to describe not just your application but also how it’s deployed, we’re reaching a state where that code needs to be newbie-friendly - by which I mean that it ought to be easily understandable by humans. If it isn’t, it’s prone to mistakes.&lt;/p&gt;
+
+&lt;p&gt;A few months ago, I experimented with creating a DSL for writing web pages and I was fairly happy with &lt;a href=&quot;https://github.com/stilvoid/thiy&quot;&gt;the result&lt;/a&gt; (though there’s lots more work to be done). I’m thinking of applying the same ideas to &lt;a href=&quot;https://aws.amazon.com/cloudformation/&quot;&gt;CloudFormation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rds&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;c3.xlarge&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ec2&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ami&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my-app-image&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;t2.micro&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;expose&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;app&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0:80&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Obviously I’ve put little to no thought into the above but it shouldn’t be too hard to come up with something useful.&lt;/p&gt;
+
+&lt;p&gt;Maybe some day soon ;)&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="code" /><category term="web" /><category term="aws" /><summary type="html">Maybe it’s just me, but I reckon DSLs are the next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I know I’m by no means the first to say so it’s just that I’m increasingly bemused at seeing things squeezed into data structures they’ve outgrown.</summary></entry><entry><title type="html">Ford</title><link href="https://engledow.me/2015/12/14/ford/" rel="alternate" type="text/html" title="Ford" /><published>2015-12-14T00:00:00+00:00</published><updated>2015-12-14T00:00:00+00:00</updated><id>https://engledow.me/2015/12/14/ford</id><content type="html" xml:base="https://engledow.me/2015/12/14/ford/">&lt;p&gt;Today I become a &lt;a href=&quot;https://www.mozilla.org/en-GB/firefox/new/&quot;&gt;Firefox&lt;/a&gt; &lt;a href=&quot;https://addons.mozilla.org/&quot;&gt;add-on&lt;/a&gt; developer!&lt;/p&gt;
+
+&lt;p&gt;Really, it was far too easy and a little disappointing that I needed to bother, as all I needed was a simple way to hide the browser chrome when I wanted a little more screen space for the content or I wanted a distraction-free environment for reading an article.&lt;/p&gt;
+
+&lt;p&gt;I wrote &lt;a href=&quot;https://addons.mozilla.org/en-GB/firefox/addon/focus-mode/&quot;&gt;Focus Mode&lt;/a&gt; for Firefox to do just that :)&lt;/p&gt;
+
+&lt;p&gt;Now, someone tell me why that’s not already a standard feature in Firefox. Or even better, tell me that it is and that I just failed to notice it. And while you’re at it, tell me why I couldn’t find an existing extension that does it!&lt;/p&gt;</content><author><name>Steve Engledow</name></author><category term="code" /><category term="web" /><summary type="html">Today I become a Firefox add-on developer!</summary></entry><entry><title type="html">Sorted</title><link href="https://engledow.me/2015/11/30/sorted/" rel="alternate" type="text/html" title="Sorted" /><published>2015-11-30T00:00:00+00:00</published><updated>2015-11-30T00:00:00+00:00</updated><id>https://engledow.me/2015/11/30/sorted</id><content type="html" xml:base="https://engledow.me/2015/11/30/sorted/">&lt;p&gt;I decided to restructure the folder I keep code in (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/code&lt;/code&gt;, natch) - taking my cue from &lt;a href=&quot;https://golang.org/doc/code.html&quot;&gt;how Go does it&lt;/a&gt; - so that the folder structure represents where code has come from.&lt;/p&gt;
+
+&lt;p&gt;As with all things, moving a couple of hundred folders by hand seemed far too daunting so I wrote a bash script to do it.&lt;/p&gt;
+
+&lt;p&gt;This script enters each subdirectory within the current directory and, if it has a git remote, moves it to a folder that represents the git remote’s path.&lt;/p&gt;
+
+&lt;p&gt;For example, if I had a folder called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scripts&lt;/code&gt; that had a git remote of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git@github.com/stilvoid/utils.git&lt;/code&gt;, this script will move the folder to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;github.com/stilvoid/utils&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Target directory for renamed folders&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/steve/code/sorted
+
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;find ./ &lt;span class=&quot;nt&quot;&gt;-maxdepth&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;-mindepth&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;-type&lt;/span&gt; d&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;git remote &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; 2&amp;gt;/dev/null | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1 | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $2}'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/^.*:\/\///'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/:/\//'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/^.*@//'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\.git$//'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+        &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirname&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi
+done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Yes it’s horrid but it did today’s job ;)&lt;/p&gt;</content><author><name>Steve Engledow</name></author><summary type="html">I decided to restructure the folder I keep code in (~/code, natch) - taking my cue from how Go does it - so that the folder structure represents where code has come from.</summary></entry></feed>
