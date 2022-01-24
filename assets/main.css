@@ -63,6 +63,17 @@ nav a:visited {
 
 nav a:hover {
     transition: background 0.5s linear;
+}
+
+nav li:nth-child(3n+1) a:hover {
+    background: #DBA380;
+}
+
+nav li:nth-child(3n+0) a:hover {
+    background: #7AA89C;
+}
+
+nav li:nth-child(3n+2) a:hover {
     background: #82BB6D;
 }
 
