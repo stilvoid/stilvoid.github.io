@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" >
+    <link href="https://engledow.me/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://engledow.me/" rel="alternate" type="text/html" />
+    <updated>{now}</updated>
+    <id>https://engledow.me/feed.xml</id>
+    <title type="html">engledow.me</title>
+    <subtitle>All content © 2011-2020 Steve Engledow. All views expressed here are mine and don't reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.</subtitle>
+    <author><name>Steve Engledow</name></author>
+    {entries}
+</feed>

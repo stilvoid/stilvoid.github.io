@@ -1,0 +1,4 @@
+Markdown==3.3.6
+Pygments==2.11.2
+python-frontmatter==1.0.0
+PyYAML==6.0
