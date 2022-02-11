@@ -1,166 +1,98 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Ire | engledow.me</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Ire" />
-<meta name="author" content="Steve Engledow" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Call me crazy (thanks) but I like regular expressions." />
-<meta property="og:description" content="Call me crazy (thanks) but I like regular expressions." />
-<link rel="canonical" href="https://engledow.me/2012/07/07/ire/" />
-<meta property="og:url" content="https://engledow.me/2012/07/07/ire/" />
-<meta property="og:site_name" content="engledow.me" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2012-07-07T00:00:00+00:00" />
-<script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://engledow.me/2012/07/07/ire/"},"author":{"@type":"Person","name":"Steve Engledow"},"@type":"BlogPosting","url":"https://engledow.me/2012/07/07/ire/","headline":"Ire","dateModified":"2012-07-07T00:00:00+00:00","datePublished":"2012-07-07T00:00:00+00:00","description":"Call me crazy (thanks) but I like regular expressions.","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://engledow.me/feed.xml" title="engledow.me" /></head>
-<body><header class="site-header" role="banner">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Ire</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2022 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2012/07/07/ire/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">engledow.me</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
+    <body>
+        <header>
+            <h1>Ire</h1>
+        </header>
 
-        <div class="trigger"><a class="page-link" href="/cocktails/">Cocktail Generator</a><a class="page-link" href="/">About me</a><a class="page-link" href="/projects/">Repositories</a></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Ire</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2012-07-07T00:00:00+00:00" itemprop="datePublished">2012-07-07
-      </time></p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    <p>Call me crazy (thanks) but I like regular expressions.</p>
-
+        <main>
+            <article><p>Call me crazy (thanks) but I like regular expressions.</p>
 <p>I like them enough to have decided that what I really needed was a tool that let me put regular expressions in my regular expressions (<a href="http://knowyourmeme.com/memes/xzibit-yo-dawg">yo dawg</a>). I had the idea for this a while ago but only got around to realising it a few days ago.</p>
-
 <p>The basic idea is a scripting language for matching text via regular expressions, and then applying further regular expressions (and replacements) dependent on those.</p>
-
-<p>I wanted to keep the syntax fairly free so there’s support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can’t be used inside braces although the opposite is fine.</p>
-
+<p>I wanted to keep the syntax fairly free so there's support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can't be used inside braces although the opposite is fine.</p>
 <p>Within braces, expressions should be separated by semi-colons.</p>
-
 <p>I also wanted support for creating named blocks of code (functions if you like) and for flexibility over the character used to delimit the parts of an expression.</p>
+<h2>Example</h2>
+<p>After some mucking about, what I've ended up with is summat that looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">&gt;proc</span>
+<span class="go">    /^(.+)\s+@/Model: $1\n/pt</span>
+<span class="go">    /@\s+(.+)\n$/Speed: $2\n/pt</span>
 
-<h2 id="example">Example</h2>
+<span class="go">/^processor\s+:\s+(\d+)/# CPU $1\n/p</span>
 
-<p>After some mucking about, what I’ve ended up with is summat that looks like this:</p>
+<span class="go">/^model name\s+:\s+//</span>
+<span class="go">    &lt;proc&gt;</span>
+<span class="go">    //\n/p</span>
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>proc
-<span class="gp">    /^(.+)\s+@/Model: $</span>1<span class="se">\n</span>/pt
-<span class="gp">    /@\s+(.+)\n$</span>/Speed: <span class="nv">$2</span><span class="se">\n</span>/pt
-<span class="go">
-</span><span class="gp">/^processor\s+:\s+(\d+)/#</span><span class="w"> </span>CPU <span class="nv">$1</span><span class="se">\n</span>/p
-<span class="go">
-/^model name\s+:\s+//
-</span><span class="gp">    &lt;proc&gt;</span><span class="w">
-</span><span class="go">    //\n/p</span></code></pre></figure>
+<p>The idea being that you pipe <code>/proc/cpuinfo</code> through that and you get a summary that looks like:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp"># </span>CPU <span class="m">0</span>
+<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU</span>
+<span class="go">Speed: 1.60GHz</span>
 
-<p>The idea being that you pipe <code class="language-plaintext highlighter-rouge">/proc/cpuinfo</code> through that and you get a summary that looks like:</p>
+<span class="gp"># </span>CPU <span class="m">1</span>
+<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU</span>
+<span class="go">Speed: 1.60GHz</span>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">#</span><span class="w"> </span>CPU 0
-<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU
-Speed: 1.60GHz
+<span class="gp"># </span>CPU <span class="m">2</span>
+<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU</span>
+<span class="go">Speed: 1.60GHz</span>
 
-</span><span class="gp">#</span><span class="w"> </span>CPU 1
-<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU
-Speed: 1.60GHz
+<span class="gp"># </span>CPU <span class="m">3</span>
+<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU</span>
+<span class="go">Speed: 1.60GHz</span>
+</code></pre></div>
 
-</span><span class="gp">#</span><span class="w"> </span>CPU 2
-<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU
-Speed: 1.60GHz
+<h2>Breaking it down</h2>
+<div class="codehilite"><pre><span></span><code><span class="go">&gt;proc</span>
+<span class="go">    /^(.+)\s+@/Model: $1\n/pt</span>
+<span class="go">    /@\s+(.+)\n$/Speed: $1\n/pt</span>
+</code></pre></div>
 
-</span><span class="gp">#</span><span class="w"> </span>CPU 3
-<span class="go">Model: Intel(R) Core(TM) i5-2467M CPU
-Speed: 1.60GHz</span></code></pre></figure>
+<p>Define a block called <code>proc</code> and do not execute it yet.</p>
+<p>The first line of <code>proc</code> matches a string followed by a space and an @ symbol. It then replaces what it's found with Model: (the string at the beginning). Then it prints the result (the <code>p</code> flag) and discards the replacement that has taken place (temporary apply - the <code>t</code> flag).</p>
+<p>The second line does similar but looks for the @ followed by a space, a string, and a newline then prints "Speed: (the string)".</p>
+<div class="codehilite"><pre><span></span><code><span class="go">/^processor\s+:\s+(\d+)/# CPU $1\n/p</span>
+</code></pre></div>
 
-<h2 id="breaking-it-down">Breaking it down</h2>
+<p>Match a line starting with processor and print out "CPU (the number)"</p>
+<div class="codehilite"><pre><span></span><code><span class="go">/^model name\s+:\s+//</span>
+<span class="go">    &lt;proc&gt;</span>
+<span class="go">    //\n/p</span>
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">&gt;</span>proc
-<span class="gp">    /^(.+)\s+@/Model: $</span>1<span class="se">\n</span>/pt
-<span class="gp">    /@\s+(.+)\n$</span>/Speed: <span class="nv">$1</span><span class="se">\n</span>/pt</code></pre></figure>
-
-<p>Define a block called <code class="language-plaintext highlighter-rouge">proc</code> and do not execute it yet.</p>
-
-<p>The first line of <code class="language-plaintext highlighter-rouge">proc</code> matches a string followed by a space and an @ symbol. It then replaces what it’s found with Model: (the string at the beginning). Then it prints the result (the <code class="language-plaintext highlighter-rouge">p</code> flag) and discards the replacement that has taken place (temporary apply - the <code class="language-plaintext highlighter-rouge">t</code> flag).</p>
-
-<p>The second line does similar but looks for the @ followed by a space, a string, and a newline then prints “Speed: (the string)”.</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">/^processor\s+:\s+(\d+)/#</span><span class="w"> </span>CPU <span class="nv">$1</span><span class="se">\n</span>/p</code></pre></figure>
-
-<p>Match a line starting with processor and print out “CPU (the number)”</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">/^model name\s+:\s+//
-</span><span class="gp">    &lt;proc&gt;</span><span class="w">
-</span><span class="go">    //\n/p</span></code></pre></figure>
-
-<p>Match a line starting with Model name, and remove everything up until the start of the data. Then call the block called <code class="language-plaintext highlighter-rouge">proc</code>. Finally, print a newline character.</p>
-
+<p>Match a line starting with Model name, and remove everything up until the start of the data. Then call the block called <code>proc</code>. Finally, print a newline character.</p>
 <p>Obviously this is a fairly contrived example ;)</p>
-
-<h2 id="trying-it-out">Trying it out</h2>
-
+<h2>Trying it out</h2>
 <p>Like most things these days, I wrote the engine for Ire in <a href="https://nodejs.org/en">node.js</a>.</p>
-
 <p>If you have that installed, you can install ire with:</p>
+<div class="codehilite"><pre><span></span><code>npm install -g ire
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">npm <span class="nb">install</span> <span class="nt">-g</span> ire</code></pre></figure>
-
-<p>or if you’re feeling less brave or more paranoid, just <code class="language-plaintext highlighter-rouge">npm install ire</code> to install it to the current folder.</p>
-
+<p>or if you're feeling less brave or more paranoid, just <code>npm install ire</code> to install it to the current folder.</p>
 <p>Further details are in the README and <a href="https://engledow.me/code/unloved/ire/">on this page</a>.</p>
-
-<h2 id="final-word">Final word</h2>
-
+<h2>Final word</h2>
 <p>Yes, I am fully aware that this is somewhat limited in use and probably completely pointless.</p>
+<p>I'm sure <em>someone</em> will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: "you're missing the point". See my <a href="https://engledow.me/misc/geekcode/">geekcode</a> for details :P</p></article>
+        </main>
 
-<p>I’m sure <em>someone</em> will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: “you’re missing the point”. See my <a href="https://engledow.me/misc/geekcode/">geekcode</a> for details :P</p>
-
-  </div><a class="u-url" href="/2012/07/07/ire/" hidden></a>
-</article>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">engledow.me</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Steve Engledow</li></ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="https://www.linkedin.com/in/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="https://www.twitter.com/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="/feed.xml"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg> <span>rss</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>All content © 2011-2020 Steve Engledow. All views expressed here are mine and don&#39;t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.
-</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-</body>
-
+        <footer>
+            <p>
+                All content © 2011-2022 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
 </html>
