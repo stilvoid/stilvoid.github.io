@@ -1,172 +1,99 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Heroes: Building some old code | engledow.me</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="Heroes: Building some old code" />
-<meta name="author" content="Steve Engledow" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="For the end result of this post, see my AUR package of Heroes." />
-<meta property="og:description" content="For the end result of this post, see my AUR package of Heroes." />
-<link rel="canonical" href="https://engledow.me/2018/08/14/heroes/" />
-<meta property="og:url" content="https://engledow.me/2018/08/14/heroes/" />
-<meta property="og:site_name" content="engledow.me" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-08-14T00:00:00+00:00" />
-<script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://engledow.me/2018/08/14/heroes/"},"author":{"@type":"Person","name":"Steve Engledow"},"@type":"BlogPosting","url":"https://engledow.me/2018/08/14/heroes/","headline":"Heroes: Building some old code","dateModified":"2018-08-14T00:00:00+00:00","datePublished":"2018-08-14T00:00:00+00:00","description":"For the end result of this post, see my AUR package of Heroes.","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://engledow.me/feed.xml" title="engledow.me" /></head>
-<body><header class="site-header" role="banner">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Heroes: Building some old code</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2022 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2018/08/14/heroes/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">engledow.me</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
+    <body>
+        <header>
+            <h1>Heroes: Building some old code</h1>
+        </header>
 
-        <div class="trigger"><a class="page-link" href="/cocktails/">Cocktail Generator</a><a class="page-link" href="/">About me</a><a class="page-link" href="/projects/">Repositories</a></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Heroes: Building some old code</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2018-08-14T00:00:00+00:00" itemprop="datePublished">2018-08-14
-      </time></p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    <p>For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of Heroes</a>.</p>
-
+        <main>
+            <article><p>For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of Heroes</a>.</p>
 <hr />
-
-<p>The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was <a href="http://heroes.sourceforge.net">Heroes</a>. It’s a clone of <a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake/Tron/Nibbles</a> but with some fun additions, a nice graphical style, and some funky visual effects.</p>
-
-<p><img src="http://heroes.sourceforge.net/img/snap5.png" alt="Heroes screenshot" /></p>
-
+<p>The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was <a href="http://heroes.sourceforge.net">Heroes</a>. It's a clone of <a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake/Tron/Nibbles</a> but with some fun additions, a nice graphical style, and some funky visual effects.</p>
+<p><img alt="Heroes screenshot" src="http://heroes.sourceforge.net/img/snap5.png" /></p>
 <p>So, of course, I immediately decided to install it.</p>
+<div class="codehilite"><pre><span></span><code>$ pacman -Ss heroes
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>pacman <span class="nt">-Ss</span> heroes</code></pre></figure>
-
-<p>No results. Nothing in the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR</a> either. There is only one other course of action: I’m going to create an AUR package for it!</p>
-
+<p>No results. Nothing in the <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR</a> either. There is only one other course of action: I'm going to create an AUR package for it!</p>
 <p>It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.</p>
-
-<h2 id="getting-heroes-to-compile-in-2018">Getting Heroes to compile in 2018</h2>
-
+<h2>Getting Heroes to compile in 2018</h2>
 <p>I put together a basic <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> that pulls down the source and data files from the Heroes sourceforge page and then runs:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">./configure</span>
+<span class="go">make</span>
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">./configure
-make</code></pre></figure>
+<p>Here's the first of what I'm sure are many failure messages:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration </span>
+<span class="go"> static a_pcx_image tile_set_img;</span>
+<span class="go">                    ^~~~~~~~~~~~</span>
+<span class="go">In file included from hedlite.c:44:</span>
+<span class="go">const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        </span>
+<span class="go"> extern a_pcx_image tile_set_img, font_deck_img;                                            </span>
+<span class="go">                    ^~~~~~~~~~~~</span>
+</code></pre></div>
 
-<p>Here’s the first of what I’m sure are many failure messages:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration 
-</span><span class="gp"> static a_pcx_image tile_set_img;</span><span class="w">
-</span><span class="go">                    ^~~~~~~~~~~~
-In file included from hedlite.c:44:
-const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        
-</span><span class="gp"> extern a_pcx_image tile_set_img, font_deck_img;</span><span class="w">                                            
-</span><span class="go">                    ^~~~~~~~~~~~</span></code></pre></figure>
-
-<p>Some forewarning: it’s been quite some time since I wrote anything serious in C and I was never an expert in it anyway. But I think I know enough to fix this and so just commented out the static declaration as, after poking around in the code a bit, it doesn’t seem like it’s necessary anyway.</p>
-
+<p>Some forewarning: it's been quite some time since I wrote anything serious in C and I was never an expert in it anyway. But I think I know enough to fix this and so just commented out the static declaration as, after poking around in the code a bit, it doesn't seem like it's necessary anyway.</p>
 <p>Now the compilation succeeds but I get the following error during linking:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">/usr/bin/ld: camera.o: undefined reference to symbol &#39;sin@@GLIBC_2.2.5&#39;</span>
+<span class="go">/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line</span>
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">/usr/bin/ld: camera.o: undefined reference to symbol 'sin@@GLIBC_2.2.5'
-/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line</span></code></pre></figure>
-
-<p>Turns out that for some reason, the developers forgot to include the math<small>(s)</small> library. I’m guessing that perhaps it used to be linked by default in a previous version of GCC.</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">LDFLAGS</span><span class="o">=</span><span class="nt">-lm</span> ./configure
-make</code></pre></figure>
+<p>Turns out that for some reason, the developers forgot to include the math<small>(s)</small> library. I'm guessing that perhaps it used to be linked by default in a previous version of GCC.</p>
+<div class="codehilite"><pre><span></span><code><span class="go">LDFLAGS=-lm ./configure</span>
+<span class="go">make</span>
+</code></pre></div>
 
 <p>Now it at least compiles correctly! Next up, compiling the data, music, and sound effects packages.</p>
-
 <p>Amazingly, those all worked correctly and I was able to play the game!</p>
-
 <p>However, this game was written a while ago and originally targeted MS-DOS so it has a window size of 320x200 which looks rather ridiculous on my 1920x1080 desktop ;)</p>
-
-<p><a href="https://engledow.me/assets/images/2018-08-14-heroes.png"><img src="https://engledow.me/assets/images/2018-08-14-heroes-small.png" alt="Tiny Heroes window screenshot" /></a></p>
-
-<p>So I set about trying to set the default screen mode so that the game starts in full screen…</p>
-
-<p>Fortunately, it looks like this is relatively easy. I just modified a few variables and changed a command line flag from <code class="language-plaintext highlighter-rouge">-F | --full-screen</code> to <code class="language-plaintext highlighter-rouge">-W | --windowed</code>.</p>
-
-<p>Next up, rather than rely on <a href="https://www.libsdl.org/">SDL</a>’s built-in scaling (it looks blurry and weird), I need to enable Heroes’ quadruple flag <code class="language-plaintext highlighter-rouge">-4</code> by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I’m sure I’ll receive bug reports if it’s not ;)</p>
-
-<p>The very last thing I’ve done is to enable the high quality mixer by default and remove the command line option from the game. CPU is a little more abundant now than it was in 2002 ;)</p>
-
-<p><a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here’s my final patch file</a>.</p>
-
-<h2 id="submitting-the-aur-package">Submitting the AUR package</h2>
-
-<p>Things have changed since I last submitted a package to the AUR so here’s a brief writeup - if only to remind myself in future ;)</p>
-
+<p><a href="{{&quot;/assets/images/2018-08-14-heroes.png&quot; | absolute_url}}"><img alt="Tiny Heroes window screenshot" src="{{&quot;/assets/images/2018-08-14-heroes-small.png&quot; | absolute_url}}" /></a></p>
+<p>So I set about trying to set the default screen mode so that the game starts in full screen...</p>
+<p>Fortunately, it looks like this is relatively easy. I just modified a few variables and changed a command line flag from <code>-F | --full-screen</code> to <code>-W | --windowed</code>.</p>
+<p>Next up, rather than rely on <a href="https://www.libsdl.org/">SDL</a>'s built-in scaling (it looks blurry and weird), I need to enable Heroes' quadruple flag <code>-4</code> by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I'm sure I'll receive bug reports if it's not ;)</p>
+<p>The very last thing I've done is to enable the high quality mixer by default and remove the command line option from the game. CPU is a little more abundant now than it was in 2002 ;)</p>
+<p><a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here's my final patch file</a>.</p>
+<h2>Submitting the AUR package</h2>
+<p>Things have changed since I last submitted a package to the AUR so here's a brief writeup - if only to remind myself in future ;)</p>
 <p>First step was to update the SSH key in my AUR account as it contained a key from my old machine.</p>
-
 <p>Next up, I added a remote to my repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>git remote add aur ssh://aur@aur.archlinux.org/heroes.git
+<span class="gp">$ </span>git fetch aur  <span class="c1"># This step causes AUR to create a record for the package</span>
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git remote add aur ssh://aur@aur.archlinux.org/heroes.git
-<span class="nv">$ </span>git fetch aur  <span class="c"># This step causes AUR to create a record for the package</span></code></pre></figure>
-
-<p>The next step is to generate AUR’s <code class="language-plaintext highlighter-rouge">.SRCINFO</code> file and rebase it into every commit (AUR requires this).</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git filter-branch <span class="nt">--tree-filter</span> <span class="s2">"makepkg --printsrcinfo &gt; .SRCINFO"</span></code></pre></figure>
+<p>The next step is to generate AUR's <code>.SRCINFO</code> file and rebase it into every commit (AUR requires this).</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>git filter-branch --tree-filter <span class="s2">&quot;makepkg --printsrcinfo &gt; .SRCINFO&quot;</span>
+</code></pre></div>
 
 <p>And then push it to the AUR repository:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>git push -u aur master
+</code></pre></div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git push <span class="nt">-u</span> aur master</code></pre></figure>
-
-<h2 id="testing-it-out">Testing it out</h2>
-
-<p>I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using AUR easier (I’m <a href="http://threevirtues.com/">lazy</a>).</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>packer <span class="nt">-S</span> heroes</code></pre></figure>
+<h2>Testing it out</h2>
+<p>I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using AUR easier (I'm <a href="http://threevirtues.com/">lazy</a>).</p>
+<div class="codehilite"><pre><span></span><code><span class="gp">$ </span>packer -S heroes
+</code></pre></div>
 
 <p>SUCCESS!</p>
+<p>All in all, this wasn't anywhere near as painful as I'd expected. Time to play some Heroes :D</p></article>
+        </main>
 
-<p>All in all, this wasn’t anywhere near as painful as I’d expected. Time to play some Heroes :D</p>
-
-  </div><a class="u-url" href="/2018/08/14/heroes/" hidden></a>
-</article>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">engledow.me</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Steve Engledow</li></ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="https://www.linkedin.com/in/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="https://www.twitter.com/stilvoid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">stilvoid</span></a></li><li><a href="/feed.xml"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#rss"></use></svg> <span>rss</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>All content © 2011-2020 Steve Engledow. All views expressed here are mine and don&#39;t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.
-</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-</body>
-
+        <footer>
+            <p>
+                All content © 2011-2022 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
 </html>
