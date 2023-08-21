@@ -20,31 +20,31 @@
             <article><p><a href="http://tmux.sourceforge.net/">tmux</a> is the best thing ever. That is all.</p>
 <p>No, that is not all. Here is how I make use of tmux to make my life measurably more awesome:</p>
 <p>First, my <code>.tmux.conf</code>. This changes tmux's <code>ctrl-b</code> magic key binding to <code>ctrl-a</code> as I've grown far too used to hitting that from when I used <a href="https://www.gnu.org/software/screen/">screen</a>. I set up a few other screen-like bindings too. Finally, I set a few options that make tmux work better with urxvt.</p>
-<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Set</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">prefix</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="o">^</span><span class="nv">A</span>.
-<span class="nv">unbind</span><span class="w"> </span><span class="nv">C</span><span class="o">-</span><span class="nv">b</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">prefix</span><span class="w"> </span><span class="o">^</span><span class="nv">A</span>
-<span class="nv">bind</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="k">send</span><span class="o">-</span><span class="nv">prefix</span>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> Set the prefix to ^A.
+unbind C-b
+set -g prefix ^A
+bind a send-prefix
 
-#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">new</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span><span class="w"> </span><span class="nv">c</span>
-<span class="nv">bind</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">new</span><span class="o">-</span><span class="nv">window</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span>$<span class="nv">PWD</span>
+<span class="gh">#</span> Bind c to new-window
+unbind c
+bind c new-window -c $PWD
 
-#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">space</span>,<span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
-<span class="nv">bind</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span><span class="w"> </span><span class="nv">n</span>
-<span class="nv">bind</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
+<span class="gh">#</span> Bind space, n to next-window
+unbind &quot; &quot;
+bind &quot; &quot; next-window
+unbind n
+bind n next-window
 
-#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span><span class="w"> </span><span class="nv">p</span>
-<span class="nv">bind</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
+<span class="gh">#</span> Bind p to previous-window
+unbind p
+bind p previous-window
 
-#<span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">few</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">settings</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">make</span><span class="w"> </span><span class="nv">things</span><span class="w"> </span><span class="nv">funky</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="nv">off</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">aggressive</span><span class="o">-</span><span class="nv">resize</span><span class="w"> </span><span class="nv">on</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">mode</span><span class="o">-</span><span class="nv">keys</span><span class="w"> </span><span class="nv">vi</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">default</span><span class="o">-</span><span class="nv">terminal</span><span class="w"> </span><span class="nv">screen</span><span class="o">-</span><span class="mi">256</span><span class="nv">color</span>
-<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">terminal</span><span class="o">-</span><span class="nv">overrides</span><span class="w"> </span><span class="s1">&#39;rxvt-unicode*:sitm@&#39;</span>
+<span class="gh">#</span> A few other settings to make things funky
+set -g status off
+set -g aggressive-resize on
+set -g mode-keys vi
+set -g default-terminal screen-256color
+set -g terminal-overrides &#39;rxvt-unicode*:sitm@&#39;
 </code></pre></div>
 
 <p>And then here's what I have near the top of my <code>.bashrc</code>:</p>

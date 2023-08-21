@@ -40,7 +40,7 @@ auth      required    pam_ecryptfs.so unwrap
 <p>So, the solution I came up with was to put the 2fa module into the session group. My understanding is that this will mean PAM will ask me to supply a verification code once per session which is fine by me; I don't want to have to put a code in every time I <code>sudo</code> anyway.</p>
 <p>My question is, will my minor abuse of PAM bite me in the arse at any point? It seems to do what I expected, even if I log in through GDM.</p>
 <p>Here's my current <code>system-auth</code> file:</p>
-<div class="codehilite"><pre><span></span><code>#%PAM-1.0
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span>%PAM-1.0
 
 auth      required  pam_unix.so     try_first_pass nullok
 auth      required  pam_ecryptfs.so unwrap
