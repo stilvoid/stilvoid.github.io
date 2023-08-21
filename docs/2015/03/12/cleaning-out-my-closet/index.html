@@ -20,10 +20,10 @@
             <article><p>Or: <em>Finding out what crud you installed that's eating all of your space in Arch Linux</em></p>
 <p>I started running out of space on one of my <a href="https://www.archlinux.org/">Arch</a> boxes and wondered (beyond what was in my home directory) what I'd installed that was eating up all the space.</p>
 <p>A little bit of bash-fu does the job:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> pkg <span class="k">in</span> <span class="k">$(</span>pacman -Qq<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nv">size</span><span class="o">=</span><span class="k">$(</span>pacman -Qi <span class="nv">$pkg</span> <span class="p">|</span> grep <span class="s2">&quot;Installed Size&quot;</span> <span class="p">|</span> cut -d <span class="s2">&quot;:&quot;</span> -f <span class="m">2</span><span class="k">)</span>
-    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$size</span><span class="s2"> | </span><span class="nv">$pkg</span><span class="s2">&quot;</span>
-<span class="k">done</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/ //g&#39;</span> <span class="p">|</span> sort -h
+<div class="codehilite"><pre><span></span><code><span class="k">for</span><span class="w"> </span>pkg<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>pacman<span class="w"> </span>-Qq<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">size</span><span class="o">=</span><span class="k">$(</span>pacman<span class="w"> </span>-Qi<span class="w"> </span><span class="nv">$pkg</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Installed Size&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;:&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$size</span><span class="s2"> | </span><span class="nv">$pkg</span><span class="s2">&quot;</span>
+<span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/ //g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-h
 </code></pre></div>
 
 <p>This outputs a list of packages with those using the most disk space at the bottom:</p>

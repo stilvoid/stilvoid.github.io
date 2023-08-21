@@ -20,36 +20,36 @@
             <article><p><a href="http://tmux.sourceforge.net/">tmux</a> is the best thing ever. That is all.</p>
 <p>No, that is not all. Here is how I make use of tmux to make my life measurably more awesome:</p>
 <p>First, my <code>.tmux.conf</code>. This changes tmux's <code>ctrl-b</code> magic key binding to <code>ctrl-a</code> as I've grown far too used to hitting that from when I used <a href="https://www.gnu.org/software/screen/">screen</a>. I set up a few other screen-like bindings too. Finally, I set a few options that make tmux work better with urxvt.</p>
-<div class="codehilite"><pre><span></span><code># <span class="nv">Set</span> <span class="nv">the</span> <span class="nv">prefix</span> <span class="nv">to</span> <span class="o">^</span><span class="nv">A</span>.
-<span class="nv">unbind</span> <span class="nv">C</span><span class="o">-</span><span class="nv">b</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">prefix</span> <span class="o">^</span><span class="nv">A</span>
-<span class="nv">bind</span> <span class="nv">a</span> <span class="k">send</span><span class="o">-</span><span class="nv">prefix</span>
+<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Set</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">prefix</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="o">^</span><span class="nv">A</span>.
+<span class="nv">unbind</span><span class="w"> </span><span class="nv">C</span><span class="o">-</span><span class="nv">b</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">prefix</span><span class="w"> </span><span class="o">^</span><span class="nv">A</span>
+<span class="nv">bind</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="k">send</span><span class="o">-</span><span class="nv">prefix</span>
 
-# <span class="nv">Bind</span> <span class="nv">c</span> <span class="nv">to</span> <span class="nv">new</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span> <span class="nv">c</span>
-<span class="nv">bind</span> <span class="nv">c</span> <span class="nv">new</span><span class="o">-</span><span class="nv">window</span> <span class="o">-</span><span class="nv">c</span> $<span class="nv">PWD</span>
+#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">new</span><span class="o">-</span><span class="nv">window</span>
+<span class="nv">unbind</span><span class="w"> </span><span class="nv">c</span>
+<span class="nv">bind</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="nv">new</span><span class="o">-</span><span class="nv">window</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span>$<span class="nv">PWD</span>
 
-# <span class="nv">Bind</span> <span class="nv">space</span>, <span class="nv">n</span> <span class="nv">to</span> <span class="k">next</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span> <span class="s2">&quot;</span><span class="s"> </span><span class="s2">&quot;</span>
-<span class="nv">bind</span> <span class="s2">&quot;</span><span class="s"> </span><span class="s2">&quot;</span> <span class="k">next</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span> <span class="nv">n</span>
-<span class="nv">bind</span> <span class="nv">n</span> <span class="k">next</span><span class="o">-</span><span class="nv">window</span>
+#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">space</span>,<span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
+<span class="nv">unbind</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="nv">bind</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
+<span class="nv">unbind</span><span class="w"> </span><span class="nv">n</span>
+<span class="nv">bind</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="k">next</span><span class="o">-</span><span class="nv">window</span>
 
-# <span class="nv">Bind</span> <span class="nv">p</span> <span class="nv">to</span> <span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
-<span class="nv">unbind</span> <span class="nv">p</span>
-<span class="nv">bind</span> <span class="nv">p</span> <span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
+#<span class="w"> </span><span class="nv">Bind</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
+<span class="nv">unbind</span><span class="w"> </span><span class="nv">p</span>
+<span class="nv">bind</span><span class="w"> </span><span class="nv">p</span><span class="w"> </span><span class="nv">previous</span><span class="o">-</span><span class="nv">window</span>
 
-# <span class="nv">A</span> <span class="nv">few</span> <span class="nv">other</span> <span class="nv">settings</span> <span class="nv">to</span> <span class="nv">make</span> <span class="nv">things</span> <span class="nv">funky</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">status</span> <span class="nv">off</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">aggressive</span><span class="o">-</span><span class="nv">resize</span> <span class="nv">on</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">mode</span><span class="o">-</span><span class="nv">keys</span> <span class="nv">vi</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">default</span><span class="o">-</span><span class="nv">terminal</span> <span class="nv">screen</span><span class="o">-</span><span class="mi">256</span><span class="nv">color</span>
-<span class="nv">set</span> <span class="o">-</span><span class="nv">g</span> <span class="nv">terminal</span><span class="o">-</span><span class="nv">overrides</span> <span class="s1">&#39;</span><span class="s">rxvt-unicode*:sitm@</span><span class="s1">&#39;</span>
+#<span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">few</span><span class="w"> </span><span class="nv">other</span><span class="w"> </span><span class="nv">settings</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">make</span><span class="w"> </span><span class="nv">things</span><span class="w"> </span><span class="nv">funky</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="nv">off</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">aggressive</span><span class="o">-</span><span class="nv">resize</span><span class="w"> </span><span class="nv">on</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">mode</span><span class="o">-</span><span class="nv">keys</span><span class="w"> </span><span class="nv">vi</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">default</span><span class="o">-</span><span class="nv">terminal</span><span class="w"> </span><span class="nv">screen</span><span class="o">-</span><span class="mi">256</span><span class="nv">color</span>
+<span class="nv">set</span><span class="w"> </span><span class="o">-</span><span class="nv">g</span><span class="w"> </span><span class="nv">terminal</span><span class="o">-</span><span class="nv">overrides</span><span class="w"> </span><span class="s1">&#39;rxvt-unicode*:sitm@&#39;</span>
 </code></pre></div>
 
 <p>And then here's what I have near the top of my <code>.bashrc</code>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># If tmux isn&#39;t already running, run it</span>
-<span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$TMUX</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">exec</span> ~/bin/tmux
+<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TMUX</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">exec</span><span class="w"> </span>~/bin/tmux
 </code></pre></div>
 
 <p>...which goes with this, the contents of <code>~/bin/tmux</code>:</p>
@@ -58,17 +58,17 @@
 <span class="c1"># If there are any sessions that aren&#39;t attached, attach to the first one</span>
 <span class="c1"># Otherwise, start a new session</span>
 
-<span class="k">for</span> line <span class="k">in</span> <span class="k">$(</span>tmux ls -F <span class="s2">&quot;#{session_name},#{session_attached}&quot;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> cut -d <span class="s1">&#39;,&#39;</span> -f <span class="m">1</span><span class="k">)</span>
-    <span class="nv">attached</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> cut -d <span class="s1">&#39;,&#39;</span> -f <span class="m">2</span><span class="k">)</span>
+<span class="k">for</span><span class="w"> </span>line<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>tmux<span class="w"> </span>ls<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;#{session_name},#{session_attached}&quot;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$line</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<span class="w">    </span><span class="nv">attached</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$line</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span>
 
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$attached</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        tmux attach -t <span class="nv">$name</span>
-        <span class="nb">exit</span>
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$attached</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span><span class="nv">$name</span>
+<span class="w">        </span><span class="nb">exit</span>
+<span class="w">    </span><span class="k">fi</span>
 <span class="k">done</span>
 
-tmux -u
+tmux<span class="w"> </span>-u
 </code></pre></div>
 
 <p>Basically, what happens is that whenever I start a terminal session, if I'm not already attached to a tmux session, I find a session that's not already attached to and attach to it. If there aren't any, I create a new one.</p>

@@ -19,13 +19,13 @@
         <main>
             <article><p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a> to manage my ssh and gpg agents. I did this with the following in my <code>.bashrc</code></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Start ssh-agent</span>
-<span class="nb">eval</span> <span class="k">$(</span>keychain --quiet --eval id_rsa<span class="k">)</span>
+<span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>keychain<span class="w"> </span>--quiet<span class="w"> </span>--eval<span class="w"> </span>id_rsa<span class="k">)</span>
 </code></pre></div>
 
 <p>Recently, <a href="https://www.archlinux.org/">arch</a> updated gpg to version 2.1.1 which, <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">as per the announcement</a>, no longer requires the <code>GPG_AGENT_INFO</code> environment variable.</p>
 <p>Unfortunately, tools like keychain don't know about that and still expect it to be set, leading to some annoying breakage.</p>
 <p>My fix is a quick and dirty one; I appended the following to <code>.bashrc</code></p>
-<div class="codehilite"><pre><span></span><code><span class="nb">export</span> <span class="nv">GPG_AGENT_INFO</span><span class="o">=</span>~/.gnupg/S.gpg-agent:<span class="k">$(</span>pidof gpg-agent<span class="k">)</span>:1
+<div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPG_AGENT_INFO</span><span class="o">=</span>~/.gnupg/S.gpg-agent:<span class="k">$(</span>pidof<span class="w"> </span>gpg-agent<span class="k">)</span>:1
 </code></pre></div>
 
 <p>:)</p></article>

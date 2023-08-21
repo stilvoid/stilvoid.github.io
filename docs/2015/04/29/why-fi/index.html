@@ -29,7 +29,7 @@
 <p>Simples :)</p>
 <h2>The steps</h2>
 <p>First, find the name of your wireless interface:</p>
-<div class="codehilite"><pre><span></span><code>iw dev
+<div class="codehilite"><pre><span></span><code>iw<span class="w"> </span>dev
 </code></pre></div>
 
 <p>Which will output something like:</p>
@@ -44,23 +44,23 @@
 
 <p>Where <code>wlp2s0</code> is the bit we're interested in.</p>
 <p>Now bring the interface up:</p>
-<div class="codehilite"><pre><span></span><code>ip link <span class="nb">set</span> wlp2s0 up
+<div class="codehilite"><pre><span></span><code>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>wlp2s0<span class="w"> </span>up
 </code></pre></div>
 
 <p>Connect to the access point:</p>
-<div class="codehilite"><pre><span></span><code>iw dev wlp2s0 connect <span class="s2">&quot;AP name&quot;</span>
+<div class="codehilite"><pre><span></span><code>iw<span class="w"> </span>dev<span class="w"> </span>wlp2s0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;AP name&quot;</span>
 </code></pre></div>
 
 <p>Create a temporary configuration file for <code>wpa_supplicant</code>:</p>
-<div class="codehilite"><pre><span></span><code>wpa_passphrase <span class="s2">&quot;AP name&quot;</span> <span class="s2">&quot;password&quot;</span> &gt; /tmp/wpa.config
+<div class="codehilite"><pre><span></span><code>wpa_passphrase<span class="w"> </span><span class="s2">&quot;AP name&quot;</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/wpa.config
 </code></pre></div>
 
 <p>Run <code>wpa_supplicant</code> to authenticate with the access point:</p>
-<div class="codehilite"><pre><span></span><code>wpa_supplication -iwlp2s0 -c/tmp/wpa.config
+<div class="codehilite"><pre><span></span><code>wpa_supplication<span class="w"> </span>-iwlp2s0<span class="w"> </span>-c/tmp/wpa.config
 </code></pre></div>
 
 <p>In another terminal (or you could have backgrounded the above), run <code>dhcpcd</code> to get an IP address from your router:</p>
-<div class="codehilite"><pre><span></span><code>dhcpcd wlp2s0
+<div class="codehilite"><pre><span></span><code>dhcpcd<span class="w"> </span>wlp2s0
 </code></pre></div>
 
 <p>Update and reboot or whatever :)</p></article>

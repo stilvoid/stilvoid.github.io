@@ -19,16 +19,16 @@
         <main>
             <article><p>I discovered my new favourite fact about <a href="https://en.wikipedia.org/wiki/C_programming_language">my new favourite language</a> recently. I suppose it should be obvious but I hadn't though about it in explicitly these terms.</p>
 <p>Given:</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">myStringArray</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Goodbye&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Tomatoes&quot;</span><span class="p">};</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">myStringArray</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Goodbye&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Tomatoes&quot;</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 </code></pre></div>
 
 <p>then the following will print <code>Tomatoes</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">myStringArray</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">myStringArray</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
 </code></pre></div>
 
 <p>and so (this is the bit I hadn't fully realised) will this:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">[</span><span class="n">myStringArray</span><span class="p">]);</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">[</span><span class="n">myStringArray</span><span class="p">]);</span>
 </code></pre></div>
 
 <p>Good times :)</p></article>

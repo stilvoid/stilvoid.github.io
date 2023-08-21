@@ -20,24 +20,24 @@
             <article><p>Maybe it's just me, but I reckon <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSLs</a> are the next (ok ok, they've been around for ages) big (ok, hipster) thing. I know I'm by no means the first to say so it's just that I'm increasingly bemused at seeing things squeezed into data structures they've outgrown.</p>
 <p>In general, as everyone's finally warming to the idea that you can use code to describe not just your application but also how it's deployed, we're reaching a state where that code needs to be newbie-friendly - by which I mean that it ought to be easily understandable by humans. If it isn't, it's prone to mistakes.</p>
 <p>A few months ago, I experimented with creating a DSL for writing web pages and I was fairly happy with <a href="https://github.com/stilvoid/thiy">the result</a> (though there's lots more work to be done). I'm thinking of applying the same ideas to <a href="https://aws.amazon.com/cloudformation/">CloudFormation</a>.</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">db</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rds</span><span class="w"></span>
-<span class="w">        </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span><span class="w"></span>
-<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c3.xlarge</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rds</span>
+<span class="w">        </span><span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c3.xlarge</span>
 
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ec2</span><span class="w"></span>
-<span class="w">        </span><span class="nt">ami</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-image</span><span class="w"></span>
-<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t2.micro</span><span class="w"></span>
-<span class="w">        </span><span class="nt">scale</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="w">            </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
-<span class="w">        </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ec2</span>
+<span class="w">        </span><span class="nt">ami</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-image</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t2.micro</span>
+<span class="w">        </span><span class="nt">scale</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">expose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 
-<span class="nt">security</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">db</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span><span class="w"></span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:80</span><span class="w"></span>
+<span class="nt">security</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">db</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:80</span>
 </code></pre></div>
 
 <p>Obviously I've put little to no thought into the above but it shouldn't be too hard to come up with something useful.</p>
