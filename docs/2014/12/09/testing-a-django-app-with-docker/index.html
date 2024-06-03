@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Steve Engledow - Testing a Django app with Docker</title>
         <meta name="author" content="Steve Engledow" />
-        <meta name="description" content="All content © 2011-2023 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
         <link rel="canonical" href="https://engledow.me/2014/12/09/testing-a-django-app-with-docker/" />
         <link rel="stylesheet" href="/assets/main.css">
         <link rel="stylesheet" href="/assets/code.css">
@@ -17,7 +17,9 @@
         </header>
 
         <main>
-            <article><p>I've been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.</p>
+            <article>
+                <p class="tags">Tags: proxama docker django</p>
+                <p>I've been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.</p>
 <p>The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don't need to care that I'm not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.</p>
 <p>Here's an annotated <a href="http://docs.docker.com/reference/builder/">Dockerfile</a> with the project-specific details removed.</p>
 <div class="codehilite"><pre><span></span><code><span class="c"># We start with ubuntu 14.04</span>
@@ -96,12 +98,13 @@
 <p>This mounts <code>~/code/myapp</code> and <code>/home/ubuntu/myapp</code> within the Docker container meaning that you're running the exact code that you're working on from inside the container :)</p>
 <p>I have an alias that expands that for me so I only need to type <code>docked myapp test</code>.</p>
 <p>Obviously, you can substitute <code>test</code> for <code>runserver</code>, <code>syncdb</code> or whatever :)</p>
-<p>This is all a bit rough and ready but it's working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.</p></article>
+<p>This is all a bit rough and ready but it's working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.</p>
+            </article>
         </main>
 
         <footer>
             <p>
-                All content © 2011-2023 Steve Engledow.
+                All content © 2011-2024 Steve Engledow.
                 All views expressed here are mine and don't reflect those of Amazon.
                 The contents of this web site are available under the terms of the MIT licence.
             </p>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Steve Engledow - {title}</title>
         <meta name="author" content="Steve Engledow" />
-        <meta name="description" content="All content © 2011-2023 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
         <link rel="canonical" href="https://engledow.me/{path}" />
         <link rel="stylesheet" href="/assets/main.css">
         <link rel="stylesheet" href="/assets/code.css">
@@ -17,12 +17,15 @@
         </header>
 
         <main>
-            <article>{html}</article>
+            <article>
+                <p class="tags">Tags: {tags}</p>
+                {html}
+            </article>
         </main>
 
         <footer>
             <p>
-                All content © 2011-2023 Steve Engledow.
+                All content © 2011-2024 Steve Engledow.
                 All views expressed here are mine and don't reflect those of Amazon.
                 The contents of this web site are available under the terms of the MIT licence.
             </p>

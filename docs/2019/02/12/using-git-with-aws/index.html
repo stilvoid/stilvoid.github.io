@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Steve Engledow - Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
         <meta name="author" content="Steve Engledow" />
-        <meta name="description" content="All content © 2011-2023 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
         <link rel="canonical" href="https://engledow.me/2019/02/12/using-git-with-aws/" />
         <link rel="stylesheet" href="/assets/main.css">
         <link rel="stylesheet" href="/assets/code.css">
@@ -17,7 +17,9 @@
         </header>
 
         <main>
-            <article><p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/">the AWS DevOps blog</a>)</p>
+            <article>
+                <p class="tags">Tags: git aws</p>
+                <p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/">the AWS DevOps blog</a>)</p>
 <p>I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host all of my private Git repositories. My repositories are split across several AWS accounts for different purposes: personal projects, internal projects at work, and customer projects.</p>
 <p>The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit documentation</a> shows you how to configure and clone a repository from one place, but in this blog post I want to share how I manage my Git configuration across multiple AWS accounts.</p>
 <h2>Background</h2>
@@ -85,12 +87,13 @@
 </code></pre></div>
 
 <p>This example specifies that if I am working with a Git repository that is located anywhere under <code>~/code/personal/</code>, Git should load additional configuration from <code>~/code/personal/.gitconfig</code>. That additional file specifies the appropriate credential helper invocation with the corresponding AWS CLI profile selected as detailed earlier.</p>
-<p>The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <em>earlier</em> in the config.</p></article>
+<p>The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <em>earlier</em> in the config.</p>
+            </article>
         </main>
 
         <footer>
             <p>
-                All content © 2011-2023 Steve Engledow.
+                All content © 2011-2024 Steve Engledow.
                 All views expressed here are mine and don't reflect those of Amazon.
                 The contents of this web site are available under the terms of the MIT licence.
             </p>

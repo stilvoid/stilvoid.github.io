@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Steve Engledow - Keychain and GnuPG >= 2.1</title>
         <meta name="author" content="Steve Engledow" />
-        <meta name="description" content="All content © 2011-2023 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
         <link rel="canonical" href="https://engledow.me/2015/01/02/keychain-and-gnupg-2-1/" />
         <link rel="stylesheet" href="/assets/main.css">
         <link rel="stylesheet" href="/assets/code.css">
@@ -17,7 +17,9 @@
         </header>
 
         <main>
-            <article><p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a> to manage my ssh and gpg agents. I did this with the following in my <code>.bashrc</code></p>
+            <article>
+                <p class="tags">Tags: pgp gpg ssh linux</p>
+                <p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a> to manage my ssh and gpg agents. I did this with the following in my <code>.bashrc</code></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Start ssh-agent</span>
 <span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>keychain<span class="w"> </span>--quiet<span class="w"> </span>--eval<span class="w"> </span>id_rsa<span class="k">)</span>
 </code></pre></div>
@@ -28,12 +30,13 @@
 <div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPG_AGENT_INFO</span><span class="o">=</span>~/.gnupg/S.gpg-agent:<span class="k">$(</span>pidof<span class="w"> </span>gpg-agent<span class="k">)</span>:1
 </code></pre></div>
 
-<p>:)</p></article>
+<p>:)</p>
+            </article>
         </main>
 
         <footer>
             <p>
-                All content © 2011-2023 Steve Engledow.
+                All content © 2011-2024 Steve Engledow.
                 All views expressed here are mine and don't reflect those of Amazon.
                 The contents of this web site are available under the terms of the MIT licence.
             </p>

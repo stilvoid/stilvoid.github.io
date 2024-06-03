@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Steve Engledow - Twofer</title>
         <meta name="author" content="Steve Engledow" />
-        <meta name="description" content="All content © 2011-2023 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
         <link rel="canonical" href="https://engledow.me/2015/09/17/twofer/" />
         <link rel="stylesheet" href="/assets/main.css">
         <link rel="stylesheet" href="/assets/code.css">
@@ -17,7 +17,9 @@
         </header>
 
         <main>
-            <article><p>After toying with the idea for some time, I decided I'd try setting up <a href="https://en.wikipedia.org/wiki/Two-factor_authentication">2FA</a> on my laptop. As usual, the <a href="https://wiki.archlinux.org/">arch wiki</a> had a nicely written <a href="https://wiki.archlinux.org/index.php/Google_Authenticator">article on setting up 2FA</a> with <a href="https://github.com/google/google-authenticator/tree/master/libpam">the PAM module</a> for <a href="https://github.com/google/google-authenticator">Google Authenticator</a>.</p>
+            <article>
+                <p class="tags">Tags: security linux</p>
+                <p>After toying with the idea for some time, I decided I'd try setting up <a href="https://en.wikipedia.org/wiki/Two-factor_authentication">2FA</a> on my laptop. As usual, the <a href="https://wiki.archlinux.org/">arch wiki</a> had a nicely written <a href="https://wiki.archlinux.org/index.php/Google_Authenticator">article on setting up 2FA</a> with <a href="https://github.com/google/google-authenticator/tree/master/libpam">the PAM module</a> for <a href="https://github.com/google/google-authenticator">Google Authenticator</a>.</p>
 <p>I followed the instructions for setting up 2FA for ssh and that worked seamlessly so I decided I'd then go the whole hog and enable the module in <code>/etc/pam.d/system-auth</code> which would mean I'd need it any time I had to login at all.</p>
 <p>Adding the line:</p>
 <div class="codehilite"><pre><span></span><code>auth  sufficient  pam_google_authenticator.so
@@ -60,12 +62,13 @@ session   required  pam_unix.so
 session   optional  pam_ecryptfs.so unwrap
 session   optional  pam_permit.so
 session   required  pam_google_authenticator.so
-</code></pre></div></article>
+</code></pre></div>
+            </article>
         </main>
 
         <footer>
             <p>
-                All content © 2011-2023 Steve Engledow.
+                All content © 2011-2024 Steve Engledow.
                 All views expressed here are mine and don't reflect those of Amazon.
                 The contents of this web site are available under the terms of the MIT licence.
             </p>
