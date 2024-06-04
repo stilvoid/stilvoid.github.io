@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" >
     <link href="https://engledow.me/feed.xml" rel="self" type="application/atom+xml" />
     <link href="https://engledow.me/" rel="alternate" type="text/html" />
-    <updated>2024-06-03T10:45:25Z</updated>
+    <updated>2024-06-04T13:07:49Z</updated>
     <id>https://engledow.me/feed.xml</id>
     <title type="html">engledow.me</title>
     <subtitle>All content © 2011-2024 Steve Engledow. All views expressed here are mine and don't reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.</subtitle>
@@ -218,7 +218,7 @@ Cloning&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;into&lt;span class=&quot;w&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;Testing it out&lt;/h2&gt;
-&lt;p&gt;I use &lt;a href=&quot;https://aur.archlinux.org/packages/packer/&quot;&gt;packer&lt;/a&gt; to make using AUR easier (I&#x27;m &lt;a href=&quot;http://threevirtues.com/&quot;&gt;lazy&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&quot;https://aur.archlinux.org/packages/packer/&quot;&gt;packer&lt;/a&gt; to make using AUR easier (I&#x27;m &lt;a href=&quot;https://thethreevirtues.com/&quot;&gt;lazy&lt;/a&gt;).&lt;/p&gt;
 &lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;packer&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-S&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;heroes
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
