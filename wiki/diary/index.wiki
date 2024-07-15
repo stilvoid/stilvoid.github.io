@@ -24,70 +24,70 @@
     - [[2017-07-10|An evening of linux on the desktop]]
 
 === June ===
-    - [[2017-06-15]]
+    - [[2017-06-15|The day of linux on the desktop]]
 
 == 2016 ==
 
 === February ===
-    - [[2016-02-25]]
+    - [[2016-02-25|Digital Subscriber]]
 
 == 2015 ==
 
 === December ===
-    - [[2015-12-14]]
+    - [[2015-12-14|Ford]]
 
 === November ===
-    - [[2015-11-30]]
+    - [[2015-11-30|Sorted]]
 
 === September ===
-    - [[2015-09-17]]
+    - [[2015-09-17|Twofer]]
 
 === June ===
-    - [[2015-06-22]]
+    - [[2015-06-22|Pretty please]]
 
 === May ===
-    - [[2015-05-15]]
-    - [[2015-05-14]]
+    - [[2015-05-15|Andy and Teddy are waving goodbye]]
+    - [[2015-05-14|Building a componentised application]]
 
 === April ===
-    - [[2015-04-29]]
+    - [[2015-04-29|Why-fi?]]
 
 === March ===
-    - [[2015-03-12]]
+    - [[2015-03-12|Cleaning out my closet]]
 
 === January ===
-    - [[2015-01-02]]
+    - [[2015-01-02|Keychain and GnuPG >= 2.1]]
 
 == 2014 ==
 
 === December ===
-    - [[2014-12-09]]
-    - [[2014-12-01]]
+    - [[2014-12-09|Testing a Django app with Docker]]
+    - [[2014-12-01|Just call me Anneka]]
 
 === June ===
-    - [[2014-06-17]]
+    - [[2014-06-17|tmux]]
 
 === April ===
-    - [[2014-04-15]]
+    - [[2014-04-15|Netcat]]
 
 === January ===
-    - [[2014-01-31]]
+    - [[2014-01-31|btw]]
 
 == 2013 ==
 
 === May ===
-    - [[2013-05-10]]
+    - [[2013-05-10|Things we learned at the LUG meet]]
 
 === February ===
-    - [[2013-02-11]]
+    - [[2013-02-11|Git aux]]
 
 == 2012 ==
 
 === August ===
-    - [[2012-08-30]]
+    - [[2012-08-30|Lost at C]]
 
 === July ===
-    - [[2012-07-07]]
+    - [[2012-07-07|Ire]]
 
 == 2011 ==
 

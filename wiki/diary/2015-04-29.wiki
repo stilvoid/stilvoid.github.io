@@ -1,39 +1,36 @@
----
-title: Why-fi?
-tags: linux
----
+= Why-fi? =
 
-I'm an [arch linux](http://archlinux.org) user and I love it; there's no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.
+I’m an [[http://archlinux.org|arch linux]] user and I love it; there’s no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.
 
-It's been a while since an update in arch caused me any problems but it did today.
+It’s been a while since an update in arch caused me any problems but it did today.
 
-[It seems there's an issue](https://bbs.archlinux.org/viewtopic.php?id=196584) with the latest version of `wpa_supplicant` which renders it incompatible with the way wifi is setup at boot time. The problem was caught and resolved very quickly by package maintainers who simply rolled the `wpa_supplicant` package back. However, I was unlucky enough to have caught the intervening upgrade shortly before turning my laptop off. I came home this evening to find I had no wifi!
+[[https://bbs.archlinux.org/viewtopic.php?id=196584|It seems there’s an issue]] with the latest version of `wpa_supplicant` which renders it incompatible with the way wifi is setup at boot time. The problem was caught and resolved very quickly by package maintainers who simply rolled the `wpa_supplicant` package back. However, I was unlucky enough to have caught the intervening upgrade shortly before turning my laptop off. I came home this evening to find I had no wifi!
 
-This wasn't a huge challenge but I haven't written a blog post for a while and someone might find this useful:
+This wasn’t a huge challenge but I haven’t written a blog post for a while and someone might find this useful:
 
----
+----
 
-If your wifi doesn't start at boot...
+If your wifi doesn’t start at boot…
 
-And you're using [a laptop with no ethernet port](https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333)...
+And you’re using [[https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333|a laptop with no ethernet port]]…
 
-And you know an upgrade will solve your problem...
+And you know an upgrade will solve your problem…
 
 How do you get internet so you can upgrade?
 
 Simples :)
 
-## The steps
+==The steps==
 
 First, find the name of your wireless interface:
 
-```shell 
+{{{
 iw dev
-```
+}}}
 
 Which will output something like:
 
-```console 
+{{{
 phy#0
     Interface wlp2s0
         ifindex 2
@@ -41,38 +38,38 @@ phy#0
         addr e8:b1:fc:6c:bf:b5
         type managed
         channel 11 (2462 MHz), width: 20 MHz, center1: 2462 MHz
-```
+}}}
 
-Where `wlp2s0` is the bit we're interested in.
+Where `wlp2s0` is the bit we’re interested in.
 
 Now bring the interface up:
 
-```shell 
+{{{
 ip link set wlp2s0 up
-```
+}}}
 
 Connect to the access point:
 
-```shell 
+{{{
 iw dev wlp2s0 connect "AP name"
-```
+}}}
 
 Create a temporary configuration file for `wpa_supplicant`:
 
-```shell 
+{{{
 wpa_passphrase "AP name" "password" > /tmp/wpa.config
-```
+}}}
 
 Run `wpa_supplicant` to authenticate with the access point:
 
-```shell 
+{{{
 wpa_supplication -iwlp2s0 -c/tmp/wpa.config
-```
+}}}
 
 In another terminal (or you could have backgrounded the above), run `dhcpcd` to get an IP address from your router:
 
-```shell 
+{{{
 dhcpcd wlp2s0
-```
+}}}
 
 Update and reboot or whatever :)

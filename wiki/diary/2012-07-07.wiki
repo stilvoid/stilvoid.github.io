@@ -1,25 +1,22 @@
----
-tags: code
-title: Ire
----
+= Ire =
 
 Call me crazy (thanks) but I like regular expressions.
 
-I like them enough to have decided that what I really needed was a tool that let me put regular expressions in my regular expressions ([yo dawg](http://knowyourmeme.com/memes/xzibit-yo-dawg)). I had the idea for this a while ago but only got around to realising it a few days ago.
+I like them enough to have decided that what I really needed was a tool that let me put regular expressions in my regular expressions ([[http://knowyourmeme.com/memes/xzibit-yo-dawg|yo dawg]]). I had the idea for this a while ago but only got around to realising it a few days ago.
 
 The basic idea is a scripting language for matching text via regular expressions, and then applying further regular expressions (and replacements) dependent on those.
 
-I wanted to keep the syntax fairly free so there's support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can't be used inside braces although the opposite is fine.
+I wanted to keep the syntax fairly free so there’s support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can’t be used inside braces although the opposite is fine.
 
 Within braces, expressions should be separated by semi-colons.
 
 I also wanted support for creating named blocks of code (functions if you like) and for flexibility over the character used to delimit the parts of an expression.
 
-## Example
+==Example==
 
-After some mucking about, what I've ended up with is summat that looks like this:
+After some mucking about, what I’ve ended up with is summat that looks like this:
 
-```console 
+{{{
 >proc
     /^(.+)\s+@/Model: $1\n/pt
     /@\s+(.+)\n$/Speed: $2\n/pt
@@ -29,11 +26,11 @@ After some mucking about, what I've ended up with is summat that looks like this
 /^model name\s+:\s+//
     <proc>
     //\n/p
-```
+}}}
 
 The idea being that you pipe `/proc/cpuinfo` through that and you get a summary that looks like:
 
-```console 
+{{{
 # CPU 0
 Model: Intel(R) Core(TM) i5-2467M CPU
 Speed: 1.60GHz
@@ -49,54 +46,54 @@ Speed: 1.60GHz
 # CPU 3
 Model: Intel(R) Core(TM) i5-2467M CPU
 Speed: 1.60GHz
-```
+}}}
 
-## Breaking it down
+==Breaking it down==
 
-```console 
+{{{
 >proc
     /^(.+)\s+@/Model: $1\n/pt
     /@\s+(.+)\n$/Speed: $1\n/pt
-```
+}}}
 
 Define a block called `proc` and do not execute it yet.
 
-The first line of `proc` matches a string followed by a space and an @ symbol. It then replaces what it's found with Model: (the string at the beginning). Then it prints the result (the `p` flag) and discards the replacement that has taken place (temporary apply - the `t` flag).
+The first line of `proc` matches a string followed by a space and an @ symbol. It then replaces what it’s found with Model: (the string at the beginning). Then it prints the result (the `p` flag) and discards the replacement that has taken place (temporary apply - the `t` flag).
 
 The second line does similar but looks for the @ followed by a space, a string, and a newline then prints "Speed: (the string)".
 
-```console 
+{{{
 /^processor\s+:\s+(\d+)/# CPU $1\n/p
-```
+}}}
 
 Match a line starting with processor and print out "CPU (the number)"
 
-```console 
+{{{
 /^model name\s+:\s+//
     <proc>
     //\n/p
-```
+}}}
 
 Match a line starting with Model name, and remove everything up until the start of the data. Then call the block called `proc`. Finally, print a newline character.
 
 Obviously this is a fairly contrived example ;)
 
-## Trying it out
+==Trying it out==
 
-Like most things these days, I wrote the engine for Ire in [node.js](https://nodejs.org/en).
+Like most things these days, I wrote the engine for Ire in [[https://nodejs.org/en|node.js]].
 
 If you have that installed, you can install ire with:
 
-```shell 
+{{{
 npm install -g ire
-```
+}}}
 
-or if you're feeling less brave or more paranoid, just `npm install ire` to install it to the current folder.
+or if you’re feeling less brave or more paranoid, just `npm install ire` to install it to the current folder.
 
-Further details are in the README and [on this page](https://engledow.me/code/unloved/ire/).
+Further details are in the README and [[https://engledow.me/code/unloved/ire/|on this page]].
 
-## Final word
+==Final word==
 
 Yes, I am fully aware that this is somewhat limited in use and probably completely pointless.
 
-I'm sure *someone* will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: "you're missing the point". See my [geekcode](https://engledow.me/misc/geekcode/) for details :P
+I’m sure _someone_ will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: "you’re missing the point". See my [[https://engledow.me/misc/geekcode/|geekcode]] for details :P

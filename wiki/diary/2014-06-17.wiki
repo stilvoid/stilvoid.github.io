@@ -1,15 +1,12 @@
----
-tags: linux
-title: tmux
----
+= tmux =
 
-[tmux](http://tmux.sourceforge.net/) is the best thing ever. That is all.
+[[http://tmux.sourceforge.net/|tmux]] is the best thing ever. That is all.
 
 No, that is not all. Here is how I make use of tmux to make my life measurably more awesome:
 
-First, my `.tmux.conf`. This changes tmux's `ctrl-b` magic key binding to `ctrl-a` as I've grown far too used to hitting that from when I used [screen](https://www.gnu.org/software/screen/). I set up a few other screen-like bindings too. Finally, I set a few options that make tmux work better with urxvt.
+First, my `.tmux.conf`. This changes tmux’s `ctrl-b` magic key binding to `ctrl-a` as I’ve grown far too used to hitting that from when I used [[https://www.gnu.org/software/screen/|screen]]. I set up a few other screen-like bindings too. Finally, I set a few options that make tmux work better with urxvt.
 
-```config 
+{{{
 # Set the prefix to ^A.
 unbind C-b
 set -g prefix ^A
@@ -35,18 +32,18 @@ set -g aggressive-resize on
 set -g mode-keys vi
 set -g default-terminal screen-256color
 set -g terminal-overrides 'rxvt-unicode*:sitm@'
-```
+}}}
 
-And then here's what I have near the top of my `.bashrc`:
+And then here’s what I have near the top of my `.bashrc`:
 
-```bash 
+{{{
 # If tmux isn't already running, run it
 [ -z "$TMUX" ] && exec ~/bin/tmux
-```
+}}}
 
-...which goes with this, the contents of `~/bin/tmux`:
+…which goes with this, the contents of `~/bin/tmux`:
 
-```bash 
+{{{
 #!/bin/bash
 
 # If there are any sessions that aren't attached, attach to the first one
@@ -63,10 +60,10 @@ for line in $(tmux ls -F "#{session_name},#{session_attached}"); do
 done
 
 tmux -u
-```
+}}}
 
-Basically, what happens is that whenever I start a terminal session, if I'm not already attached to a tmux session, I find a session that's not already attached to and attach to it. If there aren't any, I create a new one.
+Basically, what happens is that whenever I start a terminal session, if I’m not already attached to a tmux session, I find a session that’s not already attached to and attach to it. If there aren’t any, I create a new one.
 
-This really tidies up my workflow and means that I never forget about any old sessions I'd detached.
+This really tidies up my workflow and means that I never forget about any old sessions I’d detached.
 
-Oh and one last thing, `ctrl-a s` is the best thing in tmux ever. It shows a list of tmux sessions which can be expanded to show what's running in them and you can then interactively re-attach your terminal to one of them. In short, I can start a terminal from any desktop or vt and quickly attach to something that's happening on any other. I use this feature **a lot**.
+Oh and one last thing, `ctrl-a s` is the best thing in tmux ever. It shows a list of tmux sessions which can be expanded to show what’s running in them and you can then interactively re-attach your terminal to one of them. In short, I can start a terminal from any desktop or vt and quickly attach to something that’s happening on any other. I use this feature *a lot*.

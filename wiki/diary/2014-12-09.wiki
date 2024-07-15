@@ -1,15 +1,12 @@
----
-tags: proxama docker django
-title: Testing a Django app with Docker
----
+= Testing a Django app with Docker =
 
-I've been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
+I’ve been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
 
-The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don't need to care that I'm not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.
+The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don’t need to care that I’m not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.
 
-Here's an annotated [Dockerfile](http://docs.docker.com/reference/builder/) with the project-specific details removed.
+Here’s an annotated [[http://docs.docker.com/reference/builder/|Dockerfile]] with the project-specific details removed.
 
-```dockerfile 
+{{{
 # We start with ubuntu 14.04
 
 FROM ubuntu:14.04
@@ -69,29 +66,29 @@ COPY entrypoint.sh /home/ubuntu/
 EXPOSE 8000
 
 ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
-```
+}}}
 
-And here's the entrypoint script that nicely wraps up running the django application:
+And here’s the entrypoint script that nicely wraps up running the django application:
 
-```bash 
+{{{
 #!/bin/bash
 . ./.bashrc
 cd myapp/src
 ./manage.py $*
-```
+}}}
 
 You generate the base docker image from these files with `docker build -t myapp ./`.
 
-Then, when you're ready to run a test suite, you need the following invocation:
+Then, when you’re ready to run a test suite, you need the following invocation:
 
-```shell 
+{{{
 docker run -ti --rm -P -v ~/code/myapp:/home/ubuntu/myapp myapp test
-```
+}}}
 
-This mounts `~/code/myapp` and `/home/ubuntu/myapp` within the Docker container meaning that you're running the exact code that you're working on from inside the container :)
+This mounts `~/code/myapp` and `/home/ubuntu/myapp` within the Docker container meaning that you’re running the exact code that you’re working on from inside the container :)
 
 I have an alias that expands that for me so I only need to type `docked myapp test`.
 
 Obviously, you can substitute `test` for `runserver`, `syncdb` or whatever :)
 
-This is all a bit rough and ready but it's working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.
+This is all a bit rough and ready but it’s working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.
