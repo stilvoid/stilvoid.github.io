@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../../style.css" />
+        <title>2015-01-02</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../projects.html">Projects</a>
+                    <a href="../../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<p>
+---
+title: Keychain and GnuPG &gt;= 2.1
+tags: pgp gpg ssh linux
+---
+</p>
+
+<p>
+A while ago, I started using [keychain](<a href="http://www.funtoo.org/Keychain)">http://www.funtoo.org/Keychain)</a> to manage my ssh and gpg agents. I did this with the following in my <code>.bashrc</code>
+</p>
+
+<p>
+```bash 
+</p>
+<ul>
+<li>
+Start ssh-agent
+
+</ul>
+<p>
+eval $(keychain --quiet --eval id_rsa)
+```
+</p>
+
+<p>
+Recently, [arch](<a href="https://www.archlinux.org/)">https://www.archlinux.org/)</a> updated gpg to version 2.1.1 which, [as per the announcement](<a href="https://www.gnupg.org/faq/whats-new-in-2.1.html),">https://www.gnupg.org/faq/whats-new-in-2.1.html),</a> no longer requires the <code>GPG_AGENT_INFO</code> environment variable.
+</p>
+
+<p>
+Unfortunately, tools like keychain don't know about that and still expect it to be set, leading to some annoying breakage.
+</p>
+
+<p>
+My fix is a quick and dirty one; I appended the following to <code>.bashrc</code>
+</p>
+
+<p>
+```bash 
+export GPG_AGENT_INFO=~/.gnupg/S.gpg-agent:$(pidof gpg-agent):1
+```
+</p>
+
+<p>
+:)
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../../style.css" />
+        <title>2014-12-09</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../projects.html">Projects</a>
+                    <a href="../../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<p>
+---
+tags: proxama docker django
+title: Testing a Django app with Docker
+---
+</p>
+
+<p>
+I've been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
+</p>
+
+<p>
+The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don't need to care that I'm not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.
+</p>
+
+<p>
+Here's an annotated [Dockerfile](<a href="http://docs.docker.com/reference/builder/)">http://docs.docker.com/reference/builder/)</a> with the project-specific details removed.
+</p>
+
+<p>
+```dockerfile 
+</p>
+<ul>
+<li>
+We start with ubuntu 14.04
+
+</ul>
+<p>
+FROM ubuntu:14.04
+MAINTAINER Steve Engledow &lt;steve@engledow.me&gt;
+</p>
+
+<p>
+USER root
+</p>
+
+<ul>
+<li>
+Install OS packages
+
+<li>
+This list of packages is what gets installed by default
+
+<li>
+on Amazon's Ubuntu 14.04 AMI plus python-virtualenv
+ RUN apt-get update \
+<pre><code>&amp;&amp; apt-get -y install software-properties-common git \
+ssh python-dev python-virtualenv libmysqlclient-dev \
+libqrencode-dev swig libssl-dev curl screen
+</code></pre>
+</code></pre>
+
+<li>
+Configure custom apt repositories
+
+<li>
+and install project-specific packages
+
+</ul>
+<p>
+COPY apt-key.list apt-repo.list apt.list /tmp/
+</p>
+
+<ul>
+<li>
+Not as nice as this could be as docker defaults to sh rather than bash
+
+</ul>
+<p>
+RUN while read key; do curl --silent "$key" | apt-key add -; done &lt; /tmp/apt-key.list
+RUN while read repo; do add-apt-repository -y "$repo"; done &lt; /tmp/apt-repo.list
+RUN apt-get -qq update
+RUN while read package; do apt-get -qq -y install "$package"; done &lt; /tmp/apt.list
+</p>
+
+<ul>
+<li>
+Now we create a normal user and switch to it
+
+</ul>
+<p>
+RUN useradd -s /bin/bash -m ubuntu \
+</p>
+<pre><code>&amp;&amp; chown -R ubuntu:ubuntu /home/ubuntu \
+&amp;&amp; passwd -d ubuntu
+</code></pre>
+
+<p>
+USER ubuntu
+WORKDIR /home/ubuntu
+ENV HOME /home/ubuntu
+</p>
+
+<ul>
+<li>
+Set up a virtualenv andinstall python packages
+
+<li>
+from the requirements file
+
+</ul>
+<p>
+COPY requirements.txt /tmp/
+</p>
+
+<p>
+RUN mkdir .myenv \
+</p>
+<pre><code>&amp;&amp; virtualenv -p /usr/bin/python2.7 ~/.myenv \
+&amp;&amp; . ~/.myenv/bin/activate \
+&amp;&amp; pip install -r /tmp/requirements.txt \
+</code></pre>
+
+<ul>
+<li>
+Set PYTHONPATH and activate the virtualenv in .bashrc
+
+</ul>
+<p>
+RUN echo "export PYTHONPATH=~/myapp/src" &gt; .bashrc \
+</p>
+<pre><code>&amp;&amp; echo ". ~/.myenv/bin/activate" &gt;&gt; .bashrc
+</code></pre>
+
+<ul>
+<li>
+Copy the entrypoint script
+
+</ul>
+<p>
+COPY entrypoint.sh /home/ubuntu/
+</p>
+
+<p>
+EXPOSE 8000
+</p>
+
+<p>
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
+```
+</p>
+
+<p>
+And here's the entrypoint script that nicely wraps up running the django application:
+</p>
+
+<p>
+```bash 
+#!/bin/bash
+. ./.bashrc
+cd myapp/src
+./manage.py $*
+```
+</p>
+
+<p>
+You generate the base docker image from these files with <code>docker build -t myapp ./</code>.
+</p>
+
+<p>
+Then, when you're ready to run a test suite, you need the following invocation:
+</p>
+
+<p>
+```shell 
+docker run -ti --rm -P -v ~/code/myapp:/home/ubuntu/myapp myapp test
+```
+</p>
+
+<p>
+This mounts <code>~/code/myapp</code> and <code>/home/ubuntu/myapp</code> within the Docker container meaning that you're running the exact code that you're working on from inside the container :)
+</p>
+
+<p>
+I have an alias that expands that for me so I only need to type <code>docked myapp test</code>.
+</p>
+
+<p>
+Obviously, you can substitute <code>test</code> for <code>runserver</code>, <code>syncdb</code> or whatever :)
+</p>
+
+<p>
+This is all a bit rough and ready but it's working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

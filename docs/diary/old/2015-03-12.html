@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../../style.css" />
+        <title>2015-03-12</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../projects.html">Projects</a>
+                    <a href="../../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<p>
+---
+tags: arch linux bash
+title: Cleaning out my closet
+---
+</p>
+
+<p>
+Or: <span id="-Finding out what crud you installed that's eating all of your space in Arch Linux"></span><strong id="Finding out what crud you installed that's eating all of your space in Arch Linux">Finding out what crud you installed that's eating all of your space in Arch Linux</strong>
+</p>
+
+<p>
+I started running out of space on one of my [Arch](<a href="https://www.archlinux.org/)">https://www.archlinux.org/)</a> boxes and wondered (beyond what was in my home directory) what I'd installed that was eating up all the space.
+</p>
+
+<p>
+A little bit of bash-fu does the job:
+</p>
+
+<p>
+```bash 
+for pkg in $(pacman -Qq); do
+</p>
+<pre><code>size=\((pacman -Qi \)pkg | grep "Installed Size" | cut -d ":" -f 2)
+echo "\(size | \)pkg"
+</code></pre>
+<p>
+done | sed -e 's/ //g' | sort -h
+```
+</p>
+
+<p>
+This outputs a list of packages with those using the most disk space at the bottom:
+</p>
+
+<p>
+```console 
+25.99MiB|llvm-libs
+31.68MiB|raspberrypi-firmware-examples
+32.69MiB|systemd
+32.86MiB|glibc
+41.88MiB|perl
+54.31MiB|gtk2
+62.13MiB|python2
+73.27MiB|gcc
+77.93MiB|python
+84.21MiB|linux-firmware
+```
+</p>
+
+<p>
+The above is from my [pi](<a href="http://www.raspberrypi.org/);">http://www.raspberrypi.org/);</a> not much I can uninstall there ;)
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../style.css" />
+        <title>2015-06-22</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../index.html">Home</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<div id="Pretty please"><h1 id="Pretty please" class="header"><a href="#Pretty please">Pretty please</a></h1></div>
+
+<p>
+I’ve been making <a href="https://github.com/stilvoid/please/">a thing</a> to solve some problems I always face while building web APIs. <a href="http://curl.haxx.se/">Curl</a> is lovely but it’s a bit <em>too</em> flexible.
+</p>
+
+<p>
+Also, web services generally spit out one of a fairly common set of formats: (json, xml, html) and I often just want to grab a value from the response and use it in a script - maybe to make the next call in a workflow.
+</p>
+
+<p>
+So I made <a href="https://github.com/stilvoid/please/">please</a> which makes it super simple to do things like making a web request and grabbing a particular value from the response.
+</p>
+
+<p>
+For example, here’s how you’d get the page title from this site:
+</p>
+
+<pre>
+please get https://engledow.me/ | please parse html.head.title.#text
+</pre>
+
+<p>
+Or getting a value out of the json returned by <a href="http://jsontest.com/">jsontest.com</a>’s IP address API:
+</p>
+
+<pre>
+please get http://ip.jsontest.com/ | please parse ip
+</pre>
+
+<p>
+The <code>parse</code> part of <code>please</code> is the most fun; it can convert between a few different formats. Something I do quite often is grabbing a json response from an API and spitting it out as yaml so I can read it easily. For example:
+</p>
+
+<pre>
+please get http://date.jsontest.com/ | please parse -o yaml
+</pre>
+
+<p>
+(alright so that’s a poor example but the difference is huge when it’s a complicated bit of json)
+</p>
+
+<p>
+Also handy for turning an unreadable mess of xml into yaml (I love yaml for its readability):
+</p>
+
+<pre>
+echo '&lt;docroot type="messydoc"&gt;&lt;a&gt;&lt;b dir="up"&gt;A tree&lt;/b&gt;&lt;b dir="down"&gt;The ground&lt;/b&gt;&lt;/a&gt;&lt;/docroot&gt;' | please parse -o yaml
+</pre>
+
+<p>
+As an example, of the kinds of things you can play with, I made <a href="http://json-graph.offend.me.uk/">this tool for generating graphs from json</a>.
+</p>
+
+<p>
+I’m still working on <code>please</code>; there will be bugs; <a href="https://github.com/stilvoid/please/issues">let me know about them</a>.
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

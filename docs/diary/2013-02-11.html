@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../style.css" />
+        <title>2013-02-11</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../index.html">Home</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<div id="Git aux"><h1 id="Git aux" class="header"><a href="#Git aux">Git aux</a></h1></div>
+
+<p>
+For a while now, I’ve been wanting to keep various parts of my home directory in sync.
+</p>
+
+<p>
+At first, I created a git repository for storing my <a href="https://en.wikipedia.org/wiki/Dotfile#Unix_and_Unix-like_environments">dotfiles</a> but I found it a pain to keep the repository up-to-date.
+</p>
+
+<p>
+Fairly recently, someone pointed out <a href="http://git-annex.branchable.com/">git-annex</a> to me. After a good read of the documentation, it sounded like it could be useful but probably more than I needed and perhaps not quite what I really wanted. Besides, I couldn’t get the bloody thing to install.
+</p>
+
+<p>
+So I did what any geek would do, I wrote my own :D
+</p>
+
+<p>
+See <a href="https://github.com/stilvoid/git-aux">git-aux</a> (or <a href="https://aur.archlinux.org/packages/git-aux-git/">AUR</a> if you’re on <a href="https://www.archlinux.org/">Arch Linux</a>).
+</p>
+
+<p>
+Basically, I wanted an easy to way to keep a git repository in sync with an directory external to it. With git aux installed, I get pretty much exactly what I wanted with a few simple commands.
+</p>
+
+<p>
+After creating a new git repository, I do <code>git aux init ~/</code> to tell git-aux that I want it to sync this repo with my home directory.
+</p>
+
+<p>
+I then do <code>git aux add ~/.vimrc ~/.ssh/config ~/.bashrc</code> and any other files I want from my home directory. This copies those files into the repository and I can then commit them in the usual way.
+</p>
+
+<p>
+If I make changes in my home directory, I use <code>git aux sync</code> to update the copies in the repository.
+</p>
+
+<p>
+If I’ve made changes on another machine and want to apply those changes from the repo to the home dir on this machine, I do <code>git aux apply</code>.
+</p>
+
+<p>
+And that’s it :)
+</p>
+
+<p>
+It’s unfinished and probably broken in places but mostly does what I was looking for.
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

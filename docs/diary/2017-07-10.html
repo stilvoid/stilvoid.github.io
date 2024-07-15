@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../style.css" />
+        <title>2017-07-10</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../index.html">Home</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<div id="An evening of linux on the desktop"><h1 id="An evening of linux on the desktop" class="header"><a href="#An evening of linux on the desktop">An evening of linux on the desktop</a></h1></div>
+
+<p>
+<a href="2017-06-15.html">Last time</a>, I wrote about trying a few desktop environments to see what's out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try <a href="https://atom.io/">a few of</a> <a href="https://www.sublimetext.com/">the more recent</a> <a href="https://code.visualstudio.com/">code editors</a> that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I've been meaning to give these a go for a while. Needless to say, as a long-time <a href="https://www.vim.org/">vim</a> user, I just found myself frustrated that I wasn't able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn't the same as a very limited set of functionality was there. As for the integrated environment, when you have <a href="2014-06-17.html">tmux running by default</a>, everything's integrated anyway.
+</p>
+
+<p>
+And, as with editors, so once again with desktop environments. I've decided to retract my previous hasty promise and no longer to bother with trying any other environments; <a href="https://i3wm.org/">i3</a> is more than fine :)
+</p>
+
+<p>
+However, I did spend some time this evening making things a bit prettier so here are some delicious configs for posterity:
+</p>
+
+<div id="An evening of linux on the desktop-Configs"><h2 id="Configs" class="header"><a href="#An evening of linux on the desktop-Configs">Configs</a></h2></div>
+
+<div id="An evening of linux on the desktop-Configs-Xresources"><h3 id="Xresources" class="header"><a href="#An evening of linux on the desktop-Configs-Xresources">Xresources</a></h3></div>
+
+<p>
+I've switched back to xterm from urxvt because, er... dunno.
+</p>
+
+<p>
+Anyway, I set some nice colours for terminals and some magic stuff that makes man pages all colourful :)
+</p>
+
+<pre>
+XTerm*faceName: xft:Hack:regular:size=12
+*termName: xterm-256color
+
+! Colourful man pages
+*VT100.colorBDMode:     true
+*VT100.colorBD:         cyan
+*VT100.colorULMode:     true
+*VT100.colorUL:         darkcyan
+*VT100.colorITMode:     true
+*VT100.colorIT:         yellow
+*VT100.veryBoldColors:  518
+
+! terminal colours
+*foreground:#CCCCCC
+*background:#2B2D2E
+
+!black darkgray
+*color0:    #2B2D2E
+*color8:    #808080
+!darkred red
+*color1:    #FF0044
+*color9:    #F92672
+!darkgreen green
+*color2:    #82B414
+*color10:   #A6E22E
+!darkyellow yellow
+*color3:    #FD971F
+*color11:   #E6DB74
+!darkblue blue
+*color4:    #266C98
+*color12:   #7070F0
+!darkmagenta magenta
+*color5:    #AC0CB1
+*color13:   #D63AE1
+!darkcyan cyan
+*color6:    #AE81FF
+*color14:   #66D9EF
+!gray white
+*color7:    #CCCCCC
+*color15:   #F8F8F2
+</pre>
+
+<div id="An evening of linux on the desktop-Configs-Vimrc"><h3 id="Vimrc" class="header"><a href="#An evening of linux on the desktop-Configs-Vimrc">Vimrc</a></h3></div>
+
+<p>
+Nothing exciting here except for discovering a few options I hadn't previous known about:
+</p>
+
+<pre>
+" Show a marker at the 80th column to encourage nice code
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkblue
+
+" Scroll the text when we're 3 lines from the top or bottom
+set so=3
+
+" Use browser-style incremental search
+set incsearch
+
+" Override the default background colour in xoria256 to match the terminal background
+highlight Normal ctermbg=black
+
+" I like this theme
+colorscheme xoria256
+</pre>
+
+<div id="An evening of linux on the desktop-Configs-i3"><h3 id="i3" class="header"><a href="#An evening of linux on the desktop-Configs-i3">i3</a></h3></div>
+
+<p>
+I made a few colour tweaks to my i3 config so I get colours that match my new Xresources. One day, I might see if it's easy enough to have them both read colour definitions from the same place so I don't have to define things twice.
+</p>
+
+<div id="An evening of linux on the desktop-The result"><h2 id="The result" class="header"><a href="#An evening of linux on the desktop-The result">The result</a></h2></div>
+
+<p>
+Here's what it looks like:
+</p>
+
+<p>
+<img src="https://static.offend.me.uk/media/images/blog/89/01.jpg" alt="My new desktop" />
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

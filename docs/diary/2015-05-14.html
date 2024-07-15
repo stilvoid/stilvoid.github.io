@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../style.css" />
+        <title>2015-05-14</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../index.html">Home</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<div id="Building a componentised application"><h1 id="Building a componentised application" class="header"><a href="#Building a componentised application">Building a componentised application</a></h1></div>
+
+<p>
+Most of what’s here is hardly new ground but I felt it worth noting down the current strategy we’re using to develop and build what we’re working on at <a href="http://www.locationsciences.ai/">Proxama</a>.
+</p>
+
+<p>
+Without going into any of the details, it’s a web application with a front end written using <a href="http://emberjs.com/">Ember</a> and various services that it calls out to, written using whatever seems appropriate per service.
+</p>
+
+<p>
+At the outset of the project, we decided we would bite the bullet and build for <a href="https://www.docker.com/">Docker</a> from the outset. This meant we would get to avoid the usual dependency and developer environment setup nightmares.
+</p>
+
+<div id="Building a componentised application-The problem"><h2 id="The problem" class="header"><a href="#Building a componentised application-The problem">The problem</a></h2></div>
+
+<p>
+What we quickly realised as we started to put the bare bones of a few of the services in place, was that we had three seemingly conflicting goals for each component and for the application as a whole.
+</p>
+
+<ul>
+<li>
+Build images that can be deployed in production.
+
+<li>
+Allow developers to run services locally.
+
+<li>
+Provide a means for running unit tests (both by developers and our CI server).
+
+</ul>
+<p>
+So here’s what we’ve ended up with:
+</p>
+
+<div id="Building a componentised application-The solution"><h2 id="The solution" class="header"><a href="#Building a componentised application-The solution">The solution</a></h2></div>
+
+<p>
+_Or: <a href="http://docs.docker.com/compose/">docker-compose</a> to the rescue_
+</p>
+
+<div id="Building a componentised application-The solution-Folder structure"><h3 id="Folder structure" class="header"><a href="#Building a componentised application-The solution-Folder structure">Folder structure</a></h3></div>
+
+<p>
+Here’s what the project layout looks like:
+</p>
+
+<pre>
+Project
+|
++-docker-compose.yml
+|
++-Service 1
+| |
+| +-Dockerfile
+| |
+| +-docker.compose.yml
+| |
+| +-&lt;other files&gt;
+|
++-Service 2
+  |
+  |
+  +-Dockerfile
+  |
+  +-docker.compose.yml
+  |
+  +-&lt;other files&gt;
+</pre>
+
+<div id="Building a componentised application-The solution-Building for production"><h3 id="Building for production" class="header"><a href="#Building a componentised application-The solution-Building for production">Building for production</a></h3></div>
+
+<p>
+This is the easy bit and is where we started first. The <code>Dockerfile</code> for each service was designed to run everything with the defaults. Usually, this is something simple like:
+</p>
+
+<pre>
+FROM python:3-onbuild
+CMD ["python", "main.py"]
+</pre>
+
+<p>
+Our CI server can easily take these, produce images, and push them to the registry.
+</p>
+
+<div id="Building a componentised application-The solution-Allowing developers to run services locally"><h3 id="Allowing developers to run services locally" class="header"><a href="#Building a componentised application-The solution-Allowing developers to run services locally">Allowing developers to run services locally</a></h3></div>
+
+<p>
+This is slightly harder. In general, each service wants to do something slightly different when being run for development; e.g. automatically restarting when code changes. Additionally, we don’t want to have to rebuild an image every time we make a code change. This is where <code>docker-compose</code> comes in handy.
+</p>
+
+<p>
+The <code>docker-compose.yml</code> at the root of the project folder looks like this:
+</p>
+
+<pre>
+service1:
+    build: Service 1
+    environment:
+        ENV: dev
+    volumes:
+        - Service 1:/usr/src/app
+    links:
+        - service2
+        - db
+    ports:
+        - 8001:8000
+
+service2:
+    build: Service2
+    environment:
+        ENV: dev
+    volumes:
+        - Service 2:/usr/src/app
+    links:
+        - service1
+        - db
+    ports:
+        - 8002:8000
+
+db:
+    image: mongo
+</pre>
+
+<p>
+This gives us several features right away:
+</p>
+
+<ul>
+<li>
+We can locally run all of the services together with <code>docker-compose up</code>
+
+<li>
+The <code>ENV</code> environment variable is set to <code>dev</code> in each service so that the service can configure itself when it starts to run things in "dev" mode where needed.
+
+<li>
+The source folder for each service is mounted inside the container. This means you don’t need to rebuild the image to try out new code.
+
+<li>
+Each service is bound to a different port so you can connect to each part directly where needed.
+
+<li>
+Each service defines links to the other services it needs.
+
+</ul>
+<div id="Building a componentised application-The solution-Running the tests"><h3 id="Running the tests" class="header"><a href="#Building a componentised application-The solution-Running the tests">Running the tests</a></h3></div>
+
+<p>
+This was the trickiest part to get right. Some services have dependencies on other things even just to get unit tests running. For example, <a href="http://python-eve.org/">Eve</a> is a huge pain to get running with a fake database so it’s much easier to just link it to a temporary "real" database.
+</p>
+
+<p>
+Additionally, we didn’t want to mess with the idea that the images should run production services by default but also didn’t want to require folks to need to churn out complicated <code>docker</code> invocations like <code>docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest</code> just to run the test suite after coding up some new features.
+</p>
+
+<p>
+So, it was docker-compose to the rescue again :)
+</p>
+
+<p>
+Each service has a <code>docker-compose.yml</code> that looks something like:
+</p>
+
+<pre>
+tests:
+    build: .
+    command: python -m unittest
+    volumes:
+        - .:/usr/src/app
+    links:
+        - db
+
+db:
+    image: mongo
+</pre>
+
+<p>
+Which sets up any dependencies needed just for the tests, mounts the local source in the container, and runs the desired command for running the tests.
+</p>
+
+<p>
+So, a developer (or the CI box) can run the unit tests with:
+</p>
+
+<pre>
+docker-compose run tests
+</pre>
+
+<div id="Building a componentised application-Summary"><h2 id="Summary" class="header"><a href="#Building a componentised application-Summary">Summary</a></h2></div>
+
+<ul>
+<li>
+Each <code>Dockerfile</code> builds an image that can go straight into production without further configuration required.
+
+<li>
+Each image runs in "developer mode" if the <code>ENV</code> environment variable is set.
+
+<li>
+Running <code>docker-compose up</code> from the root of the project gets you a full stack running locally in developer mode.
+
+<li>
+Running <code>docker-compose run tests</code> in each service’s own folder will run the unit tests for that service - starting any dependencies as needed.
+
+</ul>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>

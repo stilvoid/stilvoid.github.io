@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="Stylesheet" type="text/css" href="../style.css" />
+        <title>2012-07-07</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <p>
+                    <a href="../index.html">Home</a>
+                    <a href="../projects.html">Projects</a>
+                    <a href="../diary/index.html">Blog</a>
+                </p>
+            </nav>
+        </header>
+
+        <main>
+            
+<div id="Ire"><h1 id="Ire" class="header"><a href="#Ire">Ire</a></h1></div>
+
+<p>
+Call me crazy (thanks) but I like regular expressions.
+</p>
+
+<p>
+I like them enough to have decided that what I really needed was a tool that let me put regular expressions in my regular expressions (<a href="http://knowyourmeme.com/memes/xzibit-yo-dawg">yo dawg</a>). I had the idea for this a while ago but only got around to realising it a few days ago.
+</p>
+
+<p>
+The basic idea is a scripting language for matching text via regular expressions, and then applying further regular expressions (and replacements) dependent on those.
+</p>
+
+<p>
+I wanted to keep the syntax fairly free so there’s support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can’t be used inside braces although the opposite is fine.
+</p>
+
+<p>
+Within braces, expressions should be separated by semi-colons.
+</p>
+
+<p>
+I also wanted support for creating named blocks of code (functions if you like) and for flexibility over the character used to delimit the parts of an expression.
+</p>
+
+<div id="Ire-Example"><h2 id="Example" class="header"><a href="#Ire-Example">Example</a></h2></div>
+
+<p>
+After some mucking about, what I’ve ended up with is summat that looks like this:
+</p>
+
+<pre>
+&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $2\n/pt
+
+/^processor\s+:\s+(\d+)/# CPU $1\n/p
+
+/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</pre>
+
+<p>
+The idea being that you pipe <code>/proc/cpuinfo</code> through that and you get a summary that looks like:
+</p>
+
+<pre>
+# CPU 0
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 1
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 2
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 3
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+</pre>
+
+<div id="Ire-Breaking it down"><h2 id="Breaking it down" class="header"><a href="#Ire-Breaking it down">Breaking it down</a></h2></div>
+
+<pre>
+&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $1\n/pt
+</pre>
+
+<p>
+Define a block called <code>proc</code> and do not execute it yet.
+</p>
+
+<p>
+The first line of <code>proc</code> matches a string followed by a space and an @ symbol. It then replaces what it’s found with Model: (the string at the beginning). Then it prints the result (the <code>p</code> flag) and discards the replacement that has taken place (temporary apply - the <code>t</code> flag).
+</p>
+
+<p>
+The second line does similar but looks for the @ followed by a space, a string, and a newline then prints "Speed: (the string)".
+</p>
+
+<pre>
+/^processor\s+:\s+(\d+)/# CPU $1\n/p
+</pre>
+
+<p>
+Match a line starting with processor and print out "CPU (the number)"
+</p>
+
+<pre>
+/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</pre>
+
+<p>
+Match a line starting with Model name, and remove everything up until the start of the data. Then call the block called <code>proc</code>. Finally, print a newline character.
+</p>
+
+<p>
+Obviously this is a fairly contrived example ;)
+</p>
+
+<div id="Ire-Trying it out"><h2 id="Trying it out" class="header"><a href="#Ire-Trying it out">Trying it out</a></h2></div>
+
+<p>
+Like most things these days, I wrote the engine for Ire in <a href="https://nodejs.org/en">node.js</a>.
+</p>
+
+<p>
+If you have that installed, you can install ire with:
+</p>
+
+<pre>
+npm install -g ire
+</pre>
+
+<p>
+or if you’re feeling less brave or more paranoid, just <code>npm install ire</code> to install it to the current folder.
+</p>
+
+<p>
+Further details are in the README and <a href="https://engledow.me/code/unloved/ire/">on this page</a>.
+</p>
+
+<div id="Ire-Final word"><h2 id="Final word" class="header"><a href="#Ire-Final word">Final word</a></h2></div>
+
+<p>
+Yes, I am fully aware that this is somewhat limited in use and probably completely pointless.
+</p>
+
+<p>
+I’m sure <em>someone</em> will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: "you’re missing the point". See my <a href="https://engledow.me/misc/geekcode/">geekcode</a> for details :P
+</p>
+
+        </main>
+
+        <footer>
+            <p>
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+            </p>
+        </footer>
+    </body>
+</html>
