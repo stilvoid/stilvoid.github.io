@@ -1,38 +1,35 @@
----
-tags: arch linux games legacy
-title: "Heroes: Building some old code"
----
+= Heroes: Building some old code =
 
-For the end result of this post, see [my AUR package of Heroes](https://aur.archlinux.org/packages/heroes/).
+For the end result of this post, see [[https://aur.archlinux.org/packages/heroes/|my AUR package of Heroes]].
 
----
+----
 
-The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was [Heroes](http://heroes.sourceforge.net). It's a clone of [Snake/Tron/Nibbles](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) but with some fun additions, a nice graphical style, and some funky visual effects.
+The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was [[http://heroes.sourceforge.net|Heroes]]. It's a clone of [[https://en.wikipedia.org/wiki/Snake_(video_game_genre|Snake/Tron/Nibbles]]) but with some fun additions, a nice graphical style, and some funky visual effects.
 
-![Heroes screenshot](http://heroes.sourceforge.net/img/snap5.png)
+{{http://heroes.sourceforge.net/img/snap5.png|Heroes screenshot}}
 
 So, of course, I immediately decided to install it.
 
-```shell 
+{{{
 $ pacman -Ss heroes
-```
+}}}
 
-No results. Nothing in the [AUR](https://wiki.archlinux.org/index.php/Arch_User_Repository) either. There is only one other course of action: I'm going to create an AUR package for it!
+No results. Nothing in the [[https://wiki.archlinux.org/index.php/Arch_User_Repository|AUR]] either. There is only one other course of action: I'm going to create an AUR package for it!
 
 It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.
 
-## Getting Heroes to compile in 2018
+== Getting Heroes to compile in 2018 ==
 
-I put together a basic [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) that pulls down the source and data files from the Heroes sourceforge page and then runs:
+I put together a basic [[https://wiki.archlinux.org/index.php/PKGBUILD|PKGBUILD]] that pulls down the source and data files from the Heroes sourceforge page and then runs:
 
-```console
+{{{
 ./configure
 make
-```
+}}}
 
 Here's the first of what I'm sure are many failure messages:
 
-```console
+{{{
 hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration 
  static a_pcx_image tile_set_img;
                     ^~~~~~~~~~~~
@@ -40,23 +37,23 @@ In file included from hedlite.c:44:
 const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        
  extern a_pcx_image tile_set_img, font_deck_img;                                            
                     ^~~~~~~~~~~~
-```
+}}}
 
 Some forewarning: it's been quite some time since I wrote anything serious in C and I was never an expert in it anyway. But I think I know enough to fix this and so just commented out the static declaration as, after poking around in the code a bit, it doesn't seem like it's necessary anyway.
 
 Now the compilation succeeds but I get the following error during linking:
 
-```console
+{{{
 /usr/bin/ld: camera.o: undefined reference to symbol 'sin@@GLIBC_2.2.5'
 /usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line
-```
+}}}
 
 Turns out that for some reason, the developers forgot to include the math<small>(s)</small> library. I'm guessing that perhaps it used to be linked by default in a previous version of GCC.
 
-```console
+{{{
 LDFLAGS=-lm ./configure
 make
-```
+}}}
 
 Now it at least compiles correctly! Next up, compiling the data, music, and sound effects packages.
 
@@ -64,19 +61,19 @@ Amazingly, those all worked correctly and I was able to play the game!
 
 However, this game was written a while ago and originally targeted MS-DOS so it has a window size of 320x200 which looks rather ridiculous on my 1920x1080 desktop ;)
 
-[![Tiny Heroes window screenshot]({{"/assets/images/2018-08-14-heroes-small.png" | absolute_url}})]({{"/assets/images/2018-08-14-heroes.png" | absolute_url}})
+{{../../images/2018-08-14-heroes-small.png|Tiny Heroes window screenshot}}
 
 So I set about trying to set the default screen mode so that the game starts in full screen...
 
 Fortunately, it looks like this is relatively easy. I just modified a few variables and changed a command line flag from `-F | --full-screen` to `-W | --windowed`.
 
-Next up, rather than rely on [SDL](https://www.libsdl.org/)'s built-in scaling (it looks blurry and weird), I need to enable Heroes' quadruple flag `-4` by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I'm sure I'll receive bug reports if it's not ;)
+Next up, rather than rely on [[https://www.libsdl.org/|SDL]]'s built-in scaling (it looks blurry and weird), I need to enable Heroes' quadruple flag `-4` by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I'm sure I'll receive bug reports if it's not ;)
 
 The very last thing I've done is to enable the high quality mixer by default and remove the command line option from the game. CPU is a little more abundant now than it was in 2002 ;)
 
-[Here's my final patch file](https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes).
+[[https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes|Here's my final patch file]].
 
-## Submitting the AUR package
+== Submitting the AUR package ==
 
 Things have changed since I last submitted a package to the AUR so here's a brief writeup - if only to remind myself in future ;)
 
@@ -84,30 +81,30 @@ First step was to update the SSH key in my AUR account as it contained a key fro
 
 Next up, I added a remote to my repository:
 
-```console
+{{{
 $ git remote add aur ssh://aur@aur.archlinux.org/heroes.git
 $ git fetch aur  # This step causes AUR to create a record for the package
-```
+}}}
 
 The next step is to generate AUR's `.SRCINFO` file and rebase it into every commit (AUR requires this).
 
-```console
+{{{
 $ git filter-branch --tree-filter "makepkg --printsrcinfo > .SRCINFO"
-```
+}}}
 
 And then push it to the AUR repository:
 
-```console
+{{{
 $ git push -u aur master
-```
+}}}
 
-## Testing it out
+== Testing it out ==
 
-I use [packer](https://aur.archlinux.org/packages/packer/) to make using AUR easier (I'm [lazy](https://thethreevirtues.com/)).
+I use [[https://aur.archlinux.org/packages/packer/|packer]] to make using AUR easier [[https://thethreevirtues.com/|I'm lazy]]).
 
-```console
+{{{
 $ packer -S heroes
-```
+}}}
 
 SUCCESS!
 

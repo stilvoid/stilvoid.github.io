@@ -1,32 +1,27 @@
-= Diary =
-== 2024 ==
-
-=== July ===
-    - [[2024-07-09|Today]]
-
+= Posts =
 == 2019 ==
 
 === November ===
-    - [[2019-11-13]]
+    - [[2019-11-13|Maur - A minimal AUR helper]]
 
 === February ===
-    - [[2019-02-12]]
+    - [[2019-02-12|Using Git with AWS CodeCommit Across Multiple AWS Accounts]]
 
 == 2018 ==
 
 === November ===
-    - [[2018-11-08]]
+    - [[2018-11-08|git-get]]
 
 === August ===
-    - [[2018-08-14]]
+    - [[2018-08-14|Heroes: Building some old code]]
 
 === June ===
-    - [[2018-06-03]]
+    - [[2018-06-03|Shue]]
 
 == 2017 ==
 
 === July ===
-    - [[2017-07-10]]
+    - [[2017-07-10|An evening of linux on the desktop]]
 
 === June ===
     - [[2017-06-15]]

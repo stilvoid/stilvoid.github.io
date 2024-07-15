@@ -1,13 +1,10 @@
----
-tags: arch linux aur
-title: Maur - A minimal AUR helper
----
+= Maur - A minimal AUR helper =
 
-This post is about the [Arch User Repository](https://aur.archlinux.org/). If you're not an [Arch](https://www.archlinux.org/) user, probably just move along ;)
+This post is about the [[https://aur.archlinux.org/|Arch User Repository]]. If you're not an [[https://www.archlinux.org/|Arch]] user, probably just move along ;)
 
-There are [lots of AUR helpers](https://aur.archlinux.org/packages/?O=0&K=aur+helper) in existence already but, in the best traditions of open source, none of them work exactly how I want an AUR helper to work, so I [created a new one](https://xkcd.com/927/).
+There are [[https://aur.archlinux.org/packages/?O=0&K=aur+helper|lots of AUR helpers]] in existence already but, in the best traditions of open source, none of them work exactly how I want an AUR helper to work, so I [[https://xkcd.com/927/|created a new one]].
 
-Here it is: <https://github.com/stilvoid/maur>
+Here it is: [[https://github.com/stilvoid/maur]]
 
 `maur` (pronounced like "more") is tiny. At the time of writing, it's 49 lines of bash. It also has very few features.
 
@@ -26,7 +23,7 @@ The "help" when installing a package is this, and nothing more:
 
 If you think `maur` needs more features, use a different AUR helper.
 
-If you find bugs, please [submit an issue](https://github.com/stilvoid/maur/issues/new) or, even better, a [pull request](https://github.com/stilvoid/maur/compare).
+If you find bugs, please [[https://github.com/stilvoid/maur/issues/new|submit an issue]] or, even better, a [[https://github.com/stilvoid/maur/compare|pull request]].
 
 ## Example usage
 
@@ -38,7 +35,7 @@ If you want to search for a package in the AUR, you can grep for it ;)
 
 ### Installing a package
 
-If you want to install a package, for example [yay](https://aur.archlinux.org/packages/yay):
+If you want to install a package, for example [[https://aur.archlinux.org/packages/yay|yay]]:
 
 `maur yay`
 
