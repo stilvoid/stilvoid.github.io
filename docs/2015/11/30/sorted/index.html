@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Sorted</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2015/11/30/sorted/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Sorted</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: code</p>
+                <p>I decided to restructure the folder I keep code in (<code>~/code</code>, natch) - taking my cue from <a href="https://golang.org/doc/code.html">how Go does it</a> - so that the folder structure represents where code has come from.</p>
+<p>As with all things, moving a couple of hundred folders by hand seemed far too daunting so I wrote a bash script to do it.</p>
+<p>This script enters each subdirectory within the current directory and, if it has a git remote, moves it to a folder that represents the git remote's path.</p>
+<p>For example, if I had a folder called <code>scripts</code> that had a git remote of <code>git@github.com/stilvoid/utils.git</code>, this script will move the folder to <code>github.com/stilvoid/utils</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Target directory for renamed folders</span>
+<span class="nv">BASE</span><span class="o">=</span>/home/steve/code/sorted
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>./<span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-mindepth<span class="w"> </span><span class="m">1</span><span class="w"> </span>-type<span class="w"> </span>d<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nv">folder</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^.*:\/\///&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/:/\//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^.*@//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/\.git$//&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>..
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$folder</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BASE</span><span class="s2">/</span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$folder</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">        </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BASE</span><span class="s2">/</span><span class="nv">$folder</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<p>Yes it's horrid but it did today's job ;)</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>

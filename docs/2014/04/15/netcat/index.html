@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Netcat</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2014/04/15/netcat/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Netcat</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: linux</p>
+                <p>I had occasion recently to need an entry in my ssh config such that connections to a certain host would be proxied through another connection. Several sources suggested the following snippet:</p>
+<div class="codehilite"><pre><span></span><code>Host myserver.net
+    ProxyCommand nc -x &lt;proxy host&gt;:&lt;proxy port&gt; %h %p
+</code></pre></div>
+
+<p>In my situation, I wanted the connection to be proxied through an ssh tunnel that I already had set up in another part of the config. So my entry looked like:</p>
+<div class="codehilite"><pre><span></span><code>Host myserver.net
+    ProxyCommand nc -x localhost:5123 %h %p
+</code></pre></div>
+
+<p>Try as I might however, I just <em>could not</em> get it to work, always receiving the following message:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">Error: Couldn&#39;t resolve host &quot;localhost:5123&quot;</span>
+</code></pre></div>
+
+<p>After some head scratching, checking and double-checking that I had set up the proxy tunnel correctly, I finally figured out that it was because I had <em>GNU</em> netcat installed rather than <em>BSD</em> netcat. Apparently, most of the people in the internet use BSD netcat :)</p>
+<p>Worse, <code>-x</code> is a valid option in both netcats but does completely different things depending on which you use; hence the less-than-specific-but-technically-correct error message.</p>
+<p>After that revalation, I thought it was worth capturing the commonalities and differences between the options taken by the netcats.</p>
+<h2>Common options</h2>
+<ul>
+<li>
+<p><code>-h</code></p>
+<p>Prints out nc help.</p>
+</li>
+<li>
+<p><code>-i interval</code></p>
+<p>Specifies a delay time interval between lines of text sent and received. Also causes a delay time between connections to multiple ports.</p>
+</li>
+<li>
+<p><code>-l</code></p>
+<p>Used to specify that nc should listen for an incoming connection rather than initiate a connection to a remote host. It is an error to use this option in conjunction with the -p, -s, or -z options. Additionally, any timeouts specified with the -w option are ignored.</p>
+</li>
+<li>
+<p><code>-n</code></p>
+<p>Do not do any DNS or service lookups on any specified addresses, hostnames or ports.</p>
+</li>
+<li>
+<p><code>-p source_port</code></p>
+<p>Specifies the source port nc should use, subject to privilege restrictions and availability.</p>
+</li>
+<li>
+<p><code>-r</code></p>
+<p>Specifies that source and/or destination ports should be chosen randomly instead of sequentially within a range or in the order that the system assigns them.</p>
+</li>
+<li>
+<p><code>-s source</code></p>
+<p>Specifies the IP of the interface which is used to send the packets. For UNIX-domain datagram sockets, specifies the local temporary socket file to create and use so that datagrams can be received. It is an error to use this option in conjunction with the -l option.</p>
+</li>
+<li>
+<p><code>-t</code> in BSD Netcat, <code>-T</code> in GNU Netcat</p>
+<p>Causes nc to send RFC 854 DON'T and WON'T responses to RFC 854 DO and WILL requests. This makes it possible to use nc to script telnet sessions.</p>
+</li>
+<li>
+<p><code>-u</code></p>
+<p>Use UDP instead of the default option of TCP. For UNIX-domain sockets, use a datagram socket instead of a stream socket. If a UNIX-domain socket is used, a temporary receiving socket is created in /tmp unless the -s flag is given.</p>
+</li>
+<li>
+<p><code>-v</code></p>
+<p>Have nc give more verbose output.</p>
+</li>
+<li>
+<p><code>-w timeout</code></p>
+<p>Connections which cannot be established or are idle timeout after timeout seconds. The -w flag has no effect on the -l option, i.e. nc will listen forever for a connection, with or without the -w flag. The default is no timeout.</p>
+</li>
+<li>
+<p><code>-z</code></p>
+<p>Specifies that nc should just scan for listening daemons, without sending any data to them. It is an error to use this option in conjunction with the -l option.</p>
+</li>
+</ul>
+<h2>BSD netcat only</h2>
+<ul>
+<li>
+<p><code>-4</code></p>
+<p>Forces nc to use IPv4 addresses only.</p>
+</li>
+<li>
+<p><code>-6</code></p>
+<p>Forces nc to use IPv6 addresses only.</p>
+</li>
+<li>
+<p><code>-b</code></p>
+<p>Allow broadcast.</p>
+</li>
+<li>
+<p><code>-C</code></p>
+<p>Send CRLF as line-ending.</p>
+</li>
+<li>
+<p><code>-D</code></p>
+<p>Enable debugging on the socket.</p>
+</li>
+<li>
+<p><code>-d</code></p>
+<p>Do not attempt to read from stdin.</p>
+</li>
+<li>
+<p><code>-I length</code></p>
+<p>Specifies the size of the TCP receive buffer.</p>
+</li>
+<li>
+<p><code>-k</code></p>
+<p>Forces nc to stay listening for another connection after its current connection is completed. It is an error to use this option without the -l option.</p>
+</li>
+<li>
+<p><code>-O length</code></p>
+<p>Specifies the size of the TCP send buffer.</p>
+</li>
+<li>
+<p><code>-P proxy_username</code></p>
+<p>Specifies a username to present to a proxy server that requires authentication. If no username is specified then authentication will not be attempted.  Proxy authentication is only supported for HTTP CONNECT proxies at present.</p>
+</li>
+<li>
+<p><code>-q seconds</code></p>
+<p>after EOF on stdin, wait the specified number of seconds and then quit. If seconds is negative, wait forever.</p>
+</li>
+<li>
+<p><code>-S</code></p>
+<p>Enables the RFC 2385 TCP MD5 signature option.</p>
+</li>
+<li>
+<p><code>-T toskeyword</code></p>
+<p>Change IPv4 TOS value. toskeyword may be one of critical, inetcontrol, lowcost, lowdelay, netcontrol, throughput, reliability, or one of the DiffServ Code Points: ef, af11 ... af43, cs0 ... cs7; or a number in either hex or decimal.</p>
+</li>
+<li>
+<p><code>-U</code></p>
+<p>Specifies to use UNIX-domain sockets.</p>
+</li>
+<li>
+<p><code>-V rtable</code></p>
+<p>Set the routing table to be used.  The default is 0.</p>
+</li>
+<li>
+<p><code>-X proxy_protocol</code></p>
+<p>Requests that nc should use the specified protocol when talking to the proxy server. Supported protocols are “4” (SOCKS v.4), “5” (SOCKS v.5) and “connect” (HTTPS proxy). If the protocol is not specified, SOCKS version 5 is used.</p>
+</li>
+<li>
+<p><code>-x proxy_address[:port]</code></p>
+<p>Requests that nc should connect to destination using a proxy at proxy_address and port. If port is not specified, the well-known port for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
+</li>
+<li>
+<p><code>-Z</code></p>
+<p>DCCP mode.</p>
+</li>
+</ul>
+<h2>GNU netcat only</h2>
+<ul>
+<li>
+<p><code>-c</code>, <code>--close</code></p>
+<p>Close connection on EOF from stdin.</p>
+</li>
+<li>
+<p><code>-e</code>, <code>--exec=PROGRAM</code></p>
+<p>Program to exec after connect.</p>
+</li>
+<li>
+<p><code>-g</code>, <code>--gateway=LIST</code></p>
+<p>Source-routing hop point[s], up to 8.</p>
+</li>
+<li>
+<p><code>-G</code>, <code>--pointer=NUM</code></p>
+<p>Source-routing pointer: 4, 8, 12, ...</p>
+</li>
+<li>
+<p><code>-L</code>, <code>--tunnel=ADDRESS:PORT</code></p>
+<p>Forward local port to remote address.</p>
+</li>
+<li>
+<p><code>-o</code>, <code>--output=FILE</code></p>
+<p>Output hexdump traffic to FILE (implies -x).</p>
+</li>
+<li>
+<p><code>-t</code>, <code>--tcp</code></p>
+<p>TCP mode (default).</p>
+</li>
+<li>
+<p><code>-V</code>, <code>--version</code></p>
+<p>Output version information and exit.</p>
+</li>
+<li>
+<p><code>-x</code>, <code>--hexdump</code></p>
+<p>Hexdump incoming and outgoing traffic.</p>
+</li>
+</ul>
+<h2>Epilogue</h2>
+<p>I uninstalled GNU netcat and installed BSD netcat btw ;)</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>

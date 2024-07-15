@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Keychain and GnuPG >= 2.1</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2015/01/02/keychain-and-gnupg-2-1/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Keychain and GnuPG >= 2.1</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: pgp gpg ssh linux</p>
+                <p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a> to manage my ssh and gpg agents. I did this with the following in my <code>.bashrc</code></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Start ssh-agent</span>
+<span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>keychain<span class="w"> </span>--quiet<span class="w"> </span>--eval<span class="w"> </span>id_rsa<span class="k">)</span>
+</code></pre></div>
+
+<p>Recently, <a href="https://www.archlinux.org/">arch</a> updated gpg to version 2.1.1 which, <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">as per the announcement</a>, no longer requires the <code>GPG_AGENT_INFO</code> environment variable.</p>
+<p>Unfortunately, tools like keychain don't know about that and still expect it to be set, leading to some annoying breakage.</p>
+<p>My fix is a quick and dirty one; I appended the following to <code>.bashrc</code></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPG_AGENT_INFO</span><span class="o">=</span>~/.gnupg/S.gpg-agent:<span class="k">$(</span>pidof<span class="w"> </span>gpg-agent<span class="k">)</span>:1
+</code></pre></div>
+
+<p>:)</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>

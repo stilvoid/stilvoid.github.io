@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" >
+    <link href="https://engledow.me/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://engledow.me/" rel="alternate" type="text/html" />
+    <updated>2024-06-04T13:07:49Z</updated>
+    <id>https://engledow.me/feed.xml</id>
+    <title type="html">engledow.me</title>
+    <subtitle>All content © 2011-2024 Steve Engledow. All views expressed here are mine and don't reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence.</subtitle>
+    <author><name>Steve Engledow</name></author>
+    <entry>
+    <title type="html">Maur - A minimal AUR helper</title>
+    <link href="https://engledow.me/2019/11/13/maur/" rel="alternate" type="text/html" title="Maur - A minimal AUR helper" />
+    <published>2019-11-13T00:00:00+00:00</published>
+    <updated>2019-11-13T00:00:00+00:00</updated>
+    <id>https://engledow.me/2019/11/13/maur/</id>
+    <content type="html" xml:base="https://engledow.me/2019/11/13/maur/">&lt;p&gt;This post is about the &lt;a href=&quot;https://aur.archlinux.org/&quot;&gt;Arch User Repository&lt;/a&gt;. If you&#x27;re not an &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; user, probably just move along ;)&lt;/p&gt;
+&lt;p&gt;There are &lt;a href=&quot;https://aur.archlinux.org/packages/?O=0&amp;amp;K=aur+helper&quot;&gt;lots of AUR helpers&lt;/a&gt; in existence already but, in the best traditions of open source, none of them work exactly how I want an AUR helper to work, so I &lt;a href=&quot;https://xkcd.com/927/&quot;&gt;created a new one&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here it is: &lt;a href=&quot;https://github.com/stilvoid/maur&quot;&gt;https://github.com/stilvoid/maur&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maur&lt;/code&gt; (pronounced like &quot;more&quot;) is tiny. At the time of writing, it&#x27;s 49 lines of bash. It also has very few features.&lt;/p&gt;
+&lt;p&gt;Here is the list of features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Help text when you type &lt;code&gt;maur --help&lt;/code&gt; or &lt;code&gt;maur -h&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;A list of packages in the AUR when you type &lt;code&gt;maur&lt;/code&gt; with no arguments&lt;/li&gt;
+&lt;li&gt;Help you install a package when you type &lt;code&gt;maur &amp;lt;package name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &quot;help&quot; when installing a package is this, and nothing more:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clone the package&#x27;s AUR repository&lt;/li&gt;
+&lt;li&gt;Open the &lt;code&gt;PKGBUILD&lt;/code&gt; in your default editor&lt;/li&gt;
+&lt;li&gt;Ask if you want to continue installing&lt;/li&gt;
+&lt;li&gt;If you do, run &lt;code&gt;makepkg -si&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you think &lt;code&gt;maur&lt;/code&gt; needs more features, use a different AUR helper.&lt;/p&gt;
+&lt;p&gt;If you find bugs, please &lt;a href=&quot;https://github.com/stilvoid/maur/issues/new&quot;&gt;submit an issue&lt;/a&gt; or, even better, a &lt;a href=&quot;https://github.com/stilvoid/maur/compare&quot;&gt;pull request&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Example usage&lt;/h2&gt;
+&lt;h3&gt;Searching the AUR&lt;/h3&gt;
+&lt;p&gt;If you want to search for a package in the AUR, you can grep for it ;)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maur | grep maur&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Installing a package&lt;/h3&gt;
+&lt;p&gt;If you want to install a package, for example &lt;a href=&quot;https://aur.archlinux.org/packages/yay&quot;&gt;yay&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maur yay&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Upgrading a package&lt;/h3&gt;
+&lt;p&gt;Upgrade a package is the same as installing one. This will upgrade &lt;code&gt;maur&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maur maur&lt;/code&gt;&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="arch" />
+<category term="linux" />
+<category term="aur" />
+</entry>
+
+<entry>
+    <title type="html">Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
+    <link href="https://engledow.me/2019/02/12/using-git-with-aws/" rel="alternate" type="text/html" title="Using Git with AWS CodeCommit Across Multiple AWS Accounts" />
+    <published>2019-02-12T00:00:00+00:00</published>
+    <updated>2019-02-12T00:00:00+00:00</updated>
+    <id>https://engledow.me/2019/02/12/using-git-with-aws/</id>
+    <content type="html" xml:base="https://engledow.me/2019/02/12/using-git-with-aws/">&lt;p&gt;(Cross-posted from &lt;a href=&quot;https://aws.amazon.com/blogs/devops/&quot;&gt;the AWS DevOps blog&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&quot;https://aws.amazon.com/codecommit/&quot;&gt;AWS CodeCommit&lt;/a&gt; to host all of my private Git repositories. My repositories are split across several AWS accounts for different purposes: personal projects, internal projects at work, and customer projects.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html&quot;&gt;CodeCommit documentation&lt;/a&gt; shows you how to configure and clone a repository from one place, but in this blog post I want to share how I manage my Git configuration across multiple AWS accounts.&lt;/p&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;First, I have &lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html&quot;&gt;profiles&lt;/a&gt; configured for each of my AWS environments. I connect to some of them using &lt;a href=&quot;https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys&quot;&gt;IAM user credentials&lt;/a&gt; and others by using &lt;a href=&quot;https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/&quot;&gt;cross-account roles&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I intentionally do not have any credentials associated with the default profile. That way I must always be sure I have selected a profile before I run any AWS CLI commands.&lt;/p&gt;
+&lt;p&gt;Here’s an anonymized copy of my &lt;code&gt;~/.aws/config&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;[profile personal]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;eu-west-1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;aws_access_key_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;AKIAIOSFODNN7EXAMPLE&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;aws_secret_access_key&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;[profile work]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;us-east-1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;aws_access_key_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;AKIAIOSFODNN7EXAMPLE&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;aws_secret_access_key&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;[profile customer]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;region&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;eu-west-2&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;source_profile&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;work&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;role_arn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;arn:aws:iam::123456789012:role/CrossAccountPowerUser&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If I am doing some work in one of those accounts, I run &lt;code&gt;export AWS_PROFILE=work&lt;/code&gt; and use the AWS CLI as normal.&lt;/p&gt;
+&lt;h2&gt;The problem&lt;/h2&gt;
+&lt;p&gt;I use the &lt;a href=&quot;https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html&quot;&gt;Git credential helper&lt;/a&gt; so that the Git client works seamlessly with CodeCommit. However, because I use different profiles for different repositories, my use case is a little more complex than the average.&lt;/p&gt;
+&lt;p&gt;In general, to use the credential helper, all you need to do is place the following options into your &lt;code&gt;~/.gitconfig&lt;/code&gt; file, like this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;[credential]&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;!aws codecommit credential-helper $@&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;UserHttpPath&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I could make this work across accounts by setting the appropriate value for &lt;code&gt;AWS_PROFILE&lt;/code&gt; before I use Git in a repository, but there is a much neater way to deal with this situation using a feature released in &lt;a href=&quot;https://blog.github.com/2017-05-10-git-2-13-has-been-released/&quot;&gt;Git version 2.13&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/docs/git-config#_includes&quot;&gt;conditional includes&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;A solution&lt;/h2&gt;
+&lt;p&gt;First, I separate my work into different folders. My &lt;code&gt;~/code/&lt;/code&gt; directory looks like this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;code&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    personal&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    work&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo3&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo4&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    customer&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo5&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        repo6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Using this layout, each folder that is directly underneath the code folder has different requirements in terms of configuration for use with CodeCommit.&lt;/p&gt;
+&lt;p&gt;Solving this has two parts; first, I create a &lt;code&gt;.gitconfig&lt;/code&gt; file in each of the three folder locations. The &lt;code&gt;.gitconfig&lt;/code&gt; files contain any customization (specifically, configuration for the credential helper) that I want in place while I work on projects in those folders.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;[user]&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Use a custom email address&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sengledo@amazon.co.uk&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;[credential]&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Note the use of the --profile switch&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;!aws --profile work codecommit credential-helper $@&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;UseHttpPath&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I also make sure to specify the AWS CLI profile to use in the &lt;code&gt;.gitconfig&lt;/code&gt; file which means that, when I am working in the folder, I don’t need to set &lt;code&gt;AWS_PROFILE&lt;/code&gt; before I run &lt;code&gt;git push&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;p&gt;Secondly, to make use of these folder-level .gitconfig files, I need to reference them in my global Git configuration at &lt;code&gt;~/.gitconfig&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This is done through the &lt;code&gt;includeIf&lt;/code&gt; section. For example:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;[includeIf &amp;quot;gitdir:~/code/personal/&amp;quot;]&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;~/code/personal/.gitconfig&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This example specifies that if I am working with a Git repository that is located anywhere under &lt;code&gt;~/code/personal/&lt;/code&gt;, Git should load additional configuration from &lt;code&gt;~/code/personal/.gitconfig&lt;/code&gt;. That additional file specifies the appropriate credential helper invocation with the corresponding AWS CLI profile selected as detailed earlier.&lt;/p&gt;
+&lt;p&gt;The contents of the new file are treated as if they are inserted into the main &lt;code&gt;.gitconfig&lt;/code&gt; file at the location of the &lt;code&gt;includeIf&lt;/code&gt; section.  This means that the included configuration will only override any configuration specified &lt;em&gt;earlier&lt;/em&gt; in the config.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="git" />
+<category term="aws" />
+</entry>
+
+<entry>
+    <title type="html">git-get</title>
+    <link href="https://engledow.me/2018/11/08/git-get/" rel="alternate" type="text/html" title="git-get" />
+    <published>2018-11-08T00:00:00+00:00</published>
+    <updated>2018-11-08T00:00:00+00:00</updated>
+    <id>https://engledow.me/2018/11/08/git-get/</id>
+    <content type="html" xml:base="https://engledow.me/2018/11/08/git-get/">&lt;p&gt;Because I work on a lot of different projects spread across a lot of accounts at multiple git hosting providers, I try to keep my code folder in some semblance of order by having subfolders for things.&lt;/p&gt;
+&lt;p&gt;A while ago, I decided to make things even simpler by letting the git repos I was cloning dictate where they should live. I took inspiration from &lt;a href=&quot;https://golang.org/doc/code.html#ImportPaths&quot;&gt;the way go expects you to organise your code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today, I decided to apply &lt;a href=&quot;http://threevirtues.com/&quot;&gt;the three virtues&lt;/a&gt; and wrote some code to handle this for me.&lt;/p&gt;
+&lt;h2&gt;Introducing git-get&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/stilvoid/git-get&quot;&gt;git-get&lt;/a&gt; is an opinionated git command that helps you keep your code folder in order.&lt;/p&gt;
+&lt;p&gt;You use git-get as a replacement for &lt;code&gt;git clone&lt;/code&gt; and it will decide where your code should live :)&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;https://github.com/stilvoid/git-get
+Cloning&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;into&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/steve/code/github.com/stilvoid/git-get&amp;#39;&lt;/span&gt;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Laziness is the primary virtue.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="git" />
+</entry>
+
+<entry>
+    <title type="html">Heroes: Building some old code</title>
+    <link href="https://engledow.me/2018/08/14/heroes/" rel="alternate" type="text/html" title="Heroes: Building some old code" />
+    <published>2018-08-14T00:00:00+00:00</published>
+    <updated>2018-08-14T00:00:00+00:00</updated>
+    <id>https://engledow.me/2018/08/14/heroes/</id>
+    <content type="html" xml:base="https://engledow.me/2018/08/14/heroes/">&lt;p&gt;For the end result of this post, see &lt;a href=&quot;https://aur.archlinux.org/packages/heroes/&quot;&gt;my AUR package of Heroes&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was &lt;a href=&quot;http://heroes.sourceforge.net&quot;&gt;Heroes&lt;/a&gt;. It&#x27;s a clone of &lt;a href=&quot;https://en.wikipedia.org/wiki/Snake_(video_game_genre)&quot;&gt;Snake/Tron/Nibbles&lt;/a&gt; but with some fun additions, a nice graphical style, and some funky visual effects.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;Heroes screenshot&quot; src=&quot;http://heroes.sourceforge.net/img/snap5.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;So, of course, I immediately decided to install it.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pacman&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-Ss&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;heroes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;No results. Nothing in the &lt;a href=&quot;https://wiki.archlinux.org/index.php/Arch_User_Repository&quot;&gt;AUR&lt;/a&gt; either. There is only one other course of action: I&#x27;m going to create an AUR package for it!&lt;/p&gt;
+&lt;p&gt;It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.&lt;/p&gt;
+&lt;h2&gt;Getting Heroes to compile in 2018&lt;/h2&gt;
+&lt;p&gt;I put together a basic &lt;a href=&quot;https://wiki.archlinux.org/index.php/PKGBUILD&quot;&gt;PKGBUILD&lt;/a&gt; that pulls down the source and data files from the Heroes sourceforge page and then runs:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;./configure&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;make&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here&#x27;s the first of what I&#x27;m sure are many failure messages:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration &lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; static a_pcx_image tile_set_img;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;                    ^~~~~~~~~~~~&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;In file included from hedlite.c:44:&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        &lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; extern a_pcx_image tile_set_img, font_deck_img;                                            &lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;                    ^~~~~~~~~~~~&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Some forewarning: it&#x27;s been quite some time since I wrote anything serious in C and I was never an expert in it anyway. But I think I know enough to fix this and so just commented out the static declaration as, after poking around in the code a bit, it doesn&#x27;t seem like it&#x27;s necessary anyway.&lt;/p&gt;
+&lt;p&gt;Now the compilation succeeds but I get the following error during linking:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;/usr/bin/ld: camera.o: undefined reference to symbol &amp;#39;sin@@GLIBC_2.2.5&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Turns out that for some reason, the developers forgot to include the math&lt;small&gt;(s)&lt;/small&gt; library. I&#x27;m guessing that perhaps it used to be linked by default in a previous version of GCC.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;LDFLAGS=-lm ./configure&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;make&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now it at least compiles correctly! Next up, compiling the data, music, and sound effects packages.&lt;/p&gt;
+&lt;p&gt;Amazingly, those all worked correctly and I was able to play the game!&lt;/p&gt;
+&lt;p&gt;However, this game was written a while ago and originally targeted MS-DOS so it has a window size of 320x200 which looks rather ridiculous on my 1920x1080 desktop ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;{{&amp;quot;/assets/images/2018-08-14-heroes.png&amp;quot; | absolute_url}}&quot;&gt;&lt;img alt=&quot;Tiny Heroes window screenshot&quot; src=&quot;{{&amp;quot;/assets/images/2018-08-14-heroes-small.png&amp;quot; | absolute_url}}&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So I set about trying to set the default screen mode so that the game starts in full screen...&lt;/p&gt;
+&lt;p&gt;Fortunately, it looks like this is relatively easy. I just modified a few variables and changed a command line flag from &lt;code&gt;-F | --full-screen&lt;/code&gt; to &lt;code&gt;-W | --windowed&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Next up, rather than rely on &lt;a href=&quot;https://www.libsdl.org/&quot;&gt;SDL&lt;/a&gt;&#x27;s built-in scaling (it looks blurry and weird), I need to enable Heroes&#x27; quadruple flag &lt;code&gt;-4&lt;/code&gt; by default. In fact, I removed all the scaling options and just left it to default to scaling 4-fold as that leaves the game with a resolution of 1280x800 which seems a reasonable default these days. I&#x27;m sure I&#x27;ll receive bug reports if it&#x27;s not ;)&lt;/p&gt;
+&lt;p&gt;The very last thing I&#x27;ve done is to enable the high quality mixer by default and remove the command line option from the game. CPU is a little more abundant now than it was in 2002 ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes&quot;&gt;Here&#x27;s my final patch file&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Submitting the AUR package&lt;/h2&gt;
+&lt;p&gt;Things have changed since I last submitted a package to the AUR so here&#x27;s a brief writeup - if only to remind myself in future ;)&lt;/p&gt;
+&lt;p&gt;First step was to update the SSH key in my AUR account as it contained a key from my old machine.&lt;/p&gt;
+&lt;p&gt;Next up, I added a remote to my repository:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;remote&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;add&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;aur&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ssh://aur@aur.archlinux.org/heroes.git
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;fetch&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;aur&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# This step causes AUR to create a record for the package&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The next step is to generate AUR&#x27;s &lt;code&gt;.SRCINFO&lt;/code&gt; file and rebase it into every commit (AUR requires this).&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;filter-branch&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;--tree-filter&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;makepkg --printsrcinfo &amp;gt; .SRCINFO&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And then push it to the AUR repository:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;push&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-u&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;aur&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Testing it out&lt;/h2&gt;
+&lt;p&gt;I use &lt;a href=&quot;https://aur.archlinux.org/packages/packer/&quot;&gt;packer&lt;/a&gt; to make using AUR easier (I&#x27;m &lt;a href=&quot;https://thethreevirtues.com/&quot;&gt;lazy&lt;/a&gt;).&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;packer&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-S&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;heroes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;SUCCESS!&lt;/p&gt;
+&lt;p&gt;All in all, this wasn&#x27;t anywhere near as painful as I&#x27;d expected. Time to play some Heroes :D&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="arch" />
+<category term="linux" />
+<category term="games" />
+<category term="legacy" />
+</entry>
+
+<entry>
+    <title type="html">Shue</title>
+    <link href="https://engledow.me/2018/06/03/shue/" rel="alternate" type="text/html" title="Shue" />
+    <published>2018-06-03T00:00:00+00:00</published>
+    <updated>2018-06-03T00:00:00+00:00</updated>
+    <id>https://engledow.me/2018/06/03/shue/</id>
+    <content type="html" xml:base="https://engledow.me/2018/06/03/shue/">&lt;p&gt;I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).&lt;/p&gt;
+&lt;p&gt;It&#x27;s called Shue and &lt;a href=&quot;https://github.com/stilvoid/shue&quot;&gt;you can find it on github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you dig back in the &lt;a href=&quot;https://github.com/stilvoid/shue/commits/master&quot;&gt;commit history&lt;/a&gt;, you&#x27;ll see that Shue was originally intended as a tool for converting rgb colour values into their nearest equivalent &lt;a href=&quot;http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html&quot;&gt;bash colour codes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Shue doesn&#x27;t do that now as I haven&#x27;t really needed anything that does it since that one time :) I might bring back that functionality at some point but for now, here&#x27;s what Shue &lt;em&gt;does&lt;/em&gt; do:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Converts colour representations between various rgb formats: 6-digit hex (e.g. &lt;code&gt;#ff9900&lt;/code&gt;), 3-digit hex (e.g. &lt;code&gt;#f90&lt;/code&gt;), and &lt;a href=&quot;https://www.w3schools.com/cssref/css_colors_legal.asp&quot;&gt;CSS-style&lt;/a&gt; RGB values (e.g. &lt;code&gt;rgb(255, 153, 0)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Perform a few basic operations on colours before converting to the various representations:&lt;ul&gt;
+&lt;li&gt;Invert&lt;/li&gt;
+&lt;li&gt;Darken&lt;/li&gt;
+&lt;li&gt;Lighten&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wrote this at the time because I was fiddling with a few websites and frequently needed the above functionality.&lt;/p&gt;
+&lt;p&gt;It&#x27;s written in &lt;a href=&quot;https://golang.org/&quot;&gt;Go&lt;/a&gt; and there are binaries for Linux, Mac, and Windows on the &lt;a href=&quot;https://github.com/stilvoid/shue/releases&quot;&gt;releases page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;mailto:steve@engledow.me&quot;&gt;Let me know&lt;/a&gt; if you find it useful.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="shell" />
+<category term="web" />
+</entry>
+
+<entry>
+    <title type="html">An evening of linux on the desktop</title>
+    <link href="https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop/" rel="alternate" type="text/html" title="An evening of linux on the desktop" />
+    <published>2017-07-10T00:00:00+00:00</published>
+    <updated>2017-07-10T00:00:00+00:00</updated>
+    <id>https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop/</id>
+    <content type="html" xml:base="https://engledow.me/2017/07/10/an-evening-of-linux-on-the-desktop/">&lt;p&gt;&lt;a href=&quot;https://engledow.me/blog/88/&quot;&gt;Last time&lt;/a&gt;, I wrote about trying a few desktop environments to see what&#x27;s out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try &lt;a href=&quot;https://atom.io/&quot;&gt;a few of&lt;/a&gt; &lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;the more recent&lt;/a&gt; &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;code editors&lt;/a&gt; that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I&#x27;ve been meaning to give these a go for a while. Needless to say, as a long-time &lt;a href=&quot;https://www.vim.org/&quot;&gt;vim&lt;/a&gt; user, I just found myself frustrated that I wasn&#x27;t able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn&#x27;t the same as a very limited set of functionality was there. As for the integrated environment, when you have &lt;a href=&quot;https://engledow.me/blog/46&quot;&gt;tmux running by default&lt;/a&gt;, everything&#x27;s integrated anyway.&lt;/p&gt;
+&lt;p&gt;And, as with editors, so once again with desktop environments. I&#x27;ve decided to retract my previous hasty promise and no longer to bother with trying any other environments; &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3&lt;/a&gt; is more than fine :)&lt;/p&gt;
+&lt;p&gt;However, I did spend some time this evening making things a bit prettier so here are some delicious configs for posterity:&lt;/p&gt;
+&lt;h2&gt;Configs&lt;/h2&gt;
+&lt;h3&gt;Xresources&lt;/h3&gt;
+&lt;p&gt;I&#x27;ve switched back to xterm from urxvt because, er... dunno.&lt;/p&gt;
+&lt;p&gt;Anyway, I set some nice colours for terminals and some magic stuff that makes man pages all colourful :)&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;XTerm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;faceName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Hack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;regular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;termName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xterm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;256&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;
+
+&lt;span class=&quot;sx&quot;&gt;! Colourful man pages&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorBDMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorBD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cyan&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorULMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorUL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;darkcyan&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorITMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;colorIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yellow&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VT100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;veryBoldColors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;518&lt;/span&gt;
+
+&lt;span class=&quot;sx&quot;&gt;! terminal colours&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foreground&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;CCCCCC&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;#2&lt;span class=&quot;n&quot;&gt;B2D2E&lt;/span&gt;
+
+&lt;span class=&quot;sx&quot;&gt;!black darkgray&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#2&lt;span class=&quot;n&quot;&gt;B2D2E&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;mi&quot;&gt;808080&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkred red&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;FF0044&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;F92672&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkgreen green&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#82&lt;span class=&quot;n&quot;&gt;B414&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;A6E22E&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkyellow yellow&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;FD971F&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;E6DB74&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkblue blue&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#266&lt;span class=&quot;n&quot;&gt;C98&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#7070&lt;span class=&quot;n&quot;&gt;F0&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkmagenta magenta&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;AC0CB1&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;D63AE1&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!darkcyan cyan&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;AE81FF&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#66&lt;span class=&quot;n&quot;&gt;D9EF&lt;/span&gt;
+&lt;span class=&quot;sx&quot;&gt;!gray white&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;CCCCCC&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;#&lt;span class=&quot;n&quot;&gt;F8F8F2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Vimrc&lt;/h3&gt;
+&lt;p&gt;Nothing exciting here except for discovering a few options I hadn&#x27;t previous known about:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; Show a marker at the 80th column to encourage nice code&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;colorcolumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;highlight&lt;/span&gt; ColorColumn ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;darkblue
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Scroll the text when we&amp;#39;re 3 lines from the top or bottom&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;so&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Use browser-style incremental search&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;incsearch&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Override the default background colour in xoria256 to match the terminal background&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;highlight&lt;/span&gt; Normal ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;black
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; I like this theme&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;colorscheme&lt;/span&gt; xoria256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;i3&lt;/h3&gt;
+&lt;p&gt;I made a few colour tweaks to my i3 config so I get colours that match my new Xresources. One day, I might see if it&#x27;s easy enough to have them both read colour definitions from the same place so I don&#x27;t have to define things twice.&lt;/p&gt;
+&lt;h2&gt;The result&lt;/h2&gt;
+&lt;p&gt;Here&#x27;s what it looks like:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://static.offend.me.uk/media/images/blog/89/01.jpg&quot;&gt;&lt;img alt=&quot;My new desktop&quot; src=&quot;https://static.offend.me.uk/media/images/blog/89/01-small.jpg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+<category term="desktop" />
+<category term="editors" />
+</entry>
+
+<entry>
+    <title type="html">The day of linux on the desktop</title>
+    <link href="https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop/" rel="alternate" type="text/html" title="The day of linux on the desktop" />
+    <published>2017-06-15T00:00:00+00:00</published>
+    <updated>2017-06-15T00:00:00+00:00</updated>
+    <id>https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop/</id>
+    <content type="html" xml:base="https://engledow.me/2017/06/15/the-day-of-linux-on-the-desktop/">&lt;p&gt;It&#x27;s been a while since I last tried out a different desktop environment on my laptop and I&#x27;ve been using &lt;a href=&quot;https://i3wm.org/&quot;&gt;i3&lt;/a&gt; for &lt;a href=&quot;https://engledow.me/blog/01/&quot;&gt;some time now&lt;/a&gt; so it&#x27;s only fair to give other things a go ;)&lt;/p&gt;
+&lt;p&gt;To test these out, I ran another X display - keeping my original one running so I could switch back and forth to take notes - and started each environment with &lt;code&gt;DISPLAY=:1 &amp;lt;the command to start the desktop&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I&#x27;ll start with just one today and perhaps review some others another time.&lt;/p&gt;
+&lt;h2&gt;Deepin&lt;/h2&gt;
+&lt;p&gt;In summary: bits of Gnome Shell, Chrome OS, and Mac OSX but not quite as polished as any of them.&lt;/p&gt;
+&lt;p&gt;The Deepin Desktop Environment (DDE - from &lt;a href=&quot;https://www.deepin.org/en/?language=en&quot;&gt;the Deepin distribution&lt;/a&gt;) installed easily enough under Arch with a quick &lt;code&gt;pacman -S deepin deepin-extra&lt;/code&gt;. It also started up easily with an unambiguous &lt;code&gt;startdde&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Immediately on startup, DDE plays a slightly annoying chime presumably just to remind you of how far we&#x27;ve come since Windows 95. The initial view of the desktop looks similar to OSX or Chrome OS with file icons on the desktop and a launcher bar centred across the bottom of the screen.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;The initial view&quot; src=&quot;https://static.offend.me.uk/media/images/blog/88/01.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The first thing I tried was clicking on a button labelled &quot;Multitasking view&quot; only to be presented with a prompt telling me &quot;Kindly reminder: This application can not run without window effect&quot; and an OK button. So far, so enigmatic. So then I tried a trusty right-click on the desktop which brought up the expected context menu. In the menu was a &quot;Display settings&quot; option so I plumped for that, thinking that perhaps that was where I could enable the mystic &quot;window effect&quot;. Clicking the &quot;Display settings&quot; button opened a dark-themed panel from the right-hand side, similar to the information panel you get in OSX. I searched through that panel for a good couple of minutes but could find no allusion to any &quot;window effect&quot;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;The cryptic message and the settings panel&quot; src=&quot;https://static.offend.me.uk/media/images/blog/88/02.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Unperturbed, I decided to press on and see what other features Deepin had to offer...&lt;/p&gt;
+&lt;p&gt;Moving the mouse around the desktop a bit, I discovered that Deepin has borrowed some ideas from Gnome shell as well as OSX and Chrome OS. Moving the mouse pointer into the top-left corner of the screen brings up an application list similar to Gnome&#x27;s launcher. The bottom-right corner reveals the settings panel. The top-right does nothing and the bottom-left, wonder of wonders, brings up my old favourite, the &quot;kindly reminder&quot;.&lt;/p&gt;
+&lt;p&gt;I poked around in the settings a bit more but didn&#x27;t really see anything of interest so I fired up what looks to be the last part of Deepin left for me to explore: the file manager. It does the job and it&#x27;s not very interesting although I did discover that Deepin also has it&#x27;s own terminal emulator (unsurprisingly called &lt;code&gt;deepin-terminal&lt;/code&gt;) which has a snazzy &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Matrix&quot;&gt;Matrix&lt;/a&gt; theme to it but is otherwise uninteresting.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;Deepin-terminal&quot; src=&quot;https://static.offend.me.uk/media/images/blog/88/03.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;That&#x27;s it, I&#x27;m bored. Next!&lt;/p&gt;
+&lt;p&gt;I tried Budgie and LXQT for a few minutes each at this point but they weren&#x27;t immediately interesting enough to make me want to write about them just now :)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+<category term="desktop" />
+</entry>
+
+<entry>
+    <title type="html">Digital Subscriber</title>
+    <link href="https://engledow.me/2016/02/25/digital-subscriber/" rel="alternate" type="text/html" title="Digital Subscriber" />
+    <published>2016-02-25T00:00:00+00:00</published>
+    <updated>2016-02-25T00:00:00+00:00</updated>
+    <id>https://engledow.me/2016/02/25/digital-subscriber/</id>
+    <content type="html" xml:base="https://engledow.me/2016/02/25/digital-subscriber/">&lt;p&gt;Maybe it&#x27;s just me, but I reckon &lt;a href=&quot;https://en.wikipedia.org/wiki/Domain-specific_language&quot;&gt;DSLs&lt;/a&gt; are the next (ok ok, they&#x27;ve been around for ages) big (ok, hipster) thing. I know I&#x27;m by no means the first to say so it&#x27;s just that I&#x27;m increasingly bemused at seeing things squeezed into data structures they&#x27;ve outgrown.&lt;/p&gt;
+&lt;p&gt;In general, as everyone&#x27;s finally warming to the idea that you can use code to describe not just your application but also how it&#x27;s deployed, we&#x27;re reaching a state where that code needs to be newbie-friendly - by which I mean that it ought to be easily understandable by humans. If it isn&#x27;t, it&#x27;s prone to mistakes.&lt;/p&gt;
+&lt;p&gt;A few months ago, I experimented with creating a DSL for writing web pages and I was fairly happy with &lt;a href=&quot;https://github.com/stilvoid/thiy&quot;&gt;the result&lt;/a&gt; (though there&#x27;s lots more work to be done). I&#x27;m thinking of applying the same ideas to &lt;a href=&quot;https://aws.amazon.com/cloudformation/&quot;&gt;CloudFormation&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;rds&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;mysql&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;c3.xlarge&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ec2&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ami&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;my-app-image&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;t2.micro&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;expose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;80&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;app&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;0.0.0.0:80&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Obviously I&#x27;ve put little to no thought into the above but it shouldn&#x27;t be too hard to come up with something useful.&lt;/p&gt;
+&lt;p&gt;Maybe some day soon ;)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+<category term="web" />
+<category term="aws" />
+</entry>
+
+<entry>
+    <title type="html">Ford</title>
+    <link href="https://engledow.me/2015/12/14/ford/" rel="alternate" type="text/html" title="Ford" />
+    <published>2015-12-14T00:00:00+00:00</published>
+    <updated>2015-12-14T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/12/14/ford/</id>
+    <content type="html" xml:base="https://engledow.me/2015/12/14/ford/">&lt;p&gt;Today I become a &lt;a href=&quot;https://www.mozilla.org/en-GB/firefox/new/&quot;&gt;Firefox&lt;/a&gt; &lt;a href=&quot;https://addons.mozilla.org/&quot;&gt;add-on&lt;/a&gt; developer!&lt;/p&gt;
+&lt;p&gt;Really, it was far too easy and a little disappointing that I needed to bother, as all I needed was a simple way to hide the browser chrome when I wanted a little more screen space for the content or I wanted a distraction-free environment for reading an article.&lt;/p&gt;
+&lt;p&gt;I wrote &lt;a href=&quot;https://addons.mozilla.org/en-GB/firefox/addon/focus-mode/&quot;&gt;Focus Mode&lt;/a&gt; for Firefox to do just that :)&lt;/p&gt;
+&lt;p&gt;Now, someone tell me why that&#x27;s not already a standard feature in Firefox. Or even better, tell me that it is and that I just failed to notice it. And while you&#x27;re at it, tell me why I couldn&#x27;t find an existing extension that does it!&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+<category term="web" />
+</entry>
+
+<entry>
+    <title type="html">Sorted</title>
+    <link href="https://engledow.me/2015/11/30/sorted/" rel="alternate" type="text/html" title="Sorted" />
+    <published>2015-11-30T00:00:00+00:00</published>
+    <updated>2015-11-30T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/11/30/sorted/</id>
+    <content type="html" xml:base="https://engledow.me/2015/11/30/sorted/">&lt;p&gt;I decided to restructure the folder I keep code in (&lt;code&gt;~/code&lt;/code&gt;, natch) - taking my cue from &lt;a href=&quot;https://golang.org/doc/code.html&quot;&gt;how Go does it&lt;/a&gt; - so that the folder structure represents where code has come from.&lt;/p&gt;
+&lt;p&gt;As with all things, moving a couple of hundred folders by hand seemed far too daunting so I wrote a bash script to do it.&lt;/p&gt;
+&lt;p&gt;This script enters each subdirectory within the current directory and, if it has a git remote, moves it to a folder that represents the git remote&#x27;s path.&lt;/p&gt;
+&lt;p&gt;For example, if I had a folder called &lt;code&gt;scripts&lt;/code&gt; that had a git remote of &lt;code&gt;git@github.com/stilvoid/utils.git&lt;/code&gt;, this script will move the folder to &lt;code&gt;github.com/stilvoid/utils&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Target directory for renamed folders&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/steve/code/sorted
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;i&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;find&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;./&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-maxdepth&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-mindepth&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-type&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;folder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;remote&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-v&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&amp;gt;/dev/null&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;head&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-n&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;awk&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;{print $2}&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sed&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-e&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s/^.*:\/\///&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sed&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-e&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s/:/\//&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sed&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-e&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s/^.*@//&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sed&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-e&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s/\.git$//&amp;#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;..
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-n&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;mkdir&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-p&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;mv&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BASE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Yes it&#x27;s horrid but it did today&#x27;s job ;)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+</entry>
+
+<entry>
+    <title type="html">Twofer</title>
+    <link href="https://engledow.me/2015/09/17/twofer/" rel="alternate" type="text/html" title="Twofer" />
+    <published>2015-09-17T00:00:00+00:00</published>
+    <updated>2015-09-17T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/09/17/twofer/</id>
+    <content type="html" xml:base="https://engledow.me/2015/09/17/twofer/">&lt;p&gt;After toying with the idea for some time, I decided I&#x27;d try setting up &lt;a href=&quot;https://en.wikipedia.org/wiki/Two-factor_authentication&quot;&gt;2FA&lt;/a&gt; on my laptop. As usual, the &lt;a href=&quot;https://wiki.archlinux.org/&quot;&gt;arch wiki&lt;/a&gt; had a nicely written &lt;a href=&quot;https://wiki.archlinux.org/index.php/Google_Authenticator&quot;&gt;article on setting up 2FA&lt;/a&gt; with &lt;a href=&quot;https://github.com/google/google-authenticator/tree/master/libpam&quot;&gt;the PAM module&lt;/a&gt; for &lt;a href=&quot;https://github.com/google/google-authenticator&quot;&gt;Google Authenticator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I followed the instructions for setting up 2FA for ssh and that worked seamlessly so I decided I&#x27;d then go the whole hog and enable the module in &lt;code&gt;/etc/pam.d/system-auth&lt;/code&gt; which would mean I&#x27;d need it any time I had to login at all.&lt;/p&gt;
+&lt;p&gt;Adding the line:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;auth  sufficient  pam_google_authenticator.so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;had the expected effect that I could login with just the verification code but that seems to defeat the point a little so I bit my lip and changed &lt;code&gt;sufficient&lt;/code&gt; to &lt;code&gt;required&lt;/code&gt; which would mean I&#x27;d need my password and the code on login.&lt;/p&gt;
+&lt;p&gt;I switched to another &lt;a href=&quot;https://en.wikipedia.org/wiki/Virtual_terminal&quot;&gt;VT&lt;/a&gt; and went for it. It worked!&lt;/p&gt;
+&lt;p&gt;So then I rebooted.&lt;/p&gt;
+&lt;p&gt;And I couldn&#x27;t log in.&lt;/p&gt;
+&lt;p&gt;After a couple of minutes to download an ISO to boot from using another machine, putting it on a USB stick, booting from it, and editing my &lt;code&gt;system-auth&lt;/code&gt; file, I realised why:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;auth      required    pam_google_authenticator.so
+auth      required    pam_unix.so     try_first_pass nullok
+auth      required    pam_ecryptfs.so unwrap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;My home partition is encrypted and so the Google authenticator module obviously couldn&#x27;t load my secret file until I&#x27;d already logged in.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;D&#x27;oh&quot; src=&quot;https://static.offend.me.uk/media/images/facepalm.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I tried moving the &lt;code&gt;pam_google_authenticator.so&lt;/code&gt; line to the bottom of the &lt;code&gt;auth&lt;/code&gt; group but that didn&#x27;t work either.&lt;/p&gt;
+&lt;h2&gt;How could this possibly go wrong...&lt;/h2&gt;
+&lt;p&gt;So, the solution I came up with was to put the 2fa module into the session group. My understanding is that this will mean PAM will ask me to supply a verification code once per session which is fine by me; I don&#x27;t want to have to put a code in every time I &lt;code&gt;sudo&lt;/code&gt; anyway.&lt;/p&gt;
+&lt;p&gt;My question is, will my minor abuse of PAM bite me in the arse at any point? It seems to do what I expected, even if I log in through GDM.&lt;/p&gt;
+&lt;p&gt;Here&#x27;s my current &lt;code&gt;system-auth&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt;%PAM-1.0
+
+auth      required  pam_unix.so     try_first_pass nullok
+auth      required  pam_ecryptfs.so unwrap
+auth      optional  pam_permit.so
+auth      required  pam_env.so
+
+account   required  pam_unix.so
+account   optional  pam_permit.so
+account   required  pam_time.so
+
+password  optional  pam_ecryptfs.so
+password  required  pam_unix.so     try_first_pass nullok sha512 shadow
+password  optional  pam_permit.so
+
+session   required  pam_limits.so
+session   required  pam_unix.so
+session   optional  pam_ecryptfs.so unwrap
+session   optional  pam_permit.so
+session   required  pam_google_authenticator.so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="security" />
+<category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">Pretty please</title>
+    <link href="https://engledow.me/2015/06/22/pretty-please/" rel="alternate" type="text/html" title="Pretty please" />
+    <published>2015-06-22T00:00:00+00:00</published>
+    <updated>2015-06-22T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/06/22/pretty-please/</id>
+    <content type="html" xml:base="https://engledow.me/2015/06/22/pretty-please/">&lt;p&gt;I&#x27;ve been making &lt;a href=&quot;https://github.com/stilvoid/please/&quot;&gt;a thing&lt;/a&gt; to solve some problems I always face while building web APIs. &lt;a href=&quot;http://curl.haxx.se/&quot;&gt;Curl&lt;/a&gt; is lovely but it&#x27;s a bit &lt;em&gt;too&lt;/em&gt; flexible.&lt;/p&gt;
+&lt;p&gt;Also, web services generally spit out one of a fairly common set of formats: (json, xml, html) and I often just want to grab a value from the response and use it in a script - maybe to make the next call in a workflow.&lt;/p&gt;
+&lt;p&gt;So I made &lt;a href=&quot;https://github.com/stilvoid/please/&quot;&gt;please&lt;/a&gt; which makes it super simple to do things like making a web request and grabbing a particular value from the response.&lt;/p&gt;
+&lt;p&gt;For example, here&#x27;s how you&#x27;d get the page title from this site:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;https://engledow.me/&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;parse&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;html.head.title.#text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Or getting a value out of the json returned by &lt;a href=&quot;http://jsontest.com/&quot;&gt;jsontest.com&lt;/a&gt;&#x27;s IP address API:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;http://ip.jsontest.com/&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;parse&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;parse&lt;/code&gt; part of &lt;code&gt;please&lt;/code&gt; is the most fun; it can convert between a few different formats. Something I do quite often is grabbing a json response from an API and spitting it out as yaml so I can read it easily. For example:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;http://date.jsontest.com/&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;parse&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-o&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;(alright so that&#x27;s a poor example but the difference is huge when it&#x27;s a complicated bit of json)&lt;/p&gt;
+&lt;p&gt;Also handy for turning an unreadable mess of xml into yaml (I love yaml for its readability):&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;docroot type=&amp;quot;messydoc&amp;quot;&amp;gt;&amp;lt;a&amp;gt;&amp;lt;b dir=&amp;quot;up&amp;quot;&amp;gt;A tree&amp;lt;/b&amp;gt;&amp;lt;b dir=&amp;quot;down&amp;quot;&amp;gt;The ground&amp;lt;/b&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/docroot&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;please&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;parse&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-o&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As an example, of the kinds of things you can play with, I made &lt;a href=&quot;http://json-graph.offend.me.uk/&quot;&gt;this tool for generating graphs from json&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I&#x27;m still working on &lt;code&gt;please&lt;/code&gt;; there will be bugs; &lt;a href=&quot;https://github.com/stilvoid/please/issues&quot;&gt;let me know about them&lt;/a&gt;.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+</entry>
+
+<entry>
+    <title type="html">Andy and Teddy are waving goodbye</title>
+    <link href="https://engledow.me/2015/05/15/andy-and-teddy-are-waving-goodbye/" rel="alternate" type="text/html" title="Andy and Teddy are waving goodbye" />
+    <published>2015-05-15T00:00:00+00:00</published>
+    <updated>2015-05-15T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/05/15/andy-and-teddy-are-waving-goodbye/</id>
+    <content type="html" xml:base="https://engledow.me/2015/05/15/andy-and-teddy-are-waving-goodbye/">&lt;p&gt;Most of the time, when I&#x27;ve got some software I want to write, I do it in python or sometimes bash. Occasionally though, I like to slip into something with a few more brackets. I&#x27;ve written a bit of C in the past and love it but recently I&#x27;ve been learning &lt;a href=&quot;http://golang.org/&quot;&gt;Go&lt;/a&gt; and what&#x27;s really struck me is how clever it is. I&#x27;m not just talking about the technical merits of the language itself; it&#x27;s clever in several areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You don&#x27;t need to install anything to run Go binaries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At first - I&#x27;m sure like many others - I felt a little revulsion when I heard that Go compiles to statically-linked binaries but after having used and played with Go a bit over the past few weeks, I think it&#x27;s rather clever and was somewhat ahead of the game. In the current climate where DevOps folks (and developers) are getting excited about &lt;a href=&quot;https://engledow.me/blog/65/&quot;&gt;containers and componentised services&lt;/a&gt;, being able to simply &lt;a href=&quot;http://curl.haxx.se/&quot;&gt;curl&lt;/a&gt; a binary and have it usable in your container without needing to install a stack of dependencies is actually pretty powerful. It seems there&#x27;s a general trend towards preferring readiness of use over efficiency of space used both in RAM and disk space. And it makes sense; storage is cheap these days. A 10MiB binary is no concern - even if you need several of them - when you have a 1TiB drive. The extravagance of large binaries is no longer so relevant when you&#x27;re comparing it with your collection of 2GiB bluray rips. The days of needing to count the bytes are gone.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go has the feeling of C &lt;a href=&quot;http://hitchhikers.wikia.com/wiki/Infinite_Improbability_Drive&quot;&gt;but without all that tedious mucking about in &lt;del&gt;hyperspace&lt;/del&gt; memory&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sometimes you just feel you need to write something fairly low level and you want more direct control than you have whilst you&#x27;re working from the comfort blanket of python or ruby. Go gives you the ability to have well-defined data structures and to care about how much memory you&#x27;re eating when you know your application needs to process tebibytes of data. What Go doesn&#x27;t give you is the freedom to muck about in memory, fall off the end of arrays, leave pointers dangling around all over the place, and generally make tiny, tiny mistakes that &lt;a href=&quot;https://en.wikipedia.org/wiki/Heartbleed&quot;&gt;take years for anyone to discover&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The build system is designed around how we (as developers) use code hosting facilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Go has a fairly impressive &lt;a href=&quot;http://golang.org/pkg&quot;&gt;set of features&lt;/a&gt; built in but if you need something that&#x27;s not already included, there&#x27;s a good chance that someone out there has written what you need. Go provides a &lt;a href=&quot;http://go-search.org/&quot;&gt;package search tool&lt;/a&gt; that makes it very easy to find what you&#x27;re looking for. And when you&#x27;ve found it, using it is stupidly simple. You add an import declaration in your code:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;github.com/codegangsta/cli&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;which makes it very clear where the code has come from and where you&#x27;d need to go to check the source code and/or documentation. Next, pulling the code down and compiling it ready for linking into your own binary takes a simple:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;codegangsta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Go implicitly understands git and the various methods of retrieving code so you just need to tell it where to look and it&#x27;ll figure the rest out.&lt;/p&gt;
+&lt;p&gt;In summary, I&#x27;m starting to wonder if Google have a time machine. Go seems to have nicely predicted several worries and trends since &lt;a href=&quot;http://techcrunch.com/2009/11/10/google-go-language/&quot;&gt;its announcement&lt;/a&gt;: Docker, Heartbleed, and social coding.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="go" />
+<category term="code" />
+<category term="programming" />
+</entry>
+
+<entry>
+    <title type="html">Building a componentised application</title>
+    <link href="https://engledow.me/2015/05/14/building-a-componentised-application/" rel="alternate" type="text/html" title="Building a componentised application" />
+    <published>2015-05-14T00:00:00+00:00</published>
+    <updated>2015-05-14T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/05/14/building-a-componentised-application/</id>
+    <content type="html" xml:base="https://engledow.me/2015/05/14/building-a-componentised-application/">&lt;p&gt;Most of what&#x27;s here is hardly new ground but I felt it worth noting down the current strategy we&#x27;re using to develop and build what we&#x27;re working on at &lt;a href=&quot;http://www.locationsciences.ai/&quot;&gt;Proxama&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Without going into any of the details, it&#x27;s a web application with a front end written using &lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember&lt;/a&gt; and various services that it calls out to, written using whatever seems appropriate per service.&lt;/p&gt;
+&lt;p&gt;At the outset of the project, we decided we would bite the bullet and build for &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; from the outset. This meant we would get to avoid the usual dependency and developer environment setup nightmares.&lt;/p&gt;
+&lt;h2&gt;The problem&lt;/h2&gt;
+&lt;p&gt;What we quickly realised as we started to put the bare bones of a few of the services in place, was that we had three seemingly conflicting goals for each component and for the application as a whole.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Build images that can be deployed in production.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Allow developers to run services locally.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provide a means for running unit tests (both by developers and our CI server).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So here&#x27;s what we&#x27;ve ended up with:&lt;/p&gt;
+&lt;h2&gt;The solution&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Or: &lt;a href=&quot;http://docs.docker.com/compose/&quot;&gt;docker-compose&lt;/a&gt; to the rescue&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;Folder structure&lt;/h3&gt;
+&lt;p&gt;Here&#x27;s what the project layout looks like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;Project&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;|&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;+-docker-compose.yml&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;|&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;+-Service 1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| +-Dockerfile&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| +-docker.compose.yml&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;| +-&amp;lt;other files&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;|&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;+-Service 2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  +-Dockerfile&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  +-docker.compose.yml&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  |&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;  +-&amp;lt;other files&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Building for production&lt;/h3&gt;
+&lt;p&gt;This is the easy bit and is where we started first. The &lt;code&gt;Dockerfile&lt;/code&gt; for each service was designed to run everything with the defaults. Usually, this is something simple like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;python:3-onbuild&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;main.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Our CI server can easily take these, produce images, and push them to the registry.&lt;/p&gt;
+&lt;h3&gt;Allowing developers to run services locally&lt;/h3&gt;
+&lt;p&gt;This is slightly harder. In general, each service wants to do something slightly different when being run for development; e.g. automatically restarting when code changes. Additionally, we don&#x27;t want to have to rebuild an image every time we make a code change. This is where &lt;code&gt;docker-compose&lt;/code&gt; comes in handy.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;docker-compose.yml&lt;/code&gt; at the root of the project folder looks like this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;service1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Service 1&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;dev&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Service 1:/usr/src/app&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;service2&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;db&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;8001:8000&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;service2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Service2&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;dev&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Service 2:/usr/src/app&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;service1&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;db&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;8002:8000&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;mongo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This gives us several features right away:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We can locally run all of the services together with &lt;code&gt;docker-compose up&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;ENV&lt;/code&gt; environment variable is set to &lt;code&gt;dev&lt;/code&gt; in each service so that the service can configure itself when it starts to run things in &quot;dev&quot; mode where needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The source folder for each service is mounted inside the container. This means you don&#x27;t need to rebuild the image to try out new code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each service is bound to a different port so you can connect to each part directly where needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each service defines links to the other services it needs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Running the tests&lt;/h3&gt;
+&lt;p&gt;This was the trickiest part to get right. Some services have dependencies on other things even just to get unit tests running. For example, &lt;a href=&quot;http://python-eve.org/&quot;&gt;Eve&lt;/a&gt; is a huge pain to get running with a fake database so it&#x27;s much easier to just link it to a temporary &quot;real&quot; database.&lt;/p&gt;
+&lt;p&gt;Additionally, we didn&#x27;t want to mess with the idea that the images should run production services by default but also didn&#x27;t want to require folks to need to churn out complicated &lt;code&gt;docker&lt;/code&gt; invocations like &lt;code&gt;docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest&lt;/code&gt; just to run the test suite after coding up some new features.&lt;/p&gt;
+&lt;p&gt;So, it was docker-compose to the rescue again :)&lt;/p&gt;
+&lt;p&gt;Each service has a &lt;code&gt;docker-compose.yml&lt;/code&gt; that looks something like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;tests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python -m unittest&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.:/usr/src/app&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;db&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;mongo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Which sets up any dependencies needed just for the tests, mounts the local source in the container, and runs the desired command for running the tests.&lt;/p&gt;
+&lt;p&gt;So, a developer (or the CI box) can run the unit tests with:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker-compose&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;run&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;tests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Each &lt;code&gt;Dockerfile&lt;/code&gt; builds an image that can go straight into production without further configuration required.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Each image runs in &quot;developer mode&quot; if the &lt;code&gt;ENV&lt;/code&gt; environment variable is set.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Running &lt;code&gt;docker-compose up&lt;/code&gt; from the root of the project gets you a full stack running locally in developer mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Running &lt;code&gt;docker-compose run tests&lt;/code&gt; in each service&#x27;s own folder will run the unit tests for that service - starting any dependencies as needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="docker" />
+<category term="microservices" />
+<category term="python" />
+</entry>
+
+<entry>
+    <title type="html">Why-fi?</title>
+    <link href="https://engledow.me/2015/04/29/why-fi/" rel="alternate" type="text/html" title="Why-fi?" />
+    <published>2015-04-29T00:00:00+00:00</published>
+    <updated>2015-04-29T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/04/29/why-fi/</id>
+    <content type="html" xml:base="https://engledow.me/2015/04/29/why-fi/">&lt;p&gt;I&#x27;m an &lt;a href=&quot;http://archlinux.org&quot;&gt;arch linux&lt;/a&gt; user and I love it; there&#x27;s no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.&lt;/p&gt;
+&lt;p&gt;It&#x27;s been a while since an update in arch caused me any problems but it did today.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://bbs.archlinux.org/viewtopic.php?id=196584&quot;&gt;It seems there&#x27;s an issue&lt;/a&gt; with the latest version of &lt;code&gt;wpa_supplicant&lt;/code&gt; which renders it incompatible with the way wifi is setup at boot time. The problem was caught and resolved very quickly by package maintainers who simply rolled the &lt;code&gt;wpa_supplicant&lt;/code&gt; package back. However, I was unlucky enough to have caught the intervening upgrade shortly before turning my laptop off. I came home this evening to find I had no wifi!&lt;/p&gt;
+&lt;p&gt;This wasn&#x27;t a huge challenge but I haven&#x27;t written a blog post for a while and someone might find this useful:&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;If your wifi doesn&#x27;t start at boot...&lt;/p&gt;
+&lt;p&gt;And you&#x27;re using &lt;a href=&quot;https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333&quot;&gt;a laptop with no ethernet port&lt;/a&gt;...&lt;/p&gt;
+&lt;p&gt;And you know an upgrade will solve your problem...&lt;/p&gt;
+&lt;p&gt;How do you get internet so you can upgrade?&lt;/p&gt;
+&lt;p&gt;Simples :)&lt;/p&gt;
+&lt;h2&gt;The steps&lt;/h2&gt;
+&lt;p&gt;First, find the name of your wireless interface:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;iw&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Which will output something like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;phy#0&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    Interface wlp2s0&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        ifindex 2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        wdev 0x1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        addr e8:b1:fc:6c:bf:b5&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        type managed&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;        channel 11 (2462 MHz), width: 20 MHz, center1: 2462 MHz&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Where &lt;code&gt;wlp2s0&lt;/code&gt; is the bit we&#x27;re interested in.&lt;/p&gt;
+&lt;p&gt;Now bring the interface up:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ip&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;link&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;wlp2s0&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;up
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Connect to the access point:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;iw&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;dev&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;wlp2s0&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;connect&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;AP name&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a temporary configuration file for &lt;code&gt;wpa_supplicant&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wpa_passphrase&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;AP name&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/wpa.config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Run &lt;code&gt;wpa_supplicant&lt;/code&gt; to authenticate with the access point:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wpa_supplication&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-iwlp2s0&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-c/tmp/wpa.config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In another terminal (or you could have backgrounded the above), run &lt;code&gt;dhcpcd&lt;/code&gt; to get an IP address from your router:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;dhcpcd&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;wlp2s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Update and reboot or whatever :)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">Cleaning out my closet</title>
+    <link href="https://engledow.me/2015/03/12/cleaning-out-my-closet/" rel="alternate" type="text/html" title="Cleaning out my closet" />
+    <published>2015-03-12T00:00:00+00:00</published>
+    <updated>2015-03-12T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/03/12/cleaning-out-my-closet/</id>
+    <content type="html" xml:base="https://engledow.me/2015/03/12/cleaning-out-my-closet/">&lt;p&gt;Or: &lt;em&gt;Finding out what crud you installed that&#x27;s eating all of your space in Arch Linux&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I started running out of space on one of my &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; boxes and wondered (beyond what was in my home directory) what I&#x27;d installed that was eating up all the space.&lt;/p&gt;
+&lt;p&gt;A little bit of bash-fu does the job:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pkg&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;pacman&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-Qq&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;pacman&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-Qi&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkg&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;grep&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Installed Size&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;cut&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-d&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;:&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-f&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; | &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkg&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sed&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-e&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;s/ //g&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;sort&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This outputs a list of packages with those using the most disk space at the bottom:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;25.99MiB|llvm-libs&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;31.68MiB|raspberrypi-firmware-examples&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;32.69MiB|systemd&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;32.86MiB|glibc&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;41.88MiB|perl&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;54.31MiB|gtk2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;62.13MiB|python2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;73.27MiB|gcc&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;77.93MiB|python&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;84.21MiB|linux-firmware&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The above is from my &lt;a href=&quot;http://www.raspberrypi.org/&quot;&gt;pi&lt;/a&gt;; not much I can uninstall there ;)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="arch" />
+<category term="linux" />
+<category term="bash" />
+</entry>
+
+<entry>
+    <title type="html">Keychain and GnuPG >= 2.1</title>
+    <link href="https://engledow.me/2015/01/02/keychain-and-gnupg-2-1/" rel="alternate" type="text/html" title="Keychain and GnuPG >= 2.1" />
+    <published>2015-01-02T00:00:00+00:00</published>
+    <updated>2015-01-02T00:00:00+00:00</updated>
+    <id>https://engledow.me/2015/01/02/keychain-and-gnupg-2-1/</id>
+    <content type="html" xml:base="https://engledow.me/2015/01/02/keychain-and-gnupg-2-1/">&lt;p&gt;A while ago, I started using &lt;a href=&quot;http://www.funtoo.org/Keychain&quot;&gt;keychain&lt;/a&gt; to manage my ssh and gpg agents. I did this with the following in my &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Start ssh-agent&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;keychain&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;--quiet&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;--eval&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;id_rsa&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Recently, &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;arch&lt;/a&gt; updated gpg to version 2.1.1 which, &lt;a href=&quot;https://www.gnupg.org/faq/whats-new-in-2.1.html&quot;&gt;as per the announcement&lt;/a&gt;, no longer requires the &lt;code&gt;GPG_AGENT_INFO&lt;/code&gt; environment variable.&lt;/p&gt;
+&lt;p&gt;Unfortunately, tools like keychain don&#x27;t know about that and still expect it to be set, leading to some annoying breakage.&lt;/p&gt;
+&lt;p&gt;My fix is a quick and dirty one; I appended the following to &lt;code&gt;.bashrc&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GPG_AGENT_INFO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/.gnupg/S.gpg-agent:&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;pidof&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;gpg-agent&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;:1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;:)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="pgp" />
+<category term="gpg" />
+<category term="ssh" />
+<category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">Testing a Django app with Docker</title>
+    <link href="https://engledow.me/2014/12/09/testing-a-django-app-with-docker/" rel="alternate" type="text/html" title="Testing a Django app with Docker" />
+    <published>2014-12-09T00:00:00+00:00</published>
+    <updated>2014-12-09T00:00:00+00:00</updated>
+    <id>https://engledow.me/2014/12/09/testing-a-django-app-with-docker/</id>
+    <content type="html" xml:base="https://engledow.me/2014/12/09/testing-a-django-app-with-docker/">&lt;p&gt;I&#x27;ve been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.&lt;/p&gt;
+&lt;p&gt;The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don&#x27;t need to care that I&#x27;m not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.&lt;/p&gt;
+&lt;p&gt;Here&#x27;s an annotated &lt;a href=&quot;http://docs.docker.com/reference/builder/&quot;&gt;Dockerfile&lt;/a&gt; with the project-specific details removed.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# We start with ubuntu 14.04&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ubuntu:14.04&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;MAINTAINER&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Steve Engledow &amp;lt;steve@engledow.me&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;root&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Install OS packages&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# This list of packages is what gets installed by default&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# on Amazon&amp;#39;s Ubuntu 14.04 AMI plus python-virtualenv&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;RUN&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;update&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-y&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;install&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;software-properties-common&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;git&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;ssh&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;python-dev&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;python-virtualenv&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;libmysqlclient-dev&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;libqrencode-dev&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;swig&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;libssl-dev&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;curl&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;screen
+
+&lt;span class=&quot;c&quot;&gt;# Configure custom apt repositories&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# and install project-specific packages&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-key.list&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-repo.list&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt.list&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/
+
+&lt;span class=&quot;c&quot;&gt;# Not as nice as this could be as docker defaults to sh rather than bash&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;key&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;curl&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;--silent&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-key&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;add&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;lt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/apt-key.list
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;repo&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;add-apt-repository&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-y&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$repo&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;lt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/apt-repo.list
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-qq&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;update
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;package&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;apt-get&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-qq&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-y&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;install&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$package&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;lt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/apt.list
+
+&lt;span class=&quot;c&quot;&gt;# Now we create a normal user and switch to it&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;useradd&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-s&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/bin/bash&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-m&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ubuntu&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;chown&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-R&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ubuntu:ubuntu&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/home/ubuntu&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;passwd&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-d&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ubuntu
+
+&lt;span class=&quot;k&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ubuntu&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/home/ubuntu&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;HOME&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/home/ubuntu
+
+&lt;span class=&quot;c&quot;&gt;# Set up a virtualenv andinstall python packages&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# from the requirements file&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;requirements.txt&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/
+
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;mkdir&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;.myenv&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;virtualenv&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-p&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/usr/bin/python2.7&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~/.myenv&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;.&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~/.myenv/bin/activate&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;pip&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;install&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-r&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/tmp/requirements.txt&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Set PYTHONPATH and activate the virtualenv in .bashrc&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;export PYTHONPATH=~/myapp/src&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;.bashrc&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;. ~/.myenv/bin/activate&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;.bashrc
+
+&lt;span class=&quot;c&quot;&gt;# Copy the entrypoint script&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;entrypoint.sh&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;/home/ubuntu/
+
+&lt;span class=&quot;k&quot;&gt;EXPOSE&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;8000&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;ENTRYPOINT&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/bin/bash&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;entrypoint.sh&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And here&#x27;s the entrypoint script that nicely wraps up running the django application:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/bash&lt;/span&gt;
+.&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;./.bashrc
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;myapp/src
+./manage.py&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You generate the base docker image from these files with &lt;code&gt;docker build -t myapp ./&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then, when you&#x27;re ready to run a test suite, you need the following invocation:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;run&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-ti&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;--rm&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-P&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-v&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~/code/myapp:/home/ubuntu/myapp&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;myapp&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This mounts &lt;code&gt;~/code/myapp&lt;/code&gt; and &lt;code&gt;/home/ubuntu/myapp&lt;/code&gt; within the Docker container meaning that you&#x27;re running the exact code that you&#x27;re working on from inside the container :)&lt;/p&gt;
+&lt;p&gt;I have an alias that expands that for me so I only need to type &lt;code&gt;docked myapp test&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Obviously, you can substitute &lt;code&gt;test&lt;/code&gt; for &lt;code&gt;runserver&lt;/code&gt;, &lt;code&gt;syncdb&lt;/code&gt; or whatever :)&lt;/p&gt;
+&lt;p&gt;This is all a bit rough and ready but it&#x27;s working very well for me now and is repeatable enough that I can use more-or-less the same script for a number of different django projects.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="proxama" />
+<category term="docker" />
+<category term="django" />
+</entry>
+
+<entry>
+    <title type="html">Just call me Anneka</title>
+    <link href="https://engledow.me/2014/12/01/just-call-me-anneka/" rel="alternate" type="text/html" title="Just call me Anneka" />
+    <published>2014-12-01T00:00:00+00:00</published>
+    <updated>2014-12-01T00:00:00+00:00</updated>
+    <id>https://engledow.me/2014/12/01/just-call-me-anneka/</id>
+    <content type="html" xml:base="https://engledow.me/2014/12/01/just-call-me-anneka/">&lt;p&gt;I had an idea a few days ago to create a Pebble watchface that works like an advent calendar; you get a new christmas-themed picture every day.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;&lt;a href=&quot;https://apps.pebble.com/applications/547bad0ffb079735da00007c&quot;&gt;Here it is :)&lt;/a&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;The fun part however, was that I completely forgot about the idea until today. Family life and my weekly squash commitment meant that I didn&#x27;t have a chance to start work on it until around 22:00 and I really wanted to get it into the Pebble store by midnight (in time for the 1st of December).&lt;/p&gt;
+&lt;p&gt;I submitted the first release at 23:55!&lt;/p&gt;
+&lt;p&gt;Enjoy :)&lt;/p&gt;
+&lt;p&gt;I&#x27;ll put the source on GitHub soon. Before that, it&#x27;s time for some sleep.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+</entry>
+
+<entry>
+    <title type="html">tmux</title>
+    <link href="https://engledow.me/2014/06/17/tmux/" rel="alternate" type="text/html" title="tmux" />
+    <published>2014-06-17T00:00:00+00:00</published>
+    <updated>2014-06-17T00:00:00+00:00</updated>
+    <id>https://engledow.me/2014/06/17/tmux/</id>
+    <content type="html" xml:base="https://engledow.me/2014/06/17/tmux/">&lt;p&gt;&lt;a href=&quot;http://tmux.sourceforge.net/&quot;&gt;tmux&lt;/a&gt; is the best thing ever. That is all.&lt;/p&gt;
+&lt;p&gt;No, that is not all. Here is how I make use of tmux to make my life measurably more awesome:&lt;/p&gt;
+&lt;p&gt;First, my &lt;code&gt;.tmux.conf&lt;/code&gt;. This changes tmux&#x27;s &lt;code&gt;ctrl-b&lt;/code&gt; magic key binding to &lt;code&gt;ctrl-a&lt;/code&gt; as I&#x27;ve grown far too used to hitting that from when I used &lt;a href=&quot;https://www.gnu.org/software/screen/&quot;&gt;screen&lt;/a&gt;. I set up a few other screen-like bindings too. Finally, I set a few options that make tmux work better with urxvt.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; Set the prefix to ^A.
+unbind C-b
+set -g prefix ^A
+bind a send-prefix
+
+&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; Bind c to new-window
+unbind c
+bind c new-window -c $PWD
+
+&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; Bind space, n to next-window
+unbind &amp;quot; &amp;quot;
+bind &amp;quot; &amp;quot; next-window
+unbind n
+bind n next-window
+
+&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; Bind p to previous-window
+unbind p
+bind p previous-window
+
+&lt;span class=&quot;gh&quot;&gt;#&lt;/span&gt; A few other settings to make things funky
+set -g status off
+set -g aggressive-resize on
+set -g mode-keys vi
+set -g default-terminal screen-256color
+set -g terminal-overrides &amp;#39;rxvt-unicode*:sitm@&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And then here&#x27;s what I have near the top of my &lt;code&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# If tmux isn&amp;#39;t already running, run it&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-z&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TMUX&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~/bin/tmux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;...which goes with this, the contents of &lt;code&gt;~/bin/tmux&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# If there are any sessions that aren&amp;#39;t attached, attach to the first one&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Otherwise, start a new session&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;line&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;tmux&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ls&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-F&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#{session_name},#{session_attached}&amp;quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;cut&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-d&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-f&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;attached&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;cut&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-d&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-f&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$attached&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-eq&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;tmux&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;attach&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-t&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+tmux&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-u
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Basically, what happens is that whenever I start a terminal session, if I&#x27;m not already attached to a tmux session, I find a session that&#x27;s not already attached to and attach to it. If there aren&#x27;t any, I create a new one.&lt;/p&gt;
+&lt;p&gt;This really tidies up my workflow and means that I never forget about any old sessions I&#x27;d detached.&lt;/p&gt;
+&lt;p&gt;Oh and one last thing, &lt;code&gt;ctrl-a s&lt;/code&gt; is the best thing in tmux ever. It shows a list of tmux sessions which can be expanded to show what&#x27;s running in them and you can then interactively re-attach your terminal to one of them. In short, I can start a terminal from any desktop or vt and quickly attach to something that&#x27;s happening on any other. I use this feature &lt;strong&gt;a lot&lt;/strong&gt;.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">Netcat</title>
+    <link href="https://engledow.me/2014/04/15/netcat/" rel="alternate" type="text/html" title="Netcat" />
+    <published>2014-04-15T00:00:00+00:00</published>
+    <updated>2014-04-15T00:00:00+00:00</updated>
+    <id>https://engledow.me/2014/04/15/netcat/</id>
+    <content type="html" xml:base="https://engledow.me/2014/04/15/netcat/">&lt;p&gt;I had occasion recently to need an entry in my ssh config such that connections to a certain host would be proxied through another connection. Several sources suggested the following snippet:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Host myserver.net
+    ProxyCommand nc -x &amp;lt;proxy host&amp;gt;:&amp;lt;proxy port&amp;gt; %h %p
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In my situation, I wanted the connection to be proxied through an ssh tunnel that I already had set up in another part of the config. So my entry looked like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Host myserver.net
+    ProxyCommand nc -x localhost:5123 %h %p
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Try as I might however, I just &lt;em&gt;could not&lt;/em&gt; get it to work, always receiving the following message:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;Error: Couldn&amp;#39;t resolve host &amp;quot;localhost:5123&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After some head scratching, checking and double-checking that I had set up the proxy tunnel correctly, I finally figured out that it was because I had &lt;em&gt;GNU&lt;/em&gt; netcat installed rather than &lt;em&gt;BSD&lt;/em&gt; netcat. Apparently, most of the people in the internet use BSD netcat :)&lt;/p&gt;
+&lt;p&gt;Worse, &lt;code&gt;-x&lt;/code&gt; is a valid option in both netcats but does completely different things depending on which you use; hence the less-than-specific-but-technically-correct error message.&lt;/p&gt;
+&lt;p&gt;After that revalation, I thought it was worth capturing the commonalities and differences between the options taken by the netcats.&lt;/p&gt;
+&lt;h2&gt;Common options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-h&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Prints out nc help.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-i interval&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies a delay time interval between lines of text sent and received. Also causes a delay time between connections to multiple ports.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Used to specify that nc should listen for an incoming connection rather than initiate a connection to a remote host. It is an error to use this option in conjunction with the -p, -s, or -z options. Additionally, any timeouts specified with the -w option are ignored.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-n&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Do not do any DNS or service lookups on any specified addresses, hostnames or ports.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-p source_port&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies the source port nc should use, subject to privilege restrictions and availability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-r&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies that source and/or destination ports should be chosen randomly instead of sequentially within a range or in the order that the system assigns them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-s source&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies the IP of the interface which is used to send the packets. For UNIX-domain datagram sockets, specifies the local temporary socket file to create and use so that datagrams can be received. It is an error to use this option in conjunction with the -l option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-t&lt;/code&gt; in BSD Netcat, &lt;code&gt;-T&lt;/code&gt; in GNU Netcat&lt;/p&gt;
+&lt;p&gt;Causes nc to send RFC 854 DON&#x27;T and WON&#x27;T responses to RFC 854 DO and WILL requests. This makes it possible to use nc to script telnet sessions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-u&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use UDP instead of the default option of TCP. For UNIX-domain sockets, use a datagram socket instead of a stream socket. If a UNIX-domain socket is used, a temporary receiving socket is created in /tmp unless the -s flag is given.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-v&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Have nc give more verbose output.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-w timeout&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Connections which cannot be established or are idle timeout after timeout seconds. The -w flag has no effect on the -l option, i.e. nc will listen forever for a connection, with or without the -w flag. The default is no timeout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-z&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies that nc should just scan for listening daemons, without sending any data to them. It is an error to use this option in conjunction with the -l option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;BSD netcat only&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-4&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Forces nc to use IPv4 addresses only.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-6&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Forces nc to use IPv6 addresses only.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-b&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Allow broadcast.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-C&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Send CRLF as line-ending.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-D&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enable debugging on the socket.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-d&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Do not attempt to read from stdin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-I length&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies the size of the TCP receive buffer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-k&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Forces nc to stay listening for another connection after its current connection is completed. It is an error to use this option without the -l option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-O length&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies the size of the TCP send buffer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-P proxy_username&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies a username to present to a proxy server that requires authentication. If no username is specified then authentication will not be attempted.  Proxy authentication is only supported for HTTP CONNECT proxies at present.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-q seconds&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;after EOF on stdin, wait the specified number of seconds and then quit. If seconds is negative, wait forever.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-S&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enables the RFC 2385 TCP MD5 signature option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-T toskeyword&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Change IPv4 TOS value. toskeyword may be one of critical, inetcontrol, lowcost, lowdelay, netcontrol, throughput, reliability, or one of the DiffServ Code Points: ef, af11 ... af43, cs0 ... cs7; or a number in either hex or decimal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-U&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Specifies to use UNIX-domain sockets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-V rtable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Set the routing table to be used.  The default is 0.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-X proxy_protocol&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Requests that nc should use the specified protocol when talking to the proxy server. Supported protocols are “4” (SOCKS v.4), “5” (SOCKS v.5) and “connect” (HTTPS proxy). If the protocol is not specified, SOCKS version 5 is used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-x proxy_address[:port]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Requests that nc should connect to destination using a proxy at proxy_address and port. If port is not specified, the well-known port for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-Z&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;DCCP mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;GNU netcat only&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--close&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Close connection on EOF from stdin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-e&lt;/code&gt;, &lt;code&gt;--exec=PROGRAM&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Program to exec after connect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-g&lt;/code&gt;, &lt;code&gt;--gateway=LIST&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Source-routing hop point[s], up to 8.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-G&lt;/code&gt;, &lt;code&gt;--pointer=NUM&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Source-routing pointer: 4, 8, 12, ...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-L&lt;/code&gt;, &lt;code&gt;--tunnel=ADDRESS:PORT&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Forward local port to remote address.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-o&lt;/code&gt;, &lt;code&gt;--output=FILE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Output hexdump traffic to FILE (implies -x).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-t&lt;/code&gt;, &lt;code&gt;--tcp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;TCP mode (default).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-V&lt;/code&gt;, &lt;code&gt;--version&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Output version information and exit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-x&lt;/code&gt;, &lt;code&gt;--hexdump&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Hexdump incoming and outgoing traffic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Epilogue&lt;/h2&gt;
+&lt;p&gt;I uninstalled GNU netcat and installed BSD netcat btw ;)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">btw</title>
+    <link href="https://engledow.me/2014/01/31/btw/" rel="alternate" type="text/html" title="btw" />
+    <published>2014-01-31T00:00:00+00:00</published>
+    <updated>2014-01-31T00:00:00+00:00</updated>
+    <id>https://engledow.me/2014/01/31/btw/</id>
+    <content type="html" xml:base="https://engledow.me/2014/01/31/btw/">&lt;p&gt;I discovered my new favourite fact about &lt;a href=&quot;https://en.wikipedia.org/wiki/C_programming_language&quot;&gt;my new favourite language&lt;/a&gt; recently. I suppose it should be obvious but I hadn&#x27;t though about it in explicitly these terms.&lt;/p&gt;
+&lt;p&gt;Given:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myStringArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Goodbye&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Tomatoes&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;then the following will print &lt;code&gt;Tomatoes&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myStringArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and so (this is the bit I hadn&#x27;t fully realised) will this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myStringArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Good times :)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+<category term="c" />
+</entry>
+
+<entry>
+    <title type="html">Things we learned at the LUG meet</title>
+    <link href="https://engledow.me/2013/05/10/things-we-learned-at-the-lug-meet/" rel="alternate" type="text/html" title="Things we learned at the LUG meet" />
+    <published>2013-05-10T00:00:00+00:00</published>
+    <updated>2013-05-10T00:00:00+00:00</updated>
+    <id>https://engledow.me/2013/05/10/things-we-learned-at-the-lug-meet/</id>
+    <content type="html" xml:base="https://engledow.me/2013/05/10/things-we-learned-at-the-lug-meet/">&lt;ul&gt;
+&lt;li&gt;vimrc comments start with &lt;code&gt;&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;howdoi would be useful if it worked&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xargs -I {}&lt;/code&gt; is handy&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+</entry>
+
+<entry>
+    <title type="html">Git aux</title>
+    <link href="https://engledow.me/2013/02/11/hbtm/" rel="alternate" type="text/html" title="Git aux" />
+    <published>2013-02-11T00:00:00+00:00</published>
+    <updated>2013-02-11T00:00:00+00:00</updated>
+    <id>https://engledow.me/2013/02/11/hbtm/</id>
+    <content type="html" xml:base="https://engledow.me/2013/02/11/hbtm/">&lt;p&gt;For a while now, I&#x27;ve been wanting to keep various parts of my home directory in sync.&lt;/p&gt;
+&lt;p&gt;At first, I created a git repository for storing my &lt;a href=&quot;https://en.wikipedia.org/wiki/Dotfile#Unix_and_Unix-like_environments&quot;&gt;dotfiles&lt;/a&gt; but I found it a pain to keep the repository up-to-date.&lt;/p&gt;
+&lt;p&gt;Fairly recently, someone pointed out &lt;a href=&quot;http://git-annex.branchable.com/&quot;&gt;git-annex&lt;/a&gt; to me. After a good read of the documentation, it sounded like it could be useful but probably more than I needed and perhaps not quite what I really wanted. Besides, I couldn&#x27;t get the bloody thing to install.&lt;/p&gt;
+&lt;p&gt;So I did what any geek would do, I wrote my own :D&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/stilvoid/git-aux&quot;&gt;git-aux&lt;/a&gt; (or &lt;a href=&quot;https://aur.archlinux.org/packages/git-aux-git/&quot;&gt;AUR&lt;/a&gt; if you&#x27;re on &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch Linux&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Basically, I wanted an easy to way to keep a git repository in sync with an directory external to it. With git aux installed, I get pretty much exactly what I wanted with a few simple commands.&lt;/p&gt;
+&lt;p&gt;After creating a new git repository, I do &lt;code&gt;git aux init ~/&lt;/code&gt; to tell git-aux that I want it to sync this repo with my home directory.&lt;/p&gt;
+&lt;p&gt;I then do &lt;code&gt;git aux add ~/.vimrc ~/.ssh/config ~/.bashrc&lt;/code&gt; and any other files I want from my home directory. This copies those files into the repository and I can then commit them in the usual way.&lt;/p&gt;
+&lt;p&gt;If I make changes in my home directory, I use &lt;code&gt;git aux sync&lt;/code&gt; to update the copies in the repository.&lt;/p&gt;
+&lt;p&gt;If I&#x27;ve made changes on another machine and want to apply those changes from the repo to the home dir on this machine, I do &lt;code&gt;git aux apply&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And that&#x27;s it :)&lt;/p&gt;
+&lt;p&gt;It&#x27;s unfinished and probably broken in places but mostly does what I was looking for.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="git" />
+<category term="coding" />
+</entry>
+
+<entry>
+    <title type="html">Lost at C</title>
+    <link href="https://engledow.me/2012/08/30/lost-at-c/" rel="alternate" type="text/html" title="Lost at C" />
+    <published>2012-08-30T00:00:00+00:00</published>
+    <updated>2012-08-30T00:00:00+00:00</updated>
+    <id>https://engledow.me/2012/08/30/lost-at-c/</id>
+    <content type="html" xml:base="https://engledow.me/2012/08/30/lost-at-c/">&lt;p&gt;This week I&#x27;ve learned a few things (always the mark of a good week in my book), the foremost of which is that I don&#x27;t know very much about &lt;a href=&quot;https://en.wikipedia.org/wiki/Programming_language&quot;&gt;C&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I expect this post will mostly result in comments such as &quot;well, duh...&quot; and the like :)&lt;/p&gt;
+&lt;h2&gt;How I spent an afternoon chasing a star...&lt;/h2&gt;
+&lt;p&gt;After a fairly relaxing bank holiday weekend, I came back to work on Tuesday to find myself in the position of needing a to write a library for a client to plug into their software and to have it ready by Friday.&lt;/p&gt;
+&lt;p&gt;Though I&#x27;d written &lt;a href=&quot;http://falsoyd.sourceforge.net/&quot;&gt;some (very bad) C++&lt;/a&gt; while at &lt;a href=&quot;http://www.uea.ac.uk/&quot;&gt;uni&lt;/a&gt;, I&#x27;ve fairly recently written a couple of very small utilities in C (the library they use is written in C and I fancied a challenge) and wanted to learn some more, so I chose C as the language to write in.&lt;/p&gt;
+&lt;p&gt;This afternoon, with the library and a small demo application written, I handed the code over to my colleague who&#x27;d promised to do all the necessary wrapping up to take my developed-in-linux code and produce a windows DLL from it. After a short while, he&#x27;d compiled the library and the demo, BUT... the demo app crashed every time.&lt;/p&gt;
+&lt;p&gt;At first, it looked like I&#x27;d forgotten to free() some malloc()ed memory. I had; but even after doing so, the code was still crashing in windows. The search continued for quite some time until I eventually found what was wrong.&lt;/p&gt;
+&lt;p&gt;There was an asterisk where there shouldn&#x27;t have been, FFS!&lt;/p&gt;
+&lt;p&gt;It turns out that I&#x27;d carried some pre-conceptions with me from my previous life as a Java developer and various other places. I&#x27;m so used to pretty much every language passing things around by value when the data is small (ints, chars, etc.) and by reference when it&#x27;s not (objects, etc.). I was completely unprepared for the fact that C deals &lt;em&gt;only&lt;/em&gt; in values.&lt;/p&gt;
+&lt;p&gt;I&#x27;m not one of those who are scared of pointers, I&#x27;m quite comfortable with pointer arithmetic, allocating and freeing memory and the like. What I had was some code like this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;do_some_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_records&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AB&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AB&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_records&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_records&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AB&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;do_some_stuff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Do some stuff with ab;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Although the real code actually did useful things :P&lt;/p&gt;
+&lt;p&gt;After handing the code over however, it transpired that MSVC doesn&#x27;t support all of C99 (why pick a standard and implement part of it?!) specifically, variable-length arrays; so the &lt;code&gt;AB ab[num_records]&lt;/code&gt; line  had to go.&lt;/p&gt;
+&lt;p&gt;Here&#x27;s where my preconception came in:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So, I want to allocate space for an array of these structs...&lt;/p&gt;
+&lt;p&gt;Ok, so structs are kinda like objects...&lt;/p&gt;
+&lt;p&gt;That array will be an array of pointers to those then, yep...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So that array declaration became &lt;code&gt;AB *ab = malloc(sizeof(AB*) * num_records)&lt;/code&gt; and a corresponding &lt;code&gt;free(ab)&lt;/code&gt; in &lt;code&gt;get_stuff()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Yep, nothing in C is a reference unless you really, really say it is. Arrays of structs are just like arrays of any other type: a sequence of those things laid end to end in memory. &lt;code&gt;sizeof(AB*)&lt;/code&gt; needed to be &lt;code&gt;sizeof(AB)&lt;/code&gt; and that was it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The. Entire. Afternoon.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Consider that my lesson learned.&lt;/p&gt;
+&lt;p&gt;Luckily, I seem to have ended up quite fond of C, pleasantly more aware of how it works, and quite keen to write some more.&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+<category term="c" />
+</entry>
+
+<entry>
+    <title type="html">Ire</title>
+    <link href="https://engledow.me/2012/07/07/ire/" rel="alternate" type="text/html" title="Ire" />
+    <published>2012-07-07T00:00:00+00:00</published>
+    <updated>2012-07-07T00:00:00+00:00</updated>
+    <id>https://engledow.me/2012/07/07/ire/</id>
+    <content type="html" xml:base="https://engledow.me/2012/07/07/ire/">&lt;p&gt;Call me crazy (thanks) but I like regular expressions.&lt;/p&gt;
+&lt;p&gt;I like them enough to have decided that what I really needed was a tool that let me put regular expressions in my regular expressions (&lt;a href=&quot;http://knowyourmeme.com/memes/xzibit-yo-dawg&quot;&gt;yo dawg&lt;/a&gt;). I had the idea for this a while ago but only got around to realising it a few days ago.&lt;/p&gt;
+&lt;p&gt;The basic idea is a scripting language for matching text via regular expressions, and then applying further regular expressions (and replacements) dependent on those.&lt;/p&gt;
+&lt;p&gt;I wanted to keep the syntax fairly free so there&#x27;s support for representing blocks by indentation or within braces. To avoiding ambiguity, indenting can&#x27;t be used inside braces although the opposite is fine.&lt;/p&gt;
+&lt;p&gt;Within braces, expressions should be separated by semi-colons.&lt;/p&gt;
+&lt;p&gt;I also wanted support for creating named blocks of code (functions if you like) and for flexibility over the character used to delimit the parts of an expression.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;After some mucking about, what I&#x27;ve ended up with is summat that looks like this:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;&amp;gt;proc&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    /^(.+)\s+@/Model: $1\n/pt&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    /@\s+(.+)\n$/Speed: $2\n/pt&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;/^processor\s+:\s+(\d+)/# CPU $1\n/p&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;/^model name\s+:\s+//&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    &amp;lt;proc&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    //\n/p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The idea being that you pipe &lt;code&gt;/proc/cpuinfo&lt;/code&gt; through that and you get a summary that looks like:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;# &lt;/span&gt;CPU&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Model: Intel(R) Core(TM) i5-2467M CPU&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Speed: 1.60GHz&lt;/span&gt;
+
+&lt;span class=&quot;gp&quot;&gt;# &lt;/span&gt;CPU&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Model: Intel(R) Core(TM) i5-2467M CPU&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Speed: 1.60GHz&lt;/span&gt;
+
+&lt;span class=&quot;gp&quot;&gt;# &lt;/span&gt;CPU&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Model: Intel(R) Core(TM) i5-2467M CPU&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Speed: 1.60GHz&lt;/span&gt;
+
+&lt;span class=&quot;gp&quot;&gt;# &lt;/span&gt;CPU&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Model: Intel(R) Core(TM) i5-2467M CPU&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;Speed: 1.60GHz&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Breaking it down&lt;/h2&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;&amp;gt;proc&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    /^(.+)\s+@/Model: $1\n/pt&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    /@\s+(.+)\n$/Speed: $1\n/pt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Define a block called &lt;code&gt;proc&lt;/code&gt; and do not execute it yet.&lt;/p&gt;
+&lt;p&gt;The first line of &lt;code&gt;proc&lt;/code&gt; matches a string followed by a space and an @ symbol. It then replaces what it&#x27;s found with Model: (the string at the beginning). Then it prints the result (the &lt;code&gt;p&lt;/code&gt; flag) and discards the replacement that has taken place (temporary apply - the &lt;code&gt;t&lt;/code&gt; flag).&lt;/p&gt;
+&lt;p&gt;The second line does similar but looks for the @ followed by a space, a string, and a newline then prints &quot;Speed: (the string)&quot;.&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;/^processor\s+:\s+(\d+)/# CPU $1\n/p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Match a line starting with processor and print out &quot;CPU (the number)&quot;&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;/^model name\s+:\s+//&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    &amp;lt;proc&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;    //\n/p&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Match a line starting with Model name, and remove everything up until the start of the data. Then call the block called &lt;code&gt;proc&lt;/code&gt;. Finally, print a newline character.&lt;/p&gt;
+&lt;p&gt;Obviously this is a fairly contrived example ;)&lt;/p&gt;
+&lt;h2&gt;Trying it out&lt;/h2&gt;
+&lt;p&gt;Like most things these days, I wrote the engine for Ire in &lt;a href=&quot;https://nodejs.org/en&quot;&gt;node.js&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have that installed, you can install ire with:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;npm&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;install&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;-g&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;ire
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;or if you&#x27;re feeling less brave or more paranoid, just &lt;code&gt;npm install ire&lt;/code&gt; to install it to the current folder.&lt;/p&gt;
+&lt;p&gt;Further details are in the README and &lt;a href=&quot;https://engledow.me/code/unloved/ire/&quot;&gt;on this page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Final word&lt;/h2&gt;
+&lt;p&gt;Yes, I am fully aware that this is somewhat limited in use and probably completely pointless.&lt;/p&gt;
+&lt;p&gt;I&#x27;m sure &lt;em&gt;someone&lt;/em&gt; will point out that I could do the kinds of things I want with pure sed or awk or somesuch. To those people: &quot;you&#x27;re missing the point&quot;. See my &lt;a href=&quot;https://engledow.me/misc/geekcode/&quot;&gt;geekcode&lt;/a&gt; for details :P&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="code" />
+</entry>
+
+<entry>
+    <title type="html">Break In!</title>
+    <link href="https://engledow.me/2011/10/27/break-in/" rel="alternate" type="text/html" title="Break In!" />
+    <published>2011-10-27T00:00:00+00:00</published>
+    <updated>2011-10-27T00:00:00+00:00</updated>
+    <id>https://engledow.me/2011/10/27/break-in/</id>
+    <content type="html" xml:base="https://engledow.me/2011/10/27/break-in/">&lt;p&gt;A while ago, I decided to learn how to use &lt;a href=&quot;https://en.wikipedia.org/wiki/Canvas_element&quot;&gt;the canvas&lt;/a&gt; and that for my first project I was going to write a breakout clone. Pretty standard fare for a first-time project :)&lt;/p&gt;
+&lt;p&gt;After writing some routines to draw blocks on the screen some weeks ago, I finally got around to doing some real work on it this evening. Two or three hours later, I&#x27;d ended up with a mostly working, radial version of Breakout.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://code.offend.me.uk/breakout&quot;&gt;&lt;img alt=&quot;Screenshot&quot; src=&quot;https://static.offend.me.uk/media/images/breakout.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://code.offend.me.uk/breakout&quot;&gt;Click here to play it&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;There are still some obvious bugs (the collision detection is a bit shoddy) and it doesn&#x27;t keep score or do anything special when you win but it&#x27;s reasonably fun and I&#x27;m quite pleased with what I&#x27;ve achieved in just a couple of hours.&lt;/p&gt;
+&lt;p&gt;The code is released under the If-You-Steal-This-Without-Asking-Me-I&#x27;ll-Bite-Your-Legs-Off licence ;)&lt;/p&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="games" />
+</entry>
+
+<entry>
+    <title type="html">xmodmap Hints and Tips</title>
+    <link href="https://engledow.me/2011/10/22/xmodmap-hints-and-tips/" rel="alternate" type="text/html" title="xmodmap Hints and Tips" />
+    <published>2011-10-22T00:00:00+00:00</published>
+    <updated>2011-10-22T00:00:00+00:00</updated>
+    <id>https://engledow.me/2011/10/22/xmodmap-hints-and-tips/</id>
+    <content type="html" xml:base="https://engledow.me/2011/10/22/xmodmap-hints-and-tips/">&lt;p&gt;Originally posted on &lt;a href=&quot;http://rollingrelease.com/system/2010/09/xmodmap-hints-and-tips&quot;&gt;Rolling
+Release&lt;/a&gt;. I&#x27;m
+reposting this here as I recently broke my finger and so made a few changes to
+my xmodmap settings to accomodate the ensuing one-handed typing. Once again, I
+had to &lt;a href=&quot;http://ddg.gg/&quot;&gt;search&lt;/a&gt; for how to use xmodmap and came upon my own
+post. I&#x27;m keeping it here for easier reference and in the hope the details
+will burn deeper into my mind. It was written for a tutorial column so excuse
+the tone.&lt;/p&gt;
+&lt;h2&gt;About xmodmap&lt;/h2&gt;
+&lt;p&gt;Xmodmap is used to control the mappings between the keys you press on the
+keyboard and the results you will experience on screen. Some common usage
+examples of xmodmap are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Disabling and/or reallocating the caps-lock key&lt;/li&gt;
+&lt;li&gt;Mapping certain foreign or other special characters to keys on your keyboard&lt;/li&gt;
+&lt;li&gt;Enabling &quot;media&quot; keys&lt;/li&gt;
+&lt;li&gt;Terminology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To achieve things like the above, you’ll be mapping KeyCodes to KeySyms and
+KeySyms to Modifiers so it’s obviously important to understand exactly what
+xmodmap means by these terms (I certainly didn’t when I started out).&lt;/p&gt;
+&lt;h2&gt;KeyCode&lt;/h2&gt;
+&lt;p&gt;A KeyCode is a number generated by your keyboard when you press a certain key.
+For example, the space bar usually produces the KeyCode 128.&lt;/p&gt;
+&lt;h2&gt;KeySym&lt;/h2&gt;
+&lt;p&gt;A KeySym is simply a word used to name a type of key. This concept is very
+important because it means that applications don’t need to interpret the
+information output by your keyboard directly; they can refer to keys by name.&lt;/p&gt;
+&lt;p&gt;As mentioned above, most keyboards produce the code 128 when you press the
+spacebar but it would be possible to have a very non-standard keyboard that
+outputs the KeyCode 64 when the spacebar is pressed. You’d certainly want to
+ensure that code 64 is interpreted as a spacebar press without having to
+rewrite all the applications you use. To do this, we’d map the KeyCode 64 to
+the KeySym &quot;space&quot;.&lt;/p&gt;
+&lt;h2&gt;Modifier&lt;/h2&gt;
+&lt;p&gt;A Modifier is a special kind of key that can be held at the same time as
+another key and modify its output. For example, when you press the A key on
+your keyboard, you see the letter ‘a’ appear on screen. If you hold shift and
+press A, you’ll see the letter ‘A’ – shift is a Modifier.&lt;/p&gt;
+&lt;p&gt;Let’s start with looking at modifiers to get the hang of Modifiers and
+KeySyms…&lt;/p&gt;
+&lt;h2&gt;Modifiers&lt;/h2&gt;
+&lt;p&gt;There are 8 modifiers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Shift&lt;/li&gt;
+&lt;li&gt;Lock&lt;/li&gt;
+&lt;li&gt;Control&lt;/li&gt;
+&lt;li&gt;Mod1&lt;/li&gt;
+&lt;li&gt;Mod2&lt;/li&gt;
+&lt;li&gt;Mod3&lt;/li&gt;
+&lt;li&gt;Mod4&lt;/li&gt;
+&lt;li&gt;Mod5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Xmodmap provides three different operations for changing the way KeySyms are
+mapped to Modifiers: clear, add, and remove.&lt;/p&gt;
+&lt;p&gt;My favourite example – turning off caps lock:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap -e &quot;clear Lock&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This command clears the Lock modifier meaning that no keys now produce a caps
+lock effect. Bliss!&lt;/p&gt;
+&lt;p&gt;To reassign the caps lock key to do something more useful:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap -e &quot;add Shift = Caps_Lock&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This adds the KeySym &quot;Caps_Lock&quot; to the list of keys that produce the Shift
+modifier. In other words, we’ve turned caps lock into another shift key.&lt;/p&gt;
+&lt;p&gt;If you change your mind and want to stop the caps lock key behaving as a shift
+key:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap -e &quot;remove Shift = Caps_Lock&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This is basically the opposite of the previous example.&lt;/p&gt;
+&lt;h2&gt;Mapping KeyCodes to KeySyms&lt;/h2&gt;
+&lt;p&gt;Now we’ve got the hang of changing the Modifiers, we’ll round off by looking
+at mapping the physical keys on your keyboard to produce the results you want.&lt;/p&gt;
+&lt;p&gt;First things first, you’ll need to know the keycode of the key you want to
+change. To do this, you can use xev.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After running xev, press the key in question and you’ll see some output like
+this in your terminal:&lt;/p&gt;
+&lt;div class=&quot;codehilite&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;KeyPress event, serial 21, synthetic YES, window 0x800001,&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;root 0x40, subw 0x0, time 1539131, (69,8), root:(683,402),&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;state 0x0, keycode 63 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;XLookupString gives 0 bytes:&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;XmbLookupString gives 0 bytes:&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;XFilterEvent returns: False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The third line is the one we’re interested in. You’ll see the word keycode
+followed by the number you’re going to need next, in the example above it’s
+63.&lt;/p&gt;
+&lt;p&gt;Now we’re going to map that key to give us some foreign characters.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap -e &quot;keycode 63 = e E eacute Eacute&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The &quot;keycode&quot; command maps a KeyCode to a number of KeySyms. The order of the
+KeySyms is important as it represents how the KeySyms are derived.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The key pressed alone&lt;/li&gt;
+&lt;li&gt;With the Shift modifier&lt;/li&gt;
+&lt;li&gt;The key pressed along with the Mode_switch key&lt;/li&gt;
+&lt;li&gt;With Mode_switch AND Shift&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Mode_switch is just another keysym and you can map it to a chosen key on your
+keyboard like this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap -e &quot;keycode 64 = Mode_switch&quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;My personal choice is to map Mode_switch to my AltGr key. To do this, you can
+use a special version of the keycode command. $ xmodmap -e &quot;keycode Alt_R =
+Mode_switch&quot; This asks xmodmap to lookup what keycode(s) are currently
+assigned to the KeySym Alt_R (right alt) and assign them to Mode_switch as
+well.&lt;/p&gt;
+&lt;p&gt;So with the above mappings, here’s what happens when I press the keys on my
+keyboard:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The key on it’s own -&amp;gt; A lowercase ‘e’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With shift -&amp;gt; An uppercase ‘E’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With AltGr -&amp;gt; A lowercase e-acute (as used in French for example)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With AltGr and shift -&amp;gt; An uppercase E-acute&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Saving Your Mappings&lt;/h2&gt;
+&lt;p&gt;Once you’ve decided how you’d like everything set up, you obviously don’t want
+to have to type all those xmodmap lines in every time you start X. To save you
+from this, you can just put all your mapping into a file (I save mine at
+~/.xmodmap) and then just tell xmodmap to load from it.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ xmodmap ~/.xmodmap&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ideally, you’d add that line to your .xinitrc so it runs automatically when
+you start X.&lt;/p&gt;
+&lt;p&gt;The End&lt;/p&gt;
+&lt;p&gt;That just about wraps up this howto. I hope somebody finds it useful as I
+certainly found xmodmap confusing in my early days. Now I have my keyboard
+customised to do just what I want and I couldn’t live without it.&lt;/p&gt;
+&lt;h2&gt;Useful Links&lt;/h2&gt;
+&lt;p&gt;A few useful links about xmodmap.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.xfree86.org/4.2.0/xmodmap.1.html&quot;&gt;xmodmap man page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.in-ulm.de/~mascheck/X11/xmodmap.html&quot;&gt;Some useful hints&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.in-ulm.de/~mascheck/X11/Xmodmap.mapping&quot;&gt;A very extensive xmodmap example file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <author><name>Steve Engledow</name></author>
+    <category term="linux" />
+</entry>
+
+</feed>

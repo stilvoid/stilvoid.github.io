@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Why-fi?</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2015/04/29/why-fi/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Why-fi?</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: linux</p>
+                <p>I'm an <a href="http://archlinux.org">arch linux</a> user and I love it; there's no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.</p>
+<p>It's been a while since an update in arch caused me any problems but it did today.</p>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=196584">It seems there's an issue</a> with the latest version of <code>wpa_supplicant</code> which renders it incompatible with the way wifi is setup at boot time. The problem was caught and resolved very quickly by package maintainers who simply rolled the <code>wpa_supplicant</code> package back. However, I was unlucky enough to have caught the intervening upgrade shortly before turning my laptop off. I came home this evening to find I had no wifi!</p>
+<p>This wasn't a huge challenge but I haven't written a blog post for a while and someone might find this useful:</p>
+<hr />
+<p>If your wifi doesn't start at boot...</p>
+<p>And you're using <a href="https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333">a laptop with no ethernet port</a>...</p>
+<p>And you know an upgrade will solve your problem...</p>
+<p>How do you get internet so you can upgrade?</p>
+<p>Simples :)</p>
+<h2>The steps</h2>
+<p>First, find the name of your wireless interface:</p>
+<div class="codehilite"><pre><span></span><code>iw<span class="w"> </span>dev
+</code></pre></div>
+
+<p>Which will output something like:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">phy#0</span>
+<span class="go">    Interface wlp2s0</span>
+<span class="go">        ifindex 2</span>
+<span class="go">        wdev 0x1</span>
+<span class="go">        addr e8:b1:fc:6c:bf:b5</span>
+<span class="go">        type managed</span>
+<span class="go">        channel 11 (2462 MHz), width: 20 MHz, center1: 2462 MHz</span>
+</code></pre></div>
+
+<p>Where <code>wlp2s0</code> is the bit we're interested in.</p>
+<p>Now bring the interface up:</p>
+<div class="codehilite"><pre><span></span><code>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>wlp2s0<span class="w"> </span>up
+</code></pre></div>
+
+<p>Connect to the access point:</p>
+<div class="codehilite"><pre><span></span><code>iw<span class="w"> </span>dev<span class="w"> </span>wlp2s0<span class="w"> </span>connect<span class="w"> </span><span class="s2">&quot;AP name&quot;</span>
+</code></pre></div>
+
+<p>Create a temporary configuration file for <code>wpa_supplicant</code>:</p>
+<div class="codehilite"><pre><span></span><code>wpa_passphrase<span class="w"> </span><span class="s2">&quot;AP name&quot;</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/wpa.config
+</code></pre></div>
+
+<p>Run <code>wpa_supplicant</code> to authenticate with the access point:</p>
+<div class="codehilite"><pre><span></span><code>wpa_supplication<span class="w"> </span>-iwlp2s0<span class="w"> </span>-c/tmp/wpa.config
+</code></pre></div>
+
+<p>In another terminal (or you could have backgrounded the above), run <code>dhcpcd</code> to get an IP address from your router:</p>
+<div class="codehilite"><pre><span></span><code>dhcpcd<span class="w"> </span>wlp2s0
+</code></pre></div>
+
+<p>Update and reboot or whatever :)</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>

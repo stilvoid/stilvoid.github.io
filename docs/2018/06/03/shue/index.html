@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Shue</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2018/06/03/shue/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Shue</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: shell web</p>
+                <p>I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).</p>
+<p>It's called Shue and <a href="https://github.com/stilvoid/shue">you can find it on github</a>.</p>
+<p>If you dig back in the <a href="https://github.com/stilvoid/shue/commits/master">commit history</a>, you'll see that Shue was originally intended as a tool for converting rgb colour values into their nearest equivalent <a href="http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html">bash colour codes</a>.</p>
+<p>Shue doesn't do that now as I haven't really needed anything that does it since that one time :) I might bring back that functionality at some point but for now, here's what Shue <em>does</em> do:</p>
+<ul>
+<li>Converts colour representations between various rgb formats: 6-digit hex (e.g. <code>#ff9900</code>), 3-digit hex (e.g. <code>#f90</code>), and <a href="https://www.w3schools.com/cssref/css_colors_legal.asp">CSS-style</a> RGB values (e.g. <code>rgb(255, 153, 0)</code>.</li>
+<li>Perform a few basic operations on colours before converting to the various representations:<ul>
+<li>Invert</li>
+<li>Darken</li>
+<li>Lighten</li>
+</ul>
+</li>
+</ul>
+<p>I wrote this at the time because I was fiddling with a few websites and frequently needed the above functionality.</p>
+<p>It's written in <a href="https://golang.org/">Go</a> and there are binaries for Linux, Mac, and Windows on the <a href="https://github.com/stilvoid/shue/releases">releases page</a>.</p>
+<p><a href="mailto:steve@engledow.me">Let me know</a> if you find it useful.</p>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>

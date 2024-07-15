@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Steve Engledow - Twofer</title>
+        <meta name="author" content="Steve Engledow" />
+        <meta name="description" content="All content © 2011-2024 Steve Engledow. All views expressed here are mine and don’t reflect those of Amazon. The contents of this web site are available under the terms of the MIT licence." />
+        <link rel="canonical" href="https://engledow.me/2015/09/17/twofer/" />
+        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/code.css">
+    </head>
+
+    <body>
+        <header>
+            <h1>Twofer</h1>
+        </header>
+
+        <main>
+            <article>
+                <p class="tags">Tags: security linux</p>
+                <p>After toying with the idea for some time, I decided I'd try setting up <a href="https://en.wikipedia.org/wiki/Two-factor_authentication">2FA</a> on my laptop. As usual, the <a href="https://wiki.archlinux.org/">arch wiki</a> had a nicely written <a href="https://wiki.archlinux.org/index.php/Google_Authenticator">article on setting up 2FA</a> with <a href="https://github.com/google/google-authenticator/tree/master/libpam">the PAM module</a> for <a href="https://github.com/google/google-authenticator">Google Authenticator</a>.</p>
+<p>I followed the instructions for setting up 2FA for ssh and that worked seamlessly so I decided I'd then go the whole hog and enable the module in <code>/etc/pam.d/system-auth</code> which would mean I'd need it any time I had to login at all.</p>
+<p>Adding the line:</p>
+<div class="codehilite"><pre><span></span><code>auth  sufficient  pam_google_authenticator.so
+</code></pre></div>
+
+<p>had the expected effect that I could login with just the verification code but that seems to defeat the point a little so I bit my lip and changed <code>sufficient</code> to <code>required</code> which would mean I'd need my password and the code on login.</p>
+<p>I switched to another <a href="https://en.wikipedia.org/wiki/Virtual_terminal">VT</a> and went for it. It worked!</p>
+<p>So then I rebooted.</p>
+<p>And I couldn't log in.</p>
+<p>After a couple of minutes to download an ISO to boot from using another machine, putting it on a USB stick, booting from it, and editing my <code>system-auth</code> file, I realised why:</p>
+<div class="codehilite"><pre><span></span><code>auth      required    pam_google_authenticator.so
+auth      required    pam_unix.so     try_first_pass nullok
+auth      required    pam_ecryptfs.so unwrap
+</code></pre></div>
+
+<p>My home partition is encrypted and so the Google authenticator module obviously couldn't load my secret file until I'd already logged in.</p>
+<p><img alt="D'oh" src="https://static.offend.me.uk/media/images/facepalm.jpg" /></p>
+<p>I tried moving the <code>pam_google_authenticator.so</code> line to the bottom of the <code>auth</code> group but that didn't work either.</p>
+<h2>How could this possibly go wrong...</h2>
+<p>So, the solution I came up with was to put the 2fa module into the session group. My understanding is that this will mean PAM will ask me to supply a verification code once per session which is fine by me; I don't want to have to put a code in every time I <code>sudo</code> anyway.</p>
+<p>My question is, will my minor abuse of PAM bite me in the arse at any point? It seems to do what I expected, even if I log in through GDM.</p>
+<p>Here's my current <code>system-auth</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span>%PAM-1.0
+
+auth      required  pam_unix.so     try_first_pass nullok
+auth      required  pam_ecryptfs.so unwrap
+auth      optional  pam_permit.so
+auth      required  pam_env.so
+
+account   required  pam_unix.so
+account   optional  pam_permit.so
+account   required  pam_time.so
+
+password  optional  pam_ecryptfs.so
+password  required  pam_unix.so     try_first_pass nullok sha512 shadow
+password  optional  pam_permit.so
+
+session   required  pam_limits.so
+session   required  pam_unix.so
+session   optional  pam_ecryptfs.so unwrap
+session   optional  pam_permit.so
+session   required  pam_google_authenticator.so
+</code></pre></div>
+            </article>
+        </main>
+
+        <footer>
+            <p>
+                All content © 2011-2024 Steve Engledow.
+                All views expressed here are mine and don't reflect those of Amazon.
+                The contents of this web site are available under the terms of the MIT licence.
+            </p>
+        </footer>
+    </body>
+</html>
