@@ -1,4 +1,9 @@
 = Posts =
+== 2024 ==
+
+=== July ===
+    - [[2024-07-23|Back to the Primitive]]
+
 == 2019 ==
 
 === November ===
@@ -94,3 +99,8 @@
 === October ===
     - [[2011-10-27|Break In!]]
     - [[2011-10-22|xmodmap Hints and Tips]]
+
+= Generated Links =
+    - [[../index]]
+    - [[../projects]]
+    - [[index]]

@@ -1,0 +1,17 @@
+= Back to the Primitive =
+
+I like text, plain text. Always have. But over the past several years (and it has been, as the kids say, a hot minute since I [[2019-11-13|last blogged]]) I've found more and more bloat creeping into my daily life. I moved to a Mac Mini as my main machine about 4 years ago as I just gave up in the struggle between the way I think things ought to be and the "needs" of life working for a large corporate. In fairness, I have come to more or less enjoy MacOS but whenever I slip back into my Arch box with my i3 desktop, it feels _so sleek_.
+
+Moving to the Mac has necessarily meant changing some of my regular workflow and tools. I don't know what it is about the Mac but it seemed to discourage me from being so heavily terminal-based as I was. I really can't put my finger on it. Regardless, I ended up moving from taking notes in markdown to [[https://obsidian.md/|Obsidian]] for a while and then eventually [[https://logseq.com/|Logseq]]. Still just markdown files in a folder but the GUI is ever-present. I even found myself starting to use, and almost enjoy, [[https://code.visualstudio.com/|VS Code]]!
+
+Anyway, the point is, through [[https://latenightlinux.com/late-night-linux-episode-289/|Late Night Linux]], I discovered [[https://vimwiki.github.io/|Vimwiki]] and have started to love the terminal (and Vim) again. In fact, I started writing some code the other day and just automatically started it in Vim rather than VS Code. The rot is beginning to recede eh ;)
+
+One of the tasks I decided to bring over to Vimwiki was maintaining my small and fairly pointless [[https://engledow.me|website]]. In another show of bloat, I had been through various markdown-to-website tools (ghost, hugo, jekyll), decided I disliked something about each one, and ended up rolling my own Python cruft. Inevitably, I came back to the site to make some changes after a few months and had _completely_ forgotten how any of it was meant to work :) And that is what led me to the decision to try Vimwiki for the site as well as my note-taking.
+
+The first challenge is that, while Vimwiki supports markdown syntax, it doesn't support it very well and requires more plugins to get it to spit out html. Over the years, my enthusiasm for markdown has waned considerably. I like the overall style of the markup but it's just too ambiguous and ends up causing more problems than it solves. So... the tool I want to use has it's own syntax and I'm not tied to my usual preference... obviously it's time to figure out how to convert all my existing [[/diary/index|vimwiki syntax ;)
+
+I spent a nice afternoon discovering that [[https://pandoc.org/|pandoc]] is even more lovely than I had previously realised. Writing a new reader or writer for it is almost trivial. You write a lua file, create a few functions to parse/create text in various formats (e.g. emphasised, code blocks, bullet points), and then point pandoc at your lua file as if it were any other reader/writer option.
+
+So here we are. This very infrequently updated blog is now written in vimwiki and I'm back to using the terminal and Vim on a daily basis like the [[2017-07-10|last few years]] never happened.
+
+Now to see what else I can over-enthusiastically convince myself should be a Wiki...
