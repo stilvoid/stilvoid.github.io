@@ -4,7 +4,7 @@
  <title>Posts</title>
  <link>https://engledow.me/diary/index.html</link>
  <description>Posts</description>
- <pubDate>Wed, 24 Jul 2024 12:56:15 +0200</pubDate>
+ <pubDate>Wed, 24 Jul 2024 13:19:58 +0200</pubDate>
  <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
  <item>
   <title>Back to the Primitive</title>
@@ -111,13 +111,9 @@ If you think <code>maur</code> needs more features, use a different AUR helper.
 If you find bugs, please <a href="https://github.com/stilvoid/maur/issues/new">submit an issue</a> or, even better, a <a href="https://github.com/stilvoid/maur/compare">pull request</a>.
 </p>
 
-<p>
-## Example usage
-</p>
+<div id="Maur - A minimal AUR helper-Example usage"><h2 id="Example usage" class="header"><a href="#Maur - A minimal AUR helper-Example usage">Example usage</a></h2></div>
 
-<p>
-### Searching the AUR
-</p>
+<div id="Maur - A minimal AUR helper-Example usage-Searching the AUR"><h3 id="Searching the AUR" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Searching the AUR">Searching the AUR</a></h3></div>
 
 <p>
 If you want to search for a package in the AUR, you can grep for it ;)
@@ -127,9 +123,7 @@ If you want to search for a package in the AUR, you can grep for it ;)
 <code>maur | grep maur</code>
 </p>
 
-<p>
-### Installing a package
-</p>
+<div id="Maur - A minimal AUR helper-Example usage-Installing a package"><h3 id="Installing a package" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Installing a package">Installing a package</a></h3></div>
 
 <p>
 If you want to install a package, for example <a href="https://aur.archlinux.org/packages/yay">yay</a>:
@@ -139,9 +133,7 @@ If you want to install a package, for example <a href="https://aur.archlinux.org
 <code>maur yay</code>
 </p>
 
-<p>
-### Upgrading a package
-</p>
+<div id="Maur - A minimal AUR helper-Example usage-Upgrading a package"><h3 id="Upgrading a package" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Upgrading a package">Upgrading a package</a></h3></div>
 
 <p>
 Upgrade a package is the same as installing one. This will upgrade <code>maur</code>:

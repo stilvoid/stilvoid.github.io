@@ -25,21 +25,21 @@ If you think `maur` needs more features, use a different AUR helper.
 
 If you find bugs, please [[https://github.com/stilvoid/maur/issues/new|submit an issue]] or, even better, a [[https://github.com/stilvoid/maur/compare|pull request]].
 
-## Example usage
+== Example usage ==
 
-### Searching the AUR
+=== Searching the AUR ===
 
 If you want to search for a package in the AUR, you can grep for it ;)
 
 `maur | grep maur`
 
-### Installing a package
+=== Installing a package ===
 
 If you want to install a package, for example [[https://aur.archlinux.org/packages/yay|yay]]:
 
 `maur yay`
 
-### Upgrading a package
+=== Upgrading a package ===
 
 Upgrade a package is the same as installing one. This will upgrade `maur`:
 

@@ -61,6 +61,7 @@ img {
   border-radius: 0.5em;
   margin: 0 0.5em 0.5em 0;
   float: left;
+  max-width: 100%;
 }
 
 pre {
@@ -70,6 +71,7 @@ pre {
   font-family: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
   font-size: 0.8em;
   border-radius: 6px;
+  white-space: pre-wrap;
 }
 
 p > a {
