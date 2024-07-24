@@ -1,6 +1,6 @@
 = Using Git with AWS CodeCommit Across Multiple AWS Accounts =
 
-(Cross-posted from [[https://aws.amazon.com/blogs/devops/|the AWS DevOps blog]])
+(Cross-posted from [[https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/|the AWS DevOps blog]])
 
 I use [[https://aws.amazon.com/codecommit/|AWS CodeCommit]] to host all of my private Git repositories. My repositories are split across several AWS accounts for different purposes: personal projects, internal projects at work, and customer projects.
 

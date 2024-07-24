@@ -4,7 +4,7 @@
  <title>Posts</title>
  <link>https://engledow.me/diary/index.html</link>
  <description>Posts</description>
- <pubDate>Wed, 24 Jul 2024 00:51:24 +0200</pubDate>
+ <pubDate>Wed, 24 Jul 2024 12:56:15 +0200</pubDate>
  <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
  <item>
   <title>Back to the Primitive</title>
@@ -30,7 +30,7 @@ One of the tasks I decided to bring over to Vimwiki was maintaining my small and
 </p>
 
 <p>
-The first challenge is that, while Vimwiki supports markdown syntax, it doesn't support it very well and requires more plugins to get it to spit out html. Over the years, my enthusiasm for markdown has waned considerably. I like the overall style of the markup but it's just too ambiguous and ends up causing more problems than it solves. So... the tool I want to use has it's own syntax and I'm not tied to my usual preference... obviously it's time to figure out how to convert all my existing [[/diary/index|vimwiki syntax ;)
+The first challenge is that, while Vimwiki supports markdown syntax, it doesn't support it very well and requires more plugins to get it to spit out html. Over the years, my enthusiasm for markdown has waned considerably. I like the overall style of the markup but it's just too ambiguous and ends up causing more problems than it solves. So... the tool I want to use has it's own syntax and I'm not tied to my usual preference... obviously it's time to figure out how to convert all my existing <a href="index.html">posts</a> ;)
 </p>
 
 <p>
@@ -161,7 +161,7 @@ Upgrade a package is the same as installing one. This will upgrade <code>maur</c
 <div id="Using Git with AWS CodeCommit Across Multiple AWS Accounts"><h1 id="Using Git with AWS CodeCommit Across Multiple AWS Accounts" class="header"><a href="#Using Git with AWS CodeCommit Across Multiple AWS Accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a></h1></div>
 
 <p>
-(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/">the AWS DevOps blog</a>)
+(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps blog</a>)
 </p>
 
 <p>
@@ -433,7 +433,7 @@ However, this game was written a while ago and originally targeted MS-DOS so it 
 </p>
 
 <p>
-<img src="/Users/steve/code/github.com/stilvoid/images/2018-08-14-heroes-small.png" alt="Tiny Heroes window screenshot" />
+<img src="https://engledow.me/images/2018-08-14-heroes-small.png" alt="Tiny Heroes window screenshot" />
 </p>
 
 <p>

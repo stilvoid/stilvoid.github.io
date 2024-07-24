@@ -2,9 +2,9 @@
 
 [[https://en.wikipedia.org/wiki/Personal_web_page|Home page]] of Steve Engledow.
 
-{{https://engledow.me/assets/images/me-badge-small.jpg|Picture of Steve Engledow}}
+This is what I look like:
 
-This is what I look like.
+{{https://engledow.me/assets/images/me-badge-small.jpg|Picture of Steve Engledow}}
 
 == Content ==
 
