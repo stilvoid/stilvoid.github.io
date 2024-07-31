@@ -2,15 +2,18 @@
 
 [[https://en.wikipedia.org/wiki/Personal_web_page|Home page]] of Steve Engledow.
 
-This is what I look like:
+Cat and human dad.
+Polygeek.
+Nihilistic optimist.
+Neutral good.
+NW on the political compass.
+Norwich, UK.
 
-{{https://engledow.me/assets/images/me-badge-small.jpg|Picture of Steve Engledow}}
+I work for AWS but this is where I keep non-work stuff.
 
-== Content ==
-
-- [[https://stilvoid.itch.io/|Some Pico-8 games I made]]
-- [[projects|Old projects]]
-- [[diary/index|Old blog posts]]
+[[projects|Projects]]
+[[diary/index|Blog posts]]
+[[https://stilvoid.itch.io/|Some Pico-8 games I made]]
 
 == Me in other places ==
 

@@ -90,7 +90,7 @@ npm install -g ire
 
 or if you’re feeling less brave or more paranoid, just `npm install ire` to install it to the current folder.
 
-Further details are in the README and [[https://engledow.me/code/unloved/ire/|on this page]].
+Further details are in the [[https://github.com/stilvoid/Ire/blob/master/README.md|README]].
 
 ==Final word==
 

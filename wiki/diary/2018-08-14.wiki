@@ -6,7 +6,7 @@ For the end result of this post, see [[https://aur.archlinux.org/packages/heroes
 
 The other day, something reminded me of a game I used to really enjoy playing back in my early days of getting to know Linux. That game was [[http://heroes.sourceforge.net|Heroes]]. It's a clone of [[https://en.wikipedia.org/wiki/Snake_(video_game_genre|Snake/Tron/Nibbles]]) but with some fun additions, a nice graphical style, and some funky visual effects.
 
-{{http://heroes.sourceforge.net/img/snap5.png|Heroes screenshot}}
+{{https://static.offend.me.uk/media/images/2018-08-14-heroes-screenshot.png|Heroes screenshot}}
 
 So, of course, I immediately decided to install it.
 
@@ -61,7 +61,7 @@ Amazingly, those all worked correctly and I was able to play the game!
 
 However, this game was written a while ago and originally targeted MS-DOS so it has a window size of 320x200 which looks rather ridiculous on my 1920x1080 desktop ;)
 
-{{https://engledow.me/images/2018-08-14-heroes-small.png|Tiny Heroes window screenshot}}
+[[https://static.offend.me.uk/media/images/2018-08-14-heroes.png|{{https://static.offend.me.uk/media/images/2018-08-14-heroes-small.png|Tiny Heroes window screenshot}}]]
 
 So I set about trying to set the default screen mode so that the game starts in full screen...
 

@@ -5,13 +5,18 @@ This is a curated selection of the more finished, actually useful stuff.
 
 Most of it is quite old at this point but still relevant.
 
-- [[https://github.com/stilvoid/please|please]] is a command line utility that makes it easy to integrate web APIs into your shell scripts.
-- [[https://github.com/stilvoid/maur|maur]] is a minimal tool for searching and installing packages from the [[https://aur.archlinux.org/|AUR]].
-- [[https://github.com/stilvoid/ps1|PS1]] is my custom [[https://wiki.archlinux.org/title/Bash/Prompt_customization|bash prompt]] with some nice features.  I've been using this daily every since I wrote it.
-- [[https://github.com/stilvoid/logoids|Logoids]] is an [[https://en.wikipedia.org/wiki/Asteroids_(video_game)|Asteroids]] clone where you provide the Asteroid images.
-- [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.
-- [[https://github.com/stilvoid/git-get|git-get]] is another tool I still use every day.  Replaces `git clone` but organises repositories by their origin under `~/code`.
-- [[https://github.com/stilvoid/git-cube|git-cube]] reminds you to commit before you exit a shell session.
-- [[https://github.com/stilvoid/shue|shue]] is a command line tool for modifying and converting colour values for use with CSS etc.
+== Command line tools ==
+
+- [[https://github.com/stilvoid/babel|Babel]] is an easy-to-parse and easy-to-produce data exchange format for easing communication between processes written in different programming languages. There are definitely better choices for this now but I do have some ideas for a future iteration of this.
 - [[https://github.com/stilvoid/git-aux|git-aux]] allows you to use git to manage replicating your dotfiles between machines and that sort of things.
-- [[https://github.com/stilvoid/babel|Babel]] is an easy-to-parse and easy-to-produce data exchange format for easing communication between processes written in different programming languages. There are definitely beter choices for this now but I do have some ideas for a future iteration of this.
+- [[https://github.com/stilvoid/git-cube|git-cube]] reminds you to commit before you exit a shell session.
+- [[https://github.com/stilvoid/git-get|git-get]] is another tool I still use every day.  Replaces `git clone` but organises repositories by their origin under `~/code`.
+- [[https://github.com/stilvoid/maur|maur]] is a minimal tool for searching and installing packages from the [[https://aur.archlinux.org/|AUR]].
+- [[https://github.com/stilvoid/please|please]] is a command line utility that makes it easy to integrate web APIs into your shell scripts.
+- [[https://github.com/stilvoid/ps1|PS1]] is my custom [[https://wiki.archlinux.org/title/Bash/Prompt_customization|bash prompt]] with some nice features.  I've been using this daily every since I wrote it.
+- [[https://github.com/stilvoid/shue|shue]] is a command line tool for modifying and converting colour values for use with CSS etc.
+
+== Games ==
+
+- [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.
+- [[https://github.com/stilvoid/logoids|Logoids]] is an [[https://en.wikipedia.org/wiki/Asteroids_(video_game)|Asteroids]] clone where you provide the Asteroid images.
