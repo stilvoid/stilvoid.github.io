@@ -6,4 +6,11 @@ for f in wiki/diary/20*; do date="$(basename -s .wiki "$f" | sed -e 's/-//g')000
 
 rm wiki/diary/index.wiki
 
-vim "+VimwikiDiaryIndex 2" "+VimwikiDiaryGenerateLinks" "+s/.*/%title Blog posts/" "+VimwikiAll2HTML!" "+VimwikiRss" "+q"
+vim \
+    "+VimwikiDiaryIndex 2" \
+    "+VimwikiDiaryGenerateLinks" \
+    "+s/.*/%title Blog posts/" \
+    "+w" \
+    "+VimwikiAll2HTML" \
+    "+VimwikiRss" \
+    "+q"
