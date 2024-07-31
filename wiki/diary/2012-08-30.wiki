@@ -1,4 +1,4 @@
-= Lost at C =
+%title Lost at C
 
 This week I’ve learned a few things (always the mark of a good week in my book), the foremost of which is that I don’t know very much about [[https://en.wikipedia.org/wiki/Programming_language|C]].
 

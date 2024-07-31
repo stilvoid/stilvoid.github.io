@@ -1,4 +1,4 @@
-= Testing a Django app with Docker =
+%title Testing a Django app with Docker
 
 I’ve been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
 

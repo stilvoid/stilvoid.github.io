@@ -1,4 +1,4 @@
-= tmux =
+%title tmux
 
 [[http://tmux.sourceforge.net/|tmux]] is the best thing ever. That is all.
 

@@ -1,4 +1,4 @@
-= Andy and Teddy are waving goodbye =
+%title Andy and Teddy are waving goodbye
 
 Most of the time, when I’ve got some software I want to write, I do it in python or sometimes bash. Occasionally though, I like to slip into something with a few more brackets. I’ve written a bit of C in the past and love it but recently I’ve been learning [[http://golang.org/|Go]] and what’s really struck me is how clever it is. I’m not just talking about the technical merits of the language itself; it’s clever in several areas:
 

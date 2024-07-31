@@ -1,4 +1,4 @@
-= Keychain and GnuPG >= 2.1 =
+%title Keychain and GnuPG >= 2.1
 
 A while ago, I started using [[http://www.funtoo.org/Keychain|keychain]] to manage my ssh and gpg agents. I did this with the following in my `.bashrc`
 

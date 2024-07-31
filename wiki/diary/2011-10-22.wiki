@@ -1,4 +1,4 @@
-= xmodmap Hints and Tips =
+%title xmodmap Hints and Tips
 
 Originally posted on [Rolling
 Release](http://rollingrelease.com/system/2010/09/xmodmap-hints-and-tips). I'm

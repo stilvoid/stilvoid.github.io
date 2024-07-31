@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>2015-05-14</title>
+        <title>Building a componentised application</title>
         <link rel="stylesheet" href="../style.css" />
     </head>
 
@@ -20,8 +20,9 @@
         </header>
 
         <main>
+            <h1>Building a componentised application</h1>
+
             
-<div id="Building a componentised application"><h1 id="Building a componentised application" class="header"><a href="#Building a componentised application">Building a componentised application</a></h1></div>
 
 <p>
 Most of what’s here is hardly new ground but I felt it worth noting down the current strategy we’re using to develop and build what we’re working on at <a href="http://www.locationsciences.ai/">Proxama</a>.
@@ -35,7 +36,7 @@ Without going into any of the details, it’s a web application with a front end
 At the outset of the project, we decided we would bite the bullet and build for <a href="https://www.docker.com/">Docker</a> from the outset. This meant we would get to avoid the usual dependency and developer environment setup nightmares.
 </p>
 
-<div id="Building a componentised application-The problem"><h2 id="The problem" class="header"><a href="#Building a componentised application-The problem">The problem</a></h2></div>
+<div id="The problem"><h2 id="The problem" class="header"><a href="#The problem">The problem</a></h2></div>
 
 <p>
 What we quickly realised as we started to put the bare bones of a few of the services in place, was that we had three seemingly conflicting goals for each component and for the application as a whole.
@@ -56,13 +57,13 @@ Provide a means for running unit tests (both by developers and our CI server).
 So here’s what we’ve ended up with:
 </p>
 
-<div id="Building a componentised application-The solution"><h2 id="The solution" class="header"><a href="#Building a componentised application-The solution">The solution</a></h2></div>
+<div id="The solution"><h2 id="The solution" class="header"><a href="#The solution">The solution</a></h2></div>
 
 <p>
 _Or: <a href="http://docs.docker.com/compose/">docker-compose</a> to the rescue_
 </p>
 
-<div id="Building a componentised application-The solution-Folder structure"><h3 id="Folder structure" class="header"><a href="#Building a componentised application-The solution-Folder structure">Folder structure</a></h3></div>
+<div id="The solution-Folder structure"><h3 id="Folder structure" class="header"><a href="#The solution-Folder structure">Folder structure</a></h3></div>
 
 <p>
 Here’s what the project layout looks like:
@@ -91,7 +92,7 @@ Project
   +-&lt;other files&gt;
 </pre>
 
-<div id="Building a componentised application-The solution-Building for production"><h3 id="Building for production" class="header"><a href="#Building a componentised application-The solution-Building for production">Building for production</a></h3></div>
+<div id="The solution-Building for production"><h3 id="Building for production" class="header"><a href="#The solution-Building for production">Building for production</a></h3></div>
 
 <p>
 This is the easy bit and is where we started first. The <code>Dockerfile</code> for each service was designed to run everything with the defaults. Usually, this is something simple like:
@@ -106,7 +107,7 @@ CMD ["python", "main.py"]
 Our CI server can easily take these, produce images, and push them to the registry.
 </p>
 
-<div id="Building a componentised application-The solution-Allowing developers to run services locally"><h3 id="Allowing developers to run services locally" class="header"><a href="#Building a componentised application-The solution-Allowing developers to run services locally">Allowing developers to run services locally</a></h3></div>
+<div id="The solution-Allowing developers to run services locally"><h3 id="Allowing developers to run services locally" class="header"><a href="#The solution-Allowing developers to run services locally">Allowing developers to run services locally</a></h3></div>
 
 <p>
 This is slightly harder. In general, each service wants to do something slightly different when being run for development; e.g. automatically restarting when code changes. Additionally, we don’t want to have to rebuild an image every time we make a code change. This is where <code>docker-compose</code> comes in handy.
@@ -166,7 +167,7 @@ Each service is bound to a different port so you can connect to each part direct
 Each service defines links to the other services it needs.
 
 </ul>
-<div id="Building a componentised application-The solution-Running the tests"><h3 id="Running the tests" class="header"><a href="#Building a componentised application-The solution-Running the tests">Running the tests</a></h3></div>
+<div id="The solution-Running the tests"><h3 id="Running the tests" class="header"><a href="#The solution-Running the tests">Running the tests</a></h3></div>
 
 <p>
 This was the trickiest part to get right. Some services have dependencies on other things even just to get unit tests running. For example, <a href="http://python-eve.org/">Eve</a> is a huge pain to get running with a fake database so it’s much easier to just link it to a temporary "real" database.
@@ -209,7 +210,7 @@ So, a developer (or the CI box) can run the unit tests with:
 docker-compose run tests
 </pre>
 
-<div id="Building a componentised application-Summary"><h2 id="Summary" class="header"><a href="#Building a componentised application-Summary">Summary</a></h2></div>
+<div id="Summary"><h2 id="Summary" class="header"><a href="#Summary">Summary</a></h2></div>
 
 <ul>
 <li>

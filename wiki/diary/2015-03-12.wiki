@@ -1,4 +1,4 @@
-= Cleaning out my closet =
+%title Cleaning out my closet
 
 Or: _Finding out what crud you installed that’s eating all of your space in Arch Linux_
 

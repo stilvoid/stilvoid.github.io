@@ -1,4 +1,4 @@
-= Maur - A minimal AUR helper =
+%title Maur - A minimal AUR helper
 
 This post is about the [[https://aur.archlinux.org/|Arch User Repository]]. If you're not an [[https://www.archlinux.org/|Arch]] user, probably just move along ;)
 

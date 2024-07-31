@@ -1,4 +1,4 @@
-= Heroes: Building some old code =
+%title Heroes: Building some old code
 
 For the end result of this post, see [[https://aur.archlinux.org/packages/heroes/|my AUR package of Heroes]].
 

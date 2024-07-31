@@ -1,4 +1,4 @@
-= Ire =
+%title Ire
 
 Call me crazy (thanks) but I like regular expressions.
 

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>2014-04-15</title>
+        <title>Netcat</title>
         <link rel="stylesheet" href="../style.css" />
     </head>
 
@@ -20,8 +20,9 @@
         </header>
 
         <main>
+            <h1>Netcat</h1>
+
             
-<div id="Netcat"><h1 id="Netcat" class="header"><a href="#Netcat">Netcat</a></h1></div>
 
 <p>
 I had occasion recently to need an entry in my ssh config such that connections to a certain host would be proxied through another connection. Several sources suggested the following snippet:
@@ -61,7 +62,7 @@ Worse, <code>-x</code> is a valid option in both netcats but does completely dif
 After that revalation, I thought it was worth capturing the commonalities and differences between the options taken by the netcats.
 </p>
 
-<div id="Netcat-Common options"><h2 id="Common options" class="header"><a href="#Netcat-Common options">Common options</a></h2></div>
+<div id="Common options"><h2 id="Common options" class="header"><a href="#Common options">Common options</a></h2></div>
 
 <ul>
 <li>
@@ -171,7 +172,7 @@ Connections which cannot be established or are idle timeout after timeout second
 Specifies that nc should just scan for listening daemons, without sending any data to them. It is an error to use this option in conjunction with the -l option.
 </p>
 
-<div id="Netcat-BSD netcat only"><h2 id="BSD netcat only" class="header"><a href="#Netcat-BSD netcat only">BSD netcat only</a></h2></div>
+<div id="BSD netcat only"><h2 id="BSD netcat only" class="header"><a href="#BSD netcat only">BSD netcat only</a></h2></div>
 
 <ul>
 <li>
@@ -335,7 +336,7 @@ Requests that nc should connect to destination using a proxy at proxy_address an
 DCCP mode.
 </p>
 
-<div id="Netcat-GNU netcat only"><h2 id="GNU netcat only" class="header"><a href="#Netcat-GNU netcat only">GNU netcat only</a></h2></div>
+<div id="GNU netcat only"><h2 id="GNU netcat only" class="header"><a href="#GNU netcat only">GNU netcat only</a></h2></div>
 
 <ul>
 <li>
@@ -418,7 +419,7 @@ Output version information and exit.
 Hexdump incoming and outgoing traffic.
 </p>
 
-<div id="Netcat-Epilogue"><h2 id="Epilogue" class="header"><a href="#Netcat-Epilogue">Epilogue</a></h2></div>
+<div id="Epilogue"><h2 id="Epilogue" class="header"><a href="#Epilogue">Epilogue</a></h2></div>
 
 <p>
 I uninstalled GNU netcat and installed BSD netcat btw ;)

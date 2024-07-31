@@ -1,4 +1,4 @@
-= Netcat =
+%title Netcat
 
 I had occasion recently to need an entry in my ssh config such that connections to a certain host would be proxied through another connection. Several sources suggested the following snippet:
 

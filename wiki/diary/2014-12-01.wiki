@@ -1,4 +1,4 @@
-= Just call me Anneka =
+%title Just call me Anneka
 
 I had an idea a few days ago to create a Pebble watchface that works like an advent calendar; you get a new christmas-themed picture every day.
 

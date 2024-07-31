@@ -1,4 +1,4 @@
-= Building a componentised application =
+%title Building a componentised application
 
 Most of what’s here is hardly new ground but I felt it worth noting down the current strategy we’re using to develop and build what we’re working on at [[http://www.locationsciences.ai/|Proxama]].
 

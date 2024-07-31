@@ -1,4 +1,4 @@
-= Why-fi? =
+%title Why-fi?
 
 I’m an [[http://archlinux.org|arch linux]] user and I love it; there’s no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.
 

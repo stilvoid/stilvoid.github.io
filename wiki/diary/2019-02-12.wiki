@@ -1,4 +1,4 @@
-= Using Git with AWS CodeCommit Across Multiple AWS Accounts =
+%title Using Git with AWS CodeCommit Across Multiple AWS Accounts
 
 (Cross-posted from [[https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/|the AWS DevOps blog]])
 

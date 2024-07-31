@@ -4,14 +4,13 @@
  <title>Posts</title>
  <link>https://engledow.me/diary/index.html</link>
  <description>Posts</description>
- <pubDate>Wed, 31 Jul 2024 02:51:36 +0200</pubDate>
+ <pubDate>Wed, 31 Jul 2024 03:22:30 +0200</pubDate>
  <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
  <item>
-  <title>Back to the Primitive</title>
+  <title>2024-07-23</title>
   <link>https://engledow.me/diary/2024-07-23.html</link>
   <guid isPermaLink="false">2024-07-23</guid>
   <description><![CDATA[
-<div id="Back to the Primitive"><h1 id="Back to the Primitive" class="header"><a href="#Back to the Primitive">Back to the Primitive</a></h1></div>
 
 <p>
 I like text, plain text. Always have. But over the past several years (and it has been, as the kids say, a hot minute since I <a href="2019-11-13.html">last blogged</a>) I've found more and more bloat creeping into my daily life. I moved to a Mac Mini as my main machine about 4 years ago as I just gave up in the struggle between the way I think things ought to be and the "needs" of life working for a large corporate. In fairness, I have come to more or less enjoy MacOS but whenever I slip back into my Arch box with my i3 desktop, it feels <em>so sleek</em>.
@@ -48,11 +47,10 @@ Now to see what else I can over-enthusiastically convince myself should be a Wik
   <pubDate>Tue, 23 Jul 2024 00:00:00 +0200</pubDate>
  </item>
  <item>
-  <title>Maur - A minimal AUR helper</title>
+  <title>2019-11-13</title>
   <link>https://engledow.me/diary/2019-11-13.html</link>
   <guid isPermaLink="false">2019-11-13</guid>
   <description><![CDATA[
-<div id="Maur - A minimal AUR helper"><h1 id="Maur - A minimal AUR helper" class="header"><a href="#Maur - A minimal AUR helper">Maur - A minimal AUR helper</a></h1></div>
 
 <p>
 This post is about the <a href="https://aur.archlinux.org/">Arch User Repository</a>. If you're not an <a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)
@@ -111,9 +109,9 @@ If you think <code>maur</code> needs more features, use a different AUR helper.
 If you find bugs, please <a href="https://github.com/stilvoid/maur/issues/new">submit an issue</a> or, even better, a <a href="https://github.com/stilvoid/maur/compare">pull request</a>.
 </p>
 
-<div id="Maur - A minimal AUR helper-Example usage"><h2 id="Example usage" class="header"><a href="#Maur - A minimal AUR helper-Example usage">Example usage</a></h2></div>
+<div id="Example usage"><h2 id="Example usage" class="header"><a href="#Example usage">Example usage</a></h2></div>
 
-<div id="Maur - A minimal AUR helper-Example usage-Searching the AUR"><h3 id="Searching the AUR" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Searching the AUR">Searching the AUR</a></h3></div>
+<div id="Example usage-Searching the AUR"><h3 id="Searching the AUR" class="header"><a href="#Example usage-Searching the AUR">Searching the AUR</a></h3></div>
 
 <p>
 If you want to search for a package in the AUR, you can grep for it ;)
@@ -123,7 +121,7 @@ If you want to search for a package in the AUR, you can grep for it ;)
 <code>maur | grep maur</code>
 </p>
 
-<div id="Maur - A minimal AUR helper-Example usage-Installing a package"><h3 id="Installing a package" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Installing a package">Installing a package</a></h3></div>
+<div id="Example usage-Installing a package"><h3 id="Installing a package" class="header"><a href="#Example usage-Installing a package">Installing a package</a></h3></div>
 
 <p>
 If you want to install a package, for example <a href="https://aur.archlinux.org/packages/yay">yay</a>:
@@ -133,7 +131,7 @@ If you want to install a package, for example <a href="https://aur.archlinux.org
 <code>maur yay</code>
 </p>
 
-<div id="Maur - A minimal AUR helper-Example usage-Upgrading a package"><h3 id="Upgrading a package" class="header"><a href="#Maur - A minimal AUR helper-Example usage-Upgrading a package">Upgrading a package</a></h3></div>
+<div id="Example usage-Upgrading a package"><h3 id="Upgrading a package" class="header"><a href="#Example usage-Upgrading a package">Upgrading a package</a></h3></div>
 
 <p>
 Upgrade a package is the same as installing one. This will upgrade <code>maur</code>:
@@ -146,11 +144,10 @@ Upgrade a package is the same as installing one. This will upgrade <code>maur</c
   <pubDate>Wed, 13 Nov 2019 00:00:00 +0100</pubDate>
  </item>
  <item>
-  <title>Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
+  <title>2019-02-12</title>
   <link>https://engledow.me/diary/2019-02-12.html</link>
   <guid isPermaLink="false">2019-02-12</guid>
   <description><![CDATA[
-<div id="Using Git with AWS CodeCommit Across Multiple AWS Accounts"><h1 id="Using Git with AWS CodeCommit Across Multiple AWS Accounts" class="header"><a href="#Using Git with AWS CodeCommit Across Multiple AWS Accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a></h1></div>
 
 <p>
 (Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps blog</a>)
@@ -164,7 +161,7 @@ I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host al
 The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit documentation</a> shows you how to configure and clone a repository from one place, but in this blog post I want to share how I manage my Git configuration across multiple AWS accounts.
 </p>
 
-<div id="Using Git with AWS CodeCommit Across Multiple AWS Accounts-Background"><h2 id="Background" class="header"><a href="#Using Git with AWS CodeCommit Across Multiple AWS Accounts-Background">Background</a></h2></div>
+<div id="Background"><h2 id="Background" class="header"><a href="#Background">Background</a></h2></div>
 
 <p>
 First, I have <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">profiles</a> configured for each of my AWS environments. I connect to some of them using <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">IAM user credentials</a> and others by using <a href="https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/">cross-account roles</a>.
@@ -199,7 +196,7 @@ role_arn = arn:aws:iam::123456789012:role/CrossAccountPowerUser
 If I am doing some work in one of those accounts, I run <code>export AWS_PROFILE=work</code> and use the AWS CLI as normal.
 </p>
 
-<div id="Using Git with AWS CodeCommit Across Multiple AWS Accounts-The problem"><h2 id="The problem" class="header"><a href="#Using Git with AWS CodeCommit Across Multiple AWS Accounts-The problem">The problem</a></h2></div>
+<div id="The problem"><h2 id="The problem" class="header"><a href="#The problem">The problem</a></h2></div>
 
 <p>
 I use the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html">Git credential helper</a> so that the Git client works seamlessly with CodeCommit. However, because I use different profiles for different repositories, my use case is a little more complex than the average.
@@ -219,7 +216,7 @@ In general, to use the credential helper, all you need to do is place the follow
 I could make this work across accounts by setting the appropriate value for <code>AWS_PROFILE</code> before I use Git in a repository, but there is a much neater way to deal with this situation using a feature released in <a href="https://blog.github.com/2017-05-10-git-2-13-has-been-released/">Git version 2.13</a>, <a href="https://git-scm.com/docs/git-config#_includes">conditional includes</a>.
 </p>
 
-<div id="Using Git with AWS CodeCommit Across Multiple AWS Accounts-A solution"><h2 id="A solution" class="header"><a href="#Using Git with AWS CodeCommit Across Multiple AWS Accounts-A solution">A solution</a></h2></div>
+<div id="A solution"><h2 id="A solution" class="header"><a href="#A solution">A solution</a></h2></div>
 
 <p>
 First, I separate my work into different folders. My <code>~/code/</code> directory looks like this:
@@ -283,17 +280,16 @@ This example specifies that if I am working with a Git repository that is locate
 </p>
 
 <p>
-The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <span id="Using Git with AWS CodeCommit Across Multiple AWS Accounts-A solution-earlier"></span><strong id="earlier">earlier</strong> in the config.
+The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <span id="A solution-earlier"></span><strong id="earlier">earlier</strong> in the config.
 </p>
 ]]></description>
   <pubDate>Tue, 12 Feb 2019 00:00:00 +0100</pubDate>
  </item>
  <item>
-  <title>git-get</title>
+  <title>2018-11-08</title>
   <link>https://engledow.me/diary/2018-11-08.html</link>
   <guid isPermaLink="false">2018-11-08</guid>
   <description><![CDATA[
-<div id="git-get"><h1 id="git-get" class="header"><a href="#git-get">git-get</a></h1></div>
 
 <p>
 Because I work on a lot of different projects spread across a lot of accounts at multiple git hosting providers, I try to keep my code folder in some semblance of order by having subfolders for things.
@@ -307,7 +303,7 @@ A while ago, I decided to make things even simpler by letting the git repos I wa
 Today, I decided to apply <a href="http://threevirtues.com/">the three virtues</a> and wrote some code to handle this for me.
 </p>
 
-<div id="git-get-Introducing git-get"><h2 id="Introducing git-get" class="header"><a href="#git-get-Introducing git-get">Introducing git-get</a></h2></div>
+<div id="Introducing git-get"><h2 id="Introducing git-get" class="header"><a href="#Introducing git-get">Introducing git-get</a></h2></div>
 
 <p>
 <a href="https://github.com/stilvoid/git-get">git-get</a> is an opinionated git command that helps you keep your code folder in order.
@@ -329,11 +325,10 @@ Laziness is the primary virtue.
   <pubDate>Thu, 08 Nov 2018 00:00:00 +0100</pubDate>
  </item>
  <item>
-  <title>Heroes: Building some old code</title>
+  <title>2018-08-14</title>
   <link>https://engledow.me/diary/2018-08-14.html</link>
   <guid isPermaLink="false">2018-08-14</guid>
   <description><![CDATA[
-<div id="Heroes: Building some old code"><h1 id="Heroes: Building some old code" class="header"><a href="#Heroes: Building some old code">Heroes: Building some old code</a></h1></div>
 
 <p>
 For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of Heroes</a>.
@@ -365,7 +360,7 @@ No results. Nothing in the <a href="https://wiki.archlinux.org/index.php/Arch_Us
 It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.
 </p>
 
-<div id="Heroes: Building some old code-Getting Heroes to compile in 2018"><h2 id="Getting Heroes to compile in 2018" class="header"><a href="#Heroes: Building some old code-Getting Heroes to compile in 2018">Getting Heroes to compile in 2018</a></h2></div>
+<div id="Getting Heroes to compile in 2018"><h2 id="Getting Heroes to compile in 2018" class="header"><a href="#Getting Heroes to compile in 2018">Getting Heroes to compile in 2018</a></h2></div>
 
 <p>
 I put together a basic <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> that pulls down the source and data files from the Heroes sourceforge page and then runs:
@@ -448,7 +443,7 @@ The very last thing I've done is to enable the high quality mixer by default and
 <a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here's my final patch file</a>.
 </p>
 
-<div id="Heroes: Building some old code-Submitting the AUR package"><h2 id="Submitting the AUR package" class="header"><a href="#Heroes: Building some old code-Submitting the AUR package">Submitting the AUR package</a></h2></div>
+<div id="Submitting the AUR package"><h2 id="Submitting the AUR package" class="header"><a href="#Submitting the AUR package">Submitting the AUR package</a></h2></div>
 
 <p>
 Things have changed since I last submitted a package to the AUR so here's a brief writeup - if only to remind myself in future ;)
@@ -483,7 +478,7 @@ And then push it to the AUR repository:
 $ git push -u aur master
 </pre>
 
-<div id="Heroes: Building some old code-Testing it out"><h2 id="Testing it out" class="header"><a href="#Heroes: Building some old code-Testing it out">Testing it out</a></h2></div>
+<div id="Testing it out"><h2 id="Testing it out" class="header"><a href="#Testing it out">Testing it out</a></h2></div>
 
 <p>
 I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using AUR easier <a href="https://thethreevirtues.com/">I'm lazy</a>).
@@ -504,11 +499,10 @@ All in all, this wasn't anywhere near as painful as I'd expected. Time to play s
   <pubDate>Tue, 14 Aug 2018 00:00:00 +0200</pubDate>
  </item>
  <item>
-  <title>Shue</title>
+  <title>2018-06-03</title>
   <link>https://engledow.me/diary/2018-06-03.html</link>
   <guid isPermaLink="false">2018-06-03</guid>
   <description><![CDATA[
-<div id="Shue"><h1 id="Shue" class="header"><a href="#Shue">Shue</a></h1></div>
 
 <p>
 I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).
@@ -523,7 +517,7 @@ If you dig back in the <a href="https://github.com/stilvoid/shue/commits/master"
 </p>
 
 <p>
-Shue doesn't do that now as I haven't really needed anything that does it since that one time :) I might bring back that functionality at some point but for now, here's what Shue <span id="Shue-does"></span><strong id="does">does</strong> do:
+Shue doesn't do that now as I haven't really needed anything that does it since that one time :) I might bring back that functionality at some point but for now, here's what Shue <span id="-does"></span><strong id="does">does</strong> do:
 </p>
 
 <ul>
@@ -560,11 +554,10 @@ It's written in <a href="https://golang.org/">Go</a> and there are binaries for 
   <pubDate>Sun, 03 Jun 2018 00:00:00 +0200</pubDate>
  </item>
  <item>
-  <title>An evening of linux on the desktop</title>
+  <title>2017-07-10</title>
   <link>https://engledow.me/diary/2017-07-10.html</link>
   <guid isPermaLink="false">2017-07-10</guid>
   <description><![CDATA[
-<div id="An evening of linux on the desktop"><h1 id="An evening of linux on the desktop" class="header"><a href="#An evening of linux on the desktop">An evening of linux on the desktop</a></h1></div>
 
 <p>
 <a href="2017-06-15.html">Last time</a>, I wrote about trying a few desktop environments to see what's out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try <a href="https://atom.io/">a few of</a> <a href="https://www.sublimetext.com/">the more recent</a> <a href="https://code.visualstudio.com/">code editors</a> that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I've been meaning to give these a go for a while. Needless to say, as a long-time <a href="https://www.vim.org/">vim</a> user, I just found myself frustrated that I wasn't able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn't the same as a very limited set of functionality was there. As for the integrated environment, when you have <a href="2014-06-17.html">tmux running by default</a>, everything's integrated anyway.
@@ -578,9 +571,9 @@ And, as with editors, so once again with desktop environments. I've decided to r
 However, I did spend some time this evening making things a bit prettier so here are some delicious configs for posterity:
 </p>
 
-<div id="An evening of linux on the desktop-Configs"><h2 id="Configs" class="header"><a href="#An evening of linux on the desktop-Configs">Configs</a></h2></div>
+<div id="Configs"><h2 id="Configs" class="header"><a href="#Configs">Configs</a></h2></div>
 
-<div id="An evening of linux on the desktop-Configs-Xresources"><h3 id="Xresources" class="header"><a href="#An evening of linux on the desktop-Configs-Xresources">Xresources</a></h3></div>
+<div id="Configs-Xresources"><h3 id="Xresources" class="header"><a href="#Configs-Xresources">Xresources</a></h3></div>
 
 <p>
 I've switched back to xterm from urxvt because, er... dunno.
@@ -633,7 +626,7 @@ XTerm*faceName: xft:Hack:regular:size=12
 *color15:   #F8F8F2
 </pre>
 
-<div id="An evening of linux on the desktop-Configs-Vimrc"><h3 id="Vimrc" class="header"><a href="#An evening of linux on the desktop-Configs-Vimrc">Vimrc</a></h3></div>
+<div id="Configs-Vimrc"><h3 id="Vimrc" class="header"><a href="#Configs-Vimrc">Vimrc</a></h3></div>
 
 <p>
 Nothing exciting here except for discovering a few options I hadn't previous known about:
@@ -657,13 +650,13 @@ highlight Normal ctermbg=black
 colorscheme xoria256
 </pre>
 
-<div id="An evening of linux on the desktop-Configs-i3"><h3 id="i3" class="header"><a href="#An evening of linux on the desktop-Configs-i3">i3</a></h3></div>
+<div id="Configs-i3"><h3 id="i3" class="header"><a href="#Configs-i3">i3</a></h3></div>
 
 <p>
 I made a few colour tweaks to my i3 config so I get colours that match my new Xresources. One day, I might see if it's easy enough to have them both read colour definitions from the same place so I don't have to define things twice.
 </p>
 
-<div id="An evening of linux on the desktop-The result"><h2 id="The result" class="header"><a href="#An evening of linux on the desktop-The result">The result</a></h2></div>
+<div id="The result"><h2 id="The result" class="header"><a href="#The result">The result</a></h2></div>
 
 <p>
 Here's what it looks like:
@@ -676,11 +669,10 @@ Here's what it looks like:
   <pubDate>Mon, 10 Jul 2017 00:00:00 +0200</pubDate>
  </item>
  <item>
-  <title>The day of linux on the desktop</title>
+  <title>2017-06-15</title>
   <link>https://engledow.me/diary/2017-06-15.html</link>
   <guid isPermaLink="false">2017-06-15</guid>
   <description><![CDATA[
-<div id="The day of linux on the desktop"><h1 id="The day of linux on the desktop" class="header"><a href="#The day of linux on the desktop">The day of linux on the desktop</a></h1></div>
 
 <p>
 It’s been a while since I last tried out a different desktop environment on my laptop and I’ve been using <a href="https://i3wm.org/">i3</a> for some time now so it’s only fair to give other things a go ;)
@@ -694,7 +686,7 @@ To test these out, I ran another X display - keeping my original one running so 
 I’ll start with just one today and perhaps review some others another time.
 </p>
 
-<div id="The day of linux on the desktop-Deepin"><h2 id="Deepin" class="header"><a href="#The day of linux on the desktop-Deepin">Deepin</a></h2></div>
+<div id="Deepin"><h2 id="Deepin" class="header"><a href="#Deepin">Deepin</a></h2></div>
 
 <p>
 In summary: bits of Gnome Shell, Chrome OS, and Mac OSX but not quite as polished as any of them.
@@ -747,11 +739,10 @@ I tried Budgie and LXQT for a few minutes each at this point but they weren’t 
   <pubDate>Thu, 15 Jun 2017 00:00:00 +0200</pubDate>
  </item>
  <item>
-  <title>Digital Subscriber</title>
+  <title>2016-02-25</title>
   <link>https://engledow.me/diary/2016-02-25.html</link>
   <guid isPermaLink="false">2016-02-25</guid>
   <description><![CDATA[
-<div id="Digital Subscriber"><h1 id="Digital Subscriber" class="header"><a href="#Digital Subscriber">Digital Subscriber</a></h1></div>
 
 <p>
 Maybe it’s just me, but I reckon <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSLs</a> are the next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I know I’m by no means the first to say so it’s just that I’m increasingly bemused at seeing things squeezed into data structures they’ve outgrown.
@@ -797,11 +788,10 @@ Maybe some day soon ;)
   <pubDate>Thu, 25 Feb 2016 00:00:00 +0100</pubDate>
  </item>
  <item>
-  <title>Ford</title>
+  <title>2015-12-14</title>
   <link>https://engledow.me/diary/2015-12-14.html</link>
   <guid isPermaLink="false">2015-12-14</guid>
   <description><![CDATA[
-<div id="Ford"><h1 id="Ford" class="header"><a href="#Ford">Ford</a></h1></div>
 
 <p>
 Today I become a <a href="https://www.mozilla.org/en-GB/firefox/new/">Firefox</a> <a href="https://addons.mozilla.org/">add-on</a> developer!

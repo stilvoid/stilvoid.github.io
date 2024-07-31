@@ -1,4 +1,4 @@
-= Back to the Primitive =
+%title Back to the Primitive
 
 I like text, plain text. Always have. But over the past several years (and it has been, as the kids say, a hot minute since I [[2019-11-13|last blogged]]) I've found more and more bloat creeping into my daily life. I moved to a Mac Mini as my main machine about 4 years ago as I just gave up in the struggle between the way I think things ought to be and the "needs" of life working for a large corporate. In fairness, I have come to more or less enjoy MacOS but whenever I slip back into my Arch box with my i3 desktop, it feels _so sleek_.
 

@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>2018-08-14</title>
+        <title>Heroes: Building some old code</title>
         <link rel="stylesheet" href="../style.css" />
     </head>
 
@@ -20,8 +20,9 @@
         </header>
 
         <main>
+            <h1>Heroes: Building some old code</h1>
+
             
-<div id="Heroes: Building some old code"><h1 id="Heroes: Building some old code" class="header"><a href="#Heroes: Building some old code">Heroes: Building some old code</a></h1></div>
 
 <p>
 For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of Heroes</a>.
@@ -53,7 +54,7 @@ No results. Nothing in the <a href="https://wiki.archlinux.org/index.php/Arch_Us
 It looks like the last change to the game was 16 years ago so it could be fun getting it to compile with a modern toolchain.
 </p>
 
-<div id="Heroes: Building some old code-Getting Heroes to compile in 2018"><h2 id="Getting Heroes to compile in 2018" class="header"><a href="#Heroes: Building some old code-Getting Heroes to compile in 2018">Getting Heroes to compile in 2018</a></h2></div>
+<div id="Getting Heroes to compile in 2018"><h2 id="Getting Heroes to compile in 2018" class="header"><a href="#Getting Heroes to compile in 2018">Getting Heroes to compile in 2018</a></h2></div>
 
 <p>
 I put together a basic <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> that pulls down the source and data files from the Heroes sourceforge page and then runs:
@@ -136,7 +137,7 @@ The very last thing I've done is to enable the high quality mixer by default and
 <a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here's my final patch file</a>.
 </p>
 
-<div id="Heroes: Building some old code-Submitting the AUR package"><h2 id="Submitting the AUR package" class="header"><a href="#Heroes: Building some old code-Submitting the AUR package">Submitting the AUR package</a></h2></div>
+<div id="Submitting the AUR package"><h2 id="Submitting the AUR package" class="header"><a href="#Submitting the AUR package">Submitting the AUR package</a></h2></div>
 
 <p>
 Things have changed since I last submitted a package to the AUR so here's a brief writeup - if only to remind myself in future ;)
@@ -171,7 +172,7 @@ And then push it to the AUR repository:
 $ git push -u aur master
 </pre>
 
-<div id="Heroes: Building some old code-Testing it out"><h2 id="Testing it out" class="header"><a href="#Heroes: Building some old code-Testing it out">Testing it out</a></h2></div>
+<div id="Testing it out"><h2 id="Testing it out" class="header"><a href="#Testing it out">Testing it out</a></h2></div>
 
 <p>
 I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using AUR easier <a href="https://thethreevirtues.com/">I'm lazy</a>).

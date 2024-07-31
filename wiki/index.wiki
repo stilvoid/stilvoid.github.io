@@ -1,4 +1,4 @@
-= engledow.me =
+%title engledow.me
 
 [[https://en.wikipedia.org/wiki/Personal_web_page|Home page]] of Steve Engledow.
 

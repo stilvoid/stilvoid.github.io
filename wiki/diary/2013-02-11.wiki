@@ -1,4 +1,4 @@
-= Git aux =
+%title Git aux
 
 For a while now, I’ve been wanting to keep various parts of my home directory in sync.
 
