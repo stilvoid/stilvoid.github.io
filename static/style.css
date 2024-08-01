@@ -95,9 +95,21 @@ pre {
   white-space: pre-wrap;
 }
 
-p > a {
-  color: white;
+a {
+  color: rgba(255,128,128,1);
+  font-weight: bold;
   text-decoration: none;
+}
+
+a:hover {
+  color: rgba(128,64,64,0.75);
+  text-decoration: underline;
+}
+
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
   font-size: 0.7em;
   padding: 3px 6px;
   border-radius: 3px;
@@ -105,22 +117,10 @@ p > a {
   font-weight: bold;
 }
 
-nav a {
-    text-transform: uppercase;
-}
-
-p > a:hover {
+nav a:hover {
   color: #dcdcdc;
   background-color: rgba(128,64,64,0.75);
 }
-
-li > a {
-  color: rgba(255,128,128,1);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-li > a:hover { color: rgba(128,64,64,0.75); }
 
 blockquote {
   color: #686868;

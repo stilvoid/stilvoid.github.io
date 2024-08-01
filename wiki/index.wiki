@@ -11,13 +11,13 @@ Norwich, UK.
 
 I work for AWS but this is where I keep non-work stuff.
 
-[[projects|Projects]]
-[[diary/index|Blog posts]]
-[[https://stilvoid.itch.io/|Some Pico-8 games I made]]
+- [[projects|Projects]]
+- [[diary/index|Blog posts]]
+- [[https://stilvoid.itch.io/|Some Pico-8 games I made]]
 
 == Me in other places ==
 
-[[https://retro.pizza/@stilvoid|Mastodon]]
-[[https://github.com/stilvoid/|GitHub]]
-[[https://soundcloud.com/stilvoid|SoundCloud]]
-[[https://www.linkedin.com/in/stilvoid/|LinkedIn]]
+- [[https://retro.pizza/@stilvoid|Mastodon]]
+- [[https://github.com/stilvoid/|GitHub]]
+- [[https://soundcloud.com/stilvoid|SoundCloud]]
+- [[https://www.linkedin.com/in/stilvoid/|LinkedIn]]
