@@ -1,16 +1,23 @@
 #!/bin/bash
 
-cp -a static/* ./docs/
+# Build diary index
+echo "%title Blog posts" >wiki/diary/index.wiki
+for f in $(find wiki/diary/*.wiki ! -name "index.wiki" | sort -r); do
+    date="$(basename -s .wiki "$f")";
+    timestamp="$(echo "$date" | sed -e 's/-//g')0000";
+    title=$(head -n 1 "$f" | sed -e 's/^%title //')
 
-for f in wiki/diary/20*; do date="$(basename -s .wiki "$f" | sed -e 's/-//g')0000"; touch -mt "$date" "$f"; done
+    touch -mt "$timestamp" "$f";
 
-rm wiki/diary/index.wiki
+    echo "- [[$date|$date: $title]]" >>wiki/diary/index.wiki
+done
 
+# Convert to HTML and generate RSS feed
 vim \
-    "+VimwikiDiaryIndex 2" \
-    "+VimwikiDiaryGenerateLinks" \
-    "+s/.*/%title Blog posts/" \
-    "+w" \
+    "+VimwikiIndex 2" \
     "+VimwikiAll2HTML" \
     "+VimwikiRss" \
     "+q"
+
+# Copy static content
+cp -a static/* ./docs/

@@ -18,5 +18,10 @@ Most of it is quite old at this point but still relevant.
 
 == Games ==
 
-- [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.
+- [[https://static.offend.me.uk/games/lockdown.html|Lockdown]] - Written for [[https://ludumdare.com/|Ludum Dare]] 50 in 2022. Survive the zombie invasion...
+- [[https://static.offend.me.uk/games/muze.html|Muze]] - My entry for [[https://itch.io/jam/black-and-white-jam|Black and White Jam]] in 2021. It's a simple maze game. Probably.
+- [[https://static.offend.me.uk/games/santa-dive.html|Santa's Skydive]] - My present to someone in a [[https://itch.io/jam/secret-santa|Secret Santa Jam]]. I can't remember when. Santa's sleigh has tipped over and dropped all the presents. Clearly, the only option is for Santa to skydive and gather them all back up.
+- [[https://static.offend.me.uk/games/taaanks.html|Taaanks]] - Heavily inspired by [[https://en.wikipedia.org/wiki/Scorched_Tanks|Scorched Tanks]]. This is my entry for [[https://ludumdare.com/|LD]] 48.
+- [[https://static.offend.me.uk/games/volver.html|Volver]] - Spin the things to match the thing-holders.
 - [[https://github.com/stilvoid/logoids|Logoids]] is an [[https://en.wikipedia.org/wiki/Asteroids_(video_game)|Asteroids]] clone where you provide the Asteroid images.
+- [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.

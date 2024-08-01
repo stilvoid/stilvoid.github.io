@@ -9,7 +9,7 @@ body {
   font-family: Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
   max-width: 50em;
   margin: 1.5em auto;
-  font-size: 120%;
+  font-size: 18px;
   line-height: 130%;
   padding: 0.5em 1em;
   background: white;
@@ -33,21 +33,21 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  line-height:100%;
   margin-top: 1em;
   margin-bottom: 0.5em;
+  line-height: 100%;
 }
 
 h1:first-child {
     margin-top: 0.5em;
 }
 
-h1 {font-size: 2em; color: #000000;}
-h2 {font-size: 1.8em; color: #404040;}
-h3 {font-size: 1.6em; color: #707070;}
-h4 {font-size: 1.4em; color: #909090;}
-h5 {font-size: 1.2em; color: #989898;}
-h6 {font-size: 1em; color: #9c9c9c;}
+h1 {padding-left: 0em; font-size: 2em; color: #000000;}
+h2 {padding-left: 0.2em; font-size: 1.8em; color: #404040;}
+h3 {padding-left: 0.4em; font-size: 1.6em; color: #707070;}
+h4 {padding-left: 0.6em; font-size: 1.4em; color: #909090;}
+h5 {padding-left: 0.8em; font-size: 1.2em; color: #989898;}
+h6 {padding-left: 1em; font-size: 1em; color: #9c9c9c;}
 
 h2,h3,h4,h5,h6 {
     clear: left;
@@ -63,7 +63,7 @@ ul ul, ul ol, ol ol, ol ul {
   margin-bottom: 0.5em;
 }
 
-li { margin: 0.3em auto; }
+li { margin: 0.3em auto; padding-bottom: 0.5em; }
 
 ul {
   margin-left: 2em;
