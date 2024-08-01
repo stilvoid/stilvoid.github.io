@@ -25,3 +25,7 @@ Most of it is quite old at this point but still relevant.
 - [[https://static.offend.me.uk/games/volver.html|Volver]] - Spin the things to match the thing-holders.
 - [[https://github.com/stilvoid/logoids|Logoids]] is an [[https://en.wikipedia.org/wiki/Asteroids_(video_game)|Asteroids]] clone where you provide the Asteroid images.
 - [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.
+
+== Music ==
+
+For now, over on [[music|a separate page]].
