@@ -1,4 +1,4 @@
-%title engledow.me
+%title About
 
 [[https://en.wikipedia.org/wiki/Personal_web_page|Home page]] of Steve Engledow.
 
