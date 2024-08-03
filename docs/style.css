@@ -70,7 +70,8 @@ nav a:hover {
 footer {
     color: rgba(0,0,0,0.5);
     font-size: 80%;
-    margin: 0 0 1em 0;
+    margin: 0 0 0.5em 0;
+    padding: 0 0.5em 1em 0.5em;
     text-align: center;
 }
 
@@ -140,6 +141,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 table {
     border-collapse: collapse;
     border: 1px solid rgba(0,0,0,0.1);
+    margin: 0.5em auto;
 }
 
 th, td {
@@ -171,4 +173,27 @@ img {
     margin: 0 auto;
     display: block;
     border: 1px solid rgba(0,0,0,0.1);
+}
+
+@media only screen and (max-width: 600px) {
+    header>div {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        margin-bottom: 0.5em;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    article {
+        margin-top: 0;
+        padding-top: 1em;
+        border: none;
+    }
 }
