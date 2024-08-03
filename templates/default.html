@@ -14,31 +14,33 @@
 
     <body>
         <header>
-            <nav>
-                <p>
-                <a href="%root_path%index.html">Home</a>
-                <a href="%root_path%projects.html">Projects</a>
-                <a href="%root_path%diary/index.html">Blog</a>
-                </p>
-            </nav>
+            <div>
+                <h1>engledow.me</h1>
+
+                <nav>
+                    <a href="%root_path%index.html">Home</a>
+                    <a href="%root_path%projects.html">Projects</a>
+                    <a href="%root_path%diary/index.html">Blog</a>
+                </nav>
+            </div>
         </header>
 
         <main>
-            <h1>%title%</h1>
+            <article>
+                <h1>%title%</h1>
 
-            %content%
+                %content%
 
-            <aside>Last updated: %date%</aside>
+                <aside>Last updated: %date%</aside>
+            </article>
         </main>
 
         <footer>
-            <p>
             All content © 2011-2024 Steve Engledow.
             <br />
             All views expressed here are mine and don't reflect those of Amazon.
             <br />
             The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
-            </p>
         </footer>
     </body>
 </html>

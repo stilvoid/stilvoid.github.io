@@ -4,7 +4,7 @@
  <title>Posts</title>
  <link>https://engledow.me/diary/index.html</link>
  <description>Posts</description>
- <pubDate>Thu, 01 Aug 2024 22:06:31 +0200</pubDate>
+ <pubDate>Sun, 04 Aug 2024 00:20:30 +0100</pubDate>
  <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
  <item>
   <title>2024-07-23</title>
@@ -44,7 +44,7 @@ So here we are. This very infrequently updated blog is now written in vimwiki an
 Now to see what else I can over-enthusiastically convince myself should be a Wiki...
 </p>
 ]]></description>
-  <pubDate>Tue, 23 Jul 2024 00:00:00 +0200</pubDate>
+  <pubDate>Tue, 23 Jul 2024 00:00:00 +0100</pubDate>
  </item>
  <item>
   <title>2019-11-13</title>
@@ -141,7 +141,7 @@ Upgrade a package is the same as installing one. This will upgrade <code>maur</c
 <code>maur maur</code>
 </p>
 ]]></description>
-  <pubDate>Wed, 13 Nov 2019 00:00:00 +0100</pubDate>
+  <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
  </item>
  <item>
   <title>2019-02-12</title>
@@ -283,7 +283,7 @@ This example specifies that if I am working with a Git repository that is locate
 The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <span id="A solution-earlier"></span><strong id="earlier">earlier</strong> in the config.
 </p>
 ]]></description>
-  <pubDate>Tue, 12 Feb 2019 00:00:00 +0100</pubDate>
+  <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
  </item>
  <item>
   <title>2018-11-08</title>
@@ -322,7 +322,7 @@ Cloning into '/home/steve/code/github.com/stilvoid/git-get'...
 Laziness is the primary virtue.
 </p>
 ]]></description>
-  <pubDate>Thu, 08 Nov 2018 00:00:00 +0100</pubDate>
+  <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
  </item>
  <item>
   <title>2018-08-14</title>
@@ -496,7 +496,7 @@ SUCCESS!
 All in all, this wasn't anywhere near as painful as I'd expected. Time to play some Heroes :D
 </p>
 ]]></description>
-  <pubDate>Tue, 14 Aug 2018 00:00:00 +0200</pubDate>
+  <pubDate>Tue, 14 Aug 2018 00:00:00 +0100</pubDate>
  </item>
  <item>
   <title>2018-06-03</title>
@@ -551,7 +551,7 @@ It's written in <a href="https://golang.org/">Go</a> and there are binaries for 
 <a href="mailto:steve@engledow.me">Let me know</a> if you find it useful.
 </p>
 ]]></description>
-  <pubDate>Sun, 03 Jun 2018 00:00:00 +0200</pubDate>
+  <pubDate>Sun, 03 Jun 2018 00:00:00 +0100</pubDate>
  </item>
  <item>
   <title>2017-07-10</title>
@@ -666,7 +666,7 @@ Here's what it looks like:
 <img src="https://static.offend.me.uk/media/images/blog/89/01.jpg" alt="My new desktop" />
 </p>
 ]]></description>
-  <pubDate>Mon, 10 Jul 2017 00:00:00 +0200</pubDate>
+  <pubDate>Mon, 10 Jul 2017 00:00:00 +0100</pubDate>
  </item>
  <item>
   <title>2017-06-15</title>
@@ -736,7 +736,7 @@ That’s it, I’m bored. Next!
 I tried Budgie and LXQT for a few minutes each at this point but they weren’t immediately interesting enough to make me want to write about them just now :)
 </p>
 ]]></description>
-  <pubDate>Thu, 15 Jun 2017 00:00:00 +0200</pubDate>
+  <pubDate>Thu, 15 Jun 2017 00:00:00 +0100</pubDate>
  </item>
  <item>
   <title>2016-02-25</title>
@@ -785,7 +785,7 @@ Obviously I’ve put little to no thought into the above but it shouldn’t be t
 Maybe some day soon ;)
 </p>
 ]]></description>
-  <pubDate>Thu, 25 Feb 2016 00:00:00 +0100</pubDate>
+  <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
  </item>
  <item>
   <title>2015-12-14</title>
@@ -809,7 +809,7 @@ I wrote <a href="https://addons.mozilla.org/en-GB/firefox/addon/focus-mode/">Foc
 Now, someone tell me why that’s not already a standard feature in Firefox. Or even better, tell me that it is and that I just failed to notice it. And while you’re at it, tell me why I couldn’t find an existing extension that does it!
 </p>
 ]]></description>
-  <pubDate>Mon, 14 Dec 2015 00:00:00 +0100</pubDate>
+  <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
  </item>
 </channel>
 </rss>
