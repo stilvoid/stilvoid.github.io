@@ -1,3 +1,7 @@
+:root {
+    background: white;
+}
+
 body {
     background: rgba(255,128,128,0.125);
     font-family: Arial, Helvetica, sans-serif;
@@ -195,5 +199,21 @@ img {
         margin-top: 0;
         padding-top: 1em;
         border: none;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    body {
+        max-width: 54em;
+        min-height: 0;
+        margin: 1em;
+        box-shadow: 0 0 1em rgba(0,0,0,0.1);
     }
 }
