@@ -1,0 +1,190 @@
+%title Steve Engledow
+
+[[http://www.linkedin.com/in/stilvoid|LinkedIn profile]]
+
+==Skills==
+
+- Functional
+    - Leadership
+    - People Management
+    - Problem solving
+    - Project Management
+    - DevOps
+    - Agile
+    - Solution Architecture
+    - Software Development
+- Technologies
+    - Amazon Web Services
+    - Linux
+    - Git
+    - Web Applications
+- Programming
+    - Python
+    - Go
+    - C
+    - JavaScript
+
+==Publications==
+
+- [[https://aws.amazon.com/blogs/developer/handling-arbitrary-http-requests-in-amazon-api-gateway/|Handling arbitrary HTTP requests in Amazon API Gateway]]
+- [[https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/|Development Workflows on AWS]]
+- [[https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/|Using Git with AWS CodeCommit Across Multiple AWS Accounts]]
+
+== Work History ==
+
+=== Amazon Web Services ===
+
+====Head of SA Engineering - Tech Acceleration Solutions====
+
+- January 2024 - Present
+
+I lead a team of software engineering experts focused on enhancing the
+effectiveness of AWS Solutions Architects by delivering repeatable solutions,
+internal tools, and enablement activities.
+
+We operate across the whole SA organisation to provide highly technical skills
+and services where they are needed most.
+
+====Head of SA Engineering - UK and Ireland Solutions Architecture====
+
+- March 2022 - January 2024
+ 
+I lead a team of software engineering experts focused on enhancing the
+effectiveness of AWS UK&I Solutions Architecture by delivering repeatable
+solutions, internal tools, and enablement activities.
+
+We operate across the whole SA organisation to provide highly technical skills
+and services where they are needed most.
+
+====Senior Solutions Engineer - UK and Ireland Solutions Architecture====
+
+- June 2018 - March 2022
+
+After 2 and a half years working with AWS customers in Professional Services,
+I have seen a number of common challenges that we can solve by building
+and sharing the right solutions.
+As a Solutions Engineer, I am working with AWS customers and with our
+internal teams to work backwards from customers’ needs and create reusable
+solutions that meet them.
+My modus operandi is iterative, results-driven, and fast-paced.
+
+====Senior Consultant - DevSecOps SME====
+
+- January 2016 - June 2018
+
+As a Senior Consultant in the UK Professional Services team, I enjoyed
+the opportunity to share my expertise in DevOps and knowledge of cloud
+computing with our customers to further their knowledge and potential.
+My role allowed me to draw on my years of experience in technical delivery,
+leading and coaching Architecture, Development, and QA, and working closely
+with IT/Operations departments to advise on infrastructure and CI/CD.
+
+===Proxama===
+
+====Head of Technical Delivery====
+
+- December 2010 - December 2015
+
+I led a fantastic team of developers across the proximity marketing division
+of Proxama where I was responsible for technical strategy and delivery of
+Proxama’s cloud-hosted services and the mobile SDK that consumes them.
+My role involved architecture, line-management and technical leadership
+responsibilities but I still found time to make significant contributions to the
+code base.
+
+Proxama’s platform is based on a stack of lean microservices developed
+using Docker containers and deployed to Amazon Web Services. The majority
+of the server-side code is written in Python with some node.js services as
+appropriate. Web interfaces make use of material design libraries and the
+Ember framework. The mobile SDK is written in native code both for iOS
+and Android and provides an easy-to-integrate, easy-to-use interface to the
+RESTful API set and proximity technology libraries.
+
+Part of my role was to move Proxama towards a devops culture where
+deployments and infrastructure provisioning is realised as code itself and
+subject to the same quality controls as the software that it enables. All code at
+Proxama is subject to automated testing and rigorous peer code review.
+
+===Bertram Books===
+
+====Software Developer====
+
+- September 2009 - January 2011
+
+I worked on a variety of projects ranging from backend processes right through
+to customer-facing web applications in Java using Spring 3, Hibernate, and
+various other technologies as needed with the user interfaces enhanced using
+jQuery and AJAX techniques.
+
+During my time at Bertrams, I contributed a lot of ideas and knowledge into
+various projects. In particular, my in-depth knowledge of Linux has been
+helpful in diagnosing faults and configuring several Linux servers in use.
+
+===Provide Online===
+
+====Web Developer====
+
+- April 2009 - September 2009
+
+At Provide Online, I took over a number of existing web projects with the goal
+of unifying them to use one common framework and adding new functionality
+to bring the sites up to date.
+
+I overhauled a vast amount of the PHP code that was in place, installed
+subversion, and optimised the Apache web server configuration – all of which
+has left the sites in a far more modular and reliable state.
+
+===Validus IVC===
+
+====Software Developer====
+
+- April 2008 - March 2009
+
+I was responsible for creation and maintenance of Management Information
+services developed using a combination of PHP, GWT, and BeanShell.
+In addition to the above, I was also responsible for taking part in general
+systems maintenance such as solving networking issues and administering
+Apache servers.
+
+===Form Recognition Ltd===
+
+====Technical Consultant====
+
+- April 2004 - April 2008
+
+My time at Form Recognition provided me an opportunity to become proficient
+in training users in the use of software and basic scripting.
+While not visiting customer sites to provide training, I was heavily involved
+in developing bespoke solutions based around the core product of the
+business: Cardiff’s TeleForm. I also took on the responsibility of configuring
+and maintaining the office network and servers.
+
+===Norwich Union===
+
+====Marketing Liaison Lead Advisor====
+
+- July 2002 - April 2004
+
+My role at Norwich Union revolved around interpreting communications from
+the marketing teams and using a database application I had designed which
+then sent communications for destruction or movement of stock to warehouse
+staff.
+
+I was responsible also for compiling the warehouse’s management information
+which I left considerably more efficient than I found it.
+
+==Education==
+
+===University of East Anglia===
+
+- September 1999 - June 2002
+
+BA (Hons) in Philosophy and Linguistics
+
+----
+
+Career Summary
+
+X years consulting
+X years programming
+X years leadership
