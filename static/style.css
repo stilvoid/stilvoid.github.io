@@ -99,6 +99,7 @@ h1,h2,h3,h4,h5,h6 {
     padding: 0 0 0.25em 0;
     border-bottom: 1px solid rgba(0,0,0,0.25);
     line-height: 120%;
+    color: rgb(64,64,128);
 }
 
 blockquote {
@@ -124,7 +125,7 @@ aside {
 }
 
 a {
-    color: rgba(128,64,64,1);
+    color: rgba(255,128,128,1);
     text-decoration: none;
     font-weight: bold;
 }
@@ -134,7 +135,7 @@ a:hover {
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: black;
+    color: rgb(64,64,128);
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
