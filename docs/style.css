@@ -3,7 +3,6 @@
 }
 
 body {
-    background: rgba(255,128,128,0.125);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height: 150%;
@@ -86,11 +85,12 @@ main {
 }
 
 article {
+    background: white;
     max-width: 50em;
     margin: 1em auto;
-    background: white;
     padding: 0.5em 1em;
     border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0.5em 1em rgba(255,128,128,0.125);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -199,21 +199,10 @@ img {
         margin-top: 0;
         padding-top: 1em;
         border: none;
-    }
-}
-
-@media only screen and (min-width: 1920px) {
-    html {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        box-shadow: none;
     }
 
-    body {
-        max-width: 54em;
-        min-height: 0;
-        margin: 1em;
-        box-shadow: 0 0 1em rgba(0,0,0,0.1);
+    footer {
+        display: none;
     }
 }
