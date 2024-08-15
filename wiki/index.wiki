@@ -17,7 +17,17 @@ I work for AWS but this is where I keep non-work stuff.
 
 == Me in other places ==
 
+=== Socials ===
+ 
 - [[https://retro.pizza/@stilvoid|Mastodon]]
+- [[https://www.linkedin.com/in/stilvoid/|LinkedIn]]
+
+=== Creative Output ===
+
 - [[https://github.com/stilvoid/|GitHub]]
 - [[https://soundcloud.com/stilvoid|SoundCloud]]
-- [[https://www.linkedin.com/in/stilvoid/|LinkedIn]]
+- [[https://stilvoid.itch.io/|itch.io]]
+
+=== Gaming ===
+
+- [[https://www.xbox.com/en-GB/play/user/Stilvoid|XBox]]
