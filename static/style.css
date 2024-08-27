@@ -1,206 +1,106 @@
-:root {
-    background: white;
-}
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 150%;
-    width: 100%;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
+    line-height: 1.4;
+    color: #444444;
+    background: #FDFAF6;
+    font-size: 16pt;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-header {
-    background: rgba(0,0,0,0.75);
-    padding: 0.5em 0;
-    margin: 0;
-    width: 100%;
-}
-
-header>div {
-    max-width: 50em;
-    margin: 0 auto;
-    padding: 0 1em;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    color: rgba(255,255,255,1);
     margin: 0;
     padding: 0;
-    border: 0;
-    font-weight: lighter;
-    font-size: 125%;
-    font-family: Monaco, Courier, monospace;
-}
-
-header h1:hover {
-    cursor: pointer;
-}
-
-header h1:hover:before {
-    content: "steve@";
-    color: rgba(255,255,255,0.5);
-}
-
-nav {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-nav a {
-    margin: 0 1em 0 0;
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    font-weight: normal;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    color: white;
-}
-
-footer {
-    color: rgba(0,0,0,0.5);
-    font-size: 80%;
-    margin: 0 0 0.5em 0;
-    padding: 0 0.5em 1em 0.5em;
-    text-align: center;
 }
 
 main {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-article {
-    background: white;
-    max-width: 50em;
-    margin: 1em auto;
-    padding: 0.5em 1em;
-    border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 0.5em 1em rgba(255,128,128,0.125);
+    max-width: 600px;
+    margin: 1em auto 0 auto;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-weight: bold;
-    margin: 0 0 0.25em 0;
-    padding: 0 0 0.25em 0;
-    border-bottom: 1px solid rgba(0,0,0,0.25);
-    line-height: 120%;
-    color: rgb(64,64,128);
+    color: #222222;
 }
 
-blockquote {
-    background: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 0 1em;
+h1 {
+    margin-left: -1em;
+}
+h2 {
+    margin-left: -0.75em;
+}
+h3 {
+    margin-left: -0.5em;
+}
+h4 {
+    margin-left: 0;
+}
+h5 {
+    margin-left: -;
+}
+h6 {
+    margin-left: 0;
 }
 
-pre,code {
-    font-family: Monaco, Courier, monospace;
-    background: rgba(255,128,128,0.125);
-    white-space: pre-wrap;
-}
-
-pre {
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 0.5em;
-}
-
-aside {
-    color: rgba(0,0,0,0.5);
-    font-size: 80%;
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
+    color: #222222;
 }
 
 a {
-    color: rgba(192,96,96,1);
+    color: #4346d1;
     text-decoration: none;
-    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: rgb(64,64,128);
+footer {
+    font-size: 80%;
+    text-align: center;
+    margin: 0 auto 1em auto;
+    padding-top: 1em;
+    color: rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(0,0,0,0.1);
 }
 
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-    color: black;
-    text-decoration: none;
+header {
+    background: #111111;
+    color: #fdfaf6;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0.5em 1em;
 }
 
-table {
-    border-collapse: collapse;
-    border: 1px solid rgba(0,0,0,0.1);
-    margin: 0.5em auto;
+header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-th, td {
-    border: none;
-    padding: 0.3em;
+header a {
+    color: white;
+    padding-right: 1em;
+    font-variant: small-caps;
 }
 
-th { background-color: rgba(255,128,128,0.125); }
-
-hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    width: 100%;
+pre, code {
+    white-space: pre-wrap;
 }
 
-audio {
-    background: rgba(255,128,128,1);
-    border-radius: 0.5em;
-    vertical-align: middle;
-}
-
-ul {
-    list-style-type: circle;
-}
-
-img {
-    max-width: 25em;
-    max-height: 25em;
-    margin: 0 auto;
-    display: block;
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-@media only screen and (max-width: 600px) {
-    header>div {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+@media screen and (max-width: 800px) {
+    header {
+        flex-direction: row;
     }
 
-    header h1 {
-        margin-bottom: 0.5em;
-    }
-
-    nav {
-        display: flex;
+    header nav {
         flex-direction: column;
     }
 
-    article {
-        margin-top: 0;
-        padding-top: 1em;
-        border: none;
-        box-shadow: none;
+    h1,h2,h3,h4,h5,h6 {
+        margin-left: 0;
+    }
+
+    main {
+        margin: 0 auto;
+        padding: 0 0.5em;
     }
 
     footer {
