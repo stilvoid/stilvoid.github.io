@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Steve Engledow">
+        <meta name="description" content="engledow.me: TBC">
+        <meta name="keywords" content="personal, steve engledow, engledow, manager, aws, developer, open source, blog">
+        <title>engledow.me - TBC</title>
+        <link rel="stylesheet" href="../style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+    </head>
+
+    <body>
+        <header>
+            engledow.me
+
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../projects.html">Projects</a>
+                <a href="../diary/index.html">Blog</a>
+            </nav>
+        </header>
+
+        <main>
+            <article>
+                <h1>TBC</h1>
+
+                
+
+<p>
+In tidying up my corner of the interwebs, I put together a list of <a href="../projects.html">projects</a> that I've worked on over the years. One of those is <a href="../projects.html#Games">Falsoyd</a>. I commented "I don't know if it even compiles on modern systems". Of course, that stuck in my head and inevitably I had to try...
+</p>
+
+<p>
+Hoooo boy.
+</p>
+
+<p>
+It has been a <em>long time</em> since I wrote anything in my <a href="2014-01-31.html">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub search</a> suggests it's been around 10 years. Fortunately, I had no intentions of really fixing any coding problems - just getting Falsoyd to run by brute force :D
+</p>
+
+<div id="It starts"><h2 id="It starts" class="header"><a href="#It starts">It starts</a></h2></div>
+
+<pre>
+git clone git@github.com:stilvoid/falysoyd
+cd falsoyd
+make
+...
+sdl-config: command not found
+fatal error: 'SDL_mixer.h' file not found
+</pre>
+
+<p>
+Oh yeah, this was all SDL. Oh well, I'm sure that's still around!
+</p>
+
+<pre>
+brew install sdl
+Warning: Formula sdl was renamed to sdl12-compat.
+</pre>
+
+<p>
+Ok well, it turns out SDL1.2 is looong deprecated but some kind person has written a compatibility library for SDL2 so that should all work quite nicely...
+</p>
+
+<pre>
+make
+fatal error: 'SDL_mixer.h' file not found
+brew install sdl_mixer
+Error: sdl_mixer has been disabled because it is deprecated upstream! It was disabled on 2024-02-07.
+</pre>
+
+<p>
+If only I had tried this 6 months ago ;) After a quick look, SDL2_mixer seems to have the same API as in SDL1.2 so I'll nab the header file from there, include it in my CFLAGS, and link to SDL2_mixer in addition to the SDL1.2 (compat) library. What could possibly go wrong?!
+</p>
+
+<pre>
+make
+...
+src/map.h:35:6: error: cast from pointer to smaller type 'int' loses information
+        p.x=(int)x;
+            ^~~~~~
+src/map.h:36:6: error: cast from pointer to smaller type 'int' loses information
+        p.y=(int)y;
+</pre>
+
+<p>
+Ooh, an actual bug. Forgot to dereference some pointers. I wonder how that ever worked before. Well, it's an easy fix!
+</p>
+
+<pre>
+make
+...
+g++  src/world.o src/audio.o src/score.o src/bonus.o src/shot.o src/sprite.o src/ship.o src/alien.o src/main.o -o src/falsoyd `sdl-config --libs` -lSDL2_mixer
+</pre>
+
+<p>
+It compiled! That was unexpectedly easy. I was anticipating some nastiness with mixing SDL1.2 and SDL2_mixer.
+</p>
+
+<p>
+(I glossed over <em>a lot</em> of compiler warnings in that "..." btw. Don't ignore your compiler warnings, folks!)
+</p>
+
+<p>
+My fingers began to tremble (they didn't) as I nervously (I wasn't) typed <code>./src/falsoyd</code>...
+</p>
+
+<p>
+<img src="https://static.offend.me.uk/media/images/2024-08-28-falsoyd.png" alt="A screenshot of Falsoyd" />
+</p>
+
+<p>
+It runs! I played it for a little while. Remembered how terrible it was and committed <a href="https://github.com/stilvoid/falsoyd/tree/2024">a branch</a> with my changes. That'll do for now. Itch scratched.
+</p>
+
+<p>
+Now I'm clearly going to have to make Falsoyd 2 in Löve, Pico-8, or Picotron ;)
+</p>
+
+            </article>
+        </main>
+
+        <footer>
+            Last updated: 2024-08-28
+            <br />
+            <br />
+            All content © 2011-2024 Steve Engledow.
+            <br />
+            All views expressed here are mine and don't reflect those of Amazon.
+            <br />
+            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
+        </footer>
+    </body>
+</html>
