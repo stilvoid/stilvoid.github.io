@@ -98,6 +98,18 @@ pre, code {
     border-radius: 0.5em;
 }
 
+nav.tag-list h1 {
+    display: none;
+}
+
+nav.tag-list h2 {
+    margin: 0;
+}
+
+nav.tag-list ul {
+    margin-top: 0;
+}
+
 @media screen and (max-width: 800px) {
     header {
         flex-direction: row;
