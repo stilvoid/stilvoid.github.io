@@ -54,6 +54,7 @@
     - [[diary/2019-11-13]]
 
 == music ==
+    - [[music#music]]
     - [[projects#Music]]
 
 == shell ==
