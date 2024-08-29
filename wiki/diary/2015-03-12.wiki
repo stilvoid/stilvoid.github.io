@@ -1,4 +1,5 @@
 %title Cleaning out my closet
+:linux:
 
 Or: _Finding out what crud you installed that’s eating all of your space in Arch Linux_
 

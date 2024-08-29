@@ -1,4 +1,5 @@
 %title Shue
+:dev:tool:
 
 I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).
 

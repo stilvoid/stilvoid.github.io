@@ -1,4 +1,5 @@
 %title Pretty please
+:dev:tool:
 
 I’ve been making [[https://github.com/stilvoid/please/|a thing]] to solve some problems I always face while building web APIs. [[http://curl.haxx.se/|Curl]] is lovely but it’s a bit _too_ flexible.
 

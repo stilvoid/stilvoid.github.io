@@ -1,4 +1,5 @@
 %title TBC
+:game:dev:
 
 In tidying up my corner of the interwebs, I put together a list of [[/projects|projects]] that I've worked on over the years. One of those is [[/projects#Games|Falsoyd]]. I commented "I don't know if it even compiles on modern systems". Of course, that stuck in my head and inevitably I had to try...
 

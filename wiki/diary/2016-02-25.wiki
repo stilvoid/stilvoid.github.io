@@ -1,4 +1,5 @@
 %title Digital Subscriber
+:dev:aws:
 
 Maybe it’s just me, but I reckon [[https://en.wikipedia.org/wiki/Domain-specific_language|DSLs]] are the next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I know I’m by no means the first to say so it’s just that I’m increasingly bemused at seeing things squeezed into data structures they’ve outgrown.
 

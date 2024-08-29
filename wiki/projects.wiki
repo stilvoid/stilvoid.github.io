@@ -1,4 +1,5 @@
 %title Projects
+:dev:
 
 I have a lot of half-finished crap on [[https://github.com/stilvoid|GitHub]].
 This is a curated selection of the more finished, actually useful stuff.
@@ -6,6 +7,7 @@ This is a curated selection of the more finished, actually useful stuff.
 Most of it is quite old at this point but still relevant.
 
 == Command line tools ==
+:tool:shell:
 
 - [[https://github.com/stilvoid/babel|Babel]] is an easy-to-parse and easy-to-produce data exchange format for easing communication between processes written in different programming languages. There are definitely better choices for this now but I do have some ideas for a future iteration of this.
 - [[https://github.com/stilvoid/git-aux|git-aux]] allows you to use git to manage replicating your dotfiles between machines and that sort of things.
@@ -17,6 +19,7 @@ Most of it is quite old at this point but still relevant.
 - [[https://github.com/stilvoid/shue|shue]] is a command line tool for modifying and converting colour values for use with CSS etc.
 
 == Games ==
+:game:
 
 - [[https://static.offend.me.uk/games/lockdown.html|Lockdown]] - Written for [[https://ludumdare.com/|Ludum Dare]] 50 in 2022. Survive the zombie invasion...
 - [[https://static.offend.me.uk/games/muze.html|Muze]] - My entry for [[https://itch.io/jam/black-and-white-jam|Black and White Jam]] in 2021. It's a simple maze game. Probably.
@@ -27,5 +30,6 @@ Most of it is quite old at this point but still relevant.
 - [[https://github.com/stilvoid/falsoyd|Falsoyd]] is a terrible game I wrote around 2000CE. tbh I don't know if it even compiles on modern systems.
 
 == Music ==
+:music:
 
 For now, over on [[music|a separate page]].

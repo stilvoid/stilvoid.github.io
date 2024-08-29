@@ -1,4 +1,5 @@
 %title Sorted
+:dev:
 
 I decided to restructure the folder I keep code in (`~/code`, natch) - taking my cue from [[https://golang.org/doc/code.html|how Go does it]] - so that the folder structure represents where code has come from.
 

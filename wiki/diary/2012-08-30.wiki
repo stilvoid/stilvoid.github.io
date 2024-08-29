@@ -1,6 +1,7 @@
 %title Lost at C
+:dev:
 
-This week I’ve learned a few things (always the mark of a good week in my book), the foremost of which is that I don’t know very much about [[https://en.wikipedia.org/wiki/Programming_language|C]].
+This week I've learned a few things (always the mark of a good week in my book), the foremost of which is that I don’t know very much about [[https://en.wikipedia.org/wiki/Programming_language|C]].
 
 I expect this post will mostly result in comments such as "well, duh…" and the like :)
 
@@ -8,13 +9,13 @@ I expect this post will mostly result in comments such as "well, duh…" and the
 
 After a fairly relaxing bank holiday weekend, I came back to work on Tuesday to find myself in the position of needing a to write a library for a client to plug into their software and to have it ready by Friday.
 
-Though I’d written [[http://falsoyd.sourceforge.net/|some (very bad) C++]] while at [[http://www.uea.ac.uk/|uni]], I’ve fairly recently written a couple of very small utilities in C (the library they use is written in C and I fancied a challenge) and wanted to learn some more, so I chose C as the language to write in.
+Though I’d written [[http://falsoyd.sourceforge.net/|some (very bad) C++]] while at [[http://www.uea.ac.uk/|uni]], I've fairly recently written a couple of very small utilities in C (the library they use is written in C and I fancied a challenge) and wanted to learn some more, so I chose C as the language to write in.
 
 This afternoon, with the library and a small demo application written, I handed the code over to my colleague who’d promised to do all the necessary wrapping up to take my developed-in-linux code and produce a windows DLL from it. After a short while, he’d compiled the library and the demo, BUT… the demo app crashed every time.
 
 At first, it looked like I’d forgotten to free() some malloc()ed memory. I had; but even after doing so, the code was still crashing in windows. The search continued for quite some time until I eventually found what was wrong.
 
-There was an asterisk where there shouldn’t have been, FFS!
+There was an asterisk where there shouldn't have been, FFS!
 
 It turns out that I’d carried some pre-conceptions with me from my previous life as a Java developer and various other places. I’m so used to pretty much every language passing things around by value when the data is small (ints, chars, etc.) and by reference when it’s not (objects, etc.). I was completely unprepared for the fact that C deals _only_ in values.
 
@@ -52,7 +53,7 @@ void get_stuff() {
 
 Although the real code actually did useful things :P
 
-After handing the code over however, it transpired that MSVC doesn’t support all of C99 (why pick a standard and implement part of it?!) specifically, variable-length arrays; so the `AB ab[num_records]` line had to go.
+After handing the code over however, it transpired that MSVC doesn't support all of C99 (why pick a standard and implement part of it?!) specifically, variable-length arrays; so the `AB ab[num_records]` line had to go.
 
 Here’s where my preconception came in:
 

@@ -1,4 +1,5 @@
 %title tmux
+:shell:
 
 [[http://tmux.sourceforge.net/|tmux]] is the best thing ever. That is all.
 
@@ -62,7 +63,7 @@ done
 tmux -u
 }}}
 
-Basically, what happens is that whenever I start a terminal session, if I’m not already attached to a tmux session, I find a session that’s not already attached to and attach to it. If there aren’t any, I create a new one.
+Basically, what happens is that whenever I start a terminal session, if I’m not already attached to a tmux session, I find a session that’s not already attached to and attach to it. If there aren't any, I create a new one.
 
 This really tidies up my workflow and means that I never forget about any old sessions I’d detached.
 

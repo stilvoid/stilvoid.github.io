@@ -1,4 +1,5 @@
 %title Maur - A minimal AUR helper
+:linux:arch:dev:tool:
 
 This post is about the [[https://aur.archlinux.org/|Arch User Repository]]. If you're not an [[https://www.archlinux.org/|Arch]] user, probably just move along ;)
 

@@ -1,4 +1,5 @@
 %title Building a componentised application
+:dev:
 
 Most of what’s here is hardly new ground but I felt it worth noting down the current strategy we’re using to develop and build what we’re working on at [[http://www.locationsciences.ai/|Proxama]].
 
@@ -16,7 +17,7 @@ What we quickly realised as we started to put the bare bones of a few of the ser
 
 # Provide a means for running unit tests (both by developers and our CI server).
 
-So here’s what we’ve ended up with:
+So here’s what we've ended up with:
 
 ==The solution==
 
@@ -111,7 +112,7 @@ This gives us several features right away:
 
 This was the trickiest part to get right. Some services have dependencies on other things even just to get unit tests running. For example, [[http://python-eve.org/|Eve]] is a huge pain to get running with a fake database so it’s much easier to just link it to a temporary "real" database.
 
-Additionally, we didn’t want to mess with the idea that the images should run production services by default but also didn’t want to require folks to need to churn out complicated `docker` invocations like `docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest` just to run the test suite after coding up some new features.
+Additionally, we didn't want to mess with the idea that the images should run production services by default but also didn’t want to require folks to need to churn out complicated `docker` invocations like `docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest` just to run the test suite after coding up some new features.
 
 So, it was docker-compose to the rescue again :)
 

@@ -1,4 +1,5 @@
 %title xmodmap Hints and Tips
+:linux:
 
 Originally posted on [Rolling
 Release](http://rollingrelease.com/system/2010/09/xmodmap-hints-and-tips). I'm

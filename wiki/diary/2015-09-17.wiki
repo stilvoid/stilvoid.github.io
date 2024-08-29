@@ -1,4 +1,5 @@
 %title Twofer
+:linux:
 
 After toying with the idea for some time, I decided I’d try setting up [[https://en.wikipedia.org/wiki/Two-factor_authentication|2FA]] on my laptop. As usual, the [[https://wiki.archlinux.org/|arch wiki]] had a nicely written [[https://wiki.archlinux.org/index.php/Google_Authenticator|article on setting up 2FA]] with [[https://github.com/google/google-authenticator/tree/master/libpam|the PAM module]] for [[https://github.com/google/google-authenticator|Google Authenticator]].
 

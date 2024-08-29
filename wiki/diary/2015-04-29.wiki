@@ -1,4 +1,5 @@
 %title Why-fi?
+:linux:
 
 I’m an [[http://archlinux.org|arch linux]] user and I love it; there’s no other distro for me. The things that arch gets criticism for are the exact same reasons I love it and they all more or less boil down to one thing: arch does not hold your hand.
 
@@ -6,11 +7,11 @@ It’s been a while since an update in arch caused me any problems but it did to
 
 [[https://bbs.archlinux.org/viewtopic.php?id=196584|It seems there’s an issue]] with the latest version of `wpa_supplicant` which renders it incompatible with the way wifi is setup at boot time. The problem was caught and resolved very quickly by package maintainers who simply rolled the `wpa_supplicant` package back. However, I was unlucky enough to have caught the intervening upgrade shortly before turning my laptop off. I came home this evening to find I had no wifi!
 
-This wasn’t a huge challenge but I haven’t written a blog post for a while and someone might find this useful:
+This wasn't a huge challenge but I haven’t written a blog post for a while and someone might find this useful:
 
 ----
 
-If your wifi doesn’t start at boot…
+If your wifi doesn't start at boot…
 
 And you’re using [[https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333|a laptop with no ethernet port]]…
 

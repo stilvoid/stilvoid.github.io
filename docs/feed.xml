@@ -4,13 +4,16 @@
  <title>Posts</title>
  <link>https://engledow.me/diary/index.html</link>
  <description>Posts</description>
- <pubDate>Wed, 28 Aug 2024 16:32:22 +0100</pubDate>
+ <pubDate>Thu, 29 Aug 2024 11:05:43 +0100</pubDate>
  <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
  <item>
   <title>2024-08-28</title>
   <link>https://engledow.me/diary/2024-08-28.html</link>
   <guid isPermaLink="false">2024-08-28</guid>
   <description><![CDATA[
+<p>
+<span id="-game"></span><span class="tag" id="game">game</span> <span id="-dev"></span><span class="tag" id="dev">dev</span>
+</p>
 
 <p>
 In tidying up my corner of the interwebs, I put together a list of <a href="../projects.html">projects</a> that I've worked on over the years. One of those is <a href="../projects.html#Games">Falsoyd</a>. I commented "I don't know if it even compiles on modern systems". Of course, that stuck in my head and inevitably I had to try...
@@ -110,6 +113,9 @@ Now I'm clearly going to have to make Falsoyd 2 in Löve, Pico-8, or Picotron ;)
   <link>https://engledow.me/diary/2024-07-23.html</link>
   <guid isPermaLink="false">2024-07-23</guid>
   <description><![CDATA[
+<p>
+<span id="-text"></span><span class="tag" id="text">text</span> <span id="-vim"></span><span class="tag" id="vim">vim</span> <span id="-wiki"></span><span class="tag" id="wiki">wiki</span> <span id="-site"></span><span class="tag" id="site">site</span>
+</p>
 
 <p>
 I like text, plain text. Always have. But over the past several years (and it has been, as the kids say, a hot minute since I <a href="2019-11-13.html">last blogged</a>) I've found more and more bloat creeping into my daily life. I moved to a Mac Mini as my main machine about 4 years ago as I just gave up in the struggle between the way I think things ought to be and the "needs" of life working for a large corporate. In fairness, I have come to more or less enjoy MacOS but whenever I slip back into my Arch box with my i3 desktop, it feels <em>so sleek</em>.
@@ -150,6 +156,9 @@ Now to see what else I can over-enthusiastically convince myself should be a Wik
   <link>https://engledow.me/diary/2019-11-13.html</link>
   <guid isPermaLink="false">2019-11-13</guid>
   <description><![CDATA[
+<p>
+<span id="-linux"></span><span class="tag" id="linux">linux</span> <span id="-arch"></span><span class="tag" id="arch">arch</span> <span id="-dev"></span><span class="tag" id="dev">dev</span> <span id="-tool"></span><span class="tag" id="tool">tool</span>
+</p>
 
 <p>
 This post is about the <a href="https://aur.archlinux.org/">Arch User Repository</a>. If you're not an <a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)
@@ -247,6 +256,9 @@ Upgrade a package is the same as installing one. This will upgrade <code>maur</c
   <link>https://engledow.me/diary/2019-02-12.html</link>
   <guid isPermaLink="false">2019-02-12</guid>
   <description><![CDATA[
+<p>
+<span id="-aws"></span><span class="tag" id="aws">aws</span> <span id="-git"></span><span class="tag" id="git">git</span> <span id="-dev"></span><span class="tag" id="dev">dev</span>
+</p>
 
 <p>
 (Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps blog</a>)
@@ -389,6 +401,9 @@ The contents of the new file are treated as if they are inserted into the main <
   <link>https://engledow.me/diary/2018-11-08.html</link>
   <guid isPermaLink="false">2018-11-08</guid>
   <description><![CDATA[
+<p>
+<span id="-dev"></span><span class="tag" id="dev">dev</span> <span id="-git"></span><span class="tag" id="git">git</span> <span id="-tool"></span><span class="tag" id="tool">tool</span>
+</p>
 
 <p>
 Because I work on a lot of different projects spread across a lot of accounts at multiple git hosting providers, I try to keep my code folder in some semblance of order by having subfolders for things.
@@ -428,6 +443,9 @@ Laziness is the primary virtue.
   <link>https://engledow.me/diary/2018-08-14.html</link>
   <guid isPermaLink="false">2018-08-14</guid>
   <description><![CDATA[
+<p>
+<span id="-dev"></span><span class="tag" id="dev">dev</span> <span id="-game"></span><span class="tag" id="game">game</span>
+</p>
 
 <p>
 For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of Heroes</a>.
@@ -602,6 +620,9 @@ All in all, this wasn't anywhere near as painful as I'd expected. Time to play s
   <link>https://engledow.me/diary/2018-06-03.html</link>
   <guid isPermaLink="false">2018-06-03</guid>
   <description><![CDATA[
+<p>
+<span id="-dev"></span><span class="tag" id="dev">dev</span> <span id="-tool"></span><span class="tag" id="tool">tool</span>
+</p>
 
 <p>
 I finally got around to releasing a tool I wrote a while back (git says I started it in November 2015).
@@ -657,6 +678,9 @@ It's written in <a href="https://golang.org/">Go</a> and there are binaries for 
   <link>https://engledow.me/diary/2017-07-10.html</link>
   <guid isPermaLink="false">2017-07-10</guid>
   <description><![CDATA[
+<p>
+<span id="-linux"></span><span class="tag" id="linux">linux</span> <span id="-desktop"></span><span class="tag" id="desktop">desktop</span>
+</p>
 
 <p>
 <a href="2017-06-15.html">Last time</a>, I wrote about trying a few desktop environments to see what's out there, keep things fresh, and keep me from complacency. Well, as with desktop environments, so with text editors. I decided briefly that I would try <a href="https://atom.io/">a few of</a> <a href="https://www.sublimetext.com/">the more recent</a> <a href="https://code.visualstudio.com/">code editors</a> that are around these days. Lured in by their pleasing, modern visuals and their promises of a smooth, integrated experience, I've been meaning to give these a go for a while. Needless to say, as a long-time <a href="https://www.vim.org/">vim</a> user, I just found myself frustrated that I wasn't able to get things done as efficiently in any of those editors as I could in vim ;) I tried installing vim keybindings in Atom but it just wasn't the same as a very limited set of functionality was there. As for the integrated environment, when you have <a href="2014-06-17.html">tmux running by default</a>, everything's integrated anyway.
@@ -772,6 +796,9 @@ Here's what it looks like:
   <link>https://engledow.me/diary/2017-06-15.html</link>
   <guid isPermaLink="false">2017-06-15</guid>
   <description><![CDATA[
+<p>
+<span id="-linux"></span><span class="tag" id="linux">linux</span> <span id="-desktop"></span><span class="tag" id="desktop">desktop</span>
+</p>
 
 <p>
 It’s been a while since I last tried out a different desktop environment on my laptop and I’ve been using <a href="https://i3wm.org/">i3</a> for some time now so it’s only fair to give other things a go ;)
@@ -842,6 +869,9 @@ I tried Budgie and LXQT for a few minutes each at this point but they weren’t 
   <link>https://engledow.me/diary/2016-02-25.html</link>
   <guid isPermaLink="false">2016-02-25</guid>
   <description><![CDATA[
+<p>
+<span id="-dev"></span><span class="tag" id="dev">dev</span> <span id="-aws"></span><span class="tag" id="aws">aws</span>
+</p>
 
 <p>
 Maybe it’s just me, but I reckon <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSLs</a> are the next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I know I’m by no means the first to say so it’s just that I’m increasingly bemused at seeing things squeezed into data structures they’ve outgrown.

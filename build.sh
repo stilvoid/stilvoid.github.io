@@ -13,8 +13,9 @@ for f in $(find wiki/diary/*.wiki ! -name "index.wiki" | sort -r); do
 done
 
 # Convert to HTML and generate RSS feed
-vim \
-    "+VimwikiIndex 2" \
+vim wiki/tags.wiki \
+    "+VimwikiRebuildTags!" \
+    "+VimwikiGenerateTagLinks" \
     "+VimwikiAll2HTML" \
     "+VimwikiRss" \
     "+q"

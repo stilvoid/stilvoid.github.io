@@ -1,4 +1,5 @@
 %title Netcat
+:tool:
 
 I had occasion recently to need an entry in my ssh config such that connections to a certain host would be proxied through another connection. Several sources suggested the following snippet:
 
@@ -24,7 +25,7 @@ After some head scratching, checking and double-checking that I had set up the p
 
 Worse, `-x` is a valid option in both netcats but does completely different things depending on which you use; hence the less-than-specific-but-technically-correct error message.
 
-After that revalation, I thought it was worth capturing the commonalities and differences between the options taken by the netcats.
+After that revelation, I thought it was worth capturing the commonalities and differences between the options taken by the netcats.
 
 ==Common options==
 

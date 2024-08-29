@@ -14,6 +14,7 @@ I work for AWS but this is where I keep non-work stuff.
 - [[projects|Projects]]
 - [[diary/index|Blog posts]]
 - [[https://stilvoid.itch.io/|Some Pico-8 games I made]]
+- You can find some things by [[tags]]
 
 == Me in other places ==
 

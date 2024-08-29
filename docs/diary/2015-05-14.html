@@ -28,6 +28,9 @@
                 <h1>Building a componentised application</h1>
 
                 
+<p>
+<span id="-dev"></span><span class="tag" id="dev">dev</span>
+</p>
 
 <p>
 Most of what’s here is hardly new ground but I felt it worth noting down the current strategy we’re using to develop and build what we’re working on at <a href="http://www.locationsciences.ai/">Proxama</a>.
@@ -59,7 +62,7 @@ Provide a means for running unit tests (both by developers and our CI server).
 
 </ul>
 <p>
-So here’s what we’ve ended up with:
+So here’s what we've ended up with:
 </p>
 
 <div id="The solution"><h2 id="The solution" class="header"><a href="#The solution">The solution</a></h2></div>
@@ -179,7 +182,7 @@ This was the trickiest part to get right. Some services have dependencies on oth
 </p>
 
 <p>
-Additionally, we didn’t want to mess with the idea that the images should run production services by default but also didn’t want to require folks to need to churn out complicated <code>docker</code> invocations like <code>docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest</code> just to run the test suite after coding up some new features.
+Additionally, we didn't want to mess with the idea that the images should run production services by default but also didn’t want to require folks to need to churn out complicated <code>docker</code> invocations like <code>docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest</code> just to run the test suite after coding up some new features.
 </p>
 
 <p>
@@ -236,7 +239,7 @@ Running <code>docker-compose run tests</code> in each service’s own folder wil
         </main>
 
         <footer>
-            Last updated: 2024-08-27
+            Last updated: 2024-08-29
             <br />
             <br />
             All content © 2011-2024 Steve Engledow.

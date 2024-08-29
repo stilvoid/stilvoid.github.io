@@ -1,6 +1,7 @@
 %title Testing a Django app with Docker
+:dev:
 
-I’ve been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
+I've been playing around with Docker a fair bit and recently hit upon a configuration that works nicely for me when testing code at work.
 
 The basic premise is that I run a docker container that pretty well emulates the exact environment that the code will run in down to the OS so I don’t need to care that I’m not running the same distribution as the servers we deploy to and that I can test my code at any time without having to rebuild the docker image.
 

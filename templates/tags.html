@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="author" content="Steve Engledow">
-        <meta name="description" content="engledow.me: Things we learned at the LUG meet">
+        <meta name="description" content="engledow.me: %title%">
         <meta name="keywords" content="personal, steve engledow, engledow, manager, aws, developer, open source, blog">
-        <title>engledow.me - Things we learned at the LUG meet</title>
-        <link rel="stylesheet" href="../style.css">
+        <title>engledow.me - %title%</title>
+        <link rel="stylesheet" href="%root_path%style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
     </head>
 
@@ -17,38 +17,20 @@
             engledow.me
 
             <nav>
-                <a href="../index.html">Home</a>
-                <a href="../projects.html">Projects</a>
-                <a href="../diary/index.html">Blog</a>
+                <a href="%root_path%index.html">Home</a>
+                <a href="%root_path%projects.html">Projects</a>
+                <a href="%root_path%diary/index.html">Blog</a>
             </nav>
         </header>
 
         <main>
-            <article>
-                <h1>Things we learned at the LUG meet</h1>
-
-                
-<p>
-<span id="-linux"></span><span class="tag" id="linux">linux</span> <span id="-shell"></span><span class="tag" id="shell">shell</span> <span id="-vim"></span><span class="tag" id="vim">vim</span>
-</p>
-
-<ul>
-<li>
-vimrc comments start with <code>"</code>
-
-<li>
-howdoi would be useful if it worked
-
-<li>
-<code>xargs -I {}</code> is handy
-
-</ul>
-
-            </article>
+            <nav class="tag-list">
+                %content%
+            </nav>
         </main>
 
         <footer>
-            Last updated: 2024-08-29
+            Last updated: %date%
             <br />
             <br />
             All content © 2011-2024 Steve Engledow.
