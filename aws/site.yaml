@@ -35,7 +35,8 @@ Resources:
       DomainName: !Ref SecondaryDomain
       DomainValidationOptions:
         - DomainName: !Ref SecondaryDomain
-          ValidationDomain: !Ref SecondaryDomain
+          HostedZoneId: Z336NFTTB1OUWH
+      ValidationMethod: DNS
 
   Distribution:
     Type: AWS::CloudFront::Distribution

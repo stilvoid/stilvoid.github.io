@@ -1,5 +1,5 @@
 body {
-    line-height: 1.4;
+    line-height: 1.5em;
     color: #444444;
     background: #FDFAF6;
     font-size: 16pt;
@@ -7,10 +7,11 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
+    font-family: serif;
 }
 
 main {
-    max-width: 600px;
+    max-width: 40em;
     margin: 1em auto 0 auto;
 }
 
@@ -36,7 +37,7 @@ h4 {
     margin-left: 0;
 }
 h5 {
-    margin-left: -;
+    margin-left: 0;
 }
 h6 {
     margin-left: 0;
@@ -86,8 +87,21 @@ header a {
     font-variant: small-caps;
 }
 
+@font-face {
+    font-family: DepartureMono;
+    src: url('https://static.offend.me.uk/media/fonts/DepartureMono-Regular.woff2');
+}
+
 pre, code {
     white-space: pre-wrap;
+    font-family: DepartureMono;
+}
+
+pre {
+    background: #403f3e;
+    color: #eeeeee;
+    padding: 0.5em;
+    border-radius: 0.5em;
 }
 
 .tag {
