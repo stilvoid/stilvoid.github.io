@@ -1,5 +1,0 @@
-%title Music
-%template music
-:music:
-
-There's more over on [[https://soundcloud.com/stilvoid|SoundCloud]].
