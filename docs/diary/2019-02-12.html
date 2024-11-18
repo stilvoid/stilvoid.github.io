@@ -1,65 +1,182 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="author" content="Steve Engledow">
-        <meta name="description" content="engledow.me: Using Git with AWS CodeCommit Across Multiple AWS Accounts">
-        <meta name="keywords" content="personal, steve engledow, engledow, manager, aws, developer, open source, blog">
-        <title>engledow.me - Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
-        <link rel="stylesheet" href="../style.css">
-        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <title>Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
     </head>
-
     <body>
-        <header>
-            engledow.me
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
 
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../projects.html">Projects</a>
-                <a href="../diary/index.html">Blog</a>
-            </nav>
-        </header>
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
 
-        <main>
-            <article>
-                <h1>Using Git with AWS CodeCommit Across Multiple AWS Accounts</h1>
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
 
-                
-<p>
-<span id="-aws"></span><span class="tag" id="aws">aws</span> <span id="-git"></span><span class="tag" id="git">git</span> <span id="-dev"></span><span class="tag" id="dev">dev</span>
-</p>
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
 
-<p>
-(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps blog</a>)
-</p>
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
-<p>
-I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host all of my private Git repositories. My repositories are split across several AWS accounts for different purposes: personal projects, internal projects at work, and customer projects.
-</p>
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
 
-<p>
-The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit documentation</a> shows you how to configure and clone a repository from one place, but in this blog post I want to share how I manage my Git configuration across multiple AWS accounts.
-</p>
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
 
-<div id="Background"><h2 id="Background" class="header"><a href="#Background">Background</a></h2></div>
+        <div id="page-wrapper" class="page-wrapper">
 
-<p>
-First, I have <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">profiles</a> configured for each of my AWS environments. I connect to some of them using <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">IAM user credentials</a> and others by using <a href="https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/">cross-account roles</a>.
-</p>
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
 
-<p>
-I intentionally do not have any credentials associated with the default profile. That way I must always be sure I have selected a profile before I run any AWS CLI commands.
-</p>
+                    <h1 class="menu-title"></h1>
 
-<p>
-Here’s an anonymized copy of my <code>~/.aws/config</code> file:
-</p>
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
 
-<pre>
-[profile personal]
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="using-git-with-aws-codecommit-across-multiple-aws-accounts"><a class="header" href="#using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a></h1>
+<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
+blog</a>)</p>
+<p>I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host all
+of my private Git repositories. My repositories are split across several
+AWS accounts for different purposes: personal projects, internal
+projects at work, and customer projects.</p>
+<p>The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit
+documentation</a>
+shows you how to configure and clone a repository from one place, but in
+this blog post I want to share how I manage my Git configuration across
+multiple AWS accounts.</p>
+<h2 id="background"><a class="header" href="#background">Background</a></h2>
+<p>First, I have
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">profiles</a>
+configured for each of my AWS environments. I connect to some of them
+using <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">IAM user
+credentials</a>
+and others by using <a href="https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/">cross-account
+roles</a>.</p>
+<p>I intentionally do not have any credentials associated with the default
+profile. That way I must always be sure I have selected a profile before
+I run any AWS CLI commands.</p>
+<p>Here’s an anonymized copy of my <code>~/.aws/config</code> file:</p>
+<pre><code>[profile personal]
 region = eu-west-1
 aws_access_key_id = AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -73,40 +190,31 @@ aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 region = eu-west-2
 source_profile = work
 role_arn = arn:aws:iam::123456789012:role/CrossAccountPowerUser
-</pre>
-
-<p>
-If I am doing some work in one of those accounts, I run <code>export AWS_PROFILE=work</code> and use the AWS CLI as normal.
-</p>
-
-<div id="The problem"><h2 id="The problem" class="header"><a href="#The problem">The problem</a></h2></div>
-
-<p>
-I use the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html">Git credential helper</a> so that the Git client works seamlessly with CodeCommit. However, because I use different profiles for different repositories, my use case is a little more complex than the average.
-</p>
-
-<p>
-In general, to use the credential helper, all you need to do is place the following options into your <code>~/.gitconfig</code> file, like this:
-</p>
-
-<pre>
-[credential]
+</code></pre>
+<p>If I am doing some work in one of those accounts, I run
+<code>export AWS_PROFILE=work</code> and use the AWS CLI as normal.</p>
+<h2 id="the-problem"><a class="header" href="#the-problem">The problem</a></h2>
+<p>I use the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html">Git credential
+helper</a>
+so that the Git client works seamlessly with CodeCommit. However,
+because I use different profiles for different repositories, my use case
+is a little more complex than the average.</p>
+<p>In general, to use the credential helper, all you need to do is place
+the following options into your <code>~/.gitconfig</code> file, like this:</p>
+<pre><code>[credential]
     helper = !aws codecommit credential-helper $@
     UserHttpPath = true
-</pre>
-
-<p>
-I could make this work across accounts by setting the appropriate value for <code>AWS_PROFILE</code> before I use Git in a repository, but there is a much neater way to deal with this situation using a feature released in <a href="https://blog.github.com/2017-05-10-git-2-13-has-been-released/">Git version 2.13</a>, <a href="https://git-scm.com/docs/git-config#_includes">conditional includes</a>.
-</p>
-
-<div id="A solution"><h2 id="A solution" class="header"><a href="#A solution">A solution</a></h2></div>
-
-<p>
-First, I separate my work into different folders. My <code>~/code/</code> directory looks like this:
-</p>
-
-<pre>
-code
+</code></pre>
+<p>I could make this work across accounts by setting the appropriate value
+for <code>AWS_PROFILE</code> before I use Git in a repository, but there is a much
+neater way to deal with this situation using a feature released in <a href="https://blog.github.com/2017-05-10-git-2-13-has-been-released/">Git
+version
+2.13</a>,
+<a href="https://git-scm.com/docs/git-config#_includes">conditional includes</a>.</p>
+<h2 id="a-solution"><a class="header" href="#a-solution">A solution</a></h2>
+<p>First, I separate my work into different folders. My <code>~/code/</code> directory
+looks like this:</p>
+<pre><code>code
     personal
         repo1
         repo2
@@ -116,22 +224,16 @@ code
     customer
         repo5
         repo6
-</pre>
-
-<p>
-Using this layout, each folder that is directly underneath the code folder has different requirements in terms of configuration for use with CodeCommit.
-</p>
-
-<p>
-Solving this has two parts; first, I create a <code>.gitconfig</code> file in each of the three folder locations. The <code>.gitconfig</code> files contain any customization (specifically, configuration for the credential helper) that I want in place while I work on projects in those folders.
-</p>
-
-<p>
-For example:
-</p>
-
-<pre>
-[user]
+</code></pre>
+<p>Using this layout, each folder that is directly underneath the code
+folder has different requirements in terms of configuration for use with
+CodeCommit.</p>
+<p>Solving this has two parts; first, I create a <code>.gitconfig</code> file in each
+of the three folder locations. The <code>.gitconfig</code> files contain any
+customization (specifically, configuration for the credential helper)
+that I want in place while I work on projects in those folders.</p>
+<p>For example:</p>
+<pre><code>[user]
     # Use a custom email address
     email = sengledo@amazon.co.uk
 
@@ -139,45 +241,75 @@ For example:
     # Note the use of the --profile switch
     helper = !aws --profile work codecommit credential-helper $@
     UseHttpPath = true
-</pre>
-
-<p>
-I also make sure to specify the AWS CLI profile to use in the <code>.gitconfig</code> file which means that, when I am working in the folder, I don’t need to set <code>AWS_PROFILE</code> before I run <code>git push</code>, etc.
-</p>
-
-<p>
-Secondly, to make use of these folder-level .gitconfig files, I need to reference them in my global Git configuration at <code>~/.gitconfig</code>
-</p>
-
-<p>
-This is done through the <code>includeIf</code> section. For example:
-</p>
-
-<pre>
-[includeIf "gitdir:~/code/personal/"]
+</code></pre>
+<p>I also make sure to specify the AWS CLI profile to use in the
+<code>.gitconfig</code> file which means that, when I am working in the folder, I
+don’t need to set <code>AWS_PROFILE</code> before I run <code>git push</code>, etc.</p>
+<p>Secondly, to make use of these folder-level .gitconfig files, I need to
+reference them in my global Git configuration at <code>~/.gitconfig</code></p>
+<p>This is done through the <code>includeIf</code> section. For example:</p>
+<pre><code>[includeIf "gitdir:~/code/personal/"]
     path = ~/code/personal/.gitconfig
-</pre>
+</code></pre>
+<p>This example specifies that if I am working with a Git repository that
+is located anywhere under <code>~/code/personal/</code>, Git should load additional
+configuration from <code>~/code/personal/.gitconfig</code>. That additional file
+specifies the appropriate credential helper invocation with the
+corresponding AWS CLI profile selected as detailed earlier.</p>
+<p>The contents of the new file are treated as if they are inserted into
+the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.
+This means that the included configuration will only override any
+configuration specified <span id="earlier"></span><strong>earlier</strong> in the
+config.</p>
 
-<p>
-This example specifies that if I am working with a Git repository that is located anywhere under <code>~/code/personal/</code>, Git should load additional configuration from <code>~/code/personal/.gitconfig</code>. That additional file specifies the appropriate credential helper invocation with the corresponding AWS CLI profile selected as detailed earlier.
-</p>
+                    </main>
 
-<p>
-The contents of the new file are treated as if they are inserted into the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.  This means that the included configuration will only override any configuration specified <span id="A solution-earlier"></span><strong id="earlier">earlier</strong> in the config.
-</p>
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../diary/2019-11-13.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-            </article>
-        </main>
+                            <a rel="next prefetch" href="../diary/2018-11-08.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
-        <footer>
-            Last updated: 2024-08-29
-            <br />
-            <br />
-            All content © 2011-2024 Steve Engledow.
-            <br />
-            All views expressed here are mine and don't reflect those of Amazon.
-            <br />
-            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
-        </footer>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../diary/2019-11-13.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../diary/2018-11-08.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
     </body>
 </html>

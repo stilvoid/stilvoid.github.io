@@ -1,81 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
+        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="author" content="Steve Engledow">
-        <meta name="description" content="engledow.me: Back to the Primitive">
-        <meta name="keywords" content="personal, steve engledow, engledow, manager, aws, developer, open source, blog">
-        <title>engledow.me - Back to the Primitive</title>
-        <link rel="stylesheet" href="../style.css">
-        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <title>Back to the Primitive</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
     </head>
-
     <body>
-        <header>
-            engledow.me
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
 
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="../projects.html">Projects</a>
-                <a href="../diary/index.html">Blog</a>
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="back-to-the-primitive"><a class="header" href="#back-to-the-primitive">Back to the Primitive</a></h1>
+<p>I like text, plain text. Always have. But over the past several years
+(and it has been, as the kids say, a hot minute since I <a href="2019-11-13.html">last
+blogged</a>) I've found more and more bloat creeping
+into my daily life. I moved to a Mac Mini as my main machine about 4
+years ago as I just gave up in the struggle between the way I think
+things ought to be and the "needs" of life working for a large
+corporate. In fairness, I have come to more or less enjoy MacOS but
+whenever I slip back into my Arch box with my i3 desktop, it feels <em>so
+sleek</em>.</p>
+<p>Moving to the Mac has necessarily meant changing some of my regular
+workflow and tools. I don't know what it is about the Mac but it seemed
+to discourage me from being so heavily terminal-based as I was. I really
+can't put my finger on it. Regardless, I ended up moving from taking
+notes in markdown to <a href="https://obsidian.md/">Obsidian</a> for a while and
+then eventually <a href="https://logseq.com/">Logseq</a>. Still just markdown files
+in a folder but the GUI is ever-present. I even found myself starting to
+use, and almost enjoy, <a href="https://code.visualstudio.com/">VS Code</a>!</p>
+<p>Anyway, the point is, through <a href="https://latenightlinux.com/late-night-linux-episode-289/">Late Night
+Linux</a>, I
+discovered <a href="https://vimwiki.github.io/">Vimwiki</a> and have started to
+love the terminal (and Vim) again. In fact, I started writing some code
+the other day and just automatically started it in Vim rather than VS
+Code. The rot is beginning to recede eh ;)</p>
+<p>One of the tasks I decided to bring over to Vimwiki was maintaining my
+small and fairly pointless <a href="https://engledow.me">website</a>. In another
+show of bloat, I had been through various markdown-to-website tools
+(ghost, hugo, jekyll), decided I disliked something about each one, and
+ended up rolling my own Python cruft. Inevitably, I came back to the
+site to make some changes after a few months and had <em>completely</em>
+forgotten how any of it was meant to work :) And that is what led me to
+the decision to try Vimwiki for the site as well as my note-taking.</p>
+<p>The first challenge is that, while Vimwiki supports markdown syntax, it
+doesn't support it very well and requires more plugins to get it to spit
+out html. Over the years, my enthusiasm for markdown has waned
+considerably. I like the overall style of the markup but it's just too
+ambiguous and ends up causing more problems than it solves. So... the
+tool I want to use has it's own syntax and I'm not tied to my usual
+preference... obviously it's time to figure out how to convert all my
+existing <a href="index.html">posts</a> ;)</p>
+<p>I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a>
+is even more lovely than I had previously realised. Writing a new reader
+or writer for it is almost trivial. You write a lua file, create a few
+functions to parse/create text in various formats (e.g. emphasised, code
+blocks, bullet points), and then point pandoc at your lua file as if it
+were any other reader/writer option.</p>
+<p>So here we are. This very infrequently updated blog is now written in
+vimwiki and I'm back to using the terminal and Vim on a daily basis like
+the <a href="2017-07-10.html">last few years</a> never happened.</p>
+<p>Now to see what else I can over-enthusiastically convince myself should
+be a Wiki...</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../diary/2024-08-28.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../diary/2019-11-13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../diary/2024-08-28.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../diary/2019-11-13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
-        </header>
 
-        <main>
-            <article>
-                <h1>Back to the Primitive</h1>
+        </div>
 
-                
-<p>
-<span id="-text"></span><span class="tag" id="text">text</span> <span id="-vim"></span><span class="tag" id="vim">vim</span> <span id="-wiki"></span><span class="tag" id="wiki">wiki</span> <span id="-site"></span><span class="tag" id="site">site</span>
-</p>
 
-<p>
-I like text, plain text. Always have. But over the past several years (and it has been, as the kids say, a hot minute since I <a href="2019-11-13.html">last blogged</a>) I've found more and more bloat creeping into my daily life. I moved to a Mac Mini as my main machine about 4 years ago as I just gave up in the struggle between the way I think things ought to be and the "needs" of life working for a large corporate. In fairness, I have come to more or less enjoy MacOS but whenever I slip back into my Arch box with my i3 desktop, it feels <em>so sleek</em>.
-</p>
 
-<p>
-Moving to the Mac has necessarily meant changing some of my regular workflow and tools. I don't know what it is about the Mac but it seemed to discourage me from being so heavily terminal-based as I was. I really can't put my finger on it. Regardless, I ended up moving from taking notes in markdown to <a href="https://obsidian.md/">Obsidian</a> for a while and then eventually <a href="https://logseq.com/">Logseq</a>. Still just markdown files in a folder but the GUI is ever-present. I even found myself starting to use, and almost enjoy, <a href="https://code.visualstudio.com/">VS Code</a>!
-</p>
 
-<p>
-Anyway, the point is, through <a href="https://latenightlinux.com/late-night-linux-episode-289/">Late Night Linux</a>, I discovered <a href="https://vimwiki.github.io/">Vimwiki</a> and have started to love the terminal (and Vim) again. In fact, I started writing some code the other day and just automatically started it in Vim rather than VS Code. The rot is beginning to recede eh ;)
-</p>
+        <script>
+            window.playground_copyable = true;
+        </script>
 
-<p>
-One of the tasks I decided to bring over to Vimwiki was maintaining my small and fairly pointless <a href="https://engledow.me">website</a>. In another show of bloat, I had been through various markdown-to-website tools (ghost, hugo, jekyll), decided I disliked something about each one, and ended up rolling my own Python cruft. Inevitably, I came back to the site to make some changes after a few months and had <em>completely</em> forgotten how any of it was meant to work :) And that is what led me to the decision to try Vimwiki for the site as well as my note-taking.
-</p>
 
-<p>
-The first challenge is that, while Vimwiki supports markdown syntax, it doesn't support it very well and requires more plugins to get it to spit out html. Over the years, my enthusiasm for markdown has waned considerably. I like the overall style of the markup but it's just too ambiguous and ends up causing more problems than it solves. So... the tool I want to use has it's own syntax and I'm not tied to my usual preference... obviously it's time to figure out how to convert all my existing <a href="index.html">posts</a> ;)
-</p>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-<p>
-I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a> is even more lovely than I had previously realised. Writing a new reader or writer for it is almost trivial. You write a lua file, create a few functions to parse/create text in various formats (e.g. emphasised, code blocks, bullet points), and then point pandoc at your lua file as if it were any other reader/writer option.
-</p>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
-<p>
-So here we are. This very infrequently updated blog is now written in vimwiki and I'm back to using the terminal and Vim on a daily basis like the <a href="2017-07-10.html">last few years</a> never happened.
-</p>
+        <!-- Custom JS scripts -->
 
-<p>
-Now to see what else I can over-enthusiastically convince myself should be a Wiki...
-</p>
 
-            </article>
-        </main>
-
-        <footer>
-            Last updated: 2024-08-29
-            <br />
-            <br />
-            All content © 2011-2024 Steve Engledow.
-            <br />
-            All views expressed here are mine and don't reflect those of Amazon.
-            <br />
-            The <a href="https://github.com/stilvoid/stilvoid.github.io">contents of this web site</a> are available under the terms of the <a href="https://github.com/stilvoid/stilvoid.github.io/blob/master/LICENSE">MIT licence</a>.
-        </footer>
+    </div>
     </body>
 </html>
