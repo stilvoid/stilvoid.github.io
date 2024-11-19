@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="shue"><a class="header" href="#shue">Shue</a></h1>
+<p><em>published 2018-06-03</em></p>
 <p>I finally got around to releasing a tool I wrote a while back (git says
 I started it in November 2015).</p>
 <p>It's called Shue and <a href="https://github.com/stilvoid/shue">you can find it on
@@ -215,6 +216,22 @@ page</a>.</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

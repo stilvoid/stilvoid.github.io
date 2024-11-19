@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="pretty-please"><a class="header" href="#pretty-please">Pretty please</a></h1>
+<p><em>published 2015-06-22</em></p>
 <p>I’ve been making <a href="https://github.com/stilvoid/please/">a thing</a> to solve
 some problems I always face while building web APIs.
 <a href="http://curl.haxx.se/">Curl</a> is lovely but it’s a bit <em>too</em> flexible.</p>
@@ -216,6 +217,22 @@ them</a>.</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

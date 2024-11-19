@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="building-a-componentised-application"><a class="header" href="#building-a-componentised-application">Building a componentised application</a></h1>
+<p><em>published 2015-05-14</em></p>
 <p>Most of what’s here is hardly new ground but I felt it worth noting down
 the current strategy we’re using to develop and build what we’re working
 on at <a href="http://www.locationsciences.ai/">Proxama</a>.</p>
@@ -164,7 +165,7 @@ per service.</p>
 build for <a href="https://www.docker.com/">Docker</a> from the outset. This meant
 we would get to avoid the usual dependency and developer environment
 setup nightmares.</p>
-<p>==The problem==</p>
+<h2 id="the-problem"><a class="header" href="#the-problem">The problem</a></h2>
 <p>What we quickly realised as we started to put the bare bones of a few of
 the services in place, was that we had three seemingly conflicting goals
 for each component and for the application as a whole.</p>
@@ -181,9 +182,9 @@ for each component and for the application as a whole.</p>
 CI server).</li>
 </ol>
 <p>So here’s what we've ended up with:</p>
-<p>==The solution==</p>
+<h2 id="the-solution"><a class="header" href="#the-solution">The solution</a></h2>
 <p><em>Or: <a href="http://docs.docker.com/compose/">docker-compose</a> to the rescue</em></p>
-<p>===Folder structure===</p>
+<h3 id="folder-structure"><a class="header" href="#folder-structure">Folder structure</a></h3>
 <p>Here’s what the project layout looks like:</p>
 <pre><code>Project
 |
@@ -206,7 +207,7 @@ CI server).</li>
   |
   +-&lt;other files&gt;
 </code></pre>
-<p>===Building for production===</p>
+<h3 id="building-for-production"><a class="header" href="#building-for-production">Building for production</a></h3>
 <p>This is the easy bit and is where we started first. The <code>Dockerfile</code> for
 each service was designed to run everything with the defaults. Usually,
 this is something simple like:</p>
@@ -215,7 +216,7 @@ CMD ["python", "main.py"]
 </code></pre>
 <p>Our CI server can easily take these, produce images, and push them to
 the registry.</p>
-<p>===Allowing developers to run services locally===</p>
+<h3 id="allowing-developers-to-run-services-locally"><a class="header" href="#allowing-developers-to-run-services-locally">Allowing developers to run services locally</a></h3>
 <p>This is slightly harder. In general, each service wants to do something
 slightly different when being run for development; e.g. automatically
 restarting when code changes. Additionally, we don’t want to have to
@@ -275,7 +276,7 @@ part directly where needed.</li>
 <ul>
 <li>Each service defines links to the other services it needs.</li>
 </ul>
-<p>===Running the tests===</p>
+<h3 id="running-the-tests"><a class="header" href="#running-the-tests">Running the tests</a></h3>
 <p>This was the trickiest part to get right. Some services have
 dependencies on other things even just to get unit tests running. For
 example, <a href="http://python-eve.org/">Eve</a> is a huge pain to get running
@@ -305,7 +306,7 @@ the tests.</p>
 <p>So, a developer (or the CI box) can run the unit tests with:</p>
 <pre><code>docker-compose run tests
 </code></pre>
-<p>==Summary==</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <ul>
 <li>Each <code>Dockerfile</code> builds an image that can go straight into production
 without further configuration required.</li>
@@ -356,6 +357,22 @@ needed.</li>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

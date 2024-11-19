@@ -11,7 +11,7 @@
 
 ---
 
-- [Blog](diary/index.md)
+- [Blog](diary.md)
   - [TBC](diary/2024-08-28.md)
   - [Back to the Primitive](diary/2024-07-23.md)
   - [Maur - A minimal AUR helper](diary/2019-11-13.md)

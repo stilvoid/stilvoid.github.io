@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="heroes-building-some-old-code"><a class="header" href="#heroes-building-some-old-code">Heroes: Building some old code</a></h1>
+<p><em>published 2018-08-14</em></p>
 <p>For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of
 Heroes</a>.</p>
 <hr />
@@ -282,6 +283,22 @@ to play some Heroes :D</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

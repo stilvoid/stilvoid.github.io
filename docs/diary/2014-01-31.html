@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="btw"><a class="header" href="#btw">btw</a></h1>
+<p><em>published 2014-01-31</em></p>
 <p>I discovered my new favourite fact about <a href="https://en.wikipedia.org/wiki/C_programming_language">my new favourite
 language</a>
 recently. I suppose it should be obvious but I hadn't though about it in
@@ -198,6 +199,22 @@ int index = 2;
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

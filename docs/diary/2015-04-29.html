@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="why-fi"><a class="header" href="#why-fi">Why-fi?</a></h1>
+<p><em>published 2015-04-29</em></p>
 <p>I’m an <a href="http://archlinux.org">arch linux</a> user and I love it; there’s no
 other distro for me. The things that arch gets criticism for are the
 exact same reasons I love it and they all more or less boil down to one
@@ -176,7 +177,7 @@ port</a>…</p>
 <p>And you know an upgrade will solve your problem…</p>
 <p>How do you get internet so you can upgrade?</p>
 <p>Simples :)</p>
-<p>==The steps==</p>
+<h2 id="the-steps"><a class="header" href="#the-steps">The steps</a></h2>
 <p>First, find the name of your wireless interface:</p>
 <pre><code>iw dev
 </code></pre>
@@ -237,6 +238,22 @@ port</a>…</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="back-to-the-primitive"><a class="header" href="#back-to-the-primitive">Back to the Primitive</a></h1>
+<p><em>published 2024-07-23</em></p>
 <p>I like text, plain text. Always have. But over the past several years
 (and it has been, as the kids say, a hot minute since I <a href="2019-11-13.html">last
 blogged</a>) I've found more and more bloat creeping
@@ -233,6 +234,22 @@ be a Wiki...</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

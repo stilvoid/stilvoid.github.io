@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="netcat"><a class="header" href="#netcat">Netcat</a></h1>
+<p><em>published 2014-04-15</em></p>
 <p>I had occasion recently to need an entry in my ssh config such that
 connections to a certain host would be proxied through another
 connection. Several sources suggested the following snippet:</p>
@@ -178,7 +179,7 @@ different things depending on which you use; hence the
 less-than-specific-but-technically-correct error message.</p>
 <p>After that revelation, I thought it was worth capturing the
 commonalities and differences between the options taken by the netcats.</p>
-<p>==Common options==</p>
+<h2 id="common-options"><a class="header" href="#common-options">Common options</a></h2>
 <ul>
 <li><code>-h</code></li>
 </ul>
@@ -248,7 +249,7 @@ default is no timeout.</p>
 <p>Specifies that nc should just scan for listening daemons, without
 sending any data to them. It is an error to use this option in
 conjunction with the -l option.</p>
-<p>==BSD netcat only==</p>
+<h2 id="bsd-netcat-only"><a class="header" href="#bsd-netcat-only">BSD netcat only</a></h2>
 <ul>
 <li><code>-4</code></li>
 </ul>
@@ -335,7 +336,7 @@ for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
 <li><code>-Z</code></li>
 </ul>
 <p>DCCP mode.</p>
-<p>==GNU netcat only==</p>
+<h2 id="gnu-netcat-only"><a class="header" href="#gnu-netcat-only">GNU netcat only</a></h2>
 <ul>
 <li><code>-c</code>, <code>--close</code></li>
 </ul>
@@ -347,7 +348,7 @@ for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
 <ul>
 <li><code>-g</code>, <code>--gateway=LIST</code></li>
 </ul>
-<p>Source-routing hop point[s], up to 8.</p>
+<p>Source-routing hop point(s), up to 8.</p>
 <ul>
 <li><code>-G</code>, <code>--pointer=NUM</code></li>
 </ul>
@@ -372,7 +373,7 @@ for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
 <li><code>-x</code>, <code>--hexdump</code></li>
 </ul>
 <p>Hexdump incoming and outgoing traffic.</p>
-<p>==Epilogue==</p>
+<h2 id="epilogue"><a class="header" href="#epilogue">Epilogue</a></h2>
 <p>I uninstalled GNU netcat and installed BSD netcat btw ;)</p>
 
                     </main>
@@ -404,6 +405,22 @@ for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

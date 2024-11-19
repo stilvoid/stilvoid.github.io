@@ -153,17 +153,19 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="break-in"><a class="header" href="#break-in">Break In!</a></h1>
-<p>A while ago, I decided to learn how to use [the
-canvas](https://en.wikipedia.org/wiki/Canvas_element) and that for my
+<p><em>published 2011-10-27</em></p>
+<p>A while ago, I decided to learn how to use <a href="https://en.wikipedia.org/wiki/Canvas_element">the canvas</a> and that for my
 first project I was going to write a breakout clone. Pretty standard
 fare for a first-time project :)</p>
 <p>After writing some routines to draw blocks on the screen some weeks ago,
 I finally got around to doing some real work on it this evening. Two or
 three hours later, I'd ended up with a mostly working, radial version of
 Breakout.</p>
-<p><img src="https://static.offend.me.uk/media/images/breakout.png" alt="Screenshot of BreakIn" /> &gt;
-Update 2024: I am no longer hosting this anywhere, so you can't play it.
+<p><img src="https://static.offend.me.uk/media/images/breakout.png" alt="Screenshot of BreakIn" /></p>
+<blockquote>
+<p>Update 2024: I am no longer hosting this anywhere, so you can't play it.
 I might see if I can find it and host it again.</p>
+</blockquote>
 <p>There are still some obvious bugs (the collision detection is a bit
 shoddy) and it doesn't keep score or do anything special when you win
 but it's reasonably fun and I'm quite pleased with what I've achieved in
@@ -200,6 +202,22 @@ just a couple of hours.</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -7,3 +7,6 @@ src = "src"
 [build]
 create-missing = true
 build-dir = "docs"
+
+[preprocessor.helper]
+command = "python3 helper.py"

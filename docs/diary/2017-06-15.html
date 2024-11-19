@@ -153,6 +153,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="the-day-of-linux-on-the-desktop"><a class="header" href="#the-day-of-linux-on-the-desktop">The day of linux on the desktop</a></h1>
+<p><em>published 2017-06-15</em></p>
 <p>It’s been a while since I last tried out a different desktop environment
 on my laptop and I’ve been using <a href="https://i3wm.org/">i3</a> for some time
 now so it’s only fair to give other things a go ;)</p>
@@ -161,7 +162,7 @@ running so I could switch back and forth to take notes - and started
 each environment with <code>DISPLAY=:1 &lt;the command to start the desktop&gt;</code>.</p>
 <p>I’ll start with just one today and perhaps review some others another
 time.</p>
-<p>==Deepin==</p>
+<h2 id="deepin"><a class="header" href="#deepin">Deepin</a></h2>
 <p>In summary: bits of Gnome Shell, Chrome OS, and Mac OSX but not quite as
 polished as any of them.</p>
 <p>The Deepin Desktop Environment (DDE - from <a href="https://www.deepin.org/en/?language=en">the Deepin
@@ -233,6 +234,22 @@ them just now :)</p>
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
