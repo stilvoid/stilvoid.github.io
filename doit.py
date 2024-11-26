@@ -1,9 +1,12 @@
-import glob, markdown, os, os.path, re
+import http.server, glob, json, markdown, os, os.path, re, shutil, socketserver
 from string import Template
+from collections import OrderedDict
 
 SRC="src"
 OUT="docs"
 TEMPLATES="templates"
+STATIC="static"
+PORT=8000
 
 def sort_paths(paths):
     dirs = []
@@ -62,40 +65,84 @@ def convert(fn, **kwargs):
             **kwargs,
         ))
 
-    print(outfn)
-
 # Returns [[title, path, children]]
 def make_index(fns):
-    dirs = []
+    dirs = OrderedDict()
 
     for fn in fns:
         dirname = os.path.dirname(os.path.relpath(fn, SRC))
 
-        parts = dirname.split("/")
+        if dirname == "":
+            parts = []
+        else:
+            parts = dirname.split("/")
 
         cur = dirs
         for part in parts:
             if part not in cur:
-                cur[part] = {
-                    "pages": {},
-                    "children
+                cur[part] = OrderedDict()
 
-    print(dirs)
+            cur = cur[part]
+
+        outfn = to_outfn(fn)
+
+        cur[os.path.basename(outfn)] = get_title(fn)
+
+    return dirs
+
+def make_nav(index, path="/"):
+    nav_template = Template(open(os.path.join(TEMPLATES, "nav.html")).read())
+    item_template = Template(open(os.path.join(TEMPLATES, "nav-item.html")).read())
+
+    children = []
+
+    for key, value in index.items():
+        if isinstance(value, str) and (path == "/" or key != "index.html"):
+            children.append({
+                "uri": os.path.join(path, key),
+                "title": value,
+                "children": "",
+            })
+        elif isinstance(value, OrderedDict):
+            children.append({
+                "uri": os.path.join(path, key, "index.html"),
+                "title": value["index.html"],
+                "children": make_nav(value, path=os.path.join(path, key)),
+            })
+
+    children="\n".join([
+        item_template.substitute(**child)
+        for child in children
+    ])
+
+    return nav_template.substitute(children=children)
+
+def copy_static():
+    shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
+
+def serve():
+    os.chdir(OUT)
+    with socketserver.TCPServer(("", PORT), http.server.SimpleHTTPRequestHandler) as httpd:
+        print(f"http://0.0.0.0:{PORT}")
+        httpd.serve_forever()
 
 def main():
     mds = glob.glob(SRC + "/**/*.md", recursive=True)
 
-    mds = sort_paths(mds)
-
+    mds = sort_paths(sorted(mds))
     print(mds)
 
     index = make_index(mds)
+    print(json.dumps(index, indent=2))
 
-    #for part in index:
-    #    print(part)
+    nav = make_nav(index)
 
-    #for fn in mds:
-    #    convert(fn, site_title="engledow.me", index=index)
+    for fn in mds:
+        convert(fn, site_title="engledow.me", nav=nav)
+
+    copy_static()
+
+    serve()
 
 if __name__ == "__main__":
     main()
