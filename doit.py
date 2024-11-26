@@ -1,7 +1,7 @@
 import glob, markdown, os, os.path, re
 from string import Template
 
-BASE="src"
+SRC="src"
 OUT="docs"
 TEMPLATES="templates"
 
@@ -42,7 +42,7 @@ def get_title(fn):
 
 def to_outfn(fn):
     outfn = fn[:-3] + ".html"
-    outfn = os.path.join(OUT, os.path.relpath(outfn, BASE))
+    outfn = os.path.join(OUT, os.path.relpath(outfn, SRC))
     return outfn
 
 def convert(fn, **kwargs):
@@ -66,25 +66,24 @@ def convert(fn, **kwargs):
 
 # Returns [[title, path, children]]
 def make_index(fns):
-    out = list()
+    dirs = []
 
-    parts = [
-        [os.path.relpath(to_outfn(fn), OUT), get_title(fn)]
-        for fn in fns
-    ]
+    for fn in fns:
+        dirname = os.path.dirname(os.path.relpath(fn, SRC))
 
-    for part in parts:
-        if os.path.basename(part[0]) == "index.html":
-            out.append([part[0], part[1], [
-                child
-                for child in parts
-                if os.path.dirname(child[0]) == os.path.dirname(part[0])
-            ]])
+        parts = dirname.split("/")
 
-    return out
+        cur = dirs
+        for part in parts:
+            if part not in cur:
+                cur[part] = {
+                    "pages": {},
+                    "children
+
+    print(dirs)
 
 def main():
-    mds = glob.glob(BASE + "/**/*.md", recursive=True)
+    mds = glob.glob(SRC + "/**/*.md", recursive=True)
 
     mds = sort_paths(mds)
 
@@ -92,8 +91,8 @@ def main():
 
     index = make_index(mds)
 
-    for part in index:
-        print(part)
+    #for part in index:
+    #    print(part)
 
     #for fn in mds:
     #    convert(fn, site_title="engledow.me", index=index)
