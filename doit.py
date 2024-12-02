@@ -90,32 +90,52 @@ def make_index(fns):
 
     return dirs
 
-def make_nav(index, path="/"):
+def make_nav(index):
     nav_template = Template(open(os.path.join(TEMPLATES, "nav.html")).read())
     item_template = Template(open(os.path.join(TEMPLATES, "nav-item.html")).read())
 
-    children = []
+    return nav_template.substitute(children="\n".join([
+            item_template.substitute(uri=item[0], title=item[1], extra=" class=\"selected\"" if item[2] else "")
+            for item in index
+        ])
+    )
 
-    for key, value in index.items():
-        if isinstance(value, str) and (path == "/" or key != "index.html"):
-            children.append({
-                "uri": os.path.join(path, key),
-                "title": value,
-                "children": "",
-            })
-        elif isinstance(value, OrderedDict):
-            children.append({
-                "uri": os.path.join(path, key, "index.html"),
-                "title": value["index.html"],
-                "children": make_nav(value, path=os.path.join(path, key)),
-            })
+def make_sections(index, fn):
+    parts = [""] + os.path.relpath(fn, SRC).split("/")[:-1]
 
-    children="\n".join([
-        item_template.substitute(**child)
-        for child in children
-    ])
+    web_path = "/" + os.path.relpath(to_outfn(fn), OUT)
 
-    return nav_template.substitute(children=children)
+    out = []
+    cur = index
+
+    for i, part in enumerate(parts):
+        if part != "":
+            cur = cur[part]
+
+        section = []
+        for key, value in cur.items():
+            path = parts[:i+1] + [key]
+            name = value
+            selected = False
+
+            path = "/".join(path)
+
+            if web_path.startswith(path):
+                selected = True
+
+            if not isinstance(value, str):
+                path += "/index.html"
+                name = value["index.html"]
+
+            if i == 0 or key != "index.html":
+                section.append((path, name, selected))
+
+        if part == "blog":
+            section = reversed(section)
+
+        out.append(section)
+
+    return out
 
 def copy_static():
     shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
@@ -130,17 +150,20 @@ def main():
     mds = glob.glob(SRC + "/**/*.md", recursive=True)
 
     mds = sort_paths(sorted(mds))
-    print(mds)
 
     index = make_index(mds)
-    print(json.dumps(index, indent=2))
-
-    nav = make_nav(index)
 
     for fn in mds:
-        convert(fn, site_title="engledow.me", nav=nav)
+        make_sections(index, fn)
 
-    copy_static()
+    for fn in mds:
+        convert(fn, site_title="engledow.me", nav="\n".join([
+            make_nav(section)
+            for section 
+            in make_sections(index, fn)
+        ]))
+
+    # TODO copy_static() 
 
     serve()
 
