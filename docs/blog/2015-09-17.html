@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Twofer</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+        <nav><ul><li><a href="/index.html">About</a></li>
+
+<li><a href="/blog/index.html" class="selected">Blog</a></li>
+
+<li><a href="/projects/index.html">Projects</a></li>
+</ul>
+
+<ul><li><a href="/blog/2024-08-28.html">TBC</a><br><span class="date">(2024-08-28)</span></li>
+
+<li><a href="/blog/2024-07-23.html">Back to the Primitive</a><br><span class="date">(2024-07-23)</span></li>
+
+<li><a href="/blog/2019-11-13.html">Maur - A minimal AUR helper</a><br><span class="date">(2019-11-13)</span></li>
+
+<li><a href="/blog/2019-02-12.html">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a><br><span class="date">(2019-02-12)</span></li>
+
+<li><a href="/blog/2018-11-08.html">git-get</a><br><span class="date">(2018-11-08)</span></li>
+
+<li><a href="/blog/2018-08-14.html">Heroes: Building some old code</a><br><span class="date">(2018-08-14)</span></li>
+
+<li><a href="/blog/2018-06-03.html">Shue</a><br><span class="date">(2018-06-03)</span></li>
+
+<li><a href="/blog/2017-07-10.html">An evening of linux on the desktop</a><br><span class="date">(2017-07-10)</span></li>
+
+<li><a href="/blog/2017-06-15.html">The day of linux on the desktop</a><br><span class="date">(2017-06-15)</span></li>
+
+<li><a href="/blog/2016-02-25.html">Digital Subscriber</a><br><span class="date">(2016-02-25)</span></li>
+
+<li><a href="/blog/2015-12-14.html">Ford</a><br><span class="date">(2015-12-14)</span></li>
+
+<li><a href="/blog/2015-11-30.html">Sorted</a><br><span class="date">(2015-11-30)</span></li>
+
+<li><a href="/blog/2015-09-17.html" class="selected">Twofer</a><br><span class="date">(2015-09-17)</span></li>
+
+<li><a href="/blog/2015-06-22.html">Pretty please</a><br><span class="date">(2015-06-22)</span></li>
+
+<li><a href="/blog/2015-05-15.html">Andy and Teddy are waving goodbye</a><br><span class="date">(2015-05-15)</span></li>
+
+<li><a href="/blog/2015-05-14.html">Building a componentised application</a><br><span class="date">(2015-05-14)</span></li>
+
+<li><a href="/blog/2015-04-29.html">Why-fi?</a><br><span class="date">(2015-04-29)</span></li>
+
+<li><a href="/blog/2015-03-12.html">Cleaning out my closet</a><br><span class="date">(2015-03-12)</span></li>
+
+<li><a href="/blog/2015-01-02.html">Keychain and GnuPG >= 2.1</a><br><span class="date">(2015-01-02)</span></li>
+
+<li><a href="/blog/2014-12-09.html">Testing a Django app with Docker</a><br><span class="date">(2014-12-09)</span></li>
+
+<li><a href="/blog/2014-12-01.html">Just call me Anneka</a><br><span class="date">(2014-12-01)</span></li>
+
+<li><a href="/blog/2014-06-17.html">tmux</a><br><span class="date">(2014-06-17)</span></li>
+
+<li><a href="/blog/2014-04-15.html">Netcat</a><br><span class="date">(2014-04-15)</span></li>
+
+<li><a href="/blog/2014-01-31.html">btw</a><br><span class="date">(2014-01-31)</span></li>
+
+<li><a href="/blog/2013-05-10.html">Things we learned at the LUG meet</a><br><span class="date">(2013-05-10)</span></li>
+
+<li><a href="/blog/2013-02-11.html">Git aux</a><br><span class="date">(2013-02-11)</span></li>
+
+<li><a href="/blog/2012-08-30.html">Lost at C</a><br><span class="date">(2012-08-30)</span></li>
+
+<li><a href="/blog/2012-07-07.html">Ire</a><br><span class="date">(2012-07-07)</span></li>
+
+<li><a href="/blog/2011-10-27.html">Break In!</a><br><span class="date">(2011-10-27)</span></li>
+
+<li><a href="/blog/2011-10-22.html">xmodmap Hints and Tips</a><br><span class="date">(2011-10-22)</span></li>
+</ul>
+</nav>
+
+        <main>
+            <h1>Twofer</h1>
+<p>After toying with the idea for some time, I decided I’d try setting up
+<a href="https://en.wikipedia.org/wiki/Two-factor_authentication">2FA</a> on my
+laptop. As usual, the <a href="https://wiki.archlinux.org/">arch wiki</a> had a
+nicely written <a href="https://wiki.archlinux.org/index.php/Google_Authenticator">article on setting up
+2FA</a> with
+<a href="https://github.com/google/google-authenticator/tree/master/libpam">the PAM
+module</a>
+for <a href="https://github.com/google/google-authenticator">Google
+Authenticator</a>.</p>
+<p>I followed the instructions for setting up 2FA for ssh and that worked
+seamlessly so I decided I’d then go the whole hog and enable the module
+in <code>/etc/pam.d/system-auth</code> which would mean I’d need it any time I had
+to login at all.</p>
+<p>Adding the line:</p>
+<pre><code>auth  sufficient  pam_google_authenticator.so
+</code></pre>
+<p>had the expected effect that I could login with just the verification
+code but that seems to defeat the point a little so I bit my lip and
+changed <code>sufficient</code> to <code>required</code> which would mean I’d need my password
+and the code on login.</p>
+<p>I switched to another
+<a href="https://en.wikipedia.org/wiki/Virtual_terminal">VT</a> and went for it. It
+worked!</p>
+<p>So then I rebooted.</p>
+<p>And I couldn’t log in.</p>
+<p>After a couple of minutes to download an ISO to boot from using another
+machine, putting it on a USB stick, booting from it, and editing my
+<code>system-auth</code> file, I realised why:</p>
+<pre><code>auth      required    pam_google_authenticator.so
+auth      required    pam_unix.so     try_first_pass nullok
+auth      required    pam_ecryptfs.so unwrap
+</code></pre>
+<p>My home partition is encrypted and so the Google authenticator module
+obviously couldn’t load my secret file until I’d already logged in.</p>
+<p><img alt="D’oh" src="https://static.offend.me.uk/media/images/facepalm.jpg" /></p>
+<p>I tried moving the <code>pam_google_authenticator.so</code> line to the bottom of
+the <code>auth</code> group but that didn’t work either.</p>
+<h2>How could this possibly go wrong...</h2>
+<p>So, the solution I came up with was to put the 2fa module into the
+session group. My understanding is that this will mean PAM will ask me
+to supply a verification code once per session which is fine by me; I
+don’t want to have to put a code in every time I <code>sudo</code> anyway.</p>
+<p>My question is, will my minor abuse of PAM bite me in the arse at any
+point? It seems to do what I expected, even if I log in through GDM.</p>
+<p>Here’s my current <code>system-auth</code> file:</p>
+<pre><code>#%PAM-1.0
+
+auth      required  pam_unix.so     try_first_pass nullok
+auth      required  pam_ecryptfs.so unwrap
+auth      optional  pam_permit.so
+auth      required  pam_env.so
+
+account   required  pam_unix.so
+account   optional  pam_permit.so
+account   required  pam_time.so
+
+password  optional  pam_ecryptfs.so
+password  required  pam_unix.so     try_first_pass nullok sha512 shadow
+password  optional  pam_permit.so
+
+session   required  pam_limits.so
+session   required  pam_unix.so
+session   optional  pam_ecryptfs.so unwrap
+session   optional  pam_permit.so
+session   required  pam_google_authenticator.so
+</code></pre>
+
+            <footer>&copy; 2024, Steve Engledow</footer>
+        </main>
+    </body>
+</html>
