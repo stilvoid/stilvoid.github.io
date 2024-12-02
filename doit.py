@@ -163,7 +163,7 @@ def main():
             in make_sections(index, fn)
         ]))
 
-    # TODO copy_static() 
+    copy_static() 
 
     serve()
 
