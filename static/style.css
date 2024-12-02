@@ -1,0 +1,107 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    font-size: 16pt;
+    line-height: 1.5em;
+    font-family: monospace;
+    color: #ddd;
+    max-width: 100vw;
+    background: #081828;
+    gap: 2em;
+    justify-content: center;
+    margin: 1em;
+}
+
+a {
+    color: #d7a;
+    text-decoration: none;
+    text-shadow: 
+}
+
+a:hover {
+    color: white;
+    text-shadow: 0 0 1em rgba(255,255,255,0.5);
+}
+
+body>* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 20em;
+}
+
+nav>ul {
+    background: #123;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em rgba(0,0,0,0.25);
+    padding: 1em 1em 1em 2em;
+    margin: 0;
+}
+
+nav a.selected {
+    color: white;
+}
+
+nav a.selected:after {
+    content: " ←";
+    color: white;
+}
+
+li {
+    list-style-type: "- ";
+}
+
+.date {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+main {
+    max-width: 50em;
+}
+
+main img {
+    margin: 0 auto;
+    display: block;
+    border: 3px solid black;
+    border-radius: 6px;
+}
+
+footer {
+    font-size: 12pt;
+    color: rgba(255,255,255,0.5);
+}
+
+pre, code {
+    background: black;
+}
+
+pre {
+    white-space: pre-wrap;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: white;
+}
+
+@media (orientation: portrait) {
+    body {
+        flex-direction: column-reverse;
+    }
+
+    nav {
+        width: 100%;
+    }
+}
