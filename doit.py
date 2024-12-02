@@ -95,7 +95,12 @@ def make_nav(index):
     item_template = Template(open(os.path.join(TEMPLATES, "nav-item.html")).read())
 
     return nav_template.substitute(children="\n".join([
-            item_template.substitute(uri=item[0], title=item[1], extra=" class=\"selected\"" if item[2] else "")
+            item_template.substitute(
+                uri=item[0],
+                title=item[1],
+                attrs=" class=\"selected\"" if item[2] else "",
+                extra=item[3]
+            )
             for item in index
         ])
     )
@@ -117,6 +122,7 @@ def make_sections(index, fn):
             path = parts[:i+1] + [key]
             name = value
             selected = False
+            extra = ""
 
             path = "/".join(path)
 
@@ -127,8 +133,12 @@ def make_sections(index, fn):
                 path += "/index.html"
                 name = value["index.html"]
 
+            if part == "blog":
+                date, _ = os.path.splitext(key)
+                extra = f"<br><span class=\"date\">({date})</span>"
+
             if i == 0 or key != "index.html":
-                section.append((path, name, selected))
+                section.append((path, name, selected, extra))
 
         if part == "blog":
             section = reversed(section)
