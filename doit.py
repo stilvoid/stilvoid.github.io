@@ -48,7 +48,7 @@ def to_outfn(fn):
     outfn = os.path.join(OUT, os.path.relpath(outfn, SRC))
     return outfn
 
-def convert(fn, **kwargs):
+def convert(fn, extra=None, **kwargs):
     outfn = to_outfn(fn)
 
     os.makedirs(os.path.dirname(outfn), exist_ok=True)
@@ -58,12 +58,18 @@ def convert(fn, **kwargs):
 
     template = Template(open(os.path.join(TEMPLATES, "page.html")).read())
 
+    html = template.substitute(
+        page_title=get_title(fn),
+        body=html,
+        **kwargs,
+    )
+
+    if extra is not None:
+        template = Template(html)
+        html = template.substitute(**extra)
+
     with open(outfn, "w") as outf:
-        outf.write(template.substitute(
-            page_title=get_title(fn),
-            body=html,
-            **kwargs,
-        ))
+        outf.write(html)
 
 # Returns [[title, path, children]]
 def make_index(fns):
@@ -147,6 +153,32 @@ def make_sections(index, fn):
 
     return out
 
+def blog_links(index):
+    blogs = make_sections(index, "src/blog/index.html")[1]
+
+    return make_nav(list(blogs)[:5])
+
+def blog_previews(mds):
+    mds = [md for md in mds if md != "src/blog/index.md"]
+    mds = list(reversed(sorted(mds)))[:5]
+
+    previews = [
+        list(open(md))[:5]
+        for md in mds
+    ]
+
+    for md, preview in zip(mds, previews):
+        preview[0] = "#" + preview[0]
+        preview.append("\n")
+        preview.append(f"[more...]({md})")
+
+    previews = "".join([
+        "".join(preview) + "\n\n"
+        for preview in previews
+    ])
+
+    return markdown.markdown(previews)
+
 def copy_static():
     shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
 
@@ -161,13 +193,20 @@ def main():
 
     mds = sort_paths(sorted(mds))
 
+    blogs = [md for md in mds if md.startswith("src/blog/")]
+
     index = make_index(mds)
 
     for fn in mds:
-        make_sections(index, fn)
+        extra=None
 
-    for fn in mds:
-        convert(fn, site_title="engledow.me", nav="\n".join([
+        if fn == "src/index.md":
+            extra = {"blogs": blog_links(index)}
+
+        if fn == "src/blog/index.md":
+            extra = {"previews": blog_previews(blogs)}
+
+        convert(fn, extra=extra, site_title="engledow.me", nav="\n".join([
             make_nav(section)
             for section 
             in make_sections(index, fn)

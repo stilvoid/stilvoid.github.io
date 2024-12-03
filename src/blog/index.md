@@ -1,3 +1,5 @@
 # Blog
 
-An unorganised collection of things that I decided to write. Most of these are fairly old.
+A collection of things that I decided to write. Here are the most recent of them...
+
+$previews
