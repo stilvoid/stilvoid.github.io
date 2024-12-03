@@ -20,7 +20,7 @@ body {
 a {
     color: #d7a;
     text-decoration: none;
-    text-shadow: 
+    font-weight: bold;
 }
 
 a:hover {
