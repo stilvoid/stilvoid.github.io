@@ -168,9 +168,10 @@ def blog_previews(mds):
     ]
 
     for md, preview in zip(mds, previews):
+        path = os.path.relpath(to_outfn(md), OUT)
         preview[0] = "#" + preview[0]
         preview.append("\n")
-        preview.append(f"[more...]({md})")
+        preview.append(f"[more...](/{path})")
 
     previews = "".join([
         "".join(preview) + "\n\n"
