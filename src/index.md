@@ -5,7 +5,7 @@
 Cat and human dad. Polygeek. Nihilistic optimist. Neutral good. NW on
 the political compass. Norwich, UK.
 
-I work for AWS as a manager of a team of builders. I try to keep my coding skills up to scratch by working on [things](/projects) in my spare time.
+I work for AWS as a manager of a team of builders. I try to keep my coding skills up to scratch by working on [things](/projects/) in my spare time.
 
 ## Links
 
