@@ -1,0 +1,1 @@
+- [{{title}}]({{uri}})<br><span class="date">({{date}})</span>

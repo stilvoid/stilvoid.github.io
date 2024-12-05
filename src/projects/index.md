@@ -1,7 +1,7 @@
 # Projects
 
 I like to keep myself busy and sharp by making things.
-Usually those things are [cli tools](/projects/tools.html), [music](/projects/music.html), or [games](/projects/games.html).
+Usually those things are [cli tools](tools.md), [music](music.md), or [games](games.md).
 
 I haven't covered everything here but most of the rest of it is on [GitHub](https://github.com/stilvoid).
 
