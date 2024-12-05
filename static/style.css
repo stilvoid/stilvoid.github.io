@@ -50,7 +50,7 @@ nav>ul {
 }
 
 nav a.selected {
-    color: white;
+    color: #0bf;
 }
 
 nav a.selected:after {
@@ -67,6 +67,7 @@ li {
 }
 
 main {
+    flex-grow: 1;
     max-width: 50em;
 }
 
@@ -96,7 +97,7 @@ h1,h2,h3,h4,h5,h6 {
     color: white;
 }
 
-@media (orientation: portrait) {
+@media ((max-width: 100em) and (orientation: portrait)) or (max-width: 50em) {
     body {
         flex-direction: column-reverse;
     }
