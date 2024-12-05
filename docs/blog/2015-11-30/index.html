@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Sorted</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -40,7 +40,7 @@
 
 <li><a href="/blog/2015-12-14/">Ford</a><br><span class="date">(2015-12-14)</span></li>
 
-<li><a href="/blog/2015-11-30/">Sorted</a><br><span class="date">(2015-11-30)</span></li>
+<li><a href="/blog/2015-11-30/" class="selected">Sorted</a><br><span class="date">(2015-11-30)</span></li>
 
 <li><a href="/blog/2015-09-17/">Twofer</a><br><span class="date">(2015-09-17)</span></li>
 
@@ -81,48 +81,41 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="sorted">Sorted</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p>I decided to restructure the folder I keep code in (<code>~/code</code>, natch) -
+taking my cue from <a href="https://golang.org/doc/code.html">how Go does it</a> -
+so that the folder structure represents where code has come from.</p>
 
-<h2 id="tbc">TBC</h2>
+<p>As with all things, moving a couple of hundred folders by hand seemed
+far too daunting so I wrote a bash script to do it.</p>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p>This script enters each subdirectory within the current directory and,
+if it has a git remote, moves it to a folder that represents the git
+remote’s path.</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>For example, if I had a folder called <code>scripts</code> that had a git remote of
+<code>git@github.com/stilvoid/utils.git</code>, this script will move the folder to
+<code>github.com/stilvoid/utils</code>.</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<pre><code>#!/bin/bash
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+# Target directory for renamed folders
+BASE=/home/steve/code/sorted
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+for i in $(find ./ -maxdepth 1 -mindepth 1 -type d); do
+    cd &quot;$i&quot;
+    folder=&quot;$(git remote -v 2&gt;/dev/null | head -n 1 | awk '{print $2}' | sed -e 's/^.*:\/\///' | sed -e 's/:/\//' | sed -e 's/^.*@//' | sed -e 's/\.git$//')&quot;
+    cd ..
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+    if [ -n &quot;$folder&quot; ]; then
+        mkdir -p &quot;$BASE/$(dirname $folder)&quot;
+        mv &quot;$i&quot; &quot;$BASE/$folder&quot;
+    fi
+done
+</code></pre>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
-
-<p><a href="/blog/2019-11-13/">more...</a></p>
-
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
-
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
-
-<p><a href="/blog/2019-02-12/">more...</a></p>
-
-<h2 id="git-get">git-get</h2>
-
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
-
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>Yes it’s horrid but it did today’s job ;)</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

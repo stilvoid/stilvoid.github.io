@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Keychain and GnuPG >= 2.1</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -54,7 +54,7 @@
 
 <li><a href="/blog/2015-03-12/">Cleaning out my closet</a><br><span class="date">(2015-03-12)</span></li>
 
-<li><a href="/blog/2015-01-02/">Keychain and GnuPG >= 2.1</a><br><span class="date">(2015-01-02)</span></li>
+<li><a href="/blog/2015-01-02/" class="selected">Keychain and GnuPG >= 2.1</a><br><span class="date">(2015-01-02)</span></li>
 
 <li><a href="/blog/2014-12-09/">Testing a Django app with Docker</a><br><span class="date">(2014-12-09)</span></li>
 
@@ -81,48 +81,30 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="keychain-and-gnupg-2-1">Keychain and GnuPG &gt;= 2.1</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a>
+to manage my ssh and gpg agents. I did this with the following in my
+<code>.bashrc</code></p>
 
-<h2 id="tbc">TBC</h2>
+<pre><code># Start ssh-agent
+eval $(keychain --quiet --eval id_rsa)
+</code></pre>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p>Recently, <a href="https://www.archlinux.org/">arch</a> updated gpg to version
+2.1.1 which, <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">as per the
+announcement</a>, no
+longer requires the <code>GPG_AGENT_INFO</code> environment variable.</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>Unfortunately, tools like keychain don’t know about that and still
+expect it to be set, leading to some annoying breakage.</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<p>My fix is a quick and dirty one; I appended the following to <code>.bashrc</code></p>
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+<pre><code>export GPG_AGENT_INFO=~/.gnupg/S.gpg-agent:$(pidof gpg-agent):1
+</code></pre>
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
-
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
-
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
-
-<p><a href="/blog/2019-11-13/">more...</a></p>
-
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
-
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
-
-<p><a href="/blog/2019-02-12/">more...</a></p>
-
-<h2 id="git-get">git-get</h2>
-
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
-
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>:)</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

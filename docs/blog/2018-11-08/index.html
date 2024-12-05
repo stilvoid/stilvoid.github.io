@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: git-get</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -26,7 +26,7 @@
 
 <li><a href="/blog/2019-02-12/">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a><br><span class="date">(2019-02-12)</span></li>
 
-<li><a href="/blog/2018-11-08/">git-get</a><br><span class="date">(2018-11-08)</span></li>
+<li><a href="/blog/2018-11-08/" class="selected">git-get</a><br><span class="date">(2018-11-08)</span></li>
 
 <li><a href="/blog/2018-08-14/">Heroes: Building some old code</a><br><span class="date">(2018-08-14)</span></li>
 
@@ -81,48 +81,33 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
-
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
-
-<h2 id="tbc">TBC</h2>
-
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
-
-<p><a href="/blog/2024-08-28/">more...</a></p>
-
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
-
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
-
-<p><a href="/blog/2024-07-23/">more...</a></p>
-
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
-
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
-
-<p><a href="/blog/2019-11-13/">more...</a></p>
-
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
-
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
-
-<p><a href="/blog/2019-02-12/">more...</a></p>
-
-<h2 id="git-get">git-get</h2>
+            <h1 id="git-get">git-get</h1>
 
 <p>Because I work on a lot of different projects spread across a lot of
 accounts at multiple git hosting providers, I try to keep my code folder
 in some semblance of order by having subfolders for things.</p>
 
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>A while ago, I decided to make things even simpler by letting the git
+repos I was cloning dictate where they should live. I took inspiration
+from <a href="https://golang.org/doc/code.html#ImportPaths">the way go expects you to organise your
+code</a>.</p>
+
+<p>Today, I decided to apply <a href="http://threevirtues.com/">the three virtues</a>
+and wrote some code to handle this for me.</p>
+
+<h2 id="introducing-git-get">Introducing git-get</h2>
+
+<p><a href="https://github.com/stilvoid/git-get">git-get</a> is an opinionated git
+command that helps you keep your code folder in order.</p>
+
+<p>You use git-get as a replacement for <code>git clone</code> and it will decide
+where your code should live :)</p>
+
+<pre><code>git get https://github.com/stilvoid/git-get
+Cloning into '/home/steve/code/github.com/stilvoid/git-get'...
+</code></pre>
+
+<p>Laziness is the primary virtue.</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

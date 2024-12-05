@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Shue</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -30,7 +30,7 @@
 
 <li><a href="/blog/2018-08-14/">Heroes: Building some old code</a><br><span class="date">(2018-08-14)</span></li>
 
-<li><a href="/blog/2018-06-03/">Shue</a><br><span class="date">(2018-06-03)</span></li>
+<li><a href="/blog/2018-06-03/" class="selected">Shue</a><br><span class="date">(2018-06-03)</span></li>
 
 <li><a href="/blog/2017-07-10/">An evening of linux on the desktop</a><br><span class="date">(2017-07-10)</span></li>
 
@@ -81,48 +81,47 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="shue">Shue</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p>I finally got around to releasing a tool I wrote a while back (git says
+I started it in November 2015).</p>
 
-<h2 id="tbc">TBC</h2>
+<p>It's called Shue and <a href="https://github.com/stilvoid/shue">you can find it on
+github</a>.</p>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p>If you dig back in the <a href="https://github.com/stilvoid/shue/commits/master">commit
+history</a>, you'll see
+that Shue was originally intended as a tool for converting rgb colour
+values into their nearest equivalent <a href="http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html">bash colour
+codes</a>.</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>Shue doesn't do that now as I haven't really needed anything that does
+it since that one time :) I might bring back that functionality at some
+point but for now, here's what Shue <span id="does"></span><strong>does</strong> do:</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<ul>
+<li>Converts colour representations between various rgb formats: 6-digit
+hex (e.g. <code>#ff9900</code>), 3-digit hex (e.g. <code>#f90</code>), and
+<a href="https://www.w3schools.com/cssref/css_colors_legal.asp">CSS-style</a> RGB
+values (e.g. <code>rgb(255, 153, 0)</code>.</li>
+<li>Perform a few basic operations on colours before converting to the
+various representations:
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+<ul>
+<li>Invert</li>
+<li>Darken</li>
+<li>Lighten</li>
+</ul></li>
+</ul>
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+<p>I wrote this at the time because I was fiddling with a few websites and
+frequently needed the above functionality.</p>
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+<p>It's written in <a href="https://golang.org/">Go</a> and there are binaries for
+Linux, Mac, and Windows on the <a href="https://github.com/stilvoid/shue/releases">releases
+page</a>.</p>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
-
-<p><a href="/blog/2019-11-13/">more...</a></p>
-
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
-
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
-
-<p><a href="/blog/2019-02-12/">more...</a></p>
-
-<h2 id="git-get">git-get</h2>
-
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
-
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p><a href="mailto:steve@engledow.me">Let me know</a> if you find it useful.</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

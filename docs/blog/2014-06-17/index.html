@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: tmux</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -60,7 +60,7 @@
 
 <li><a href="/blog/2014-12-01/">Just call me Anneka</a><br><span class="date">(2014-12-01)</span></li>
 
-<li><a href="/blog/2014-06-17/">tmux</a><br><span class="date">(2014-06-17)</span></li>
+<li><a href="/blog/2014-06-17/" class="selected">tmux</a><br><span class="date">(2014-06-17)</span></li>
 
 <li><a href="/blog/2014-04-15/">Netcat</a><br><span class="date">(2014-04-15)</span></li>
 
@@ -81,48 +81,87 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="tmux">tmux</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p><a href="http://tmux.sourceforge.net/">tmux</a> is the best thing ever. That is
+all.</p>
 
-<h2 id="tbc">TBC</h2>
+<p>No, that is not all. Here is how I make use of tmux to make my life
+measurably more awesome:</p>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p>First, my <code>.tmux.conf</code>. This changes tmux’s <code>ctrl-b</code> magic key binding
+to <code>ctrl-a</code> as I’ve grown far too used to hitting that from when I used
+<a href="https://www.gnu.org/software/screen/">screen</a>. I set up a few other
+screen-like bindings too. Finally, I set a few options that make tmux
+work better with urxvt.</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<pre><code># Set the prefix to ^A.
+unbind C-b
+set -g prefix ^A
+bind a send-prefix
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+# Bind c to new-window
+unbind c
+bind c new-window -c $PWD
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+# Bind space, n to next-window
+unbind &quot; &quot;
+bind &quot; &quot; next-window
+unbind n
+bind n next-window
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+# Bind p to previous-window
+unbind p
+bind p previous-window
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+# A few other settings to make things funky
+set -g status off
+set -g aggressive-resize on
+set -g mode-keys vi
+set -g default-terminal screen-256color
+set -g terminal-overrides 'rxvt-unicode*:sitm@'
+</code></pre>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+<p>And then here’s what I have near the top of my <code>.bashrc</code>:</p>
 
-<p><a href="/blog/2019-11-13/">more...</a></p>
+<pre><code># If tmux isn't already running, run it
+[ -z &quot;$TMUX&quot; ] &amp;&amp; exec ~/bin/tmux
+</code></pre>
 
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
+<p>…which goes with this, the contents of <code>~/bin/tmux</code>:</p>
 
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
+<pre><code>#!/bin/bash
 
-<p><a href="/blog/2019-02-12/">more...</a></p>
+# If there are any sessions that aren't attached, attach to the first one
+# Otherwise, start a new session
 
-<h2 id="git-get">git-get</h2>
+for line in $(tmux ls -F &quot;#{session_name},#{session_attached}&quot;); do
+    name=$(echo $line | cut -d ',' -f 1)
+    attached=$(echo $line | cut -d ',' -f 2)
 
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
+    if [ $attached -eq 0 ]; then
+        tmux attach -t $name
+        exit
+    fi
+done
 
-<p><a href="/blog/2018-11-08/">more...</a></p>
+tmux -u
+</code></pre>
+
+<p>Basically, what happens is that whenever I start a terminal session, if
+I’m not already attached to a tmux session, I find a session that’s not
+already attached to and attach to it. If there aren't any, I create a
+new one.</p>
+
+<p>This really tidies up my workflow and means that I never forget about
+any old sessions I’d detached.</p>
+
+<p>Oh and one last thing, <code>ctrl-a s</code> is the best thing in tmux ever. It
+shows a list of tmux sessions which can be expanded to show what’s
+running in them and you can then interactively re-attach your terminal
+to one of them. In short, I can start a terminal from any desktop or vt
+and quickly attach to something that’s happening on any other. I use
+this feature <span id="a lot"></span><strong>a lot</strong>.</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

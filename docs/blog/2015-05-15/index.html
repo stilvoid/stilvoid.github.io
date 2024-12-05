@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Andy and Teddy are waving goodbye</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+    </head>
+
+    <body>
+        <nav><ul><li><a href="/">About</a></li>
+
+<li><a href="/blog/" class="selected">Blog</a></li>
+
+<li><a href="/bookmarks/">Bookmarks</a></li>
+
+<li><a href="/projects/">Projects</a></li>
+</ul>
+<ul><li><a href="/blog/2024-08-28/">TBC</a><br><span class="date">(2024-08-28)</span></li>
+
+<li><a href="/blog/2024-07-23/">Back to the Primitive</a><br><span class="date">(2024-07-23)</span></li>
+
+<li><a href="/blog/2019-11-13/">Maur - A minimal AUR helper</a><br><span class="date">(2019-11-13)</span></li>
+
+<li><a href="/blog/2019-02-12/">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a><br><span class="date">(2019-02-12)</span></li>
+
+<li><a href="/blog/2018-11-08/">git-get</a><br><span class="date">(2018-11-08)</span></li>
+
+<li><a href="/blog/2018-08-14/">Heroes: Building some old code</a><br><span class="date">(2018-08-14)</span></li>
+
+<li><a href="/blog/2018-06-03/">Shue</a><br><span class="date">(2018-06-03)</span></li>
+
+<li><a href="/blog/2017-07-10/">An evening of linux on the desktop</a><br><span class="date">(2017-07-10)</span></li>
+
+<li><a href="/blog/2017-06-15/">The day of linux on the desktop</a><br><span class="date">(2017-06-15)</span></li>
+
+<li><a href="/blog/2016-02-25/">Digital Subscriber</a><br><span class="date">(2016-02-25)</span></li>
+
+<li><a href="/blog/2015-12-14/">Ford</a><br><span class="date">(2015-12-14)</span></li>
+
+<li><a href="/blog/2015-11-30/">Sorted</a><br><span class="date">(2015-11-30)</span></li>
+
+<li><a href="/blog/2015-09-17/">Twofer</a><br><span class="date">(2015-09-17)</span></li>
+
+<li><a href="/blog/2015-06-22/">Pretty please</a><br><span class="date">(2015-06-22)</span></li>
+
+<li><a href="/blog/2015-05-15/" class="selected">Andy and Teddy are waving goodbye</a><br><span class="date">(2015-05-15)</span></li>
+
+<li><a href="/blog/2015-05-14/">Building a componentised application</a><br><span class="date">(2015-05-14)</span></li>
+
+<li><a href="/blog/2015-04-29/">Why-fi?</a><br><span class="date">(2015-04-29)</span></li>
+
+<li><a href="/blog/2015-03-12/">Cleaning out my closet</a><br><span class="date">(2015-03-12)</span></li>
+
+<li><a href="/blog/2015-01-02/">Keychain and GnuPG >= 2.1</a><br><span class="date">(2015-01-02)</span></li>
+
+<li><a href="/blog/2014-12-09/">Testing a Django app with Docker</a><br><span class="date">(2014-12-09)</span></li>
+
+<li><a href="/blog/2014-12-01/">Just call me Anneka</a><br><span class="date">(2014-12-01)</span></li>
+
+<li><a href="/blog/2014-06-17/">tmux</a><br><span class="date">(2014-06-17)</span></li>
+
+<li><a href="/blog/2014-04-15/">Netcat</a><br><span class="date">(2014-04-15)</span></li>
+
+<li><a href="/blog/2014-01-31/">btw</a><br><span class="date">(2014-01-31)</span></li>
+
+<li><a href="/blog/2013-05-10/">Things we learned at the LUG meet</a><br><span class="date">(2013-05-10)</span></li>
+
+<li><a href="/blog/2013-02-11/">Git aux</a><br><span class="date">(2013-02-11)</span></li>
+
+<li><a href="/blog/2012-08-30/">Lost at C</a><br><span class="date">(2012-08-30)</span></li>
+
+<li><a href="/blog/2012-07-07/">Ire</a><br><span class="date">(2012-07-07)</span></li>
+
+<li><a href="/blog/2011-10-27/">Break In!</a><br><span class="date">(2011-10-27)</span></li>
+
+<li><a href="/blog/2011-10-22/">xmodmap Hints and Tips</a><br><span class="date">(2011-10-22)</span></li>
+</ul>
+</nav>
+
+        <main>
+            <h1 id="andy-and-teddy-are-waving-goodbye">Andy and Teddy are waving goodbye</h1>
+
+<p>Most of the time, when I've got some software I want to write, I do it
+in python or sometimes bash. Occasionally though, I like to slip into
+something with a few more brackets. I've written a bit of C in the past
+and love it but recently I've been learning <a href="http://golang.org/">Go</a> and
+what’s really struck me is how clever it is. I’m not just talking about
+the technical merits of the language itself; it’s clever in several
+areas:</p>
+
+<ul>
+<li>You don’t need to install anything to run Go binaries.</li>
+</ul>
+
+<p>At first - I’m sure like many others - I felt a little revulsion when I
+heard that Go compiles to statically-linked binaries but after having
+used and played with Go a bit over the past few weeks, I think it’s
+rather clever and was somewhat ahead of the game. In the current climate
+where DevOps folks (and developers) are getting excited about
+<a href="/blog/2015-05-14/">containers and componentised services</a>, being able to
+simply <a href="http://curl.haxx.se/">curl</a> a binary and have it usable in your
+container without needing to install a stack of dependencies is actually
+pretty powerful. It seems there’s a general trend towards preferring
+readiness of use over efficiency of space used both in RAM and disk
+space. And it makes sense; storage is cheap these days. A 10MiB binary
+is no concern - even if you need several of them - when you have a 1TiB
+drive. The extravagance of large binaries is no longer so relevant when
+you’re comparing it with your collection of 2GiB bluray rips. The days
+of needing to count the bytes are gone.</p>
+
+<ul>
+<li>Go has the feeling of C <a href="http://hitchhikers.wikia.com/wiki/Infinite_Improbability_Drive">but without all that tedious mucking about in
+&lt;del&gt;hyperspace&lt;/del&gt;
+memory</a></li>
+</ul>
+
+<p>Sometimes you just feel you need to write something fairly low level and
+you want more direct control than you have whilst you’re working from
+the comfort blanket of python or ruby. Go gives you the ability to have
+well-defined data structures and to care about how much memory you’re
+eating when you know your application needs to process tebibytes of
+data. What Go doesn't give you is the freedom to muck about in memory,
+fall off the end of arrays, leave pointers dangling around all over the
+place, and generally make tiny, tiny mistakes that <a href="https://en.wikipedia.org/wiki/Heartbleed">take years for
+anyone to discover</a>.</p>
+
+<ul>
+<li>The build system is designed around how we (as developers) use code
+hosting facilities</li>
+</ul>
+
+<p>Go has a fairly impressive <a href="http://golang.org/pkg">set of features</a>
+built in but if you need something that’s not already included, there’s
+a good chance that someone out there has written what you need. Go
+provides a <a href="http://go-search.org/">package search tool</a> that makes it
+very easy to find what you’re looking for. And when you've found it,
+using it is stupidly simple. You add an import declaration in your code:</p>
+
+<pre><code>import &quot;github.com/codegangsta/cli&quot;
+</code></pre>
+
+<p>which makes it very clear where the code has come from and where you’d
+need to go to check the source code and/or documentation. Next, pulling
+the code down and compiling it ready for linking into your own binary
+takes a simple:</p>
+
+<pre><code>go get github.com/codegangsta/cli
+</code></pre>
+
+<p>Go implicitly understands git and the various methods of retrieving code
+so you just need to tell it where to look and it’ll figure the rest out.</p>
+
+<p>In summary, I’m starting to wonder if Google have a time machine. Go
+seems to have nicely predicted several worries and trends since <a href="http://techcrunch.com/2009/11/10/google-go-language/">its
+announcement</a>:
+Docker, Heartbleed, and social coding.</p>
+
+
+            <footer>&copy; 2024, Steve Engledow</footer>
+        </main>
+    </body>
+</html>

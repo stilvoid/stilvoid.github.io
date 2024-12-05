@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: TBC</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -18,7 +18,7 @@
 
 <li><a href="/projects/">Projects</a></li>
 </ul>
-<ul><li><a href="/blog/2024-08-28/">TBC</a><br><span class="date">(2024-08-28)</span></li>
+<ul><li><a href="/blog/2024-08-28/" class="selected">TBC</a><br><span class="date">(2024-08-28)</span></li>
 
 <li><a href="/blog/2024-07-23/">Back to the Primitive</a><br><span class="date">(2024-07-23)</span></li>
 
@@ -81,48 +81,88 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
-
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
-
-<h2 id="tbc">TBC</h2>
+            <h1 id="tbc">TBC</h1>
 
 <p>In tidying up my corner of the interwebs, I put together a list of
 projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't
+know if it even compiles on modern systems&quot;. Of course, that stuck in my
+head and inevitably I had to try...</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>Hoooo boy.</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<p>It has been a <em>long time</em> since I wrote anything in my <a href="/blog/2014-01-31/">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub
+search</a>
+suggests it's been around 10 years. Fortunately, I had no intentions of
+really fixing any coding problems - just getting Falsoyd to run by brute
+force :D</p>
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+<h2 id="it-starts">It starts</h2>
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+<pre><code>git clone git@github.com:stilvoid/falysoyd
+cd falsoyd
+make
+...
+sdl-config: command not found
+fatal error: 'SDL_mixer.h' file not found
+</code></pre>
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+<p>Oh yeah, this was all SDL. Oh well, I'm sure that's still around!</p>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+<pre><code>brew install sdl
+Warning: Formula sdl was renamed to sdl12-compat.
+</code></pre>
 
-<p><a href="/blog/2019-11-13/">more...</a></p>
+<p>Ok well, it turns out SDL1.2 is looong deprecated but some kind person
+has written a compatibility library for SDL2 so that should all work
+quite nicely...</p>
 
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
+<pre><code>make
+fatal error: 'SDL_mixer.h' file not found
+brew install sdl_mixer
+Error: sdl_mixer has been disabled because it is deprecated upstream! It was disabled on 2024-02-07.
+</code></pre>
 
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
+<p>If only I had tried this 6 months ago ;) After a quick look, SDL2_mixer
+seems to have the same API as in SDL1.2 so I'll nab the header file from
+there, include it in my CFLAGS, and link to SDL2_mixer in addition to
+the SDL1.2 (compat) library. What could possibly go wrong?!</p>
 
-<p><a href="/blog/2019-02-12/">more...</a></p>
+<pre><code>make
+...
+src/map.h:35:6: error: cast from pointer to smaller type 'int' loses information
+        p.x=(int)x;
+            ^~~~~~
+src/map.h:36:6: error: cast from pointer to smaller type 'int' loses information
+        p.y=(int)y;
+</code></pre>
 
-<h2 id="git-get">git-get</h2>
+<p>Ooh, an actual bug. Forgot to dereference some pointers. I wonder how
+that ever worked before. Well, it's an easy fix!</p>
 
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
+<pre><code>make
+...
+g++  src/world.o src/audio.o src/score.o src/bonus.o src/shot.o src/sprite.o src/ship.o src/alien.o src/main.o -o src/falsoyd `sdl-config --libs` -lSDL2_mixer
+</code></pre>
 
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>It compiled! That was unexpectedly easy. I was anticipating some
+nastiness with mixing SDL1.2 and SDL2_mixer.</p>
+
+<p>(I glossed over <em>a lot</em> of compiler warnings in that &quot;...&quot; btw. Don't
+ignore your compiler warnings, folks!)</p>
+
+<p>My fingers began to tremble (they didn't) as I nervously (I wasn't)
+typed <code>./src/falsoyd</code>...</p>
+
+<p><img src="https://static.offend.me.uk/media/images/2024-08-28-falsoyd.png" alt="A screenshot of
+Falsoyd" /></p>
+
+<p>It runs! I played it for a little while. Remembered how terrible it was
+and committed <a href="https://github.com/stilvoid/falsoyd/tree/2024">a branch</a>
+with my changes. That'll do for now. Itch scratched.</p>
+
+<p>Now I'm clearly going to have to make Falsoyd 2 in Löve, Pico-8, or
+Picotron ;)</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

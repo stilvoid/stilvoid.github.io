@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Git aux</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -68,7 +68,7 @@
 
 <li><a href="/blog/2013-05-10/">Things we learned at the LUG meet</a><br><span class="date">(2013-05-10)</span></li>
 
-<li><a href="/blog/2013-02-11/">Git aux</a><br><span class="date">(2013-02-11)</span></li>
+<li><a href="/blog/2013-02-11/" class="selected">Git aux</a><br><span class="date">(2013-02-11)</span></li>
 
 <li><a href="/blog/2012-08-30/">Lost at C</a><br><span class="date">(2012-08-30)</span></li>
 
@@ -81,48 +81,48 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="git-aux">Git aux</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p>For a while now, I’ve been wanting to keep various parts of my home
+directory in sync.</p>
 
-<h2 id="tbc">TBC</h2>
+<p>At first, I created a git repository for storing my
+<a href="https://en.wikipedia.org/wiki/Dotfile#Unix_and_Unix-like_environments">dotfiles</a>
+but I found it a pain to keep the repository up-to-date.</p>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p>Fairly recently, someone pointed out
+<a href="http://git-annex.branchable.com/">git-annex</a> to me. After a good read
+of the documentation, it sounded like it could be useful but probably
+more than I needed and perhaps not quite what I really wanted. Besides,
+I couldn’t get the bloody thing to install.</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>So I did what any geek would do, I wrote my own :D</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<p>See <a href="https://github.com/stilvoid/git-aux">git-aux</a> (or
+<a href="https://aur.archlinux.org/packages/git-aux-git/">AUR</a> if you’re on
+<a href="https://www.archlinux.org/">Arch Linux</a>).</p>
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+<p>Basically, I wanted an easy to way to keep a git repository in sync with
+an directory external to it. With git aux installed, I get pretty much
+exactly what I wanted with a few simple commands.</p>
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+<p>After creating a new git repository, I do <code>git aux init ~/</code> to tell
+git-aux that I want it to sync this repo with my home directory.</p>
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+<p>I then do <code>git aux add ~/.vimrc ~/.ssh/config ~/.bashrc</code> and any other
+files I want from my home directory. This copies those files into the
+repository and I can then commit them in the usual way.</p>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+<p>If I make changes in my home directory, I use <code>git aux sync</code> to update
+the copies in the repository.</p>
 
-<p><a href="/blog/2019-11-13/">more...</a></p>
+<p>If I’ve made changes on another machine and want to apply those changes
+from the repo to the home dir on this machine, I do <code>git aux apply</code>.</p>
 
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
+<p>And that’s it :)</p>
 
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
-
-<p><a href="/blog/2019-02-12/">more...</a></p>
-
-<h2 id="git-get">git-get</h2>
-
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
-
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>It’s unfinished and probably broken in places but mostly does what I was
+looking for.</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

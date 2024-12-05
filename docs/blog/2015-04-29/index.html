@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Why-fi?</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -50,7 +50,7 @@
 
 <li><a href="/blog/2015-05-14/">Building a componentised application</a><br><span class="date">(2015-05-14)</span></li>
 
-<li><a href="/blog/2015-04-29/">Why-fi?</a><br><span class="date">(2015-04-29)</span></li>
+<li><a href="/blog/2015-04-29/" class="selected">Why-fi?</a><br><span class="date">(2015-04-29)</span></li>
 
 <li><a href="/blog/2015-03-12/">Cleaning out my closet</a><br><span class="date">(2015-03-12)</span></li>
 
@@ -81,48 +81,88 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
+            <h1 id="why-fi">Why-fi?</h1>
 
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
+<p>I’m an <a href="http://archlinux.org">arch linux</a> user and I love it; there’s no
+other distro for me. The things that arch gets criticism for are the
+exact same reasons I love it and they all more or less boil down to one
+thing: arch does not hold your hand.</p>
 
-<h2 id="tbc">TBC</h2>
+<p>It’s been a while since an update in arch caused me any problems but it
+did today.</p>
 
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=196584">It seems there’s an
+issue</a> with the
+latest version of <code>wpa_supplicant</code> which renders it incompatible with
+the way wifi is setup at boot time. The problem was caught and resolved
+very quickly by package maintainers who simply rolled the
+<code>wpa_supplicant</code> package back. However, I was unlucky enough to have
+caught the intervening upgrade shortly before turning my laptop off. I
+came home this evening to find I had no wifi!</p>
 
-<p><a href="/blog/2024-08-28/">more...</a></p>
+<p>This wasn't a huge challenge but I haven’t written a blog post for a
+while and someone might find this useful:</p>
 
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
+<hr>
 
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
+<p>If your wifi doesn't start at boot…</p>
 
-<p><a href="/blog/2024-07-23/">more...</a></p>
+<p>And you’re using <a href="https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333">a laptop with no ethernet
+port</a>…</p>
 
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+<p>And you know an upgrade will solve your problem…</p>
 
-<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
-Repository</a>. If you're not an
-<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+<p>How do you get internet so you can upgrade?</p>
 
-<p><a href="/blog/2019-11-13/">more...</a></p>
+<p>Simples :)</p>
 
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
+<h2 id="the-steps">The steps</h2>
 
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
+<p>First, find the name of your wireless interface:</p>
 
-<p><a href="/blog/2019-02-12/">more...</a></p>
+<pre><code>iw dev
+</code></pre>
 
-<h2 id="git-get">git-get</h2>
+<p>Which will output something like:</p>
 
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
+<pre><code>phy#0
+    Interface wlp2s0
+        ifindex 2
+        wdev 0x1
+        addr e8:b1:fc:6c:bf:b5
+        type managed
+        channel 11 (2462 MHz), width: 20 MHz, center1: 2462 MHz
+</code></pre>
 
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<p>Where <code>wlp2s0</code> is the bit we’re interested in.</p>
+
+<p>Now bring the interface up:</p>
+
+<pre><code>ip link set wlp2s0 up
+</code></pre>
+
+<p>Connect to the access point:</p>
+
+<pre><code>iw dev wlp2s0 connect &quot;AP name&quot;
+</code></pre>
+
+<p>Create a temporary configuration file for <code>wpa_supplicant</code>:</p>
+
+<pre><code>wpa_passphrase &quot;AP name&quot; &quot;password&quot; &gt; /tmp/wpa.config
+</code></pre>
+
+<p>Run <code>wpa_supplicant</code> to authenticate with the access point:</p>
+
+<pre><code>wpa_supplication -iwlp2s0 -c/tmp/wpa.config
+</code></pre>
+
+<p>In another terminal (or you could have backgrounded the above), run
+<code>dhcpcd</code> to get an IP address from your router:</p>
+
+<pre><code>dhcpcd wlp2s0
+</code></pre>
+
+<p>Update and reboot or whatever :)</p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>

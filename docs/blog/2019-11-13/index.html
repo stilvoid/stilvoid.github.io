@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: Blog</title>
+        <title>engledow.me: Maur - A minimal AUR helper</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -22,7 +22,7 @@
 
 <li><a href="/blog/2024-07-23/">Back to the Primitive</a><br><span class="date">(2024-07-23)</span></li>
 
-<li><a href="/blog/2019-11-13/">Maur - A minimal AUR helper</a><br><span class="date">(2019-11-13)</span></li>
+<li><a href="/blog/2019-11-13/" class="selected">Maur - A minimal AUR helper</a><br><span class="date">(2019-11-13)</span></li>
 
 <li><a href="/blog/2019-02-12/">Using Git with AWS CodeCommit Across Multiple AWS Accounts</a><br><span class="date">(2019-02-12)</span></li>
 
@@ -81,48 +81,67 @@
 </nav>
 
         <main>
-            <h1 id="blog">Blog</h1>
-
-<p>A collection of things that I decided to write. Here are the most recent of them...</p>
-
-<h2 id="tbc">TBC</h2>
-
-<p>In tidying up my corner of the interwebs, I put together a list of
-projects that I've worked on over the years. One
-of those is <a href="/projects/games/#falsoyd">Falsoyd</a>. I commented &quot;I don't</p>
-
-<p><a href="/blog/2024-08-28/">more...</a></p>
-
-<h2 id="back-to-the-primitive">Back to the Primitive</h2>
-
-<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
-blogged</a>) I've found more and more bloat creeping</p>
-
-<p><a href="/blog/2024-07-23/">more...</a></p>
-
-<h2 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h2>
+            <h1 id="maur-a-minimal-aur-helper">Maur - A minimal AUR helper</h1>
 
 <p>This post is about the <a href="https://aur.archlinux.org/">Arch User
 Repository</a>. If you're not an
 <a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
 
-<p><a href="/blog/2019-11-13/">more...</a></p>
+<p>There are <a href="https://aur.archlinux.org/packages/?O=0&amp;K=aur+helper">lots of AUR
+helpers</a> in
+existence already but, in the best traditions of open source, none of
+them work exactly how I want an AUR helper to work, so I <a href="https://xkcd.com/927/">created a new
+one</a>.</p>
 
-<h2 id="using-git-with-aws-codecommit-across-multiple-aws-accounts">Using Git with AWS CodeCommit Across Multiple AWS Accounts</h2>
+<p>Here it is: <a href="https://github.com/stilvoid/maur">https://github.com/stilvoid/maur</a></p>
 
-<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
-blog</a>)</p>
+<p><code>maur</code> (pronounced like &quot;more&quot;) is tiny. At the time of writing, it's 49
+lines of bash. It also has very few features.</p>
 
-<p><a href="/blog/2019-02-12/">more...</a></p>
+<p>Here is the list of features:</p>
 
-<h2 id="git-get">git-get</h2>
+<ul>
+<li>Help text when you type <code>maur --help</code> or <code>maur -h</code></li>
+<li>A list of packages in the AUR when you type <code>maur</code> with no arguments</li>
+<li>Help you install a package when you type <code>maur &lt;package name&gt;</code></li>
+</ul>
 
-<p>Because I work on a lot of different projects spread across a lot of
-accounts at multiple git hosting providers, I try to keep my code folder
-in some semblance of order by having subfolders for things.</p>
+<p>The &quot;help&quot; when installing a package is this, and nothing more:</p>
 
-<p><a href="/blog/2018-11-08/">more...</a></p>
+<ul>
+<li>Clone the package's AUR repository</li>
+<li>Open the <code>PKGBUILD</code> in your default editor</li>
+<li>Ask if you want to continue installing</li>
+<li>If you do, run <code>makepkg -si</code></li>
+</ul>
+
+<p>If you think <code>maur</code> needs more features, use a different AUR helper.</p>
+
+<p>If you find bugs, please <a href="https://github.com/stilvoid/maur/issues/new">submit an
+issue</a> or, even better, a
+<a href="https://github.com/stilvoid/maur/compare">pull request</a>.</p>
+
+<h2 id="example-usage">Example usage</h2>
+
+<h3 id="searching-the-aur">Searching the AUR</h3>
+
+<p>If you want to search for a package in the AUR, you can grep for it ;)</p>
+
+<p><code>maur | grep maur</code></p>
+
+<h3 id="installing-a-package">Installing a package</h3>
+
+<p>If you want to install a package, for example
+<a href="https://aur.archlinux.org/packages/yay">yay</a>:</p>
+
+<p><code>maur yay</code></p>
+
+<h3 id="upgrading-a-package">Upgrading a package</h3>
+
+<p>Upgrade a package is the same as installing one. This will upgrade
+<code>maur</code>:</p>
+
+<p><code>maur maur</code></p>
 
 
             <footer>&copy; 2024, Steve Engledow</footer>
