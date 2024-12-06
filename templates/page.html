@@ -3,17 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{site_title}}: {{page_title}}</title>
+        <title>{{.SiteTitle}}: {{.PageTitle}}</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
     </head>
 
     <body>
-        <nav>{{nav}}</nav>
+        <nav>{{range .Nav}}
+            <ul>{{range .}}
+                <li><a href="{{.Uri}}"{{.Attrs}}>{{.Title}}</a>{{.Extra}}</li>{{end}}
+            </ul>{{end}}
+        </nav>
 
         <main>
-            {{body}}
+            {{.Body}}
 
             <footer>&copy; 2024, Steve Engledow</footer>
         </main>

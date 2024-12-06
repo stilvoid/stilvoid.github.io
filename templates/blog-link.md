@@ -1,1 +1,1 @@
-- [{{title}}]({{uri}})<br><span class="date">({{date}})</span>
+- [{{.Title}}]({{.Uri}})<br><span class="date">({{.Date}})</span>

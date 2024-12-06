@@ -15,4 +15,4 @@ I work for AWS as a manager of a team of builders. I try to keep my coding skill
 
 ## Last 5 blogs
 
-{{blogs.links}}
+{{.BlogLinks}}

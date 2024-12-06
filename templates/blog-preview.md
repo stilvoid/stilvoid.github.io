@@ -1,5 +1,5 @@
-## {{title}}
+- [{{.Title}}]({{.Uri}})
+(<span class="date">{{.Date}}</span>)
 
-{{content}}
+> {{.Preview}}
 
-[more...]({{uri}})
