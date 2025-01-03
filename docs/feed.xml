@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>engledow.me</title>
+        <description>Steve Engledow's blog</description>
+        <link>https://engledow.me/</link>
+        <copyright>2025 Steve Engledow</copyright>
+        <lastBuildDate>Fri, 03 Jan 2025 14:02:04 +0000</lastBuildDate>
+        <pubDate>Fri, 03 Jan 2025 14:02:04 +0000</pubDate>
+        <ttl>1800</ttl>
+
+        <item>
+            <title>TBC</title>
+            <description><![CDATA[<p>In tidying up my corner of the interwebs, I put together a list of
+projects that I&#39;ve worked on over the years. One
+of those is <a href="https://engledow.me/projects/games/#falsoyd">Falsoyd</a>. I commented &#34;I don&#39;t
+know if it even compiles on modern systems&#34;. Of course, that stuck in my
+head and inevitably I had to try...</p>
+
+<p>Hoooo boy.</p>
+
+<p>It has been a <em>long time</em> since I wrote anything in my <a href="https://engledow.me/blog/2014-01-31/">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub
+search</a>
+suggests it&#39;s been around 10 years. Fortunately, I had no intentions of
+really fixing any coding problems - just getting Falsoyd to run by brute
+force :D</p>
+
+<h2 id="it-starts">It starts</h2>
+
+<pre><code>git clone git@github.com:stilvoid/falysoyd
+cd falsoyd
+make
+...
+sdl-config: command not found
+fatal error: &#39;SDL_mixer.h&#39; file not found
+</code></pre>
+
+<p>Oh yeah, this was all SDL. Oh well, I&#39;m sure that&#39;s still around!</p>
+
+<pre><code>brew install sdl
+Warning: Formula sdl was renamed to sdl12-compat.
+</code></pre>
+
+<p>Ok well, it turns out SDL1.2 is looong deprecated but some kind person
+has written a compatibility library for SDL2 so that should all work
+quite nicely...</p>
+
+<pre><code>make
+fatal error: &#39;SDL_mixer.h&#39; file not found
+brew install sdl_mixer
+Error: sdl_mixer has been disabled because it is deprecated upstream! It was disabled on 2024-02-07.
+</code></pre>
+
+<p>If only I had tried this 6 months ago ;) After a quick look, SDL2_mixer
+seems to have the same API as in SDL1.2 so I&#39;ll nab the header file from
+there, include it in my CFLAGS, and link to SDL2_mixer in addition to
+the SDL1.2 (compat) library. What could possibly go wrong?!</p>
+
+<pre><code>make
+...
+src/map.h:35:6: error: cast from pointer to smaller type &#39;int&#39; loses information
+        p.x=(int)x;
+            ^~~~~~
+src/map.h:36:6: error: cast from pointer to smaller type &#39;int&#39; loses information
+        p.y=(int)y;
+</code></pre>
+
+<p>Ooh, an actual bug. Forgot to dereference some pointers. I wonder how
+that ever worked before. Well, it&#39;s an easy fix!</p>
+
+<pre><code>make
+...
+g++  src/world.o src/audio.o src/score.o src/bonus.o src/shot.o src/sprite.o src/ship.o src/alien.o src/main.o -o src/falsoyd `sdl-config --libs` -lSDL2_mixer
+</code></pre>
+
+<p>It compiled! That was unexpectedly easy. I was anticipating some
+nastiness with mixing SDL1.2 and SDL2_mixer.</p>
+
+<p>(I glossed over <em>a lot</em> of compiler warnings in that &#34;...&#34; btw. Don&#39;t
+ignore your compiler warnings, folks!)</p>
+
+<p>My fingers began to tremble (they didn&#39;t) as I nervously (I wasn&#39;t)
+typed <code>./src/falsoyd</code>...</p>
+
+<p><img src="https://static.offend.me.uk/media/images/2024-08-28-falsoyd.png" alt="A screenshot of
+Falsoyd"/></p>
+
+<p>It runs! I played it for a little while. Remembered how terrible it was
+and committed <a href="https://github.com/stilvoid/falsoyd/tree/2024">a branch</a>
+with my changes. That&#39;ll do for now. Itch scratched.</p>
+
+<p>Now I&#39;m clearly going to have to make Falsoyd 2 in Löve, Pico-8, or
+Picotron ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2024-08-28/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-08-28/</guid>
+            <pubDate>Wed, 28 Aug 2024 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Back to the Primitive</title>
+            <description><![CDATA[<p>I like text, plain text. Always have. But over the past several years
+(and it has been, as the kids say, a hot minute since I <a href="https://engledow.me/blog/2019-11-13/">last
+blogged</a>) I&#39;ve found more and more bloat creeping
+into my daily life. I moved to a Mac Mini as my main machine about 4
+years ago as I just gave up in the struggle between the way I think
+things ought to be and the &#34;needs&#34; of life working for a large
+corporate. In fairness, I have come to more or less enjoy MacOS but
+whenever I slip back into my Arch box with my i3 desktop, it feels <em>so
+sleek</em>.</p>
+
+<p>Moving to the Mac has necessarily meant changing some of my regular
+workflow and tools. I don&#39;t know what it is about the Mac but it seemed
+to discourage me from being so heavily terminal-based as I was. I really
+can&#39;t put my finger on it. Regardless, I ended up moving from taking
+notes in markdown to <a href="https://obsidian.md/">Obsidian</a> for a while and
+then eventually <a href="https://logseq.com/">Logseq</a>. Still just markdown files
+in a folder but the GUI is ever-present. I even found myself starting to
+use, and almost enjoy, <a href="https://code.visualstudio.com/">VS Code</a>!</p>
+
+<p>Anyway, the point is, through <a href="https://latenightlinux.com/late-night-linux-episode-289/">Late Night
+Linux</a>, I
+discovered <a href="https://vimwiki.github.io/">Vimwiki</a> and have started to
+love the terminal (and Vim) again. In fact, I started writing some code
+the other day and just automatically started it in Vim rather than VS
+Code. The rot is beginning to recede eh ;)</p>
+
+<p>One of the tasks I decided to bring over to Vimwiki was maintaining my
+small and fairly pointless <a href="https://engledow.me">website</a>. In another
+show of bloat, I had been through various markdown-to-website tools
+(ghost, hugo, jekyll), decided I disliked something about each one, and
+ended up rolling my own Python cruft. Inevitably, I came back to the
+site to make some changes after a few months and had <em>completely</em>
+forgotten how any of it was meant to work :) And that is what led me to
+the decision to try Vimwiki for the site as well as my note-taking.</p>
+
+<p>The first challenge is that, while Vimwiki supports markdown syntax, it
+doesn&#39;t support it very well and requires more plugins to get it to spit
+out html. Over the years, my enthusiasm for markdown has waned
+considerably. I like the overall style of the markup but it&#39;s just too
+ambiguous and ends up causing more problems than it solves. So... the
+tool I want to use has it&#39;s own syntax and I&#39;m not tied to my usual
+preference... obviously it&#39;s time to figure out how to convert all my
+existing <a href="https://engledow.me/blog/">posts</a> ;)</p>
+
+<p>I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a>
+is even more lovely than I had previously realised. Writing a new reader
+or writer for it is almost trivial. You write a lua file, create a few
+functions to parse/create text in various formats (e.g. emphasised, code
+blocks, bullet points), and then point pandoc at your lua file as if it
+were any other reader/writer option.</p>
+
+<p>So here we are. This very infrequently updated blog is now written in
+vimwiki and I&#39;m back to using the terminal and Vim on a daily basis like
+the <a href="https://engledow.me/blog/2017-07-10/">last few years</a> never happened.</p>
+
+<p>Now to see what else I can over-enthusiastically convince myself should
+be a Wiki...</p>
+]]></description>
+            <link>https://engledow.me/blog/2024-07-23/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-07-23/</guid>
+            <pubDate>Tue, 23 Jul 2024 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Maur - A minimal AUR helper</title>
+            <description><![CDATA[<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
+Repository</a>. If you&#39;re not an
+<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+
+<p>There are <a href="https://aur.archlinux.org/packages/?O=0&amp;K=aur+helper">lots of AUR
+helpers</a> in
+existence already but, in the best traditions of open source, none of
+them work exactly how I want an AUR helper to work, so I <a href="https://xkcd.com/927/">created a new
+one</a>.</p>
+
+<p>Here it is: <a href="https://github.com/stilvoid/maur">https://github.com/stilvoid/maur</a></p>
+
+<p><code>maur</code> (pronounced like &#34;more&#34;) is tiny. At the time of writing, it&#39;s 49
+lines of bash. It also has very few features.</p>
+
+<p>Here is the list of features:</p>
+
+<ul>
+<li>Help text when you type <code>maur --help</code> or <code>maur -h</code></li>
+<li>A list of packages in the AUR when you type <code>maur</code> with no arguments</li>
+<li>Help you install a package when you type <code>maur &lt;package name&gt;</code></li>
+</ul>
+
+<p>The &#34;help&#34; when installing a package is this, and nothing more:</p>
+
+<ul>
+<li>Clone the package&#39;s AUR repository</li>
+<li>Open the <code>PKGBUILD</code> in your default editor</li>
+<li>Ask if you want to continue installing</li>
+<li>If you do, run <code>makepkg -si</code></li>
+</ul>
+
+<p>If you think <code>maur</code> needs more features, use a different AUR helper.</p>
+
+<p>If you find bugs, please <a href="https://github.com/stilvoid/maur/issues/new">submit an
+issue</a> or, even better, a
+<a href="https://github.com/stilvoid/maur/compare">pull request</a>.</p>
+
+<h2 id="example-usage">Example usage</h2>
+
+<h3 id="searching-the-aur">Searching the AUR</h3>
+
+<p>If you want to search for a package in the AUR, you can grep for it ;)</p>
+
+<p><code>maur | grep maur</code></p>
+
+<h3 id="installing-a-package">Installing a package</h3>
+
+<p>If you want to install a package, for example
+<a href="https://aur.archlinux.org/packages/yay">yay</a>:</p>
+
+<p><code>maur yay</code></p>
+
+<h3 id="upgrading-a-package">Upgrading a package</h3>
+
+<p>Upgrade a package is the same as installing one. This will upgrade
+<code>maur</code>:</p>
+
+<p><code>maur maur</code></p>
+]]></description>
+            <link>https://engledow.me/blog/2019-11-13/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-11-13/</guid>
+            <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
+            <description><![CDATA[<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
+blog</a>)</p>
+
+<p>I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host all
+of my private Git repositories. My repositories are split across several
+AWS accounts for different purposes: personal projects, internal
+projects at work, and customer projects.</p>
+
+<p>The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit
+documentation</a>
+shows you how to configure and clone a repository from one place, but in
+this blog post I want to share how I manage my Git configuration across
+multiple AWS accounts.</p>
+
+<h2 id="background">Background</h2>
+
+<p>First, I have
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">profiles</a>
+configured for each of my AWS environments. I connect to some of them
+using <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">IAM user
+credentials</a>
+and others by using <a href="https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/">cross-account
+roles</a>.</p>
+
+<p>I intentionally do not have any credentials associated with the default
+profile. That way I must always be sure I have selected a profile before
+I run any AWS CLI commands.</p>
+
+<p>Here’s an anonymized copy of my <code>~/.aws/config</code> file:</p>
+
+<pre><code>[profile personal]
+region = eu-west-1
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[profile work]
+region = us-east-1
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[profile customer]
+region = eu-west-2
+source_profile = work
+role_arn = arn:aws:iam::123456789012:role/CrossAccountPowerUser
+</code></pre>
+
+<p>If I am doing some work in one of those accounts, I run
+<code>export AWS_PROFILE=work</code> and use the AWS CLI as normal.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>I use the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html">Git credential
+helper</a>
+so that the Git client works seamlessly with CodeCommit. However,
+because I use different profiles for different repositories, my use case
+is a little more complex than the average.</p>
+
+<p>In general, to use the credential helper, all you need to do is place
+the following options into your <code>~/.gitconfig</code> file, like this:</p>
+
+<pre><code>[credential]
+    helper = !aws codecommit credential-helper $@
+    UserHttpPath = true
+</code></pre>
+
+<p>I could make this work across accounts by setting the appropriate value
+for <code>AWS_PROFILE</code> before I use Git in a repository, but there is a much
+neater way to deal with this situation using a feature released in <a href="https://blog.github.com/2017-05-10-git-2-13-has-been-released/">Git
+version
+2.13</a>,
+<a href="https://git-scm.com/docs/git-config#_includes">conditional includes</a>.</p>
+
+<h2 id="a-solution">A solution</h2>
+
+<p>First, I separate my work into different folders. My <code>~/code/</code> directory
+looks like this:</p>
+
+<pre><code>code
+    personal
+        repo1
+        repo2
+    work
+        repo3
+        repo4
+    customer
+        repo5
+        repo6
+</code></pre>
+
+<p>Using this layout, each folder that is directly underneath the code
+folder has different requirements in terms of configuration for use with
+CodeCommit.</p>
+
+<p>Solving this has two parts; first, I create a <code>.gitconfig</code> file in each
+of the three folder locations. The <code>.gitconfig</code> files contain any
+customization (specifically, configuration for the credential helper)
+that I want in place while I work on projects in those folders.</p>
+
+<p>For example:</p>
+
+<pre><code>[user]
+    # Use a custom email address
+    email = sengledo@amazon.co.uk
+
+[credential]
+    # Note the use of the --profile switch
+    helper = !aws --profile work codecommit credential-helper $@
+    UseHttpPath = true
+</code></pre>
+
+<p>I also make sure to specify the AWS CLI profile to use in the
+<code>.gitconfig</code> file which means that, when I am working in the folder, I
+don’t need to set <code>AWS_PROFILE</code> before I run <code>git push</code>, etc.</p>
+
+<p>Secondly, to make use of these folder-level .gitconfig files, I need to
+reference them in my global Git configuration at <code>~/.gitconfig</code></p>
+
+<p>This is done through the <code>includeIf</code> section. For example:</p>
+
+<pre><code>[includeIf &#34;gitdir:~/code/personal/&#34;]
+    path = ~/code/personal/.gitconfig
+</code></pre>
+
+<p>This example specifies that if I am working with a Git repository that
+is located anywhere under <code>~/code/personal/</code>, Git should load additional
+configuration from <code>~/code/personal/.gitconfig</code>. That additional file
+specifies the appropriate credential helper invocation with the
+corresponding AWS CLI profile selected as detailed earlier.</p>
+
+<p>The contents of the new file are treated as if they are inserted into
+the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.
+This means that the included configuration will only override any
+configuration specified <span id="earlier"></span><strong>earlier</strong> in the
+config.</p>
+]]></description>
+            <link>https://engledow.me/blog/2019-02-12/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-02-12/</guid>
+            <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>git-get</title>
+            <description><![CDATA[<p>Because I work on a lot of different projects spread across a lot of
+accounts at multiple git hosting providers, I try to keep my code folder
+in some semblance of order by having subfolders for things.</p>
+
+<p>A while ago, I decided to make things even simpler by letting the git
+repos I was cloning dictate where they should live. I took inspiration
+from <a href="https://golang.org/doc/code.html#ImportPaths">the way go expects you to organise your
+code</a>.</p>
+
+<p>Today, I decided to apply <a href="http://threevirtues.com/">the three virtues</a>
+and wrote some code to handle this for me.</p>
+
+<h2 id="introducing-git-get">Introducing git-get</h2>
+
+<p><a href="https://github.com/stilvoid/git-get">git-get</a> is an opinionated git
+command that helps you keep your code folder in order.</p>
+
+<p>You use git-get as a replacement for <code>git clone</code> and it will decide
+where your code should live :)</p>
+
+<pre><code>git get https://github.com/stilvoid/git-get
+Cloning into &#39;/home/steve/code/github.com/stilvoid/git-get&#39;...
+</code></pre>
+
+<p>Laziness is the primary virtue.</p>
+]]></description>
+            <link>https://engledow.me/blog/2018-11-08/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-11-08/</guid>
+            <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
+        </item>
+        
+    </channel>
+</rss>
