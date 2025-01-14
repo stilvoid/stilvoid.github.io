@@ -10,11 +10,11 @@
         <pubDate>{{.RFCDate}}</pubDate>
         <ttl>1800</ttl>
 
-        {{range .Items}}<item>
+        {{range .Blogs}}<item>
             <title>{{.Title}}</title>
             <description><![CDATA[{{.HTML $.Base}}]]></description>
-            <link>{{.Link $.Base}}</link>
-            <guid isPermaLink="true">{{.Link $.Base}}</guid>
+            <link>{{.Permalink}}</link>
+            <guid isPermaLink="true">{{.Permalink}}</guid>
             <pubDate>{{.RFCDate}}</pubDate>
         </item>
         {{end}}

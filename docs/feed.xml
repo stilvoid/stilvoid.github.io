@@ -1,0 +1,2610 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>engledow.me</title>
+        <description>Steve Engledow's blog</description>
+        <link>https://engledow.me/</link>
+        <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
+        <copyright>2025 Steve Engledow</copyright>
+        <lastBuildDate>Tue, 14 Jan 2025 16:29:21 +0000</lastBuildDate>
+        <pubDate>Tue, 14 Jan 2025 16:29:21 +0000</pubDate>
+        <ttl>1800</ttl>
+
+        <item>
+            <title>TBC</title>
+            <description><![CDATA[<p>In tidying up my corner of the interwebs, I put together a list of
+projects that I&#39;ve worked on over the years. One
+of those is <a href="https://engledow.me/projects/games/#falsoyd">Falsoyd</a>. I commented &#34;I don&#39;t
+know if it even compiles on modern systems&#34;. Of course, that stuck in my
+head and inevitably I had to try...</p>
+
+<p>Hoooo boy.</p>
+
+<p>It has been a <em>long time</em> since I wrote anything in my <a href="https://engledow.me/blog/2014-01-31/">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub
+search</a>
+suggests it&#39;s been around 10 years. Fortunately, I had no intentions of
+really fixing any coding problems - just getting Falsoyd to run by brute
+force :D</p>
+
+<h2 id="it-starts">It starts</h2>
+
+<pre><code>git clone git@github.com:stilvoid/falysoyd
+cd falsoyd
+make
+...
+sdl-config: command not found
+fatal error: &#39;SDL_mixer.h&#39; file not found
+</code></pre>
+
+<p>Oh yeah, this was all SDL. Oh well, I&#39;m sure that&#39;s still around!</p>
+
+<pre><code>brew install sdl
+Warning: Formula sdl was renamed to sdl12-compat.
+</code></pre>
+
+<p>Ok well, it turns out SDL1.2 is looong deprecated but some kind person
+has written a compatibility library for SDL2 so that should all work
+quite nicely...</p>
+
+<pre><code>make
+fatal error: &#39;SDL_mixer.h&#39; file not found
+brew install sdl_mixer
+Error: sdl_mixer has been disabled because it is deprecated upstream! It was disabled on 2024-02-07.
+</code></pre>
+
+<p>If only I had tried this 6 months ago ;) After a quick look, SDL2_mixer
+seems to have the same API as in SDL1.2 so I&#39;ll nab the header file from
+there, include it in my CFLAGS, and link to SDL2_mixer in addition to
+the SDL1.2 (compat) library. What could possibly go wrong?!</p>
+
+<pre><code>make
+...
+src/map.h:35:6: error: cast from pointer to smaller type &#39;int&#39; loses information
+        p.x=(int)x;
+            ^~~~~~
+src/map.h:36:6: error: cast from pointer to smaller type &#39;int&#39; loses information
+        p.y=(int)y;
+</code></pre>
+
+<p>Ooh, an actual bug. Forgot to dereference some pointers. I wonder how
+that ever worked before. Well, it&#39;s an easy fix!</p>
+
+<pre><code>make
+...
+g++  src/world.o src/audio.o src/score.o src/bonus.o src/shot.o src/sprite.o src/ship.o src/alien.o src/main.o -o src/falsoyd `sdl-config --libs` -lSDL2_mixer
+</code></pre>
+
+<p>It compiled! That was unexpectedly easy. I was anticipating some
+nastiness with mixing SDL1.2 and SDL2_mixer.</p>
+
+<p>(I glossed over <em>a lot</em> of compiler warnings in that &#34;...&#34; btw. Don&#39;t
+ignore your compiler warnings, folks!)</p>
+
+<p>My fingers began to tremble (they didn&#39;t) as I nervously (I wasn&#39;t)
+typed <code>./src/falsoyd</code>...</p>
+
+<p><img src="https://static.offend.me.uk/media/images/2024-08-28-falsoyd.png" alt="A screenshot of
+Falsoyd"/></p>
+
+<p>It runs! I played it for a little while. Remembered how terrible it was
+and committed <a href="https://github.com/stilvoid/falsoyd/tree/2024">a branch</a>
+with my changes. That&#39;ll do for now. Itch scratched.</p>
+
+<p>Now I&#39;m clearly going to have to make Falsoyd 2 in Löve, Pico-8, or
+Picotron ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2024-08-28/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-08-28/</guid>
+            <pubDate>Wed, 28 Aug 2024 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Back to the Primitive</title>
+            <description><![CDATA[<p>I like text, plain text. Always have. But over the past several years
+(and it has been, as the kids say, a hot minute since I <a href="https://engledow.me/blog/2019-11-13/">last
+blogged</a>) I&#39;ve found more and more bloat creeping
+into my daily life. I moved to a Mac Mini as my main machine about 4
+years ago as I just gave up in the struggle between the way I think
+things ought to be and the &#34;needs&#34; of life working for a large
+corporate. In fairness, I have come to more or less enjoy MacOS but
+whenever I slip back into my Arch box with my i3 desktop, it feels <em>so
+sleek</em>.</p>
+
+<p>Moving to the Mac has necessarily meant changing some of my regular
+workflow and tools. I don&#39;t know what it is about the Mac but it seemed
+to discourage me from being so heavily terminal-based as I was. I really
+can&#39;t put my finger on it. Regardless, I ended up moving from taking
+notes in markdown to <a href="https://obsidian.md/">Obsidian</a> for a while and
+then eventually <a href="https://logseq.com/">Logseq</a>. Still just markdown files
+in a folder but the GUI is ever-present. I even found myself starting to
+use, and almost enjoy, <a href="https://code.visualstudio.com/">VS Code</a>!</p>
+
+<p>Anyway, the point is, through <a href="https://latenightlinux.com/late-night-linux-episode-289/">Late Night
+Linux</a>, I
+discovered <a href="https://vimwiki.github.io/">Vimwiki</a> and have started to
+love the terminal (and Vim) again. In fact, I started writing some code
+the other day and just automatically started it in Vim rather than VS
+Code. The rot is beginning to recede eh ;)</p>
+
+<p>One of the tasks I decided to bring over to Vimwiki was maintaining my
+small and fairly pointless <a href="https://engledow.me">website</a>. In another
+show of bloat, I had been through various markdown-to-website tools
+(ghost, hugo, jekyll), decided I disliked something about each one, and
+ended up rolling my own Python cruft. Inevitably, I came back to the
+site to make some changes after a few months and had <em>completely</em>
+forgotten how any of it was meant to work :) And that is what led me to
+the decision to try Vimwiki for the site as well as my note-taking.</p>
+
+<p>The first challenge is that, while Vimwiki supports markdown syntax, it
+doesn&#39;t support it very well and requires more plugins to get it to spit
+out html. Over the years, my enthusiasm for markdown has waned
+considerably. I like the overall style of the markup but it&#39;s just too
+ambiguous and ends up causing more problems than it solves. So... the
+tool I want to use has it&#39;s own syntax and I&#39;m not tied to my usual
+preference... obviously it&#39;s time to figure out how to convert all my
+existing <a href="https://engledow.me/blog/">posts</a> ;)</p>
+
+<p>I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a>
+is even more lovely than I had previously realised. Writing a new reader
+or writer for it is almost trivial. You write a lua file, create a few
+functions to parse/create text in various formats (e.g. emphasised, code
+blocks, bullet points), and then point pandoc at your lua file as if it
+were any other reader/writer option.</p>
+
+<p>So here we are. This very infrequently updated blog is now written in
+vimwiki and I&#39;m back to using the terminal and Vim on a daily basis like
+the <a href="https://engledow.me/blog/2017-07-10/">last few years</a> never happened.</p>
+
+<p>Now to see what else I can over-enthusiastically convince myself should
+be a Wiki...</p>
+]]></description>
+            <link>https://engledow.me/blog/2024-07-23/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-07-23/</guid>
+            <pubDate>Tue, 23 Jul 2024 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Maur - A minimal AUR helper</title>
+            <description><![CDATA[<p>This post is about the <a href="https://aur.archlinux.org/">Arch User
+Repository</a>. If you&#39;re not an
+<a href="https://www.archlinux.org/">Arch</a> user, probably just move along ;)</p>
+
+<p>There are <a href="https://aur.archlinux.org/packages/?O=0&amp;K=aur+helper">lots of AUR
+helpers</a> in
+existence already but, in the best traditions of open source, none of
+them work exactly how I want an AUR helper to work, so I <a href="https://xkcd.com/927/">created a new
+one</a>.</p>
+
+<p>Here it is: <a href="https://github.com/stilvoid/maur">https://github.com/stilvoid/maur</a></p>
+
+<p><code>maur</code> (pronounced like &#34;more&#34;) is tiny. At the time of writing, it&#39;s 49
+lines of bash. It also has very few features.</p>
+
+<p>Here is the list of features:</p>
+
+<ul>
+<li>Help text when you type <code>maur --help</code> or <code>maur -h</code></li>
+<li>A list of packages in the AUR when you type <code>maur</code> with no arguments</li>
+<li>Help you install a package when you type <code>maur &lt;package name&gt;</code></li>
+</ul>
+
+<p>The &#34;help&#34; when installing a package is this, and nothing more:</p>
+
+<ul>
+<li>Clone the package&#39;s AUR repository</li>
+<li>Open the <code>PKGBUILD</code> in your default editor</li>
+<li>Ask if you want to continue installing</li>
+<li>If you do, run <code>makepkg -si</code></li>
+</ul>
+
+<p>If you think <code>maur</code> needs more features, use a different AUR helper.</p>
+
+<p>If you find bugs, please <a href="https://github.com/stilvoid/maur/issues/new">submit an
+issue</a> or, even better, a
+<a href="https://github.com/stilvoid/maur/compare">pull request</a>.</p>
+
+<h2 id="example-usage">Example usage</h2>
+
+<h3 id="searching-the-aur">Searching the AUR</h3>
+
+<p>If you want to search for a package in the AUR, you can grep for it ;)</p>
+
+<p><code>maur | grep maur</code></p>
+
+<h3 id="installing-a-package">Installing a package</h3>
+
+<p>If you want to install a package, for example
+<a href="https://aur.archlinux.org/packages/yay">yay</a>:</p>
+
+<p><code>maur yay</code></p>
+
+<h3 id="upgrading-a-package">Upgrading a package</h3>
+
+<p>Upgrade a package is the same as installing one. This will upgrade
+<code>maur</code>:</p>
+
+<p><code>maur maur</code></p>
+]]></description>
+            <link>https://engledow.me/blog/2019-11-13/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-11-13/</guid>
+            <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Using Git with AWS CodeCommit Across Multiple AWS Accounts</title>
+            <description><![CDATA[<p>(Cross-posted from <a href="https://aws.amazon.com/blogs/devops/using-git-with-aws-codecommit-across-multiple-aws-accounts/">the AWS DevOps
+blog</a>)</p>
+
+<p>I use <a href="https://aws.amazon.com/codecommit/">AWS CodeCommit</a> to host all
+of my private Git repositories. My repositories are split across several
+AWS accounts for different purposes: personal projects, internal
+projects at work, and customer projects.</p>
+
+<p>The <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html">CodeCommit
+documentation</a>
+shows you how to configure and clone a repository from one place, but in
+this blog post I want to share how I manage my Git configuration across
+multiple AWS accounts.</p>
+
+<h2 id="background">Background</h2>
+
+<p>First, I have
+<a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">profiles</a>
+configured for each of my AWS environments. I connect to some of them
+using <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys">IAM user
+credentials</a>
+and others by using <a href="https://aws.amazon.com/blogs/security/how-to-use-a-single-iam-user-to-easily-access-all-your-accounts-by-using-the-aws-cli/">cross-account
+roles</a>.</p>
+
+<p>I intentionally do not have any credentials associated with the default
+profile. That way I must always be sure I have selected a profile before
+I run any AWS CLI commands.</p>
+
+<p>Here’s an anonymized copy of my <code>~/.aws/config</code> file:</p>
+
+<pre><code>[profile personal]
+region = eu-west-1
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[profile work]
+region = us-east-1
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[profile customer]
+region = eu-west-2
+source_profile = work
+role_arn = arn:aws:iam::123456789012:role/CrossAccountPowerUser
+</code></pre>
+
+<p>If I am doing some work in one of those accounts, I run
+<code>export AWS_PROFILE=work</code> and use the AWS CLI as normal.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>I use the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html">Git credential
+helper</a>
+so that the Git client works seamlessly with CodeCommit. However,
+because I use different profiles for different repositories, my use case
+is a little more complex than the average.</p>
+
+<p>In general, to use the credential helper, all you need to do is place
+the following options into your <code>~/.gitconfig</code> file, like this:</p>
+
+<pre><code>[credential]
+    helper = !aws codecommit credential-helper $@
+    UserHttpPath = true
+</code></pre>
+
+<p>I could make this work across accounts by setting the appropriate value
+for <code>AWS_PROFILE</code> before I use Git in a repository, but there is a much
+neater way to deal with this situation using a feature released in <a href="https://blog.github.com/2017-05-10-git-2-13-has-been-released/">Git
+version
+2.13</a>,
+<a href="https://git-scm.com/docs/git-config#_includes">conditional includes</a>.</p>
+
+<h2 id="a-solution">A solution</h2>
+
+<p>First, I separate my work into different folders. My <code>~/code/</code> directory
+looks like this:</p>
+
+<pre><code>code
+    personal
+        repo1
+        repo2
+    work
+        repo3
+        repo4
+    customer
+        repo5
+        repo6
+</code></pre>
+
+<p>Using this layout, each folder that is directly underneath the code
+folder has different requirements in terms of configuration for use with
+CodeCommit.</p>
+
+<p>Solving this has two parts; first, I create a <code>.gitconfig</code> file in each
+of the three folder locations. The <code>.gitconfig</code> files contain any
+customization (specifically, configuration for the credential helper)
+that I want in place while I work on projects in those folders.</p>
+
+<p>For example:</p>
+
+<pre><code>[user]
+    # Use a custom email address
+    email = sengledo@amazon.co.uk
+
+[credential]
+    # Note the use of the --profile switch
+    helper = !aws --profile work codecommit credential-helper $@
+    UseHttpPath = true
+</code></pre>
+
+<p>I also make sure to specify the AWS CLI profile to use in the
+<code>.gitconfig</code> file which means that, when I am working in the folder, I
+don’t need to set <code>AWS_PROFILE</code> before I run <code>git push</code>, etc.</p>
+
+<p>Secondly, to make use of these folder-level .gitconfig files, I need to
+reference them in my global Git configuration at <code>~/.gitconfig</code></p>
+
+<p>This is done through the <code>includeIf</code> section. For example:</p>
+
+<pre><code>[includeIf &#34;gitdir:~/code/personal/&#34;]
+    path = ~/code/personal/.gitconfig
+</code></pre>
+
+<p>This example specifies that if I am working with a Git repository that
+is located anywhere under <code>~/code/personal/</code>, Git should load additional
+configuration from <code>~/code/personal/.gitconfig</code>. That additional file
+specifies the appropriate credential helper invocation with the
+corresponding AWS CLI profile selected as detailed earlier.</p>
+
+<p>The contents of the new file are treated as if they are inserted into
+the main <code>.gitconfig</code> file at the location of the <code>includeIf</code> section.
+This means that the included configuration will only override any
+configuration specified <span id="earlier"></span><strong>earlier</strong> in the
+config.</p>
+]]></description>
+            <link>https://engledow.me/blog/2019-02-12/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-02-12/</guid>
+            <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>git-get</title>
+            <description><![CDATA[<p>Because I work on a lot of different projects spread across a lot of
+accounts at multiple git hosting providers, I try to keep my code folder
+in some semblance of order by having subfolders for things.</p>
+
+<p>A while ago, I decided to make things even simpler by letting the git
+repos I was cloning dictate where they should live. I took inspiration
+from <a href="https://golang.org/doc/code.html#ImportPaths">the way go expects you to organise your
+code</a>.</p>
+
+<p>Today, I decided to apply <a href="http://threevirtues.com/">the three virtues</a>
+and wrote some code to handle this for me.</p>
+
+<h2 id="introducing-git-get">Introducing git-get</h2>
+
+<p><a href="https://github.com/stilvoid/git-get">git-get</a> is an opinionated git
+command that helps you keep your code folder in order.</p>
+
+<p>You use git-get as a replacement for <code>git clone</code> and it will decide
+where your code should live :)</p>
+
+<pre><code>git get https://github.com/stilvoid/git-get
+Cloning into &#39;/home/steve/code/github.com/stilvoid/git-get&#39;...
+</code></pre>
+
+<p>Laziness is the primary virtue.</p>
+]]></description>
+            <link>https://engledow.me/blog/2018-11-08/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-11-08/</guid>
+            <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Heroes: Building some old code</title>
+            <description><![CDATA[<p>For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of
+Heroes</a>.</p>
+
+<hr/>
+
+<p>The other day, something reminded me of a game I used to really enjoy
+playing back in my early days of getting to know Linux. That game was
+<a href="http://heroes.sourceforge.net">Heroes</a>. It&#39;s a clone of
+<a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake/Tron/Nibbles</a>
+but with some fun additions, a nice graphical style, and some funky
+visual effects.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/2018-08-14-heroes-screenshot.png" alt="Heroes
+screenshot"/></p>
+
+<p>So, of course, I immediately decided to install it.</p>
+
+<pre><code>$ pacman -Ss heroes
+</code></pre>
+
+<p>No results. Nothing in the
+<a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR</a> either.
+There is only one other course of action: I&#39;m going to create an AUR
+package for it!</p>
+
+<p>It looks like the last change to the game was 16 years ago so it could
+be fun getting it to compile with a modern toolchain.</p>
+
+<h2 id="getting-heroes-to-compile-in-2018">Getting Heroes to compile in 2018</h2>
+
+<p>I put together a basic
+<a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> that pulls
+down the source and data files from the Heroes sourceforge page and then
+runs:</p>
+
+<pre><code>./configure
+make
+</code></pre>
+
+<p>Here&#39;s the first of what I&#39;m sure are many failure messages:</p>
+
+<pre><code>hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration 
+ static a_pcx_image tile_set_img;
+                    ^~~~~~~~~~~~
+In file included from hedlite.c:44:
+const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        
+ extern a_pcx_image tile_set_img, font_deck_img;                                            
+                    ^~~~~~~~~~~~
+</code></pre>
+
+<p>Some forewarning: it&#39;s been quite some time since I wrote anything
+serious in C and I was never an expert in it anyway. But I think I know
+enough to fix this and so just commented out the static declaration as,
+after poking around in the code a bit, it doesn&#39;t seem like it&#39;s
+necessary anyway.</p>
+
+<p>Now the compilation succeeds but I get the following error during
+linking:</p>
+
+<pre><code>/usr/bin/ld: camera.o: undefined reference to symbol &#39;sin@@GLIBC_2.2.5&#39;
+/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line
+</code></pre>
+
+<p>Turns out that for some reason, the developers forgot to include the
+math&lt;small&gt;(s)&lt;/small&gt; library. I&#39;m guessing that perhaps it used to
+be linked by default in a previous version of GCC.</p>
+
+<pre><code>LDFLAGS=-lm ./configure
+make
+</code></pre>
+
+<p>Now it at least compiles correctly! Next up, compiling the data, music,
+and sound effects packages.</p>
+
+<p>Amazingly, those all worked correctly and I was able to play the game!</p>
+
+<p>However, this game was written a while ago and originally targeted
+MS-DOS so it has a window size of 320x200 which looks rather ridiculous
+on my 1920x1080 desktop ;)</p>
+
+<p><a href="https://static.offend.me.uk/media/images/2018-08-14-heroes.png"><img src="https://static.offend.me.uk/media/images/2018-08-14-heroes-small.png" alt="Tiny Heroes window
+screenshot"/></a></p>
+
+<p>So I set about trying to set the default screen mode so that the game
+starts in full screen...</p>
+
+<p>Fortunately, it looks like this is relatively easy. I just modified a
+few variables and changed a command line flag from <code>-F | --full-screen</code>
+to <code>-W | --windowed</code>.</p>
+
+<p>Next up, rather than rely on <a href="https://www.libsdl.org/">SDL</a>&#39;s built-in
+scaling (it looks blurry and weird), I need to enable Heroes&#39; quadruple
+flag <code>-4</code> by default. In fact, I removed all the scaling options and
+just left it to default to scaling 4-fold as that leaves the game with a
+resolution of 1280x800 which seems a reasonable default these days. I&#39;m
+sure I&#39;ll receive bug reports if it&#39;s not ;)</p>
+
+<p>The very last thing I&#39;ve done is to enable the high quality mixer by
+default and remove the command line option from the game. CPU is a
+little more abundant now than it was in 2002 ;)</p>
+
+<p><a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here&#39;s my final patch
+file</a>.</p>
+
+<h2 id="submitting-the-aur-package">Submitting the AUR package</h2>
+
+<p>Things have changed since I last submitted a package to the AUR so
+here&#39;s a brief writeup - if only to remind myself in future ;)</p>
+
+<p>First step was to update the SSH key in my AUR account as it contained a
+key from my old machine.</p>
+
+<p>Next up, I added a remote to my repository:</p>
+
+<pre><code>$ git remote add aur ssh://aur@aur.archlinux.org/heroes.git
+$ git fetch aur  # This step causes AUR to create a record for the package
+</code></pre>
+
+<p>The next step is to generate AUR&#39;s <code>.SRCINFO</code> file and rebase it into
+every commit (AUR requires this).</p>
+
+<pre><code>$ git filter-branch --tree-filter &#34;makepkg --printsrcinfo &gt; .SRCINFO&#34;
+</code></pre>
+
+<p>And then push it to the AUR repository:</p>
+
+<pre><code>$ git push -u aur master
+</code></pre>
+
+<h2 id="testing-it-out">Testing it out</h2>
+
+<p>I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using
+AUR easier <a href="https://thethreevirtues.com/">I&#39;m lazy</a>).</p>
+
+<pre><code>$ packer -S heroes
+</code></pre>
+
+<p>SUCCESS!</p>
+
+<p>All in all, this wasn&#39;t anywhere near as painful as I&#39;d expected. Time
+to play some Heroes :D</p>
+]]></description>
+            <link>https://engledow.me/blog/2018-08-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-08-14/</guid>
+            <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Shue</title>
+            <description><![CDATA[<p>I finally got around to releasing a tool I wrote a while back (git says
+I started it in November 2015).</p>
+
+<p>It&#39;s called Shue and <a href="https://github.com/stilvoid/shue">you can find it on
+github</a>.</p>
+
+<p>If you dig back in the <a href="https://github.com/stilvoid/shue/commits/master">commit
+history</a>, you&#39;ll see
+that Shue was originally intended as a tool for converting rgb colour
+values into their nearest equivalent <a href="http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html">bash colour
+codes</a>.</p>
+
+<p>Shue doesn&#39;t do that now as I haven&#39;t really needed anything that does
+it since that one time :) I might bring back that functionality at some
+point but for now, here&#39;s what Shue <span id="does"></span><strong>does</strong> do:</p>
+
+<ul>
+<li>Converts colour representations between various rgb formats: 6-digit
+hex (e.g. <code>#ff9900</code>), 3-digit hex (e.g. <code>#f90</code>), and
+<a href="https://www.w3schools.com/cssref/css_colors_legal.asp">CSS-style</a> RGB
+values (e.g. <code>rgb(255, 153, 0)</code>.</li>
+<li>Perform a few basic operations on colours before converting to the
+various representations:
+
+<ul>
+<li>Invert</li>
+<li>Darken</li>
+<li>Lighten</li>
+</ul></li>
+</ul>
+
+<p>I wrote this at the time because I was fiddling with a few websites and
+frequently needed the above functionality.</p>
+
+<p>It&#39;s written in <a href="https://golang.org/">Go</a> and there are binaries for
+Linux, Mac, and Windows on the <a href="https://github.com/stilvoid/shue/releases">releases
+page</a>.</p>
+
+<p><a href="mailto:steve@engledow.me">Let me know</a> if you find it useful.</p>
+]]></description>
+            <link>https://engledow.me/blog/2018-06-03/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-06-03/</guid>
+            <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>An evening of linux on the desktop</title>
+            <description><![CDATA[<p><a href="https://engledow.me/blog/2017-06-15/">Last time</a>, I wrote about trying a few desktop
+environments to see what&#39;s out there, keep things fresh, and keep me
+from complacency. Well, as with desktop environments, so with text
+editors. I decided briefly that I would try <a href="https://atom.io/">a few of</a> <a href="https://www.sublimetext.com/">the more recent</a> <a href="https://code.visualstudio.com/">code
+editors</a> that are around these days.
+Lured in by their pleasing, modern visuals and their promises of a
+smooth, integrated experience, I&#39;ve been meaning to give these a go for
+a while. Needless to say, as a long-time <a href="https://www.vim.org/">vim</a>
+user, I just found myself frustrated that I wasn&#39;t able to get things
+done as efficiently in any of those editors as I could in vim ;) I tried
+installing vim keybindings in Atom but it just wasn&#39;t the same as a very
+limited set of functionality was there. As for the integrated
+environment, when you have <a href="https://engledow.me/blog/2014-06-17/">tmux running by default</a>, everything&#39;s integrated anyway.</p>
+
+<p>And, as with editors, so once again with desktop environments. I&#39;ve
+decided to retract my previous hasty promise and no longer to bother
+with trying any other environments; <a href="https://i3wm.org/">i3</a> is more than
+fine :)</p>
+
+<p>However, I did spend some time this evening making things a bit prettier
+so here are some delicious configs for posterity:</p>
+
+<h2 id="configs">Configs</h2>
+
+<h3 id="xresources">Xresources</h3>
+
+<p>I&#39;ve switched back to xterm from urxvt because, er... dunno.</p>
+
+<p>Anyway, I set some nice colours for terminals and some magic stuff that
+makes man pages all colourful :)</p>
+
+<pre><code>XTerm*faceName: xft:Hack:regular:size=12
+*termName: xterm-256color
+
+! Colourful man pages
+*VT100.colorBDMode:     true
+*VT100.colorBD:         cyan
+*VT100.colorULMode:     true
+*VT100.colorUL:         darkcyan
+*VT100.colorITMode:     true
+*VT100.colorIT:         yellow
+*VT100.veryBoldColors:  518
+
+! terminal colours
+*foreground:#CCCCCC
+*background:#2B2D2E
+
+!black darkgray
+*color0:    #2B2D2E
+*color8:    #808080
+!darkred red
+*color1:    #FF0044
+*color9:    #F92672
+!darkgreen green
+*color2:    #82B414
+*color10:   #A6E22E
+!darkyellow yellow
+*color3:    #FD971F
+*color11:   #E6DB74
+!darkblue blue
+*color4:    #266C98
+*color12:   #7070F0
+!darkmagenta magenta
+*color5:    #AC0CB1
+*color13:   #D63AE1
+!darkcyan cyan
+*color6:    #AE81FF
+*color14:   #66D9EF
+!gray white
+*color7:    #CCCCCC
+*color15:   #F8F8F2
+</code></pre>
+
+<h3 id="vimrc">Vimrc</h3>
+
+<p>Nothing exciting here except for discovering a few options I hadn&#39;t
+previous known about:</p>
+
+<pre><code>&#34; Show a marker at the 80th column to encourage nice code
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkblue
+
+&#34; Scroll the text when we&#39;re 3 lines from the top or bottom
+set so=3
+
+&#34; Use browser-style incremental search
+set incsearch
+
+&#34; Override the default background colour in xoria256 to match the terminal background
+highlight Normal ctermbg=black
+
+&#34; I like this theme
+colorscheme xoria256
+</code></pre>
+
+<h3 id="i3">i3</h3>
+
+<p>I made a few colour tweaks to my i3 config so I get colours that match
+my new Xresources. One day, I might see if it&#39;s easy enough to have them
+both read colour definitions from the same place so I don&#39;t have to
+define things twice.</p>
+
+<h2 id="the-result">The result</h2>
+
+<p>Here&#39;s what it looks like:</p>
+
+<p><img src="https://static.offend.me.uk/media/images/blog/89/01.jpg" alt="My new
+desktop"/></p>
+]]></description>
+            <link>https://engledow.me/blog/2017-07-10/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2017-07-10/</guid>
+            <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>The day of linux on the desktop</title>
+            <description><![CDATA[<p>It’s been a while since I last tried out a different desktop environment
+on my laptop and I’ve been using <a href="https://i3wm.org/">i3</a> for some time
+now so it’s only fair to give other things a go ;)</p>
+
+<p>To test these out, I ran another X display - keeping my original one
+running so I could switch back and forth to take notes - and started
+each environment with <code>DISPLAY=:1 &lt;the command to start the desktop&gt;</code>.</p>
+
+<p>I’ll start with just one today and perhaps review some others another
+time.</p>
+
+<h2 id="deepin">Deepin</h2>
+
+<p>In summary: bits of Gnome Shell, Chrome OS, and Mac OSX but not quite as
+polished as any of them.</p>
+
+<p>The Deepin Desktop Environment (DDE - from <a href="https://www.deepin.org/en/?language=en">the Deepin
+distribution</a>) installed easily
+enough under Arch with a quick <code>pacman -S deepin deepin-extra</code>. It also
+started up easily with an unambiguous <code>startdde</code>.</p>
+
+<p>Immediately on startup, DDE plays a slightly annoying chime presumably
+just to remind you of how far we’ve come since Windows 95. The initial
+view of the desktop looks similar to OSX or Chrome OS with file icons on
+the desktop and a launcher bar centred across the bottom of the screen.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/blog/88/01.jpg" alt="The initial
+view"/></p>
+
+<p>The first thing I tried was clicking on a button labelled Quoted only to
+be presented with a prompt telling me Quoted and an OK button. So far,
+so enigmatic. So then I tried a trusty right-click on the desktop which
+brought up the expected context menu. In the menu was a Quoted option so
+I plumped for that, thinking that perhaps that was where I could enable
+the mystic Quoted. Clicking the Quoted button opened a dark-themed panel
+from the right-hand side, similar to the information panel you get in
+OSX. I searched through that panel for a good couple of minutes but
+could find no allusion to any Quoted.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/blog/88/02.jpg" alt="The cryptic message and the settings
+panel"/></p>
+
+<p>Unperturbed, I decided to press on and see what other features Deepin
+had to offer…</p>
+
+<p>Moving the mouse around the desktop a bit, I discovered that Deepin has
+borrowed some ideas from Gnome shell as well as OSX and Chrome OS.
+Moving the mouse pointer into the top-left corner of the screen brings
+up an application list similar to Gnome’s launcher. The bottom-right
+corner reveals the settings panel. The top-right does nothing and the
+bottom-left, wonder of wonders, brings up my old favourite, the Quoted.</p>
+
+<p>I poked around in the settings a bit more but didn’t really see anything
+of interest so I fired up what looks to be the last part of Deepin left
+for me to explore: the file manager. It does the job and it’s not very
+interesting although I did discover that Deepin also has it’s own
+terminal emulator (unsurprisingly called <code>deepin-terminal</code>) which has a
+snazzy <a href="https://en.wikipedia.org/wiki/The_Matrix">Matrix</a> theme to it
+but is otherwise uninteresting.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/blog/88/03.jpg" alt="Deepin-terminal"/></p>
+
+<p>That’s it, I’m bored. Next!</p>
+
+<p>I tried Budgie and LXQT for a few minutes each at this point but they
+weren’t immediately interesting enough to make me want to write about
+them just now :)</p>
+]]></description>
+            <link>https://engledow.me/blog/2017-06-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2017-06-15/</guid>
+            <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Digital Subscriber</title>
+            <description><![CDATA[<p>Maybe it’s just me, but I reckon
+<a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSLs</a> are the
+next (ok ok, they’ve been around for ages) big (ok, hipster) thing. I
+know I’m by no means the first to say so it’s just that I’m increasingly
+bemused at seeing things squeezed into data structures they’ve outgrown.</p>
+
+<p>In general, as everyone’s finally warming to the idea that you can use
+code to describe not just your application but also how it’s deployed,
+we’re reaching a state where that code needs to be newbie-friendly - by
+which I mean that it ought to be easily understandable by humans. If it
+isn’t, it’s prone to mistakes.</p>
+
+<p>A few months ago, I experimented with creating a DSL for writing web
+pages and I was fairly happy with <a href="https://github.com/stilvoid/thiy">the
+result</a> (though there’s lots more work
+to be done). I’m thinking of applying the same ideas to
+<a href="https://aws.amazon.com/cloudformation/">CloudFormation</a>.</p>
+
+<pre><code>resources:
+    db:
+        type: rds
+        engine: mysql
+        size: c3.xlarge
+
+    app:
+        type: ec2
+        ami: my-app-image
+        size: t2.micro
+        scale:
+            min: 1
+            max: 10
+        expose: 80
+
+security:
+    db: app
+    app: 0.0.0.0:80
+</code></pre>
+
+<p>Obviously I’ve put little to no thought into the above but it shouldn’t
+be too hard to come up with something useful.</p>
+
+<p>Maybe some day soon ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2016-02-25/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2016-02-25/</guid>
+            <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Ford</title>
+            <description><![CDATA[<p>Today I become a <a href="https://www.mozilla.org/en-GB/firefox/new/">Firefox</a>
+<a href="https://addons.mozilla.org/">add-on</a> developer!</p>
+
+<p>Really, it was far too easy and a little disappointing that I needed to
+bother, as all I needed was a simple way to hide the browser chrome when
+I wanted a little more screen space for the content or I wanted a
+distraction-free environment for reading an article.</p>
+
+<p>I wrote <a href="https://addons.mozilla.org/en-GB/firefox/addon/focus-mode/">Focus
+Mode</a> for
+Firefox to do just that :)</p>
+
+<p>Now, someone tell me why that’s not already a standard feature in
+Firefox. Or even better, tell me that it is and that I just failed to
+notice it. And while you’re at it, tell me why I couldn’t find an
+existing extension that does it!</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-12-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-12-14/</guid>
+            <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Sorted</title>
+            <description><![CDATA[<p>I decided to restructure the folder I keep code in (<code>~/code</code>, natch) -
+taking my cue from <a href="https://golang.org/doc/code.html">how Go does it</a> -
+so that the folder structure represents where code has come from.</p>
+
+<p>As with all things, moving a couple of hundred folders by hand seemed
+far too daunting so I wrote a bash script to do it.</p>
+
+<p>This script enters each subdirectory within the current directory and,
+if it has a git remote, moves it to a folder that represents the git
+remote’s path.</p>
+
+<p>For example, if I had a folder called <code>scripts</code> that had a git remote of
+<code>git@github.com/stilvoid/utils.git</code>, this script will move the folder to
+<code>github.com/stilvoid/utils</code>.</p>
+
+<pre><code>#!/bin/bash
+
+# Target directory for renamed folders
+BASE=/home/steve/code/sorted
+
+for i in $(find ./ -maxdepth 1 -mindepth 1 -type d); do
+    cd &#34;$i&#34;
+    folder=&#34;$(git remote -v 2&gt;/dev/null | head -n 1 | awk &#39;{print $2}&#39; | sed -e &#39;s/^.*:\/\///&#39; | sed -e &#39;s/:/\//&#39; | sed -e &#39;s/^.*@//&#39; | sed -e &#39;s/\.git$//&#39;)&#34;
+    cd ..
+
+    if [ -n &#34;$folder&#34; ]; then
+        mkdir -p &#34;$BASE/$(dirname $folder)&#34;
+        mv &#34;$i&#34; &#34;$BASE/$folder&#34;
+    fi
+done
+</code></pre>
+
+<p>Yes it’s horrid but it did today’s job ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-11-30/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-11-30/</guid>
+            <pubDate>Mon, 30 Nov 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Twofer</title>
+            <description><![CDATA[<p>After toying with the idea for some time, I decided I’d try setting up
+<a href="https://en.wikipedia.org/wiki/Two-factor_authentication">2FA</a> on my
+laptop. As usual, the <a href="https://wiki.archlinux.org/">arch wiki</a> had a
+nicely written <a href="https://wiki.archlinux.org/index.php/Google_Authenticator">article on setting up
+2FA</a> with
+<a href="https://github.com/google/google-authenticator/tree/master/libpam">the PAM
+module</a>
+for <a href="https://github.com/google/google-authenticator">Google
+Authenticator</a>.</p>
+
+<p>I followed the instructions for setting up 2FA for ssh and that worked
+seamlessly so I decided I’d then go the whole hog and enable the module
+in <code>/etc/pam.d/system-auth</code> which would mean I’d need it any time I had
+to login at all.</p>
+
+<p>Adding the line:</p>
+
+<pre><code>auth  sufficient  pam_google_authenticator.so
+</code></pre>
+
+<p>had the expected effect that I could login with just the verification
+code but that seems to defeat the point a little so I bit my lip and
+changed <code>sufficient</code> to <code>required</code> which would mean I’d need my password
+and the code on login.</p>
+
+<p>I switched to another
+<a href="https://en.wikipedia.org/wiki/Virtual_terminal">VT</a> and went for it. It
+worked!</p>
+
+<p>So then I rebooted.</p>
+
+<p>And I couldn’t log in.</p>
+
+<p>After a couple of minutes to download an ISO to boot from using another
+machine, putting it on a USB stick, booting from it, and editing my
+<code>system-auth</code> file, I realised why:</p>
+
+<pre><code>auth      required    pam_google_authenticator.so
+auth      required    pam_unix.so     try_first_pass nullok
+auth      required    pam_ecryptfs.so unwrap
+</code></pre>
+
+<p>My home partition is encrypted and so the Google authenticator module
+obviously couldn’t load my secret file until I’d already logged in.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/facepalm.jpg" alt="D’oh"/></p>
+
+<p>I tried moving the <code>pam_google_authenticator.so</code> line to the bottom of
+the <code>auth</code> group but that didn’t work either.</p>
+
+<h2 id="how-could-this-possibly-go-wrong">How could this possibly go wrong...</h2>
+
+<p>So, the solution I came up with was to put the 2fa module into the
+session group. My understanding is that this will mean PAM will ask me
+to supply a verification code once per session which is fine by me; I
+don’t want to have to put a code in every time I <code>sudo</code> anyway.</p>
+
+<p>My question is, will my minor abuse of PAM bite me in the arse at any
+point? It seems to do what I expected, even if I log in through GDM.</p>
+
+<p>Here’s my current <code>system-auth</code> file:</p>
+
+<pre><code>#%PAM-1.0
+
+auth      required  pam_unix.so     try_first_pass nullok
+auth      required  pam_ecryptfs.so unwrap
+auth      optional  pam_permit.so
+auth      required  pam_env.so
+
+account   required  pam_unix.so
+account   optional  pam_permit.so
+account   required  pam_time.so
+
+password  optional  pam_ecryptfs.so
+password  required  pam_unix.so     try_first_pass nullok sha512 shadow
+password  optional  pam_permit.so
+
+session   required  pam_limits.so
+session   required  pam_unix.so
+session   optional  pam_ecryptfs.so unwrap
+session   optional  pam_permit.so
+session   required  pam_google_authenticator.so
+</code></pre>
+]]></description>
+            <link>https://engledow.me/blog/2015-09-17/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-09-17/</guid>
+            <pubDate>Thu, 17 Sep 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Pretty please</title>
+            <description><![CDATA[<p>I’ve been making <a href="https://github.com/stilvoid/please/">a thing</a> to solve
+some problems I always face while building web APIs.
+<a href="http://curl.haxx.se/">Curl</a> is lovely but it’s a bit <em>too</em> flexible.</p>
+
+<p>Also, web services generally spit out one of a fairly common set of
+formats: (json, xml, html) and I often just want to grab a value from
+the response and use it in a script - maybe to make the next call in a
+workflow.</p>
+
+<p>So I made <a href="https://github.com/stilvoid/please/">please</a> which makes it
+super simple to do things like making a web request and grabbing a
+particular value from the response.</p>
+
+<p>For example, here’s how you’d get the page title from this site:</p>
+
+<pre><code>please get https://engledow.me/ | please parse html.head.title.#text
+</code></pre>
+
+<p>Or getting a value out of the json returned by
+<a href="http://jsontest.com/">jsontest.com</a>’s IP address API:</p>
+
+<pre><code>please get http://ip.jsontest.com/ | please parse ip
+</code></pre>
+
+<p>The <code>parse</code> part of <code>please</code> is the most fun; it can convert between a
+few different formats. Something I do quite often is grabbing a json
+response from an API and spitting it out as yaml so I can read it
+easily. For example:</p>
+
+<pre><code>please get http://date.jsontest.com/ | please parse -o yaml
+</code></pre>
+
+<p>(alright so that’s a poor example but the difference is huge when it’s a
+complicated bit of json)</p>
+
+<p>Also handy for turning an unreadable mess of xml into yaml (I love yaml
+for its readability):</p>
+
+<pre><code>echo &#39;&lt;docroot type=&#34;messydoc&#34;&gt;&lt;a&gt;&lt;b dir=&#34;up&#34;&gt;A tree&lt;/b&gt;&lt;b dir=&#34;down&#34;&gt;The ground&lt;/b&gt;&lt;/a&gt;&lt;/docroot&gt;&#39; | please parse -o yaml
+</code></pre>
+
+<p>As an example, of the kinds of things you can play with, I made a tool
+for generating graphs from json.</p>
+
+<p>I’m still working on <code>please</code>; there will be bugs; <a href="https://github.com/stilvoid/please/issues">let me know about
+them</a>.</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-06-22/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-06-22/</guid>
+            <pubDate>Mon, 22 Jun 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Andy and Teddy are waving goodbye</title>
+            <description><![CDATA[<p>Most of the time, when I&#39;ve got some software I want to write, I do it
+in python or sometimes bash. Occasionally though, I like to slip into
+something with a few more brackets. I&#39;ve written a bit of C in the past
+and love it but recently I&#39;ve been learning <a href="http://golang.org/">Go</a> and
+what’s really struck me is how clever it is. I’m not just talking about
+the technical merits of the language itself; it’s clever in several
+areas:</p>
+
+<ul>
+<li>You don’t need to install anything to run Go binaries.</li>
+</ul>
+
+<p>At first - I’m sure like many others - I felt a little revulsion when I
+heard that Go compiles to statically-linked binaries but after having
+used and played with Go a bit over the past few weeks, I think it’s
+rather clever and was somewhat ahead of the game. In the current climate
+where DevOps folks (and developers) are getting excited about
+<a href="https://engledow.me/blog/2015-05-14/">containers and componentised services</a>, being able to
+simply <a href="http://curl.haxx.se/">curl</a> a binary and have it usable in your
+container without needing to install a stack of dependencies is actually
+pretty powerful. It seems there’s a general trend towards preferring
+readiness of use over efficiency of space used both in RAM and disk
+space. And it makes sense; storage is cheap these days. A 10MiB binary
+is no concern - even if you need several of them - when you have a 1TiB
+drive. The extravagance of large binaries is no longer so relevant when
+you’re comparing it with your collection of 2GiB bluray rips. The days
+of needing to count the bytes are gone.</p>
+
+<ul>
+<li>Go has the feeling of C <a href="http://hitchhikers.wikia.com/wiki/Infinite_Improbability_Drive">but without all that tedious mucking about in
+&lt;del&gt;hyperspace&lt;/del&gt;
+memory</a></li>
+</ul>
+
+<p>Sometimes you just feel you need to write something fairly low level and
+you want more direct control than you have whilst you’re working from
+the comfort blanket of python or ruby. Go gives you the ability to have
+well-defined data structures and to care about how much memory you’re
+eating when you know your application needs to process tebibytes of
+data. What Go doesn&#39;t give you is the freedom to muck about in memory,
+fall off the end of arrays, leave pointers dangling around all over the
+place, and generally make tiny, tiny mistakes that <a href="https://en.wikipedia.org/wiki/Heartbleed">take years for
+anyone to discover</a>.</p>
+
+<ul>
+<li>The build system is designed around how we (as developers) use code
+hosting facilities</li>
+</ul>
+
+<p>Go has a fairly impressive <a href="http://golang.org/pkg">set of features</a>
+built in but if you need something that’s not already included, there’s
+a good chance that someone out there has written what you need. Go
+provides a <a href="http://go-search.org/">package search tool</a> that makes it
+very easy to find what you’re looking for. And when you&#39;ve found it,
+using it is stupidly simple. You add an import declaration in your code:</p>
+
+<pre><code>import &#34;github.com/codegangsta/cli&#34;
+</code></pre>
+
+<p>which makes it very clear where the code has come from and where you’d
+need to go to check the source code and/or documentation. Next, pulling
+the code down and compiling it ready for linking into your own binary
+takes a simple:</p>
+
+<pre><code>go get github.com/codegangsta/cli
+</code></pre>
+
+<p>Go implicitly understands git and the various methods of retrieving code
+so you just need to tell it where to look and it’ll figure the rest out.</p>
+
+<p>In summary, I’m starting to wonder if Google have a time machine. Go
+seems to have nicely predicted several worries and trends since <a href="http://techcrunch.com/2009/11/10/google-go-language/">its
+announcement</a>:
+Docker, Heartbleed, and social coding.</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-05-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-05-15/</guid>
+            <pubDate>Fri, 15 May 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Building a componentised application</title>
+            <description><![CDATA[<p>Most of what’s here is hardly new ground but I felt it worth noting down
+the current strategy we’re using to develop and build what we’re working
+on at <a href="http://www.locationsciences.ai/">Proxama</a>.</p>
+
+<p>Without going into any of the details, it’s a web application with a
+front end written using <a href="http://emberjs.com/">Ember</a> and various
+services that it calls out to, written using whatever seems appropriate
+per service.</p>
+
+<p>At the outset of the project, we decided we would bite the bullet and
+build for <a href="https://www.docker.com/">Docker</a> from the outset. This meant
+we would get to avoid the usual dependency and developer environment
+setup nightmares.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>What we quickly realised as we started to put the bare bones of a few of
+the services in place, was that we had three seemingly conflicting goals
+for each component and for the application as a whole.</p>
+
+<ol>
+<li>Build images that can be deployed in production.</li>
+</ol>
+
+<!-- -->
+
+<ol>
+<li>Allow developers to run services locally.</li>
+</ol>
+
+<!-- -->
+
+<ol>
+<li>Provide a means for running unit tests (both by developers and our
+CI server).</li>
+</ol>
+
+<p>So here’s what we&#39;ve ended up with:</p>
+
+<h2 id="the-solution">The solution</h2>
+
+<p><em>Or: <a href="http://docs.docker.com/compose/">docker-compose</a> to the rescue</em></p>
+
+<h3 id="folder-structure">Folder structure</h3>
+
+<p>Here’s what the project layout looks like:</p>
+
+<pre><code>Project
+|
++-docker-compose.yml
+|
++-Service 1
+| |
+| +-Dockerfile
+| |
+| +-docker.compose.yml
+| |
+| +-&lt;other files&gt;
+|
++-Service 2
+  |
+  |
+  +-Dockerfile
+  |
+  +-docker.compose.yml
+  |
+  +-&lt;other files&gt;
+</code></pre>
+
+<h3 id="building-for-production">Building for production</h3>
+
+<p>This is the easy bit and is where we started first. The <code>Dockerfile</code> for
+each service was designed to run everything with the defaults. Usually,
+this is something simple like:</p>
+
+<pre><code>FROM python:3-onbuild
+CMD [&#34;python&#34;, &#34;main.py&#34;]
+</code></pre>
+
+<p>Our CI server can easily take these, produce images, and push them to
+the registry.</p>
+
+<h3 id="allowing-developers-to-run-services-locally">Allowing developers to run services locally</h3>
+
+<p>This is slightly harder. In general, each service wants to do something
+slightly different when being run for development; e.g. automatically
+restarting when code changes. Additionally, we don’t want to have to
+rebuild an image every time we make a code change. This is where
+<code>docker-compose</code> comes in handy.</p>
+
+<p>The <code>docker-compose.yml</code> at the root of the project folder looks like
+this:</p>
+
+<pre><code>service1:
+    build: Service 1
+    environment:
+        ENV: dev
+    volumes:
+        - Service 1:/usr/src/app
+    links:
+        - service2
+        - db
+    ports:
+        - 8001:8000
+
+service2:
+    build: Service2
+    environment:
+        ENV: dev
+    volumes:
+        - Service 2:/usr/src/app
+    links:
+        - service1
+        - db
+    ports:
+        - 8002:8000
+
+db:
+    image: mongo
+</code></pre>
+
+<p>This gives us several features right away:</p>
+
+<ul>
+<li>We can locally run all of the services together with
+<code>docker-compose up</code></li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>The <code>ENV</code> environment variable is set to <code>dev</code> in each service so that
+the service can configure itself when it starts to run things in &#34;dev&#34;
+mode where needed.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>The source folder for each service is mounted inside the container.
+This means you don’t need to rebuild the image to try out new code.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>Each service is bound to a different port so you can connect to each
+part directly where needed.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>Each service defines links to the other services it needs.</li>
+</ul>
+
+<h3 id="running-the-tests">Running the tests</h3>
+
+<p>This was the trickiest part to get right. Some services have
+dependencies on other things even just to get unit tests running. For
+example, <a href="http://python-eve.org/">Eve</a> is a huge pain to get running
+with a fake database so it’s much easier to just link it to a temporary
+&#34;real&#34; database.</p>
+
+<p>Additionally, we didn&#39;t want to mess with the idea that the images
+should run production services by default but also didn’t want to
+require folks to need to churn out complicated <code>docker</code> invocations like
+<code>docker run --rm -v $(pwd):/usr/src/app --link db:db service1 python -m unittest</code>
+just to run the test suite after coding up some new features.</p>
+
+<p>So, it was docker-compose to the rescue again :)</p>
+
+<p>Each service has a <code>docker-compose.yml</code> that looks something like:</p>
+
+<pre><code>tests:
+    build: .
+    command: python -m unittest
+    volumes:
+        - .:/usr/src/app
+    links:
+        - db
+
+db:
+    image: mongo
+</code></pre>
+
+<p>Which sets up any dependencies needed just for the tests, mounts the
+local source in the container, and runs the desired command for running
+the tests.</p>
+
+<p>So, a developer (or the CI box) can run the unit tests with:</p>
+
+<pre><code>docker-compose run tests
+</code></pre>
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+<li>Each <code>Dockerfile</code> builds an image that can go straight into production
+without further configuration required.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>Each image runs in &#34;developer mode&#34; if the <code>ENV</code> environment variable
+is set.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>Running <code>docker-compose up</code> from the root of the project gets you a
+full stack running locally in developer mode.</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>Running <code>docker-compose run tests</code> in each service’s own folder will
+run the unit tests for that service - starting any dependencies as
+needed.</li>
+</ul>
+]]></description>
+            <link>https://engledow.me/blog/2015-05-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-05-14/</guid>
+            <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Why-fi?</title>
+            <description><![CDATA[<p>I’m an <a href="http://archlinux.org">arch linux</a> user and I love it; there’s no
+other distro for me. The things that arch gets criticism for are the
+exact same reasons I love it and they all more or less boil down to one
+thing: arch does not hold your hand.</p>
+
+<p>It’s been a while since an update in arch caused me any problems but it
+did today.</p>
+
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=196584">It seems there’s an
+issue</a> with the
+latest version of <code>wpa_supplicant</code> which renders it incompatible with
+the way wifi is setup at boot time. The problem was caught and resolved
+very quickly by package maintainers who simply rolled the
+<code>wpa_supplicant</code> package back. However, I was unlucky enough to have
+caught the intervening upgrade shortly before turning my laptop off. I
+came home this evening to find I had no wifi!</p>
+
+<p>This wasn&#39;t a huge challenge but I haven’t written a blog post for a
+while and someone might find this useful:</p>
+
+<hr/>
+
+<p>If your wifi doesn&#39;t start at boot…</p>
+
+<p>And you’re using <a href="https://www.dell.com/en-us/shop/cty/xps-13-9333/spd/xps-13-9333">a laptop with no ethernet
+port</a>…</p>
+
+<p>And you know an upgrade will solve your problem…</p>
+
+<p>How do you get internet so you can upgrade?</p>
+
+<p>Simples :)</p>
+
+<h2 id="the-steps">The steps</h2>
+
+<p>First, find the name of your wireless interface:</p>
+
+<pre><code>iw dev
+</code></pre>
+
+<p>Which will output something like:</p>
+
+<pre><code>phy#0
+    Interface wlp2s0
+        ifindex 2
+        wdev 0x1
+        addr e8:b1:fc:6c:bf:b5
+        type managed
+        channel 11 (2462 MHz), width: 20 MHz, center1: 2462 MHz
+</code></pre>
+
+<p>Where <code>wlp2s0</code> is the bit we’re interested in.</p>
+
+<p>Now bring the interface up:</p>
+
+<pre><code>ip link set wlp2s0 up
+</code></pre>
+
+<p>Connect to the access point:</p>
+
+<pre><code>iw dev wlp2s0 connect &#34;AP name&#34;
+</code></pre>
+
+<p>Create a temporary configuration file for <code>wpa_supplicant</code>:</p>
+
+<pre><code>wpa_passphrase &#34;AP name&#34; &#34;password&#34; &gt; /tmp/wpa.config
+</code></pre>
+
+<p>Run <code>wpa_supplicant</code> to authenticate with the access point:</p>
+
+<pre><code>wpa_supplication -iwlp2s0 -c/tmp/wpa.config
+</code></pre>
+
+<p>In another terminal (or you could have backgrounded the above), run
+<code>dhcpcd</code> to get an IP address from your router:</p>
+
+<pre><code>dhcpcd wlp2s0
+</code></pre>
+
+<p>Update and reboot or whatever :)</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-04-29/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-04-29/</guid>
+            <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Cleaning out my closet</title>
+            <description><![CDATA[<p>Or: <em>Finding out what crud you installed that’s eating all of your space
+in Arch Linux</em></p>
+
+<p>I started running out of space on one of my
+<a href="https://www.archlinux.org/">Arch</a> boxes and wondered (beyond what was
+in my home directory) what I’d installed that was eating up all the
+space.</p>
+
+<p>A little bit of bash-fu does the job:</p>
+
+<pre><code>for pkg in $(pacman -Qq); do
+    size=$(pacman -Qi $pkg | grep &#34;Installed Size&#34; | cut -d &#34;:&#34; -f 2)
+    echo &#34;$size | $pkg&#34;
+done | sed -e &#39;s/ //g&#39; | sort -h
+</code></pre>
+
+<p>This outputs a list of packages with those using the most disk space at
+the bottom:</p>
+
+<pre><code>25.99MiB|llvm-libs
+31.68MiB|raspberrypi-firmware-examples
+32.69MiB|systemd
+32.86MiB|glibc
+41.88MiB|perl
+54.31MiB|gtk2
+62.13MiB|python2
+73.27MiB|gcc
+77.93MiB|python
+84.21MiB|linux-firmware
+</code></pre>
+
+<p>The above is from my <a href="http://www.raspberrypi.org/">pi</a>; not much I can
+uninstall there ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-03-12/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-03-12/</guid>
+            <pubDate>Thu, 12 Mar 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Keychain and GnuPG >= 2.1</title>
+            <description><![CDATA[<p>A while ago, I started using <a href="http://www.funtoo.org/Keychain">keychain</a>
+to manage my ssh and gpg agents. I did this with the following in my
+<code>.bashrc</code></p>
+
+<pre><code># Start ssh-agent
+eval $(keychain --quiet --eval id_rsa)
+</code></pre>
+
+<p>Recently, <a href="https://www.archlinux.org/">arch</a> updated gpg to version
+2.1.1 which, <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">as per the
+announcement</a>, no
+longer requires the <code>GPG_AGENT_INFO</code> environment variable.</p>
+
+<p>Unfortunately, tools like keychain don’t know about that and still
+expect it to be set, leading to some annoying breakage.</p>
+
+<p>My fix is a quick and dirty one; I appended the following to <code>.bashrc</code></p>
+
+<pre><code>export GPG_AGENT_INFO=~/.gnupg/S.gpg-agent:$(pidof gpg-agent):1
+</code></pre>
+
+<p>:)</p>
+]]></description>
+            <link>https://engledow.me/blog/2015-01-02/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-01-02/</guid>
+            <pubDate>Fri, 02 Jan 2015 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Testing a Django app with Docker</title>
+            <description><![CDATA[<p>I&#39;ve been playing around with Docker a fair bit and recently hit upon a
+configuration that works nicely for me when testing code at work.</p>
+
+<p>The basic premise is that I run a docker container that pretty well
+emulates the exact environment that the code will run in down to the OS
+so I don’t need to care that I’m not running the same distribution as
+the servers we deploy to and that I can test my code at any time without
+having to rebuild the docker image.</p>
+
+<p>Here’s an annotated
+<a href="http://docs.docker.com/reference/builder/">Dockerfile</a> with the
+project-specific details removed.</p>
+
+<pre><code># We start with ubuntu 14.04
+
+FROM ubuntu:14.04
+MAINTAINER Steve Engledow &lt;steve@engledow.me&gt;
+
+USER root
+
+# Install OS packages
+# This list of packages is what gets installed by default
+# on Amazon&#39;s Ubuntu 14.04 AMI plus python-virtualenv
+
+ RUN apt-get update \
+     &amp;&amp; apt-get -y install software-properties-common git \
+     ssh python-dev python-virtualenv libmysqlclient-dev \
+     libqrencode-dev swig libssl-dev curl screen
+
+# Configure custom apt repositories
+# and install project-specific packages
+
+COPY apt-key.list apt-repo.list apt.list /tmp/
+
+# Not as nice as this could be as docker defaults to sh rather than bash
+RUN while read key; do curl --silent &#34;$key&#34; | apt-key add -; done &lt; /tmp/apt-key.list
+RUN while read repo; do add-apt-repository -y &#34;$repo&#34;; done &lt; /tmp/apt-repo.list
+RUN apt-get -qq update
+RUN while read package; do apt-get -qq -y install &#34;$package&#34;; done &lt; /tmp/apt.list
+
+# Now we create a normal user and switch to it
+
+RUN useradd -s /bin/bash -m ubuntu \
+    &amp;&amp; chown -R ubuntu:ubuntu /home/ubuntu \
+    &amp;&amp; passwd -d ubuntu
+
+USER ubuntu
+WORKDIR /home/ubuntu
+ENV HOME /home/ubuntu
+
+# Set up a virtualenv andinstall python packages
+# from the requirements file
+
+COPY requirements.txt /tmp/
+
+RUN mkdir .myenv \
+    &amp;&amp; virtualenv -p /usr/bin/python2.7 ~/.myenv \
+    &amp;&amp; . ~/.myenv/bin/activate \
+    &amp;&amp; pip install -r /tmp/requirements.txt \
+
+# Set PYTHONPATH and activate the virtualenv in .bashrc
+
+RUN echo &#34;export PYTHONPATH=~/myapp/src&#34; &gt; .bashrc \
+    &amp;&amp; echo &#34;. ~/.myenv/bin/activate&#34; &gt;&gt; .bashrc
+
+# Copy the entrypoint script
+
+COPY entrypoint.sh /home/ubuntu/
+
+EXPOSE 8000
+
+ENTRYPOINT [&#34;/bin/bash&#34;, &#34;entrypoint.sh&#34;]
+</code></pre>
+
+<p>And here’s the entrypoint script that nicely wraps up running the django
+application:</p>
+
+<pre><code>#!/bin/bash
+. ./.bashrc
+cd myapp/src
+./manage.py $*
+</code></pre>
+
+<p>You generate the base docker image from these files with
+<code>docker build -t myapp ./</code>.</p>
+
+<p>Then, when you’re ready to run a test suite, you need the following
+invocation:</p>
+
+<pre><code>docker run -ti --rm -P -v ~/code/myapp:/home/ubuntu/myapp myapp test
+</code></pre>
+
+<p>This mounts <code>~/code/myapp</code> and <code>/home/ubuntu/myapp</code> within the Docker
+container meaning that you’re running the exact code that you’re working
+on from inside the container :)</p>
+
+<p>I have an alias that expands that for me so I only need to type
+<code>docked myapp test</code>.</p>
+
+<p>Obviously, you can substitute <code>test</code> for <code>runserver</code>, <code>syncdb</code> or
+whatever :)</p>
+
+<p>This is all a bit rough and ready but it’s working very well for me now
+and is repeatable enough that I can use more-or-less the same script for
+a number of different django projects.</p>
+]]></description>
+            <link>https://engledow.me/blog/2014-12-09/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-12-09/</guid>
+            <pubDate>Tue, 09 Dec 2014 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Just call me Anneka</title>
+            <description><![CDATA[<p>I had an idea a few days ago to create a Pebble watchface that works
+like an advent calendar; you get a new christmas-themed picture every
+day.</p>
+
+<p>Here it <del>is :)</del> was:
+<a href="https://apps.pebble.com/applications/547bad0ffb079735da00007c">https://apps.pebble.com/applications/547bad0ffb079735da00007c</a></p>
+
+<p>&gt; Update 2024: <a href="https://en.wikipedia.org/wiki/Pebble_(watch)">Pebble</a>
+is long gone and so is the site that hosted my watchfaces :(</p>
+
+<p>The fun part however, was that I completely forgot about the idea until
+today. Family life and my weekly squash commitment meant that I didn&#39;t
+have a chance to start work on it until around 22:00 and I really wanted
+to get it into the Pebble store by midnight (in time for the 1st of
+December).</p>
+
+<p>I submitted the first release at 23:55!</p>
+
+<p>Enjoy :)</p>
+
+<p>I’ll put the source on GitHub soon. Before that, it’s time for some
+sleep.</p>
+]]></description>
+            <link>https://engledow.me/blog/2014-12-01/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-12-01/</guid>
+            <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>tmux</title>
+            <description><![CDATA[<p><a href="http://tmux.sourceforge.net/">tmux</a> is the best thing ever. That is
+all.</p>
+
+<p>No, that is not all. Here is how I make use of tmux to make my life
+measurably more awesome:</p>
+
+<p>First, my <code>.tmux.conf</code>. This changes tmux’s <code>ctrl-b</code> magic key binding
+to <code>ctrl-a</code> as I’ve grown far too used to hitting that from when I used
+<a href="https://www.gnu.org/software/screen/">screen</a>. I set up a few other
+screen-like bindings too. Finally, I set a few options that make tmux
+work better with urxvt.</p>
+
+<pre><code># Set the prefix to ^A.
+unbind C-b
+set -g prefix ^A
+bind a send-prefix
+
+# Bind c to new-window
+unbind c
+bind c new-window -c $PWD
+
+# Bind space, n to next-window
+unbind &#34; &#34;
+bind &#34; &#34; next-window
+unbind n
+bind n next-window
+
+# Bind p to previous-window
+unbind p
+bind p previous-window
+
+# A few other settings to make things funky
+set -g status off
+set -g aggressive-resize on
+set -g mode-keys vi
+set -g default-terminal screen-256color
+set -g terminal-overrides &#39;rxvt-unicode*:sitm@&#39;
+</code></pre>
+
+<p>And then here’s what I have near the top of my <code>.bashrc</code>:</p>
+
+<pre><code># If tmux isn&#39;t already running, run it
+[ -z &#34;$TMUX&#34; ] &amp;&amp; exec ~/bin/tmux
+</code></pre>
+
+<p>…which goes with this, the contents of <code>~/bin/tmux</code>:</p>
+
+<pre><code>#!/bin/bash
+
+# If there are any sessions that aren&#39;t attached, attach to the first one
+# Otherwise, start a new session
+
+for line in $(tmux ls -F &#34;#{session_name},#{session_attached}&#34;); do
+    name=$(echo $line | cut -d &#39;,&#39; -f 1)
+    attached=$(echo $line | cut -d &#39;,&#39; -f 2)
+
+    if [ $attached -eq 0 ]; then
+        tmux attach -t $name
+        exit
+    fi
+done
+
+tmux -u
+</code></pre>
+
+<p>Basically, what happens is that whenever I start a terminal session, if
+I’m not already attached to a tmux session, I find a session that’s not
+already attached to and attach to it. If there aren&#39;t any, I create a
+new one.</p>
+
+<p>This really tidies up my workflow and means that I never forget about
+any old sessions I’d detached.</p>
+
+<p>Oh and one last thing, <code>ctrl-a s</code> is the best thing in tmux ever. It
+shows a list of tmux sessions which can be expanded to show what’s
+running in them and you can then interactively re-attach your terminal
+to one of them. In short, I can start a terminal from any desktop or vt
+and quickly attach to something that’s happening on any other. I use
+this feature <span id="a lot"></span><strong>a lot</strong>.</p>
+]]></description>
+            <link>https://engledow.me/blog/2014-06-17/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-06-17/</guid>
+            <pubDate>Tue, 17 Jun 2014 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Netcat</title>
+            <description><![CDATA[<p>I had occasion recently to need an entry in my ssh config such that
+connections to a certain host would be proxied through another
+connection. Several sources suggested the following snippet:</p>
+
+<pre><code>Host myserver.net
+    ProxyCommand nc -x &lt;proxy host&gt;:&lt;proxy port&gt; %h %p
+</code></pre>
+
+<p>In my situation, I wanted the connection to be proxied through an ssh
+tunnel that I already had set up in another part of the config. So my
+entry looked like:</p>
+
+<pre><code>Host myserver.net
+    ProxyCommand nc -x localhost:5123 %h %p
+</code></pre>
+
+<p>Try as I might however, I just <em>could not</em> get it to work, always
+receiving the following message:</p>
+
+<pre><code>Error: Couldn&#39;t resolve host &#34;localhost:5123&#34;
+</code></pre>
+
+<p>After some head scratching, checking and double-checking that I had set
+up the proxy tunnel correctly, I finally figured out that it was because
+I had <em>GNU</em> netcat installed rather than <em>BSD</em> netcat. Apparently, most
+of the people in the internet use BSD netcat :)</p>
+
+<p>Worse, <code>-x</code> is a valid option in both netcats but does completely
+different things depending on which you use; hence the
+less-than-specific-but-technically-correct error message.</p>
+
+<p>After that revelation, I thought it was worth capturing the
+commonalities and differences between the options taken by the netcats.</p>
+
+<h2 id="common-options">Common options</h2>
+
+<ul>
+<li><code>-h</code></li>
+</ul>
+
+<p>Prints out nc help.</p>
+
+<ul>
+<li><code>-i interval</code></li>
+</ul>
+
+<p>Specifies a delay time interval between lines of text sent and received.
+Also causes a delay time between connections to multiple ports.</p>
+
+<ul>
+<li><code>-l</code></li>
+</ul>
+
+<p>Used to specify that nc should listen for an incoming connection rather
+than initiate a connection to a remote host. It is an error to use this
+option in conjunction with the -p, -s, or -z options. Additionally, any
+timeouts specified with the -w option are ignored.</p>
+
+<ul>
+<li><code>-n</code></li>
+</ul>
+
+<p>Do not do any DNS or service lookups on any specified addresses,
+hostnames or ports.</p>
+
+<ul>
+<li><code>-p source_port</code></li>
+</ul>
+
+<p>Specifies the source port nc should use, subject to privilege
+restrictions and availability.</p>
+
+<ul>
+<li><code>-r</code></li>
+</ul>
+
+<p>Specifies that source and/or destination ports should be chosen randomly
+instead of sequentially within a range or in the order that the system
+assigns them.</p>
+
+<ul>
+<li><code>-s source</code></li>
+</ul>
+
+<p>Specifies the IP of the interface which is used to send the packets. For
+UNIX-domain datagram sockets, specifies the local temporary socket file
+to create and use so that datagrams can be received. It is an error to
+use this option in conjunction with the -l option.</p>
+
+<ul>
+<li><code>-t</code> in BSD Netcat, <code>-T</code> in GNU Netcat</li>
+</ul>
+
+<p>Causes nc to send RFC 854 DON’T and WON’T responses to RFC 854 DO and
+WILL requests. This makes it possible to use nc to script telnet
+sessions.</p>
+
+<ul>
+<li><code>-u</code></li>
+</ul>
+
+<p>Use UDP instead of the default option of TCP. For UNIX-domain sockets,
+use a datagram socket instead of a stream socket. If a UNIX-domain
+socket is used, a temporary receiving socket is created in /tmp unless
+the -s flag is given.</p>
+
+<ul>
+<li><code>-v</code></li>
+</ul>
+
+<p>Have nc give more verbose output.</p>
+
+<ul>
+<li><code>-w timeout</code></li>
+</ul>
+
+<p>Connections which cannot be established or are idle timeout after
+timeout seconds. The -w flag has no effect on the -l option, i.e. nc
+will listen forever for a connection, with or without the -w flag. The
+default is no timeout.</p>
+
+<ul>
+<li><code>-z</code></li>
+</ul>
+
+<p>Specifies that nc should just scan for listening daemons, without
+sending any data to them. It is an error to use this option in
+conjunction with the -l option.</p>
+
+<h2 id="bsd-netcat-only">BSD netcat only</h2>
+
+<ul>
+<li><code>-4</code></li>
+</ul>
+
+<p>Forces nc to use IPv4 addresses only.</p>
+
+<ul>
+<li><code>-6</code></li>
+</ul>
+
+<p>Forces nc to use IPv6 addresses only.</p>
+
+<ul>
+<li><code>-b</code></li>
+</ul>
+
+<p>Allow broadcast.</p>
+
+<ul>
+<li><code>-C</code></li>
+</ul>
+
+<p>Send CRLF as line-ending.</p>
+
+<ul>
+<li><code>-D</code></li>
+</ul>
+
+<p>Enable debugging on the socket.</p>
+
+<ul>
+<li><code>-d</code></li>
+</ul>
+
+<p>Do not attempt to read from stdin.</p>
+
+<ul>
+<li><code>-I length</code></li>
+</ul>
+
+<p>Specifies the size of the TCP receive buffer.</p>
+
+<ul>
+<li><code>-k</code></li>
+</ul>
+
+<p>Forces nc to stay listening for another connection after its current
+connection is completed. It is an error to use this option without the
+-l option.</p>
+
+<ul>
+<li><code>-O length</code></li>
+</ul>
+
+<p>Specifies the size of the TCP send buffer.</p>
+
+<ul>
+<li><code>-P proxy_username</code></li>
+</ul>
+
+<p>Specifies a username to present to a proxy server that requires
+authentication. If no username is specified then authentication will not
+be attempted. Proxy authentication is only supported for HTTP CONNECT
+proxies at present.</p>
+
+<ul>
+<li><code>-q seconds</code></li>
+</ul>
+
+<p>after EOF on stdin, wait the specified number of seconds and then quit.
+If seconds is negative, wait forever.</p>
+
+<ul>
+<li><code>-S</code></li>
+</ul>
+
+<p>Enables the RFC 2385 TCP MD5 signature option.</p>
+
+<ul>
+<li><code>-T toskeyword</code></li>
+</ul>
+
+<p>Change IPv4 TOS value. toskeyword may be one of critical, inetcontrol,
+lowcost, lowdelay, netcontrol, throughput, reliability, or one of the
+DiffServ Code Points: ef, af11 … af43, cs0 … cs7; or a number in either
+hex or decimal.</p>
+
+<ul>
+<li><code>-U</code></li>
+</ul>
+
+<p>Specifies to use UNIX-domain sockets.</p>
+
+<ul>
+<li><code>-V rtable</code></li>
+</ul>
+
+<p>Set the routing table to be used. The default is 0.</p>
+
+<ul>
+<li><code>-X proxy_protocol</code></li>
+</ul>
+
+<p>Requests that nc should use the specified protocol when talking to the
+proxy server. Supported protocols are &#34;4&#34; (SOCKS v.4), &#34;5&#34; (SOCKS v.5)
+and &#34;connect&#34; (HTTPS proxy). If the protocol is not specified, SOCKS
+version 5 is used.</p>
+
+<ul>
+<li><code>-x proxy_address[:port]</code></li>
+</ul>
+
+<p>Requests that nc should connect to destination using a proxy at
+proxy_address and port. If port is not specified, the well-known port
+for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
+
+<ul>
+<li><code>-Z</code></li>
+</ul>
+
+<p>DCCP mode.</p>
+
+<h2 id="gnu-netcat-only">GNU netcat only</h2>
+
+<ul>
+<li><code>-c</code>, <code>--close</code></li>
+</ul>
+
+<p>Close connection on EOF from stdin.</p>
+
+<ul>
+<li><code>-e</code>, <code>--exec=PROGRAM</code></li>
+</ul>
+
+<p>Program to exec after connect.</p>
+
+<ul>
+<li><code>-g</code>, <code>--gateway=LIST</code></li>
+</ul>
+
+<p>Source-routing hop point(s), up to 8.</p>
+
+<ul>
+<li><code>-G</code>, <code>--pointer=NUM</code></li>
+</ul>
+
+<p>Source-routing pointer: 4, 8, 12, …</p>
+
+<ul>
+<li><code>-L</code>, <code>--tunnel=ADDRESS:PORT</code></li>
+</ul>
+
+<p>Forward local port to remote address.</p>
+
+<ul>
+<li><code>-o</code>, <code>--output=FILE</code></li>
+</ul>
+
+<p>Output hexdump traffic to FILE (implies -x).</p>
+
+<ul>
+<li><code>-t</code>, <code>--tcp</code></li>
+</ul>
+
+<p>TCP mode (default).</p>
+
+<ul>
+<li><code>-V</code>, <code>--version</code></li>
+</ul>
+
+<p>Output version information and exit.</p>
+
+<ul>
+<li><code>-x</code>, <code>--hexdump</code></li>
+</ul>
+
+<p>Hexdump incoming and outgoing traffic.</p>
+
+<h2 id="epilogue">Epilogue</h2>
+
+<p>I uninstalled GNU netcat and installed BSD netcat btw ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2014-04-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-04-15/</guid>
+            <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>btw</title>
+            <description><![CDATA[<p>I discovered my new favourite fact about <a href="https://en.wikipedia.org/wiki/C_programming_language">my new favourite
+language</a>
+recently. I suppose it should be obvious but I hadn&#39;t though about it in
+explicitly these terms.</p>
+
+<p>Given:</p>
+
+<pre><code>char* myStringArray[] = {&#34;Hello&#34;, &#34;Goodbye&#34;, &#34;Tomatoes&#34;};
+int index = 2;
+</code></pre>
+
+<p>then the following will print <code>Tomatoes</code>:</p>
+
+<pre><code>printf(&#34;%s\n&#34;, myStringArray[index]);
+</code></pre>
+
+<p>and so (this is the bit I hadn&#39;t fully realised) will this:</p>
+
+<pre><code>printf(&#34;%s\n&#34;, index[myStringArray]);
+</code></pre>
+
+<p>Good times :)</p>
+]]></description>
+            <link>https://engledow.me/blog/2014-01-31/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-01-31/</guid>
+            <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Things we learned at the LUG meet</title>
+            <description><![CDATA[<ul>
+<li>vimrc comments start with <code>&#34;</code></li>
+<li>howdoi would be useful if it worked</li>
+<li><code>xargs -I {}</code> is handy</li>
+</ul>
+]]></description>
+            <link>https://engledow.me/blog/2013-05-10/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2013-05-10/</guid>
+            <pubDate>Fri, 10 May 2013 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Git aux</title>
+            <description><![CDATA[<p>For a while now, I’ve been wanting to keep various parts of my home
+directory in sync.</p>
+
+<p>At first, I created a git repository for storing my
+<a href="https://en.wikipedia.org/wiki/Dotfile#Unix_and_Unix-like_environments">dotfiles</a>
+but I found it a pain to keep the repository up-to-date.</p>
+
+<p>Fairly recently, someone pointed out
+<a href="http://git-annex.branchable.com/">git-annex</a> to me. After a good read
+of the documentation, it sounded like it could be useful but probably
+more than I needed and perhaps not quite what I really wanted. Besides,
+I couldn’t get the bloody thing to install.</p>
+
+<p>So I did what any geek would do, I wrote my own :D</p>
+
+<p>See <a href="https://github.com/stilvoid/git-aux">git-aux</a> (or
+<a href="https://aur.archlinux.org/packages/git-aux-git/">AUR</a> if you’re on
+<a href="https://www.archlinux.org/">Arch Linux</a>).</p>
+
+<p>Basically, I wanted an easy to way to keep a git repository in sync with
+an directory external to it. With git aux installed, I get pretty much
+exactly what I wanted with a few simple commands.</p>
+
+<p>After creating a new git repository, I do <code>git aux init ~/</code> to tell
+git-aux that I want it to sync this repo with my home directory.</p>
+
+<p>I then do <code>git aux add ~/.vimrc ~/.ssh/config ~/.bashrc</code> and any other
+files I want from my home directory. This copies those files into the
+repository and I can then commit them in the usual way.</p>
+
+<p>If I make changes in my home directory, I use <code>git aux sync</code> to update
+the copies in the repository.</p>
+
+<p>If I’ve made changes on another machine and want to apply those changes
+from the repo to the home dir on this machine, I do <code>git aux apply</code>.</p>
+
+<p>And that’s it :)</p>
+
+<p>It’s unfinished and probably broken in places but mostly does what I was
+looking for.</p>
+]]></description>
+            <link>https://engledow.me/blog/2013-02-11/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2013-02-11/</guid>
+            <pubDate>Mon, 11 Feb 2013 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Lost at C</title>
+            <description><![CDATA[<p>This week I&#39;ve learned a few things (always the mark of a good week in
+my book), the foremost of which is that I don’t know very much about
+<a href="https://en.wikipedia.org/wiki/Programming_language">C</a>.</p>
+
+<p>I expect this post will mostly result in comments such as &#34;well, duh…&#34;
+and the like :)</p>
+
+<h2 id="how-i-spent-an-afternoon-chasing-a-star">How I spent an afternoon chasing a star...</h2>
+
+<p>After a fairly relaxing bank holiday weekend, I came back to work on
+Tuesday to find myself in the position of needing a to write a library
+for a client to plug into their software and to have it ready by Friday.</p>
+
+<p>Though I’d written <a href="http://falsoyd.sourceforge.net/">some (very bad) C++</a> while at
+<a href="http://www.uea.ac.uk/">uni</a>, I&#39;ve fairly recently written a couple of
+very small utilities in C (the library they use is written in C and I
+fancied a challenge) and wanted to learn some more, so I chose C as the
+language to write in.</p>
+
+<p>This afternoon, with the library and a small demo application written, I
+handed the code over to my colleague who’d promised to do all the
+necessary wrapping up to take my developed-in-linux code and produce a
+windows DLL from it. After a short while, he’d compiled the library and
+the demo, BUT… the demo app crashed every time.</p>
+
+<p>At first, it looked like I’d forgotten to free() some malloc()ed memory.
+I had; but even after doing so, the code was still crashing in windows.
+The search continued for quite some time until I eventually found what
+was wrong.</p>
+
+<p>There was an asterisk where there shouldn&#39;t have been, FFS!</p>
+
+<p>It turns out that I’d carried some pre-conceptions with me from my
+previous life as a Java developer and various other places. I’m so used
+to pretty much every language passing things around by value when the
+data is small (ints, chars, etc.) and by reference when it’s not
+(objects, etc.). I was completely unprepared for the fact that C deals
+<em>only</em> in values.</p>
+
+<p>I’m not one of those who are scared of pointers, I’m quite comfortable
+with pointer arithmetic, allocating and freeing memory and the like.
+What I had was some code like this:</p>
+
+<pre><code>typedef struct {
+    int a;
+    int b;
+} AB;
+
+void do_some_stuff(int *a, int *b, int num_records, AB **out) {
+    int i;
+    AB ab[num_records];
+
+    for(i=0; i&lt;num_records; i++) {
+        ab[i].a = a[i];
+        ab[i].b = b[i];
+    }
+
+    *out = ab;
+}
+
+void get_stuff() {
+    int a[2] = {1, 2};
+    int b[2] = {3, 4};
+
+    AB *ab;
+
+    do_some_stuff(a, b, 2, &amp;ab);
+
+    // Do some stuff with ab;
+}
+</code></pre>
+
+<p>Although the real code actually did useful things :P</p>
+
+<p>After handing the code over however, it transpired that MSVC doesn&#39;t
+support all of C99 (why pick a standard and implement part of it?!)
+specifically, variable-length arrays; so the <code>AB ab[num_records]</code> line
+had to go.</p>
+
+<p>Here’s where my preconception came in:</p>
+
+<p>So that array declaration became
+<code>AB *ab = malloc(sizeof(AB*) * num_records)</code> and a corresponding
+<code>free(ab)</code> in <code>get_stuff()</code>.</p>
+
+<p>Yep, nothing in C is a reference unless you really, really say it is.
+Arrays of structs are just like arrays of any other type: a sequence of
+those things laid end to end in memory. <code>sizeof(AB*)</code> needed to be
+<code>sizeof(AB)</code> and that was it.</p>
+
+<p><span id="The. Entire. Afternoon."></span><strong>The. Entire. Afternoon.</strong></p>
+
+<p>Consider that my lesson learned.</p>
+
+<p>Luckily, I seem to have ended up quite fond of C, pleasantly more aware
+of how it works, and quite keen to write some more.</p>
+]]></description>
+            <link>https://engledow.me/blog/2012-08-30/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2012-08-30/</guid>
+            <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Ire</title>
+            <description><![CDATA[<p>Call me crazy (thanks) but I like regular expressions.</p>
+
+<p>I like them enough to have decided that what I really needed was a tool
+that let me put regular expressions in my regular expressions (<a href="http://knowyourmeme.com/memes/xzibit-yo-dawg">yo
+dawg</a>). I had the idea for
+this a while ago but only got around to realising it a few days ago.</p>
+
+<p>The basic idea is a scripting language for matching text via regular
+expressions, and then applying further regular expressions (and
+replacements) dependent on those.</p>
+
+<p>I wanted to keep the syntax fairly free so there’s support for
+representing blocks by indentation or within braces. To avoiding
+ambiguity, indenting can’t be used inside braces although the opposite
+is fine.</p>
+
+<p>Within braces, expressions should be separated by semi-colons.</p>
+
+<p>I also wanted support for creating named blocks of code (functions if
+you like) and for flexibility over the character used to delimit the
+parts of an expression.</p>
+
+<h2 id="example">Example</h2>
+
+<p>After some mucking about, what I&#39;ve ended up with is summat that looks
+like this:</p>
+
+<pre><code>&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $2\n/pt
+
+/^processor\s+:\s+(\d+)/# CPU $1\n/p
+
+/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</code></pre>
+
+<p>The idea being that you pipe <code>/proc/cpuinfo</code> through that and you get a
+summary that looks like:</p>
+
+<pre><code># CPU 0
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 1
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 2
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 3
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+</code></pre>
+
+<h2 id="breaking-it-down">Breaking it down</h2>
+
+<pre><code>&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $1\n/pt
+</code></pre>
+
+<p>Define a block called <code>proc</code> and do not execute it yet.</p>
+
+<p>The first line of <code>proc</code> matches a string followed by a space and an @
+symbol. It then replaces what it’s found with Model: (the string at the
+beginning). Then it prints the result (the <code>p</code> flag) and discards the
+replacement that has taken place (temporary apply - the <code>t</code> flag).</p>
+
+<p>The second line does similar but looks for the @ followed by a space, a
+string, and a newline then prints &#34;Speed: (the string)&#34;.</p>
+
+<pre><code>/^processor\s+:\s+(\d+)/# CPU $1\n/p
+</code></pre>
+
+<p>Match a line starting with processor and print out &#34;CPU (the number)&#34;</p>
+
+<pre><code>/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</code></pre>
+
+<p>Match a line starting with Model name, and remove everything up until
+the start of the data. Then call the block called <code>proc</code>. Finally, print
+a newline character.</p>
+
+<p>Obviously this is a fairly contrived example ;)</p>
+
+<h2 id="trying-it-out">Trying it out</h2>
+
+<p>Like most things these days, I wrote the engine for Ire in
+<a href="https://nodejs.org/en">node.js</a>.</p>
+
+<p>If you have that installed, you can install ire with:</p>
+
+<pre><code>npm install -g ire
+</code></pre>
+
+<p>or if you’re feeling less brave or more paranoid, just <code>npm install ire</code>
+to install it to the current folder.</p>
+
+<p>Further details are in the
+<a href="https://github.com/stilvoid/Ire/blob/master/README.md">README</a>.</p>
+
+<h2 id="final-word">Final word</h2>
+
+<p>Yes, I am fully aware that this is somewhat limited in use and probably
+completely pointless.</p>
+
+<p>I’m sure <em>someone</em> will point out that I could do the kinds of things I
+want with pure sed or awk or somesuch. To those people: &#34;you’re missing
+the point&#34;.</p>
+]]></description>
+            <link>https://engledow.me/blog/2012-07-07/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2012-07-07/</guid>
+            <pubDate>Sat, 07 Jul 2012 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>Break In!</title>
+            <description><![CDATA[<p>A while ago, I decided to learn how to use <a href="https://en.wikipedia.org/wiki/Canvas_element">the canvas</a> and that for my
+first project I was going to write a breakout clone. Pretty standard
+fare for a first-time project :)</p>
+
+<p>After writing some routines to draw blocks on the screen some weeks ago,
+I finally got around to doing some real work on it this evening. Two or
+three hours later, I&#39;d ended up with a mostly working, radial version of
+Breakout.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/breakout.png" alt="Screenshot of BreakIn"/></p>
+
+<blockquote>
+<p>Update 2024: I am no longer hosting this anywhere, so you can&#39;t play it.
+I might see if I can find it and host it again.</p>
+</blockquote>
+
+<p>There are still some obvious bugs (the collision detection is a bit
+shoddy) and it doesn&#39;t keep score or do anything special when you win
+but it&#39;s reasonably fun and I&#39;m quite pleased with what I&#39;ve achieved in
+just a couple of hours.</p>
+
+<p>The code is released under the
+<code>If-You-Steal-This-Without-Asking-Me-I&#39;ll-Bite-Your-Legs-Off</code> licence ;)</p>
+]]></description>
+            <link>https://engledow.me/blog/2011-10-27/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2011-10-27/</guid>
+            <pubDate>Thu, 27 Oct 2011 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>xmodmap Hints and Tips</title>
+            <description><![CDATA[<p>Originally posted on <a href="http://rollingrelease.com/system/2010/09/xmodmap-hints-and-tips">Rolling Release</a>.
+I&#39;m reposting this here as I recently broke my finger and so made a few
+changes to my xmodmap settings to accommodate the ensuing one-handed
+typing. Once again, I had to <a href="http://ddg.gg/">search</a> for how to use
+xmodmap and came upon my own post. I&#39;m keeping it here for easier
+reference and in the hope the details will burn deeper into my mind. It
+was written for a tutorial column so excuse the tone.</p>
+
+<h2 id="about-xmodmap">About xmodmap</h2>
+
+<p>Xmodmap is used to control the mappings between the keys you press on
+the keyboard and the results you will experience on screen. Some common
+usage examples of xmodmap are:</p>
+
+<ul>
+<li>Disabling and/or reallocating the caps-lock key</li>
+<li>Mapping certain foreign or other special characters to keys on your
+keyboard</li>
+<li>Enabling &#34;media&#34; keys</li>
+<li>Terminology</li>
+</ul>
+
+<p>To achieve things like the above, you&#39;ll be mapping KeyCodes to KeySyms
+and KeySyms to Modifiers so it&#39;s obviously important to understand
+exactly what xmodmap means by these terms (I certainly didn&#39;t when I
+started out).</p>
+
+<h2 id="keycode">KeyCode</h2>
+
+<p>A KeyCode is a number generated by your keyboard when you press a
+certain key. For example, the space bar usually produces the KeyCode
+128.</p>
+
+<h2 id="keysym">KeySym</h2>
+
+<p>A KeySym is simply a word used to name a type of key. This concept is
+very important because it means that applications don&#39;t need to
+interpret the information output by your keyboard directly; they can
+refer to keys by name.</p>
+
+<p>As mentioned above, most keyboards produce the code 128 when you press
+the spacebar but it would be possible to have a very non-standard
+keyboard that outputs the KeyCode 64 when the spacebar is pressed. You&#39;d
+certainly want to ensure that code 64 is interpreted as a spacebar press
+without having to rewrite all the applications you use. To do this, we&#39;d
+map the KeyCode 64 to the KeySym &#34;space&#34;.</p>
+
+<h2 id="modifier">Modifier</h2>
+
+<p>A Modifier is a special kind of key that can be held at the same time as
+another key and modify its output. For example, when you press the A key
+on your keyboard, you see the letter &#39;a&#39; appear on screen. If you hold
+shift and press A, you&#39;ll see the letter &#39;A&#39; – shift is a Modifier.</p>
+
+<p>Let&#39;s start with looking at modifiers to get the hang of Modifiers and
+KeySyms...</p>
+
+<h2 id="modifiers">Modifiers</h2>
+
+<p>There are 8 modifiers:</p>
+
+<ul>
+<li>Shift</li>
+<li>Lock</li>
+<li>Control</li>
+<li>Mod1</li>
+<li>Mod2</li>
+<li>Mod3</li>
+<li>Mod4</li>
+<li>Mod5</li>
+</ul>
+
+<p>Xmodmap provides three different operations for changing the way KeySyms
+are mapped to Modifiers: clear, add, and remove.</p>
+
+<p>My favourite example – turning off caps lock:</p>
+
+<p><code>$ xmodmap -e &#34;clear Lock&#34;</code></p>
+
+<p>This command clears the Lock modifier meaning that no keys now produce a
+caps lock effect. Bliss!</p>
+
+<p>To reassign the caps lock key to do something more useful:</p>
+
+<p><code>$ xmodmap -e &#34;add Shift = Caps_Lock&#34;</code></p>
+
+<p>This adds the KeySym &#34;Caps_Lock&#34; to the list of keys that produce the
+Shift modifier. In other words, we&#39;ve turned caps lock into another
+shift key.</p>
+
+<p>If you change your mind and want to stop the caps lock key behaving as a
+shift key:</p>
+
+<p><code>$ xmodmap -e &#34;remove Shift = Caps_Lock&#34;</code></p>
+
+<p>This is basically the opposite of the previous example.</p>
+
+<h2 id="mapping-keycodes-to-keysyms">Mapping KeyCodes to KeySyms</h2>
+
+<p>Now we&#39;ve got the hang of changing the Modifiers, we&#39;ll round off by
+looking at mapping the physical keys on your keyboard to produce the
+results you want.</p>
+
+<p>First things first, you&#39;ll need to know the keycode of the key you want
+to change. To do this, you can use xev.</p>
+
+<p><code>$ xev</code></p>
+
+<p>After running xev, press the key in question and you&#39;ll see some output
+like this in your terminal:</p>
+
+<pre><code>KeyPress event, serial 21, synthetic YES, window 0x800001,
+root 0x40, subw 0x0, time 1539131, (69,8), root:(683,402),
+state 0x0, keycode 63 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,
+XLookupString gives 0 bytes:
+XmbLookupString gives 0 bytes:
+XFilterEvent returns: False
+</code></pre>
+
+<p>The third line is the one we&#39;re interested in. You&#39;ll see the word
+keycode followed by the number you&#39;re going to need next, in the example
+above it&#39;s 63.</p>
+
+<p>Now we&#39;re going to map that key to give us some foreign characters.</p>
+
+<p><code>$ xmodmap -e &#34;keycode 63 = e E eacute Eacute&#34;</code></p>
+
+<p>The &#34;keycode&#34; command maps a KeyCode to a number of KeySyms. The order
+of the KeySyms is important as it represents how the KeySyms are
+derived.</p>
+
+<ol>
+<li>The key pressed alone</li>
+<li>With the Shift modifier</li>
+<li>The key pressed along with the Mode_switch key</li>
+<li>With Mode_switch AND Shift</li>
+</ol>
+
+<p>Mode_switch is just another keysym and you can map it to a chosen key on
+your keyboard like this:</p>
+
+<p><code>$ xmodmap -e &#34;keycode 64 = Mode_switch&#34;</code></p>
+
+<p>My personal choice is to map Mode_switch to my AltGr key. To do this,
+you can use a special version of the keycode command. `xmodmap -e
+&#34;keycode Alt_R = Mode_switch&#34;` This asks xmodmap to lookup what
+keycode(s) are currently assigned to the KeySym Alt_R (right alt) and
+assign them to Mode_switch as well.</p>
+
+<p>So with the above mappings, here&#39;s what happens when I press the keys on
+my keyboard:</p>
+
+<ul>
+<li>The key on it&#39;s own -&gt; A lowercase &#39;e&#39;</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>With shift -&gt; An uppercase &#39;E&#39;</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>With AltGr -&gt; A lowercase e-acute (as used in French for example)</li>
+</ul>
+
+<!-- -->
+
+<ul>
+<li>With AltGr and shift -&gt; An uppercase E-acute</li>
+</ul>
+
+<h2 id="saving-your-mappings">Saving Your Mappings</h2>
+
+<p>Once you&#39;ve decided how you&#39;d like everything set up, you obviously
+don&#39;t want to have to type all those xmodmap lines in every time you
+start X. To save you from this, you can just put all your mapping into a
+file (I save mine at <code>~/.xmodmap</code>) and then just tell xmodmap to load
+from it.</p>
+
+<p><code>$ xmodmap ~/.xmodmap</code></p>
+
+<p>Ideally, you&#39;d add that line to your <code>.xinitrc</code> so it runs automatically
+when you start X.</p>
+
+<p>The End</p>
+
+<p>That just about wraps up this howto. I hope somebody finds it useful as
+I certainly found xmodmap confusing in my early days. Now I have my
+keyboard customised to do just what I want and I couldn&#39;t live without
+it.</p>
+
+<h2 id="useful-links">Useful Links</h2>
+
+<p>A few useful links about xmodmap.</p>
+
+<ul>
+<li><a href="http://www.xfree86.org/4.2.0/xmodmap.1.html">xmodmap man page</a></li>
+<li><a href="http://www.in-ulm.de/~mascheck/X11/xmodmap.html">Some useful hints</a></li>
+<li><a href="http://www.in-ulm.de/~mascheck/X11/Xmodmap.mapping">A very extensive xmodmap example
+file</a></li>
+</ul>
+]]></description>
+            <link>https://engledow.me/blog/2011-10-22/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2011-10-22/</guid>
+            <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
+        </item>
+        
+    </channel>
+</rss>

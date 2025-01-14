@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{.SiteTitle}}: {{.PageTitle}}</title>
+        <title>{{.Site.Title}}: {{.Title}}</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
         <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
@@ -12,14 +12,18 @@
     <body>
         <nav>{{range .Nav}}
             <ul>{{range .}}
-                <li><a href="{{.Uri}}"{{.Attrs}}>{{.Title}}</a>{{.Extra}}</li>{{end}}
+                <li><a href="{{.Uri}}"
+                    {{- if .Selected $}} class="selected"{{end -}}
+                    >{{.Title}}</a>
+                    {{- if .IsBlog}}<br><span class="date">({{.Date}})</span>{{end -}}
+                    </li>{{end}}
             </ul>{{end}}
         </nav>
 
         <main>
             {{.Body}}
 
-            <footer>&copy; 2025, Steve Engledow</footer>
+            <footer>&copy; 2025, Steve Engledow - <a href="/feed.xml">RSS</a></footer>
         </main>
     </body>
 </html>

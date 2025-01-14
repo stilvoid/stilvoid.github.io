@@ -15,4 +15,6 @@ I work for AWS as a manager of a team of builders. I try to keep my coding skill
 
 ## Last 5 blogs
 
-{{.BlogLinks}}
+{{range slice .Site.Blogs 0 5}}
+- [{{.Title}}]({{.Uri}})<br><span class="date">({{.Date}})</span>
+{{- end}}

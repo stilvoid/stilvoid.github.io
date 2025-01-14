@@ -1,1 +1,0 @@
-- [{{.Title}}]({{.Uri}})<br><span class="date">({{.Date}})</span>
