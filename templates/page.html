@@ -10,17 +10,25 @@
     </head>
 
     <body>
-        <nav>{{range .Nav}}
+        <nav>{{block "iter" .Tree}}
             <ul>{{range .}}
-                <li><a href="{{.Uri}}"
-                    {{- if .Selected $}} class="selected"{{end -}}
-                    >{{.Title}}</a>
-                    {{- if .IsBlog}}<br><span class="date">({{.Date}})</span>{{end -}}
-                    </li>{{end}}
-            </ul>{{end}}
+                <li><a href="{{.Page.Uri}}"
+                {{- if .Selected}} class="selected"{{end -}}
+                >{{.Page.Title}}</a>
+                {{- if .Page.IsBlog}}<br><span class="date">({{.Page.Date}})</span>{{end -}}
+                </li>{{end}}
+            </ul>
+            {{- range . -}}
+                {{if and .Selected .Children}}
+                    {{template "iter" .Children}}
+                {{- end}}
+            {{- end -}}
+        {{- end}}
         </nav>
 
         <main>
+            <h1>{{.Title}}</h1>
+
             {{.Body}}
 
             <footer>&copy; 2025, Steve Engledow - <a href="/feed.xml">RSS</a></footer>
