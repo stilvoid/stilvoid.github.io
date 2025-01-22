@@ -6,15 +6,15 @@
         <link>https://engledow.me/</link>
         <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
         <copyright>2025 Steve Engledow</copyright>
-        <lastBuildDate>Wed, 15 Jan 2025 18:08:33 +0000</lastBuildDate>
-        <pubDate>Wed, 15 Jan 2025 18:08:33 +0000</pubDate>
+        <lastBuildDate>Wed, 22 Jan 2025 12:13:13 +0000</lastBuildDate>
+        <pubDate>Wed, 22 Jan 2025 12:13:13 +0000</pubDate>
         <ttl>1800</ttl>
 
         <item>
             <title>TBC</title>
             <description><![CDATA[<p>In tidying up my corner of the interwebs, I put together a list of
 projects that I&#39;ve worked on over the years. One
-of those is <a href="https://engledow.me/projects/games/#falsoyd">Falsoyd</a>. I commented &#34;I don&#39;t
+of those is <a href="https://engledow.me/games/#falsoyd">Falsoyd</a>. I commented &#34;I don&#39;t
 know if it even compiles on modern systems&#34;. Of course, that stuck in my
 head and inevitably I had to try...</p>
 
