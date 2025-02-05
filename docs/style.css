@@ -89,8 +89,9 @@ main li>p {
     display: inline-block;
 }
 
-.date {
-    color: #dcdcdc80;
+footer, .date {
+    color: #dcdcdcc0;
+    font-size: 80%;
 }
 
 main {
@@ -103,11 +104,6 @@ main img {
     display: block;
     border: 3px solid black;
     border-radius: 6px;
-}
-
-footer {
-    font-size: 12pt;
-    color: #dcdcdc80;
 }
 
 pre, code {
@@ -125,7 +121,7 @@ pre {
 blockquote {
     padding: 0 1em;
     border-left: 1px solid #dcdcdc40;
-    color: #dcdcdca0;
+    color: #dcdcdcc0;
 }
 
 blockquote>p {
