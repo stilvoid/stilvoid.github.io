@@ -12,7 +12,7 @@
 
         {{range .Blogs}}<item>
             <title>{{.Title}}</title>
-            <description><![CDATA[{{.HTML}}]]></description>
+            <description><![CDATA[{{.Body}}]]></description>
             <link>{{.Permalink}}</link>
             <guid isPermaLink="true">{{.Permalink}}</guid>
             <pubDate>{{.RFCDate}}</pubDate>
