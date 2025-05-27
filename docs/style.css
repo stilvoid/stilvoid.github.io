@@ -5,38 +5,36 @@ html {
 
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-size: 15pt;
     line-height: 1.5em;
-    font-family: courier, monospace;
+    font-family: "Hack", monospace;
     color: #dcdcdc;
     max-width: 100vw;
     background: #15191f;
-    gap: 2em;
-    justify-content: flex-start;
+    align-items: center;
     margin: 1em;
+}
+
+body>* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0;
+    text-align: center;
+}
+
+header img {
+    width: 4em;
+    border-radius: 2em;
+    border: 3px outset #dcdcdc40;
 }
 
 a {
     color: #5ffafc;
     text-decoration: none;
-    font-variant: small-caps;
-    text-transform: lowercase;
-}
-
-a:before {
-    content: "[";
-    color: #5ffafc;
-}
-
-a:after {
-    content: "]";
-    color: #5ffafc;
-}
-
-nav a.selected:before {
-    content: "→ [";
-    color: #5ffafc;
 }
 
 a:hover {
@@ -48,29 +46,40 @@ nav a.selected {
     color: #e17ee1;
 }
 
-body>* {
-    margin: 0;
-    padding: 0;
-}
-
 nav {
     flex-grow: 0;
     display: flex;
     flex-direction: column;
-    /*gap: 1em;*/
-    width: 20em;
 }
 
 nav>ul {
-    border-right: 2px solid #ece10080;
-    border-bottom: 2px solid #ece10080;
-    padding: 1em 2em 1em 1em;
     margin: 0;
-    text-align: right;
+    padding: 0;
 }
 
-nav>ul:last-child {
-    border-bottom: none;
+nav>ul>li {
+    display: inline-block;
+    list-style: circle;
+}
+
+nav>ul>li:before {
+    content: "*";
+    color: #ffffff80;
+    display: inline;
+    clear: none;
+    margin-right: 0.5em;
+}
+
+nav>ul>li:first-child:before {
+    content: "";
+}
+
+nav.blog {
+    text-align: center;
+}
+
+nav.blog>p {
+    margin: 0.5em 0 0.5em 0;
 }
 
 li {
@@ -89,9 +98,9 @@ main li>p {
     display: inline-block;
 }
 
-footer, .date {
-    color: #dcdcdcc0;
-    font-size: 80%;
+footer {
+    margin-top: 2em;
+    text-align: center;
 }
 
 main {
@@ -102,7 +111,7 @@ main {
 main img {
     margin: 0 auto;
     display: block;
-    border: 3px solid black;
+    border: 3px outset #fcfcfc40;
     border-radius: 6px;
 }
 
@@ -132,32 +141,8 @@ blockquote>p {
 h1,h2,h3,h4,h5,h6 {
     color: #e17ee1;
     line-height: 1.25em;
+    text-align: center;
 }
 
 @media ((max-width: 100em) and (orientation: portrait)) or (max-width: 50em) {
-    body {
-        flex-direction: column-reverse;
-    }
-
-    main {
-        max-width: 100vw;
-    }
-
-    nav {
-        width: 100%;
-    }
-
-    nav > ul {
-        text-align: center;
-        border-right: none;
-    }
-
-    nav>ul:first-child {
-        border-top: 2px solid #ece10080;
-    }
-
-    nav a.selected:after {
-        content: "] ←";
-        color: #5ffafc;
-    }
 }
