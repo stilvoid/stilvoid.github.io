@@ -35,4 +35,4 @@ I make low-effort games with [Pico-8](https://www.lexaloffle.com/pico-8.php) and
 - [Falsoyd](https://github.com/stilvoid/falsoyd)
 
     A terrible game I that wrote around 2000CE.
-    tbh I don't know if it even compiles on modern systems.
+    <del>tbh I don't know if</del> it even compiles on modern systems!
