@@ -148,6 +148,7 @@ main img {
     display: block;
     border: 2px solid #444;
     border-radius: 4px;
+    max-width: 100%;
 }
 
 pre, code {
@@ -197,4 +198,27 @@ p {
 audio {
     display: inline-block;
     vertical-align: middle;
+}
+
+@media screen and (max-width:640px){
+    body {
+        font-size: 14pt;
+    }
+
+    header img {
+        width: 2em;
+    }
+
+    nav ul>li {
+        padding: 0 0.5em;
+        margin: 0;
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    main {
+        margin: 0 0.5em;
+    }
 }
