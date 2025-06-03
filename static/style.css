@@ -171,6 +171,7 @@ pre, code {
 }
 
 pre {
+    width: 100%;
     white-space: pre-wrap;
     border-radius: 0.25em;
     border-radius: 3px;
