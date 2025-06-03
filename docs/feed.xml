@@ -6,8 +6,8 @@
         <link>https://engledow.me/</link>
         <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
         <copyright>2025 Steve Engledow</copyright>
-        <lastBuildDate>Fri, 30 May 2025 23:25:26 +0100</lastBuildDate>
-        <pubDate>Fri, 30 May 2025 23:25:26 +0100</pubDate>
+        <lastBuildDate>Tue, 03 Jun 2025 15:06:21 +0100</lastBuildDate>
+        <pubDate>Tue, 03 Jun 2025 15:06:21 +0100</pubDate>
         <ttl>1800</ttl>
 
         <item>
@@ -306,16 +306,16 @@ version
 <p>First, I separate my work into different folders. My <code>~/code/</code> directory
 looks like this:</p>
 
-<pre><code>code
-    personal
-        repo1
-        repo2
-    work
-        repo3
-        repo4
-    customer
-        repo5
-        repo6
+<pre><code>code/
+    personal/
+        repo1/
+        repo2/
+    work/
+        repo3/
+        repo4/
+    customer/
+        repo5/
+        repo6/
 </code></pre>
 
 <p>Using this layout, each folder that is directly underneath the code
