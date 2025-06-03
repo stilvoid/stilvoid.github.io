@@ -139,6 +139,19 @@ main {
     padding: 1.2em 0;
 }
 
+main nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+main nav del {
+    text-decoration: none;
+    color: #444444;
+    cursor: default;
+}
+
 main>* {
     max-width: 40em;
 }
@@ -155,14 +168,13 @@ pre, code {
     background: #222222;
     color: #6fbf92;
     padding: 0.1em 0.3em;
-    border-radius: 3px;
-    border: 1px solid #333;
 }
 
 pre {
     white-space: pre-wrap;
-    padding: 0.5em;
     border-radius: 0.25em;
+    border-radius: 3px;
+    border: 1px solid #333;
 }
 
 blockquote {

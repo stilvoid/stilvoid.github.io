@@ -2,5 +2,5 @@
 
 {{- range .Site.Blogs}}
 [{{.Title}}]({{.Uri}})
-: {{.Date}}
+: {{.BlogData.Date}}
 {{end -}}

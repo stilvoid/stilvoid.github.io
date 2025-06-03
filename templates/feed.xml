@@ -15,7 +15,7 @@
             <description><![CDATA[{{.Body}}]]></description>
             <link>{{.Permalink}}</link>
             <guid isPermaLink="true">{{.Permalink}}</guid>
-            <pubDate>{{.RFCDate}}</pubDate>
+            <pubDate>{{.BlogData.RFCDate}}</pubDate>
         </item>
         {{end}}
     </channel>

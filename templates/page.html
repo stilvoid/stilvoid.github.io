@@ -23,11 +23,19 @@
                 </ul>
             </nav>
         </header>
-
+{{define "blogNav"}}
+    {{- if .BlogData}}<nav>
+        {{- if .BlogData.Prev}}<a href="{{.BlogData.Prev.Uri}}">Previous</a>{{else}}<del>Previous</del>{{end -}}
+        {{- if .BlogData.Next}}<a href="{{.BlogData.Next.Uri}}">Next</a>{{else}}<del>Next</del>{{end -}}
+    </nav>{{end -}}
+{{end}}
         <main>
+            {{template "blogNav" .}}
+
             <h1>{{.Title}}</h1>
 
             {{.Body}}
+            {{template "blogNav" .}}
         </main>
 
         <footer>
