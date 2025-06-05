@@ -24,9 +24,9 @@
             </nav>
         </header>
 {{define "blogNav"}}
-    {{- if .BlogData}}<nav>
-        {{- if .BlogData.Prev}}<a href="{{.BlogData.Prev.Uri}}">Previous</a>{{else}}<del>Previous</del>{{end -}}
-        {{- if .BlogData.Next}}<a href="{{.BlogData.Next.Uri}}">Next</a>{{else}}<del>Next</del>{{end -}}
+    {{- if .Blog}}<nav>
+        {{- if .Blog.Prev}}<a href="{{.Blog.Prev.Uri}}">Previous</a>{{else}}<del>Previous</del>{{end -}}
+        {{- if .Blog.Next}}<a href="{{.Blog.Next.Uri}}">Next</a>{{else}}<del>Next</del>{{end -}}
     </nav>{{end -}}
 {{end}}
         <main>
