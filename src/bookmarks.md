@@ -27,6 +27,14 @@
 [spinpoint.org](https://www.spinpoint.org/)
 : Retro computing resources and archives
 
+### MisterFPGA
+
+[MiSTer FPGA Forum](https://misterfpga.org/)
+: The online community for MiSTer FPGA enthusiasts
+
+[MiSTer FPGA Documentation](https://mister-devel.github.io/MkDocs_MiSTer/)
+: A great resource for setting up your MiSTer FPGA
+
 ## Development
 
 ### Programming
