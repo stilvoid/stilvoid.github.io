@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Back to the Primitive</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+
+            <nav>
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/bookmarks/">Bookmarks</a></li>
+                    <li><a href="/tools/">Command-line tools</a></li>
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/music/">Music</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <nav><a href="/hidden/blog/2024-08-28/">Previous</a><a href="/hidden/blog/2019-11-13/">Next</a></nav>
+
+            <h1>Back to the Primitive</h1>
+
+            <p>I like text, plain text. Always have. But over the past several years
+(and it has been, as the kids say, a hot minute since I <a href="/hidden/blog/2019-11-13/">last
+blogged</a>) I&#39;ve found more and more bloat creeping
+into my daily life. I moved to a Mac Mini as my main machine about 4
+years ago as I just gave up in the struggle between the way I think
+things ought to be and the &#34;needs&#34; of life working for a large
+corporate. In fairness, I have come to more or less enjoy MacOS but
+whenever I slip back into my Arch box with my i3 desktop, it feels <em>so
+sleek</em>.</p>
+
+<p>Moving to the Mac has necessarily meant changing some of my regular
+workflow and tools. I don&#39;t know what it is about the Mac but it seemed
+to discourage me from being so heavily terminal-based as I was. I really
+can&#39;t put my finger on it. Regardless, I ended up moving from taking
+notes in markdown to <a href="https://obsidian.md/">Obsidian</a> for a while and
+then eventually <a href="https://logseq.com/">Logseq</a>. Still just markdown files
+in a folder but the GUI is ever-present. I even found myself starting to
+use, and almost enjoy, <a href="https://code.visualstudio.com/">VS Code</a>!</p>
+
+<p>Anyway, the point is, through <a href="https://latenightlinux.com/late-night-linux-episode-289/">Late Night
+Linux</a>, I
+discovered <a href="https://vimwiki.github.io/">Vimwiki</a> and have started to
+love the terminal (and Vim) again. In fact, I started writing some code
+the other day and just automatically started it in Vim rather than VS
+Code. The rot is beginning to recede eh ;)</p>
+
+<p>One of the tasks I decided to bring over to Vimwiki was maintaining my
+small and fairly pointless <a href="https://engledow.me">website</a>. In another
+show of bloat, I had been through various markdown-to-website tools
+(ghost, hugo, jekyll), decided I disliked something about each one, and
+ended up rolling my own Python cruft. Inevitably, I came back to the
+site to make some changes after a few months and had <em>completely</em>
+forgotten how any of it was meant to work :) And that is what led me to
+the decision to try Vimwiki for the site as well as my note-taking.</p>
+
+<p>The first challenge is that, while Vimwiki supports markdown syntax, it
+doesn&#39;t support it very well and requires more plugins to get it to spit
+out html. Over the years, my enthusiasm for markdown has waned
+considerably. I like the overall style of the markup but it&#39;s just too
+ambiguous and ends up causing more problems than it solves. So... the
+tool I want to use has it&#39;s own syntax and I&#39;m not tied to my usual
+preference... obviously it&#39;s time to figure out how to convert all my
+existing <a href="/hidden/blog/">posts</a> ;)</p>
+
+<p>I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a>
+is even more lovely than I had previously realised. Writing a new reader
+or writer for it is almost trivial. You write a lua file, create a few
+functions to parse/create text in various formats (e.g. emphasised, code
+blocks, bullet points), and then point pandoc at your lua file as if it
+were any other reader/writer option.</p>
+
+<p>So here we are. This very infrequently updated blog is now written in
+vimwiki and I&#39;m back to using the terminal and Vim on a daily basis like
+the <a href="/hidden/blog/2017-07-10/">last few years</a> never happened.</p>
+
+<p>Now to see what else I can over-enthusiastically convince myself should
+be a Wiki...</p>
+
+            <nav><a href="/hidden/blog/2024-08-28/">Previous</a><a href="/hidden/blog/2019-11-13/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>

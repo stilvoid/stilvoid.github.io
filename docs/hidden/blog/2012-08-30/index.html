@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Lost at C</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+
+            <nav>
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/bookmarks/">Bookmarks</a></li>
+                    <li><a href="/tools/">Command-line tools</a></li>
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/music/">Music</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <nav><a href="/hidden/blog/2013-02-11/">Previous</a><a href="/hidden/blog/2012-07-07/">Next</a></nav>
+
+            <h1>Lost at C</h1>
+
+            <p>This week I&#39;ve learned a few things (always the mark of a good week in
+my book), the foremost of which is that I don’t know very much about
+<a href="https://en.wikipedia.org/wiki/Programming_language">C</a>.</p>
+
+<p>I expect this post will mostly result in comments such as &#34;well, duh…&#34;
+and the like :)</p>
+
+<h2 id="how-i-spent-an-afternoon-chasing-a-star">How I spent an afternoon chasing a star...</h2>
+
+<p>After a fairly relaxing bank holiday weekend, I came back to work on
+Tuesday to find myself in the position of needing a to write a library
+for a client to plug into their software and to have it ready by Friday.</p>
+
+<p>Though I’d written <a href="http://falsoyd.sourceforge.net/">some (very bad) C++</a> while at
+<a href="http://www.uea.ac.uk/">uni</a>, I&#39;ve fairly recently written a couple of
+very small utilities in C (the library they use is written in C and I
+fancied a challenge) and wanted to learn some more, so I chose C as the
+language to write in.</p>
+
+<p>This afternoon, with the library and a small demo application written, I
+handed the code over to my colleague who’d promised to do all the
+necessary wrapping up to take my developed-in-linux code and produce a
+windows DLL from it. After a short while, he’d compiled the library and
+the demo, BUT… the demo app crashed every time.</p>
+
+<p>At first, it looked like I’d forgotten to free() some malloc()ed memory.
+I had; but even after doing so, the code was still crashing in windows.
+The search continued for quite some time until I eventually found what
+was wrong.</p>
+
+<p>There was an asterisk where there shouldn&#39;t have been, FFS!</p>
+
+<p>It turns out that I’d carried some pre-conceptions with me from my
+previous life as a Java developer and various other places. I’m so used
+to pretty much every language passing things around by value when the
+data is small (ints, chars, etc.) and by reference when it’s not
+(objects, etc.). I was completely unprepared for the fact that C deals
+<em>only</em> in values.</p>
+
+<p>I’m not one of those who are scared of pointers, I’m quite comfortable
+with pointer arithmetic, allocating and freeing memory and the like.
+What I had was some code like this:</p>
+
+<pre><code>typedef struct {
+    int a;
+    int b;
+} AB;
+
+void do_some_stuff(int *a, int *b, int num_records, AB **out) {
+    int i;
+    AB ab[num_records];
+
+    for(i=0; i&lt;num_records; i++) {
+        ab[i].a = a[i];
+        ab[i].b = b[i];
+    }
+
+    *out = ab;
+}
+
+void get_stuff() {
+    int a[2] = {1, 2};
+    int b[2] = {3, 4};
+
+    AB *ab;
+
+    do_some_stuff(a, b, 2, &amp;ab);
+
+    // Do some stuff with ab;
+}
+</code></pre>
+
+<p>Although the real code actually did useful things :P</p>
+
+<p>After handing the code over however, it transpired that MSVC doesn&#39;t
+support all of C99 (why pick a standard and implement part of it?!)
+specifically, variable-length arrays; so the <code>AB ab[num_records]</code> line
+had to go.</p>
+
+<p>Here’s where my preconception came in:</p>
+
+<p>So that array declaration became
+<code>AB *ab = malloc(sizeof(AB*) * num_records)</code> and a corresponding
+<code>free(ab)</code> in <code>get_stuff()</code>.</p>
+
+<p>Yep, nothing in C is a reference unless you really, really say it is.
+Arrays of structs are just like arrays of any other type: a sequence of
+those things laid end to end in memory. <code>sizeof(AB*)</code> needed to be
+<code>sizeof(AB)</code> and that was it.</p>
+
+<p><span id="The. Entire. Afternoon."></span><strong>The. Entire. Afternoon.</strong></p>
+
+<p>Consider that my lesson learned.</p>
+
+<p>Luckily, I seem to have ended up quite fond of C, pleasantly more aware
+of how it works, and quite keen to write some more.</p>
+
+            <nav><a href="/hidden/blog/2013-02-11/">Previous</a><a href="/hidden/blog/2012-07-07/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>

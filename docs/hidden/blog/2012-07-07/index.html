@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Ire</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+
+            <nav>
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/bookmarks/">Bookmarks</a></li>
+                    <li><a href="/tools/">Command-line tools</a></li>
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/music/">Music</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <nav><a href="/hidden/blog/2012-08-30/">Previous</a><a href="/hidden/blog/2011-10-27/">Next</a></nav>
+
+            <h1>Ire</h1>
+
+            <p>Call me crazy (thanks) but I like regular expressions.</p>
+
+<p>I like them enough to have decided that what I really needed was a tool
+that let me put regular expressions in my regular expressions (<a href="http://knowyourmeme.com/memes/xzibit-yo-dawg">yo
+dawg</a>). I had the idea for
+this a while ago but only got around to realising it a few days ago.</p>
+
+<p>The basic idea is a scripting language for matching text via regular
+expressions, and then applying further regular expressions (and
+replacements) dependent on those.</p>
+
+<p>I wanted to keep the syntax fairly free so there’s support for
+representing blocks by indentation or within braces. To avoiding
+ambiguity, indenting can’t be used inside braces although the opposite
+is fine.</p>
+
+<p>Within braces, expressions should be separated by semi-colons.</p>
+
+<p>I also wanted support for creating named blocks of code (functions if
+you like) and for flexibility over the character used to delimit the
+parts of an expression.</p>
+
+<h2 id="example">Example</h2>
+
+<p>After some mucking about, what I&#39;ve ended up with is summat that looks
+like this:</p>
+
+<pre><code>&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $2\n/pt
+
+/^processor\s+:\s+(\d+)/# CPU $1\n/p
+
+/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</code></pre>
+
+<p>The idea being that you pipe <code>/proc/cpuinfo</code> through that and you get a
+summary that looks like:</p>
+
+<pre><code># CPU 0
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 1
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 2
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+
+# CPU 3
+Model: Intel(R) Core(TM) i5-2467M CPU
+Speed: 1.60GHz
+</code></pre>
+
+<h2 id="breaking-it-down">Breaking it down</h2>
+
+<pre><code>&gt;proc
+    /^(.+)\s+@/Model: $1\n/pt
+    /@\s+(.+)\n$/Speed: $1\n/pt
+</code></pre>
+
+<p>Define a block called <code>proc</code> and do not execute it yet.</p>
+
+<p>The first line of <code>proc</code> matches a string followed by a space and an @
+symbol. It then replaces what it’s found with Model: (the string at the
+beginning). Then it prints the result (the <code>p</code> flag) and discards the
+replacement that has taken place (temporary apply - the <code>t</code> flag).</p>
+
+<p>The second line does similar but looks for the @ followed by a space, a
+string, and a newline then prints &#34;Speed: (the string)&#34;.</p>
+
+<pre><code>/^processor\s+:\s+(\d+)/# CPU $1\n/p
+</code></pre>
+
+<p>Match a line starting with processor and print out &#34;CPU (the number)&#34;</p>
+
+<pre><code>/^model name\s+:\s+//
+    &lt;proc&gt;
+    //\n/p
+</code></pre>
+
+<p>Match a line starting with Model name, and remove everything up until
+the start of the data. Then call the block called <code>proc</code>. Finally, print
+a newline character.</p>
+
+<p>Obviously this is a fairly contrived example ;)</p>
+
+<h2 id="trying-it-out">Trying it out</h2>
+
+<p>Like most things these days, I wrote the engine for Ire in
+<a href="https://nodejs.org/en">node.js</a>.</p>
+
+<p>If you have that installed, you can install ire with:</p>
+
+<pre><code>npm install -g ire
+</code></pre>
+
+<p>or if you’re feeling less brave or more paranoid, just <code>npm install ire</code>
+to install it to the current folder.</p>
+
+<p>Further details are in the
+<a href="https://github.com/stilvoid/Ire/blob/master/README.md">README</a>.</p>
+
+<h2 id="final-word">Final word</h2>
+
+<p>Yes, I am fully aware that this is somewhat limited in use and probably
+completely pointless.</p>
+
+<p>I’m sure <em>someone</em> will point out that I could do the kinds of things I
+want with pure sed or awk or somesuch. To those people: &#34;you’re missing
+the point&#34;.</p>
+
+            <nav><a href="/hidden/blog/2012-08-30/">Previous</a><a href="/hidden/blog/2011-10-27/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>

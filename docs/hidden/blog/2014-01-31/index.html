@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>engledow.me: About</title>
+        <title>engledow.me: btw</title>
         <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
         <link rel="stylesheet" href="/style.css">
         <link rel="me" href="https://retro.pizza/@stilvoid">
@@ -17,7 +17,7 @@
 
             <nav>
                 <ul>
-                    <li><a href="/" class="selected">About</a></li>
+                    <li><a href="/">About</a></li>
                     <li><a href="/bookmarks/">Bookmarks</a></li>
                     <li><a href="/tools/">Command-line tools</a></li>
                     <li><a href="/games/">Games</a></li>
@@ -27,25 +27,34 @@
         </header>
 
         <main>
-            
+            <nav><a href="/hidden/blog/2014-04-15/">Previous</a><a href="/hidden/blog/2013-05-10/">Next</a></nav>
 
-            <h1>About</h1>
+            <h1>btw</h1>
 
-            <p><a href="https://en.wikipedia.org/wiki/Personal_web_page">Home page</a> of Steve Engledow.</p>
+            <p>I discovered my new favourite fact about <a href="https://en.wikipedia.org/wiki/C_programming_language">my new favourite
+language</a>
+recently. I suppose it should be obvious but I hadn&#39;t though about it in
+explicitly these terms.</p>
 
-<p>Cat and human dad. Atheist. <a href="https://en.wikipedia.org/wiki/Alignment_(Dungeons_%26_Dragons)">Neutral good</a>. Libertarian left on <a href="https://www.politicalcompass.org/">the political compass</a>. Norwich, UK.</p>
+<p>Given:</p>
 
-<h2 id="professional">Professional</h2>
+<pre><code>char* myStringArray[] = {&#34;Hello&#34;, &#34;Goodbye&#34;, &#34;Tomatoes&#34;};
+int index = 2;
+</code></pre>
 
-<p>I work at AWS as a Manager leading a team of architects and software developers. My focus is on guiding technical direction, fostering innovation, and helping my team deliver impactful solutions for AWS customers.</p>
+<p>then the following will print <code>Tomatoes</code>:</p>
 
-<p>With a strong technical foundation in cloud infrastructure and developer tooling, I combine hands-on expertise with leadership skills to drive team success. I&#39;m particularly interested in creating environments where technical excellence and developer experience are paramount.</p>
+<pre><code>printf(&#34;%s\n&#34;, myStringArray[index]);
+</code></pre>
 
-<p>I try to keep my coding skills up to scratch by working on <a href="/games/">games</a> and <a href="/tools/">CLI tools</a> in my spare time. I&#39;m the original creator of <a href="https://github.com/aws-cloudformation/rain">Rain</a>, a deployment tool for AWS CloudFormation that is now officially maintained by the AWS CloudFormation team.</p>
+<p>and so (this is the bit I hadn&#39;t fully realised) will this:</p>
 
-<p><a href="https://github.com/stilvoid/">View my projects on GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a>.</p>
+<pre><code>printf(&#34;%s\n&#34;, index[myStringArray]);
+</code></pre>
 
-            
+<p>Good times :)</p>
+
+            <nav><a href="/hidden/blog/2014-04-15/">Previous</a><a href="/hidden/blog/2013-05-10/">Next</a></nav>
         </main>
 
         <footer>

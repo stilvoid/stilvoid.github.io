@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Pretty please</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+
+            <nav>
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/bookmarks/">Bookmarks</a></li>
+                    <li><a href="/tools/">Command-line tools</a></li>
+                    <li><a href="/games/">Games</a></li>
+                    <li><a href="/music/">Music</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <nav><a href="/hidden/blog/2015-09-17/">Previous</a><a href="/hidden/blog/2015-05-15/">Next</a></nav>
+
+            <h1>Pretty please</h1>
+
+            <p>I’ve been making <a href="https://github.com/stilvoid/please/">a thing</a> to solve
+some problems I always face while building web APIs.
+<a href="http://curl.haxx.se/">Curl</a> is lovely but it’s a bit <em>too</em> flexible.</p>
+
+<p>Also, web services generally spit out one of a fairly common set of
+formats: (json, xml, html) and I often just want to grab a value from
+the response and use it in a script - maybe to make the next call in a
+workflow.</p>
+
+<p>So I made <a href="https://github.com/stilvoid/please/">please</a> which makes it
+super simple to do things like making a web request and grabbing a
+particular value from the response.</p>
+
+<p>For example, here’s how you’d get the page title from this site:</p>
+
+<pre><code>please get https://engledow.me/ | please parse html.head.title.#text
+</code></pre>
+
+<p>Or getting a value out of the json returned by
+<a href="http://jsontest.com/">jsontest.com</a>’s IP address API:</p>
+
+<pre><code>please get http://ip.jsontest.com/ | please parse ip
+</code></pre>
+
+<p>The <code>parse</code> part of <code>please</code> is the most fun; it can convert between a
+few different formats. Something I do quite often is grabbing a json
+response from an API and spitting it out as yaml so I can read it
+easily. For example:</p>
+
+<pre><code>please get http://date.jsontest.com/ | please parse -o yaml
+</code></pre>
+
+<p>(alright so that’s a poor example but the difference is huge when it’s a
+complicated bit of json)</p>
+
+<p>Also handy for turning an unreadable mess of xml into yaml (I love yaml
+for its readability):</p>
+
+<pre><code>echo &#39;&lt;docroot type=&#34;messydoc&#34;&gt;&lt;a&gt;&lt;b dir=&#34;up&#34;&gt;A tree&lt;/b&gt;&lt;b dir=&#34;down&#34;&gt;The ground&lt;/b&gt;&lt;/a&gt;&lt;/docroot&gt;&#39; | please parse -o yaml
+</code></pre>
+
+<p>As an example, of the kinds of things you can play with, I made a tool
+for generating graphs from json.</p>
+
+<p>I’m still working on <code>please</code>; there will be bugs; <a href="https://github.com/stilvoid/please/issues">let me know about
+them</a>.</p>
+
+            <nav><a href="/hidden/blog/2015-09-17/">Previous</a><a href="/hidden/blog/2015-05-15/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>
