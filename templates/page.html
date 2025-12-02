@@ -14,14 +14,6 @@
     <body>
         <header>
             <img src="/me.jpg" alt="Steve Engledow">
-
-            <nav>
-                <ul>{{range .Tree}}
-                    <li><a href="{{.Page.Uri}}"
-                    {{- if .Selected}} class="selected"{{end -}}
-                    >{{.Page.Title}}</a></li>{{end}}
-                </ul>
-            </nav>
         </header>
 {{define "blogNav"}}
     {{- if .Blog}}<nav>
