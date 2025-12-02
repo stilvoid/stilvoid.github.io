@@ -6,8 +6,8 @@
         <link>https://engledow.me/</link>
         <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
         <copyright>2025 Steve Engledow</copyright>
-        <lastBuildDate>Fri, 04 Jul 2025 12:21:25 +0100</lastBuildDate>
-        <pubDate>Fri, 04 Jul 2025 12:21:25 +0100</pubDate>
+        <lastBuildDate>Tue, 02 Dec 2025 16:13:28 +0000</lastBuildDate>
+        <pubDate>Tue, 02 Dec 2025 16:13:28 +0000</pubDate>
         <ttl>1800</ttl>
 
         <item>
@@ -20,7 +20,7 @@ head and inevitably I had to try...</p>
 
 <p>Hoooo boy.</p>
 
-<p>It has been a <em>long time</em> since I wrote anything in my <a href="/hidden/blog/2014-01-31/">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub
+<p>It has been a <em>long time</em> since I wrote anything in my <a href="/blog/2014-01-31/">once-favourite language, C</a> (or C++). <a href="https://github.com/search?q=user%3Astilvoid+AND+%28language%3AC+OR+language%3AC%2B%2B%29&amp;type=code">A GitHub
 search</a>
 suggests it&#39;s been around 10 years. Fortunately, I had no intentions of
 really fixing any coding problems - just getting Falsoyd to run by brute
@@ -93,14 +93,14 @@ with my changes. That&#39;ll do for now. Itch scratched.</p>
 <p>Now I&#39;m clearly going to have to make Falsoyd 2 in Löve, Pico-8, or
 Picotron ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2024-08-28/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2024-08-28/</guid>
+            <link>https://engledow.me/blog/2024-08-28/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-08-28/</guid>
             <pubDate>Wed, 28 Aug 2024 00:00:00 +0000</pubDate>
         </item>
         <item>
             <title>Back to the Primitive</title>
             <description><![CDATA[<p>I like text, plain text. Always have. But over the past several years
-(and it has been, as the kids say, a hot minute since I <a href="/hidden/blog/2019-11-13/">last
+(and it has been, as the kids say, a hot minute since I <a href="/blog/2019-11-13/">last
 blogged</a>) I&#39;ve found more and more bloat creeping
 into my daily life. I moved to a Mac Mini as my main machine about 4
 years ago as I just gave up in the struggle between the way I think
@@ -141,7 +141,7 @@ considerably. I like the overall style of the markup but it&#39;s just too
 ambiguous and ends up causing more problems than it solves. So... the
 tool I want to use has it&#39;s own syntax and I&#39;m not tied to my usual
 preference... obviously it&#39;s time to figure out how to convert all my
-existing <a href="/hidden/blog/">posts</a> ;)</p>
+existing <a href="/blog/">posts</a> ;)</p>
 
 <p>I spent a nice afternoon discovering that <a href="https://pandoc.org/">pandoc</a>
 is even more lovely than I had previously realised. Writing a new reader
@@ -152,13 +152,13 @@ were any other reader/writer option.</p>
 
 <p>So here we are. This very infrequently updated blog is now written in
 vimwiki and I&#39;m back to using the terminal and Vim on a daily basis like
-the <a href="/hidden/blog/2017-07-10/">last few years</a> never happened.</p>
+the <a href="/blog/2017-07-10/">last few years</a> never happened.</p>
 
 <p>Now to see what else I can over-enthusiastically convince myself should
 be a Wiki...</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2024-07-23/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2024-07-23/</guid>
+            <link>https://engledow.me/blog/2024-07-23/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2024-07-23/</guid>
             <pubDate>Tue, 23 Jul 2024 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -223,8 +223,8 @@ issue</a> or, even better, a
 
 <p><code>maur maur</code></p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2019-11-13/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2019-11-13/</guid>
+            <link>https://engledow.me/blog/2019-11-13/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-11-13/</guid>
             <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -364,8 +364,8 @@ This means that the included configuration will only override any
 configuration specified <span id="earlier"></span><strong>earlier</strong> in the
 config.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2019-02-12/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2019-02-12/</guid>
+            <link>https://engledow.me/blog/2019-02-12/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2019-02-12/</guid>
             <pubDate>Tue, 12 Feb 2019 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -396,8 +396,8 @@ Cloning into &#39;/home/steve/code/github.com/stilvoid/git-get&#39;...
 
 <p>Laziness is the primary virtue.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2018-11-08/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2018-11-08/</guid>
+            <link>https://engledow.me/blog/2018-11-08/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-11-08/</guid>
             <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -544,8 +544,8 @@ AUR easier <a href="https://thethreevirtues.com/">I&#39;m lazy</a>).</p>
 <p>All in all, this wasn&#39;t anywhere near as painful as I&#39;d expected. Time
 to play some Heroes :D</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2018-08-14/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2018-08-14/</guid>
+            <link>https://engledow.me/blog/2018-08-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-08-14/</guid>
             <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -590,13 +590,13 @@ page</a>.</p>
 
 <p><a href="mailto:steve@engledow.me">Let me know</a> if you find it useful.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2018-06-03/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2018-06-03/</guid>
+            <link>https://engledow.me/blog/2018-06-03/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2018-06-03/</guid>
             <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
         </item>
         <item>
             <title>An evening of linux on the desktop</title>
-            <description><![CDATA[<p><a href="/hidden/blog/2017-06-15/">Last time</a>, I wrote about trying a few desktop
+            <description><![CDATA[<p><a href="/blog/2017-06-15/">Last time</a>, I wrote about trying a few desktop
 environments to see what&#39;s out there, keep things fresh, and keep me
 from complacency. Well, as with desktop environments, so with text
 editors. I decided briefly that I would try <a href="https://atom.io/">a few of</a> <a href="https://www.sublimetext.com/">the more recent</a> <a href="https://code.visualstudio.com/">code
@@ -608,7 +608,7 @@ user, I just found myself frustrated that I wasn&#39;t able to get things
 done as efficiently in any of those editors as I could in vim ;) I tried
 installing vim keybindings in Atom but it just wasn&#39;t the same as a very
 limited set of functionality was there. As for the integrated
-environment, when you have <a href="/hidden/blog/2014-06-17/">tmux running by default</a>, everything&#39;s integrated anyway.</p>
+environment, when you have <a href="/blog/2014-06-17/">tmux running by default</a>, everything&#39;s integrated anyway.</p>
 
 <p>And, as with editors, so once again with desktop environments. I&#39;ve
 decided to retract my previous hasty promise and no longer to bother
@@ -705,8 +705,8 @@ define things twice.</p>
 <p><img src="https://static.offend.me.uk/media/images/blog/89/01.jpg" alt="My new
 desktop"/></p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2017-07-10/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2017-07-10/</guid>
+            <link>https://engledow.me/blog/2017-07-10/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2017-07-10/</guid>
             <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -779,8 +779,8 @@ but is otherwise uninteresting.</p>
 weren’t immediately interesting enough to make me want to write about
 them just now :)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2017-06-15/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2017-06-15/</guid>
+            <link>https://engledow.me/blog/2017-06-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2017-06-15/</guid>
             <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -828,8 +828,8 @@ be too hard to come up with something useful.</p>
 
 <p>Maybe some day soon ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2016-02-25/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2016-02-25/</guid>
+            <link>https://engledow.me/blog/2016-02-25/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2016-02-25/</guid>
             <pubDate>Thu, 25 Feb 2016 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -851,8 +851,8 @@ Firefox. Or even better, tell me that it is and that I just failed to
 notice it. And while you’re at it, tell me why I couldn’t find an
 existing extension that does it!</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-12-14/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-12-14/</guid>
+            <link>https://engledow.me/blog/2015-12-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-12-14/</guid>
             <pubDate>Mon, 14 Dec 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -891,8 +891,8 @@ done
 
 <p>Yes it’s horrid but it did today’s job ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-11-30/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-11-30/</guid>
+            <link>https://engledow.me/blog/2015-11-30/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-11-30/</guid>
             <pubDate>Mon, 30 Nov 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -981,8 +981,8 @@ session   optional  pam_permit.so
 session   required  pam_google_authenticator.so
 </code></pre>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-09-17/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-09-17/</guid>
+            <link>https://engledow.me/blog/2015-09-17/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-09-17/</guid>
             <pubDate>Thu, 17 Sep 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1034,8 +1034,8 @@ for generating graphs from json.</p>
 <p>I’m still working on <code>please</code>; there will be bugs; <a href="https://github.com/stilvoid/please/issues">let me know about
 them</a>.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-06-22/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-06-22/</guid>
+            <link>https://engledow.me/blog/2015-06-22/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-06-22/</guid>
             <pubDate>Mon, 22 Jun 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1057,7 +1057,7 @@ heard that Go compiles to statically-linked binaries but after having
 used and played with Go a bit over the past few weeks, I think it’s
 rather clever and was somewhat ahead of the game. In the current climate
 where DevOps folks (and developers) are getting excited about
-<a href="/hidden/blog/2015-05-14/">containers and componentised services</a>, being able to
+<a href="/blog/2015-05-14/">containers and componentised services</a>, being able to
 simply <a href="http://curl.haxx.se/">curl</a> a binary and have it usable in your
 container without needing to install a stack of dependencies is actually
 pretty powerful. It seems there’s a general trend towards preferring
@@ -1115,8 +1115,8 @@ seems to have nicely predicted several worries and trends since <a href="http://
 announcement</a>:
 Docker, Heartbleed, and social coding.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-05-15/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-05-15/</guid>
+            <link>https://engledow.me/blog/2015-05-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-05-15/</guid>
             <pubDate>Fri, 15 May 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1345,8 +1345,8 @@ run the unit tests for that service - starting any dependencies as
 needed.</li>
 </ul>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-05-14/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-05-14/</guid>
+            <link>https://engledow.me/blog/2015-05-14/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-05-14/</guid>
             <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1432,8 +1432,8 @@ port</a>…</p>
 
 <p>Update and reboot or whatever :)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-04-29/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-04-29/</guid>
+            <link>https://engledow.me/blog/2015-04-29/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-04-29/</guid>
             <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1472,8 +1472,8 @@ the bottom:</p>
 <p>The above is from my <a href="http://www.raspberrypi.org/">pi</a>; not much I can
 uninstall there ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-03-12/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-03-12/</guid>
+            <link>https://engledow.me/blog/2015-03-12/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-03-12/</guid>
             <pubDate>Thu, 12 Mar 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1501,8 +1501,8 @@ expect it to be set, leading to some annoying breakage.</p>
 
 <p>:)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2015-01-02/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2015-01-02/</guid>
+            <link>https://engledow.me/blog/2015-01-02/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2015-01-02/</guid>
             <pubDate>Fri, 02 Jan 2015 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1613,8 +1613,8 @@ whatever :)</p>
 and is repeatable enough that I can use more-or-less the same script for
 a number of different django projects.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2014-12-09/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2014-12-09/</guid>
+            <link>https://engledow.me/blog/2014-12-09/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-12-09/</guid>
             <pubDate>Tue, 09 Dec 2014 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1642,8 +1642,8 @@ December).</p>
 <p>I’ll put the source on GitHub soon. Before that, it’s time for some
 sleep.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2014-12-01/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2014-12-01/</guid>
+            <link>https://engledow.me/blog/2014-12-01/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-12-01/</guid>
             <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -1728,8 +1728,8 @@ to one of them. In short, I can start a terminal from any desktop or vt
 and quickly attach to something that’s happening on any other. I use
 this feature <span id="a lot"></span><strong>a lot</strong>.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2014-06-17/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2014-06-17/</guid>
+            <link>https://engledow.me/blog/2014-06-17/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-06-17/</guid>
             <pubDate>Tue, 17 Jun 2014 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2047,8 +2047,8 @@ for the proxy protocol is used (1080 for SOCKS, 3128 for HTTPS).</p>
 
 <p>I uninstalled GNU netcat and installed BSD netcat btw ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2014-04-15/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2014-04-15/</guid>
+            <link>https://engledow.me/blog/2014-04-15/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-04-15/</guid>
             <pubDate>Tue, 15 Apr 2014 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2076,8 +2076,8 @@ int index = 2;
 
 <p>Good times :)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2014-01-31/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2014-01-31/</guid>
+            <link>https://engledow.me/blog/2014-01-31/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2014-01-31/</guid>
             <pubDate>Fri, 31 Jan 2014 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2088,8 +2088,8 @@ int index = 2;
 <li><code>xargs -I {}</code> is handy</li>
 </ul>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2013-05-10/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2013-05-10/</guid>
+            <link>https://engledow.me/blog/2013-05-10/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2013-05-10/</guid>
             <pubDate>Fri, 10 May 2013 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2135,8 +2135,8 @@ from the repo to the home dir on this machine, I do <code>git aux apply</code>.<
 <p>It’s unfinished and probably broken in places but mostly does what I was
 looking for.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2013-02-11/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2013-02-11/</guid>
+            <link>https://engledow.me/blog/2013-02-11/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2013-02-11/</guid>
             <pubDate>Mon, 11 Feb 2013 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2238,8 +2238,8 @@ those things laid end to end in memory. <code>sizeof(AB*)</code> needed to be
 <p>Luckily, I seem to have ended up quite fond of C, pleasantly more aware
 of how it works, and quite keen to write some more.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2012-08-30/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2012-08-30/</guid>
+            <link>https://engledow.me/blog/2012-08-30/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2012-08-30/</guid>
             <pubDate>Thu, 30 Aug 2012 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2360,8 +2360,8 @@ completely pointless.</p>
 want with pure sed or awk or somesuch. To those people: &#34;you’re missing
 the point&#34;.</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2012-07-07/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2012-07-07/</guid>
+            <link>https://engledow.me/blog/2012-07-07/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2012-07-07/</guid>
             <pubDate>Sat, 07 Jul 2012 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2390,8 +2390,8 @@ just a couple of hours.</p>
 <p>The code is released under the
 <code>If-You-Steal-This-Without-Asking-Me-I&#39;ll-Bite-Your-Legs-Off</code> licence ;)</p>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2011-10-27/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2011-10-27/</guid>
+            <link>https://engledow.me/blog/2011-10-27/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2011-10-27/</guid>
             <pubDate>Thu, 27 Oct 2011 00:00:00 +0000</pubDate>
         </item>
         <item>
@@ -2601,8 +2601,8 @@ it.</p>
 file</a></li>
 </ul>
 ]]></description>
-            <link>https://engledow.me/hidden/blog/2011-10-22/</link>
-            <guid isPermaLink="true">https://engledow.me/hidden/blog/2011-10-22/</guid>
+            <link>https://engledow.me/blog/2011-10-22/</link>
+            <guid isPermaLink="true">https://engledow.me/blog/2011-10-22/</guid>
             <pubDate>Sat, 22 Oct 2011 00:00:00 +0000</pubDate>
         </item>
         

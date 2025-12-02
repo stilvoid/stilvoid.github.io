@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Git aux</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+        </header>
+
+        <main>
+            <nav><a href="/blog/2013-05-10/">Previous</a><a href="/blog/2012-08-30/">Next</a></nav>
+
+            <h1>Git aux</h1>
+
+            <p>For a while now, I’ve been wanting to keep various parts of my home
+directory in sync.</p>
+
+<p>At first, I created a git repository for storing my
+<a href="https://en.wikipedia.org/wiki/Dotfile#Unix_and_Unix-like_environments">dotfiles</a>
+but I found it a pain to keep the repository up-to-date.</p>
+
+<p>Fairly recently, someone pointed out
+<a href="http://git-annex.branchable.com/">git-annex</a> to me. After a good read
+of the documentation, it sounded like it could be useful but probably
+more than I needed and perhaps not quite what I really wanted. Besides,
+I couldn’t get the bloody thing to install.</p>
+
+<p>So I did what any geek would do, I wrote my own :D</p>
+
+<p>See <a href="https://github.com/stilvoid/git-aux">git-aux</a> (or
+<a href="https://aur.archlinux.org/packages/git-aux-git/">AUR</a> if you’re on
+<a href="https://www.archlinux.org/">Arch Linux</a>).</p>
+
+<p>Basically, I wanted an easy to way to keep a git repository in sync with
+an directory external to it. With git aux installed, I get pretty much
+exactly what I wanted with a few simple commands.</p>
+
+<p>After creating a new git repository, I do <code>git aux init ~/</code> to tell
+git-aux that I want it to sync this repo with my home directory.</p>
+
+<p>I then do <code>git aux add ~/.vimrc ~/.ssh/config ~/.bashrc</code> and any other
+files I want from my home directory. This copies those files into the
+repository and I can then commit them in the usual way.</p>
+
+<p>If I make changes in my home directory, I use <code>git aux sync</code> to update
+the copies in the repository.</p>
+
+<p>If I’ve made changes on another machine and want to apply those changes
+from the repo to the home dir on this machine, I do <code>git aux apply</code>.</p>
+
+<p>And that’s it :)</p>
+
+<p>It’s unfinished and probably broken in places but mostly does what I was
+looking for.</p>
+
+            <nav><a href="/blog/2013-05-10/">Previous</a><a href="/blog/2012-08-30/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>

@@ -119,15 +119,19 @@ main dd:last-child {
 
 footer {
     text-align: center;
-    padding: 0.7em 0;
-    font-size: 80%;
+    padding: 0;
     background: #222222;
     width: 100vw;
     border-top: 2px solid #9a4e22;
 }
 
-footer>* {
+footer>p,footer>nav {
     margin: 0;
+    padding: 0;
+}
+
+footer>p {
+    font-size: 80%;
 }
 
 main {
@@ -136,7 +140,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.2em 0;
+    padding: 0;
 }
 
 main nav {
@@ -220,15 +224,6 @@ audio {
 
     header img {
         width: 2em;
-    }
-
-    nav ul>li {
-        padding: 0 0.5em;
-        margin: 0;
-    }
-
-    footer p {
-        margin: 0;
     }
 
     main {

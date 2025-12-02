@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Heroes: Building some old code</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+        </header>
+
+        <main>
+            <nav><a href="/blog/2018-11-08/">Previous</a><a href="/blog/2018-06-03/">Next</a></nav>
+
+            <h1>Heroes: Building some old code</h1>
+
+            <p>For the end result of this post, see <a href="https://aur.archlinux.org/packages/heroes/">my AUR package of
+Heroes</a>.</p>
+
+<hr/>
+
+<p>The other day, something reminded me of a game I used to really enjoy
+playing back in my early days of getting to know Linux. That game was
+<a href="http://heroes.sourceforge.net">Heroes</a>. It&#39;s a clone of
+<a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake/Tron/Nibbles</a>
+but with some fun additions, a nice graphical style, and some funky
+visual effects.</p>
+
+<p><img src="https://static.offend.me.uk/media/images/2018-08-14-heroes-screenshot.png" alt="Heroes
+screenshot"/></p>
+
+<p>So, of course, I immediately decided to install it.</p>
+
+<pre><code>$ pacman -Ss heroes
+</code></pre>
+
+<p>No results. Nothing in the
+<a href="https://wiki.archlinux.org/index.php/Arch_User_Repository">AUR</a> either.
+There is only one other course of action: I&#39;m going to create an AUR
+package for it!</p>
+
+<p>It looks like the last change to the game was 16 years ago so it could
+be fun getting it to compile with a modern toolchain.</p>
+
+<h2 id="getting-heroes-to-compile-in-2018">Getting Heroes to compile in 2018</h2>
+
+<p>I put together a basic
+<a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> that pulls
+down the source and data files from the Heroes sourceforge page and then
+runs:</p>
+
+<pre><code>./configure
+make
+</code></pre>
+
+<p>Here&#39;s the first of what I&#39;m sure are many failure messages:</p>
+
+<pre><code>hedlite.c:48:20: error: static declaration of ‘tile_set_img’ follows non-static declaration 
+ static a_pcx_image tile_set_img;
+                    ^~~~~~~~~~~~
+In file included from hedlite.c:44:
+const.h:52:20: note: previous declaration of ‘tile_set_img’ was here                        
+ extern a_pcx_image tile_set_img, font_deck_img;                                            
+                    ^~~~~~~~~~~~
+</code></pre>
+
+<p>Some forewarning: it&#39;s been quite some time since I wrote anything
+serious in C and I was never an expert in it anyway. But I think I know
+enough to fix this and so just commented out the static declaration as,
+after poking around in the code a bit, it doesn&#39;t seem like it&#39;s
+necessary anyway.</p>
+
+<p>Now the compilation succeeds but I get the following error during
+linking:</p>
+
+<pre><code>/usr/bin/ld: camera.o: undefined reference to symbol &#39;sin@@GLIBC_2.2.5&#39;
+/usr/bin/ld: /usr/lib/libm.so.6: error adding symbols: DSO missing from command line
+</code></pre>
+
+<p>Turns out that for some reason, the developers forgot to include the
+math&lt;small&gt;(s)&lt;/small&gt; library. I&#39;m guessing that perhaps it used to
+be linked by default in a previous version of GCC.</p>
+
+<pre><code>LDFLAGS=-lm ./configure
+make
+</code></pre>
+
+<p>Now it at least compiles correctly! Next up, compiling the data, music,
+and sound effects packages.</p>
+
+<p>Amazingly, those all worked correctly and I was able to play the game!</p>
+
+<p>However, this game was written a while ago and originally targeted
+MS-DOS so it has a window size of 320x200 which looks rather ridiculous
+on my 1920x1080 desktop ;)</p>
+
+<p><a href="https://static.offend.me.uk/media/images/2018-08-14-heroes.png"><img src="https://static.offend.me.uk/media/images/2018-08-14-heroes-small.png" alt="Tiny Heroes window
+screenshot"/></a></p>
+
+<p>So I set about trying to set the default screen mode so that the game
+starts in full screen...</p>
+
+<p>Fortunately, it looks like this is relatively easy. I just modified a
+few variables and changed a command line flag from <code>-F | --full-screen</code>
+to <code>-W | --windowed</code>.</p>
+
+<p>Next up, rather than rely on <a href="https://www.libsdl.org/">SDL</a>&#39;s built-in
+scaling (it looks blurry and weird), I need to enable Heroes&#39; quadruple
+flag <code>-4</code> by default. In fact, I removed all the scaling options and
+just left it to default to scaling 4-fold as that leaves the game with a
+resolution of 1280x800 which seems a reasonable default these days. I&#39;m
+sure I&#39;ll receive bug reports if it&#39;s not ;)</p>
+
+<p>The very last thing I&#39;ve done is to enable the high quality mixer by
+default and remove the command line option from the game. CPU is a
+little more abundant now than it was in 2002 ;)</p>
+
+<p><a href="https://aur.archlinux.org/cgit/aur.git/tree/heroes-0.21.patch?h=heroes">Here&#39;s my final patch
+file</a>.</p>
+
+<h2 id="submitting-the-aur-package">Submitting the AUR package</h2>
+
+<p>Things have changed since I last submitted a package to the AUR so
+here&#39;s a brief writeup - if only to remind myself in future ;)</p>
+
+<p>First step was to update the SSH key in my AUR account as it contained a
+key from my old machine.</p>
+
+<p>Next up, I added a remote to my repository:</p>
+
+<pre><code>$ git remote add aur ssh://aur@aur.archlinux.org/heroes.git
+$ git fetch aur  # This step causes AUR to create a record for the package
+</code></pre>
+
+<p>The next step is to generate AUR&#39;s <code>.SRCINFO</code> file and rebase it into
+every commit (AUR requires this).</p>
+
+<pre><code>$ git filter-branch --tree-filter &#34;makepkg --printsrcinfo &gt; .SRCINFO&#34;
+</code></pre>
+
+<p>And then push it to the AUR repository:</p>
+
+<pre><code>$ git push -u aur master
+</code></pre>
+
+<h2 id="testing-it-out">Testing it out</h2>
+
+<p>I use <a href="https://aur.archlinux.org/packages/packer/">packer</a> to make using
+AUR easier <a href="https://thethreevirtues.com/">I&#39;m lazy</a>).</p>
+
+<pre><code>$ packer -S heroes
+</code></pre>
+
+<p>SUCCESS!</p>
+
+<p>All in all, this wasn&#39;t anywhere near as painful as I&#39;d expected. Time
+to play some Heroes :D</p>
+
+            <nav><a href="/blog/2018-11-08/">Previous</a><a href="/blog/2018-06-03/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>

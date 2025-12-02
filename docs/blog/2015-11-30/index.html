@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>engledow.me: Sorted</title>
+        <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack-subset.css'>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="me" href="https://retro.pizza/@stilvoid">
+        <meta name="fediverse:creator" content="@stilvoid@retro.pizza">
+        <meta name="description" content="Steve Engledow - Engineering Manager at AWS, open source developer, and creator of developer tools">
+    </head>
+
+    <body>
+        <header>
+            <img src="/me.jpg" alt="Steve Engledow">
+        </header>
+
+        <main>
+            <nav><a href="/blog/2015-12-14/">Previous</a><a href="/blog/2015-09-17/">Next</a></nav>
+
+            <h1>Sorted</h1>
+
+            <p>I decided to restructure the folder I keep code in (<code>~/code</code>, natch) -
+taking my cue from <a href="https://golang.org/doc/code.html">how Go does it</a> -
+so that the folder structure represents where code has come from.</p>
+
+<p>As with all things, moving a couple of hundred folders by hand seemed
+far too daunting so I wrote a bash script to do it.</p>
+
+<p>This script enters each subdirectory within the current directory and,
+if it has a git remote, moves it to a folder that represents the git
+remote’s path.</p>
+
+<p>For example, if I had a folder called <code>scripts</code> that had a git remote of
+<code>git@github.com/stilvoid/utils.git</code>, this script will move the folder to
+<code>github.com/stilvoid/utils</code>.</p>
+
+<pre><code>#!/bin/bash
+
+# Target directory for renamed folders
+BASE=/home/steve/code/sorted
+
+for i in $(find ./ -maxdepth 1 -mindepth 1 -type d); do
+    cd &#34;$i&#34;
+    folder=&#34;$(git remote -v 2&gt;/dev/null | head -n 1 | awk &#39;{print $2}&#39; | sed -e &#39;s/^.*:\/\///&#39; | sed -e &#39;s/:/\//&#39; | sed -e &#39;s/^.*@//&#39; | sed -e &#39;s/\.git$//&#39;)&#34;
+    cd ..
+
+    if [ -n &#34;$folder&#34; ]; then
+        mkdir -p &#34;$BASE/$(dirname $folder)&#34;
+        mv &#34;$i&#34; &#34;$BASE/$folder&#34;
+    fi
+done
+</code></pre>
+
+<p>Yes it’s horrid but it did today’s job ;)</p>
+
+            <nav><a href="/blog/2015-12-14/">Previous</a><a href="/blog/2015-09-17/">Next</a></nav>
+        </main>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="https://retro.pizza/@stilvoid">Mastodon</a></li>
+                    <li><a href="https://github.com/stilvoid/">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/stilvoid/">LinkedIn</a></li>
+                </ul>
+            </nav>
+
+            <p><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">CC0 1.0 Universal</a></p>
+        </footer>
+    </body>
+</html>
