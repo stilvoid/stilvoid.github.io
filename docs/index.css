@@ -1,0 +1,82 @@
+/* Body typography & colours for index */
+
+body {
+    font-size: 15pt;
+    font-family: "Hack", monospace;
+    color: #d8d8d8;
+    background: #1a1a1a;
+}
+
+/* Header */
+
+header {
+    background: #222222;
+}
+
+header img {
+    width: 4em;
+}
+
+/* Main layout for index */
+
+main {
+    background: #1a1a1a;
+    align-items: center;
+}
+
+/* The index page's main nav */
+
+main nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+main nav del {
+    text-decoration: none;
+    color: #444444;
+    cursor: default;
+}
+
+/* Footer */
+
+footer {
+    background: #222222;
+}
+
+/* Code styling for index */
+
+pre,
+code {
+    background: #222222;
+    color: #6fbf92;
+}
+
+/* Headings for index */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #a0d8e9;
+    text-align: center;
+}
+
+/* Mobile tweaks – kept specific to index */
+
+@media screen and (max-width: 640px) {
+    body {
+        font-size: 14pt;
+    }
+
+    header img {
+        width: 2em;
+    }
+
+    main {
+        margin: 0 0.5em;
+    }
+}

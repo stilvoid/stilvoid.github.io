@@ -1,0 +1,74 @@
+/* Body typography & colours for content pages */
+
+body {
+    font-size: 14pt;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #b8b8b8;
+    background: #30383a;
+}
+
+/* Header */
+
+header {
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header img {
+    width: 2em;
+}
+
+/* Main layout for content pages */
+
+main {
+    background: #30383a;
+    align-items: flex-start;
+}
+
+/* Blog-style navigation only used on these pages */
+
+nav.blog {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 40em;
+}
+
+nav.blog del {
+    text-decoration: none;
+    color: #444444;
+    cursor: default;
+}
+
+/* Footer */
+
+footer {
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Code styling for content pages */
+
+pre,
+code {
+    background: #282828;
+}
+
+pre > code {
+    padding: 0;
+}
+
+/* Headings for content pages */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #d8d8d8;
+}

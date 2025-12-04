@@ -6,8 +6,8 @@
         <link>https://engledow.me/</link>
         <atom:link href="https://engledow.me/feed.xml" rel="self" type="application/rss+xml" />
         <copyright>2025 Steve Engledow</copyright>
-        <lastBuildDate>Tue, 02 Dec 2025 16:13:28 +0000</lastBuildDate>
-        <pubDate>Tue, 02 Dec 2025 16:13:28 +0000</pubDate>
+        <lastBuildDate>Thu, 04 Dec 2025 17:00:02 +0000</lastBuildDate>
+        <pubDate>Thu, 04 Dec 2025 17:00:02 +0000</pubDate>
         <ttl>1800</ttl>
 
         <item>
@@ -28,7 +28,7 @@ force :D</p>
 
 <h2 id="it-starts">It starts</h2>
 
-<pre><code>git clone git@github.com:stilvoid/falysoyd
+<pre><code class="language-shell">git clone git@github.com:stilvoid/falysoyd
 cd falsoyd
 make
 ...
@@ -38,7 +38,7 @@ fatal error: &#39;SDL_mixer.h&#39; file not found
 
 <p>Oh yeah, this was all SDL. Oh well, I&#39;m sure that&#39;s still around!</p>
 
-<pre><code>brew install sdl
+<pre><code class="language-shell">brew install sdl
 Warning: Formula sdl was renamed to sdl12-compat.
 </code></pre>
 
@@ -46,7 +46,7 @@ Warning: Formula sdl was renamed to sdl12-compat.
 has written a compatibility library for SDL2 so that should all work
 quite nicely...</p>
 
-<pre><code>make
+<pre><code class="language-shell">make
 fatal error: &#39;SDL_mixer.h&#39; file not found
 brew install sdl_mixer
 Error: sdl_mixer has been disabled because it is deprecated upstream! It was disabled on 2024-02-07.
@@ -57,19 +57,19 @@ seems to have the same API as in SDL1.2 so I&#39;ll nab the header file from
 there, include it in my CFLAGS, and link to SDL2_mixer in addition to
 the SDL1.2 (compat) library. What could possibly go wrong?!</p>
 
-<pre><code>make
+<pre><code class="language-shell">make
 ...
 src/map.h:35:6: error: cast from pointer to smaller type &#39;int&#39; loses information
-        p.x=(int)x;
-            ^~~~~~
+    p.x=(int)x;
+        ^~~~~~
 src/map.h:36:6: error: cast from pointer to smaller type &#39;int&#39; loses information
-        p.y=(int)y;
+    p.y=(int)y;
 </code></pre>
 
 <p>Ooh, an actual bug. Forgot to dereference some pointers. I wonder how
 that ever worked before. Well, it&#39;s an easy fix!</p>
 
-<pre><code>make
+<pre><code class="language-shell">make
 ...
 g++  src/world.o src/audio.o src/score.o src/bonus.o src/shot.o src/sprite.o src/ship.o src/alien.o src/main.o -o src/falsoyd `sdl-config --libs` -lSDL2_mixer
 </code></pre>
